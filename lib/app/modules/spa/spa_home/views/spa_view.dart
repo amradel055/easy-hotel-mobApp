@@ -102,37 +102,37 @@ class SpaView extends GetView<SpaController> {
               ),
               Column(crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 10.h),
-                      child: TextWidget(
-                        AppStrings.searchlabel, textAlign: TextAlign.left,
-                        weight: FontWeight.bold,
-                        size: 20.h,),
-                    ),
-                    Obx(() {
-                      return SizedBox(
-                          height: size.height * .17,
-                          child:
-                          GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
-                              mainAxisSpacing: 0,
-                              crossAxisSpacing: 0,
-                            ),
-                            itemCount: controller.spaGroup.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return SpaServicesWidget(name: controller
-                                  .spaGroup[index].name!, city: controller
-                                  .spaGroup[index].cityName!,
-                                   onTap: (){}, id: controller
-                                    .spaGroup[index].id!,
-                              );
-                            },
-
-                          )
-                      );
-                    }),
+                    // Padding(
+                    //   padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 10.h),
+                    //   child: TextWidget(
+                    //     AppStrings.searchlabel, textAlign: TextAlign.left,
+                    //     weight: FontWeight.bold,
+                    //     size: 20.h,),
+                    // ),
+                    // Obx(() {
+                    //   return SizedBox(
+                    //       height: size.height * .17,
+                    //       child:
+                    //       GridView.builder(
+                    //         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //           crossAxisCount: 1,
+                    //           mainAxisSpacing: 0,
+                    //           crossAxisSpacing: 0,
+                    //         ),
+                    //         itemCount: controller.spaGroup.length,
+                    //         scrollDirection: Axis.horizontal,
+                    //         itemBuilder: (context, index) {
+                    //           return SpaServicesWidget(name: controller
+                    //               .spaGroup[index].name!, city: controller
+                    //               .spaGroup[index].cityName!,
+                    //                onTap: (){}, id: controller
+                    //                 .spaGroup[index].id!,
+                    //           );
+                    //         },
+                    //
+                    //       )
+                    //   );
+                    // }),
                    controller.spaOffer == []?const SizedBox(): Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -167,9 +167,6 @@ class SpaView extends GetView<SpaController> {
                         }),
                       ],
                     )
-
-
-
                   ])
             ],
           );
