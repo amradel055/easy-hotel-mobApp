@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TownCard extends StatelessWidget {
-  const TownCard({Key? key, required this.image, required this.name, this.onTap}) : super(key: key);
+  const TownCard({Key? key, required this.image, required this.name, this.onTap, required this.id}) : super(key: key);
   final String image;
+  final int id;
   final String name;
   final Function()? onTap;
 
@@ -19,7 +20,7 @@ class TownCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
     return GestureDetector(onTap: (){
-      onTap;
+      Get.toNamed(Routes.CITY_ROOM_SEARCH_FILTER,arguments: id);
     },
       child: Container(
         width: size.width * .45,

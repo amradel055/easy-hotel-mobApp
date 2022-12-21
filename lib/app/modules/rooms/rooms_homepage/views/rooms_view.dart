@@ -126,7 +126,8 @@ class RoomsView extends GetView<RoomsController> {
                               stars: controller.roomsOffer[index]
                                   .clientsEvaluation!.toInt(),
                               percentage: controller.roomsOffer[index]
-                                  .numBeds!.toInt(),);
+                                  .numBeds!.toInt(),
+                            id: controller.roomsOffer[index].id!,);
                           },
 
                         )
@@ -146,7 +147,8 @@ class RoomsView extends GetView<RoomsController> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return TownCard(image: controller.cities[index]
-                                .image!, name: controller.cities[index].name!);
+                                .image!, name: controller.cities[index].name!,
+                            id: controller.cities[index].id!,);
                           },
 
                         )
@@ -164,7 +166,9 @@ class RoomsView extends GetView<RoomsController> {
                           itemCount: controller.roomsAds.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return  AdCard(name: controller.roomsAds[index].name!,hotel: controller.roomsAds[index].hotelName.toString(),image: controller.roomsAds[index].imgUrl!,);
+                            return  AdCard(
+                              id: controller.roomsAds[index].id!,
+                              name: controller.roomsAds[index].name!,hotel: controller.roomsAds[index].hotelName.toString(),image: controller.roomsAds[index].imgUrl!,);
                           },
 
                         )
@@ -184,6 +188,7 @@ class RoomsView extends GetView<RoomsController> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return  DiscoverCard(
+                              id: controller.roomsDiscover[index].id!,
                                 image: controller.roomsDiscover[index].imgUrl!, name: controller.roomsDiscover[index].name!);
                           },
 

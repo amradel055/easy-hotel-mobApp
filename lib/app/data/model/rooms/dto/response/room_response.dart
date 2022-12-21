@@ -96,11 +96,10 @@ class RoomResponse {
   static List<RoomResponse> fromList(dynamic json) => List.from(json.map((e) => RoomResponse.fromJson(e)));
 
 
-  factory RoomResponse.fromRawJson(String str) => RoomResponse.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory RoomResponse.fromJson(Map<String, dynamic> json) => RoomResponse(
+  factory RoomResponse.fromJson( dynamic json) => RoomResponse(
     id: json["id"] == null ? null : json["id"],
     markEdit: json["markEdit"] == null ? null : json["markEdit"],
     msg: json["msg"],

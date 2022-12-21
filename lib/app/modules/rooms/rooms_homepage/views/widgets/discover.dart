@@ -8,9 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DiscoverCard extends StatelessWidget {
-  const DiscoverCard({Key? key, required this.image, required this.name, this.onTap}) : super(key: key);
+  const DiscoverCard({Key? key, required this.image, required this.name, this.onTap, required this.id}) : super(key: key);
   final String image;
   final String name;
+  final int id;
   final Function()? onTap;
 
 
@@ -19,7 +20,7 @@ class DiscoverCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
     return GestureDetector(onTap: (){
-      onTap;
+    Get.toNamed(Routes.ROOM_DETAIL,arguments: id);
     },
       child: Container(
         width: size.width * .45,

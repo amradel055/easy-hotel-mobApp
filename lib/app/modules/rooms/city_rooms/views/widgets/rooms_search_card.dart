@@ -11,8 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class RoomsCardWidget extends StatelessWidget {
-  const RoomsCardWidget({Key? key, required this.type, required this.image, required this.title, required this.subtitle, required this.id, this.onTap}) : super(key: key);
-  final int type;
+  const RoomsCardWidget({Key? key, required this.price, required this.image, required this.title, required this.subtitle, required this.id, this.onTap}) : super(key: key);
+  final num price;
   final int id;
   final String image;
   final String title ;
@@ -24,8 +24,7 @@ class RoomsCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
     return GestureDetector(onTap: (){
-      onTap;
-    },
+      Get.toNamed(Routes.ROOM_DETAIL,arguments:id );    },
       child: Column(
         children: [
 
@@ -52,7 +51,7 @@ class RoomsCardWidget extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                   AppAssets.rooms)
+                                    AppAssets.rooms)
                             )
                         ),
 
@@ -64,9 +63,9 @@ class RoomsCardWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children:   [
-                              Text("rooms.hotelName!",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-                              Text("rooms.cityName!",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                              Text("${"13"}LE/night",style: TextStyle(color: Colors.grey,fontSize: 10)),
+                              Text(title,style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text(subtitle,style: TextStyle(color: Colors.grey,fontSize: 12),),
+                              Text("${price.toString()}LE/night",style: TextStyle(color: Colors.grey,fontSize: 10)),
                               RatingBar.builder(
                                   initialRating: 3,
                                   minRating: 1,
@@ -87,7 +86,8 @@ class RoomsCardWidget extends StatelessWidget {
                                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text("17.900view",style: TextStyle(color: Colors.grey,fontSize: 10)),
-                                    Container(
+                                    GestureDetector(
+
                                       child: Container(alignment: Alignment.centerRight,
 
                                         height: size.height*.04,
@@ -99,7 +99,7 @@ class RoomsCardWidget extends StatelessWidget {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.fromLTRB(0, 0, 5, 5),
-                                              child: Center(child: Text('احجز الان ' )),
+                                              child: Center(child: TextWidget(AppStrings.reserve,weight: FontWeight.bold,textColor: Colors.white,)),
                                             ),
                                           ],
                                         ),

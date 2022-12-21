@@ -60,6 +60,7 @@ abstract class AppStrings {
   static const hallsService = "hallsService";
   static const spaService = "spaService";
   static const roomsService = "roomsService";
+  static const rooms = "Rooms";
   static const polmanService = "polmanService";
   static const housekeepingService = "housekeepingService";
   static const todayOffers = "todayOffers";

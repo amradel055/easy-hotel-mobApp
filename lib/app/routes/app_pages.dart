@@ -28,16 +28,22 @@ import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/vi
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/bindings/house_keeping_services_binding.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/house_keeping_services_view.dart';
 import 'package:easy_hotel/app/modules/my_account/views/my_account_view.dart';
-import 'package:easy_hotel/app/modules/rooms/all_rooms/bindings/all_rooms_page_binding.dart';
-import 'package:easy_hotel/app/modules/rooms/all_rooms/views/all_rooms_page_view.dart';
+import 'package:easy_hotel/app/modules/rooms/city_rooms/bindings/city_rooms_page_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/city_rooms/views/city_rooms_page_view.dart';
+import 'package:easy_hotel/app/modules/rooms/hotel_rooms/bindings/hotel_rooms_page_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/hotel_rooms/views/hotel_rooms_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/room_detail/bindings/room_details_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/room_detail/views/room_detail_view.dart';
+import 'package:easy_hotel/app/modules/rooms/room_reservation/bindings/room_reservation_page_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/room_reservation/views/room_reservation_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/room_search/bindings/room_search_page_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/room_search/views/room_search_page_view.dart';
-import 'package:easy_hotel/app/modules/rooms/room_search_filter/bindings/room_search_filter_page_binding.dart';
-import 'package:easy_hotel/app/modules/rooms/room_search_filter/views/room_search_filter_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/rooms_homepage/bindings/rooms_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/rooms_homepage/views/rooms_view.dart';
+import 'package:easy_hotel/app/modules/rooms/search_filter_city/bindings/search_filter_page_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/search_filter_city/views/search_filter_page_view.dart';
+import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/bindings/search_filter_hotel_page_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/views/search_filter_hotel_page_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/bindings/spa_city_binding.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/views/spa_city_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_home/views/spa_view.dart';
@@ -237,6 +243,10 @@ class AppPages {
       name: _Paths.HALL_RESERVATION,
       page: () => const HallReservationPageView(),
       binding: HallReservationPageBinding(),
+    ), GetPage(
+      name: _Paths.ROOM_RESERVATION,
+      page: () => const RoomReservationPageView(),
+      binding: RoomReservationPageBinding(),
     ),
     GetPage(
       name: _Paths.HALL_CALENDER,
@@ -249,14 +259,24 @@ class AppPages {
       binding: RoomSearchPageBinding(),
     ),
     GetPage(
-      name: _Paths.ROOM_SEARCH_FILTER,
-      page: () => const RoomSearchFilterPageView(),
-      binding: RoomSearchFilterPageBinding(),
+      name: _Paths.HOTEl_ROOM_SEARCH_FILTER,
+      page: () => const RoomSearchFilterHotelPageView(),
+      binding: RoomSearchFilterHotelPageBinding(),
     ),
     GetPage(
-      name: _Paths.ALL_ROOMS,
-      page: () => const AllRoomsPageView(),
-      binding: AllRoomsPageBinding(),
+      name: _Paths.CITY_ROOM_SEARCH_FILTER,
+      page: () => const RoomSearchCityFilterPageView(),
+      binding: RoomSearchCityFilterPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.CITY_ROOMS,
+      page: () => const CityRoomsPageView(),
+      binding: CityRoomsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOTEL_ROOMS,
+      page: () => const HotelRoomsPageView(),
+      binding: HotelRoomsPageBinding(),
     ),
     GetPage(
       name: _Paths.ROOM_DETAIL,

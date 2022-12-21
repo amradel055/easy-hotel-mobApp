@@ -2,9 +2,13 @@
 import 'package:easy_hotel/app/data/model/rooms/dto/request/advertisement_request_dto.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/request/cities_request_dto.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/request/offers_rooms_request_dto.dart';
+import 'package:easy_hotel/app/data/model/rooms/dto/request/room_detail_request.dart';
+import 'package:easy_hotel/app/data/model/rooms/dto/request/room_save_request.dart';
+import 'package:easy_hotel/app/data/model/rooms/dto/request/room_search_filter_request.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/response/advertisement_response.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/response/city_response.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/response/room_response.dart';
+import 'package:easy_hotel/app/data/model/rooms/dto/response/room_search_city_response.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/request/spa_city_request_dto.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/request/spa_detail_request_dto.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/request/all_spa_request_dto.dart';
@@ -92,48 +96,62 @@ class RoomsRepository {
   }
 
 
-  // getSpaHotel(
-  //     SpaHotelRequest spaHotelRequest, {
-  //       Function()? onComplete,
-  //       SuccessFunc<List<SpaCityResponse>> onSuccess,
-  //       Function(dynamic error)? onError,
-  //     }) =>
-  //     ApiProvider().post<List<SpaCityResponse>>('spa/spaListByHotelId',
-  //       onComplete: onComplete,
-  //       onSuccess: onSuccess,
-  //       data: spaHotelRequest.toJson(),
-  //       onError: onError,
-  //       convertor: SpaCityResponse.fromList,
-  //     );
-  //
-  // getSpaDetail(
-  //     SpaDetailRequest spaDetailRequest, {
-  //       SuccessFunc<SpaResponse> onSuccess,
-  //       Function(dynamic error)? onError,  Function()?onComplete,
-  //     }) {
-  //   ApiProvider().post<SpaResponse>(
-  //       'spa/spaDetail',
-  //       onSuccess: onSuccess,
-  //       data: spaDetailRequest.toJson(),
-  //       onError: onError,
-  //       convertor: SpaResponse.fromJson,
-  //       onComplete: onComplete
-  //   );
-  // }
-  //
-  // getSpaSave(
-  //     SpaSaveRequest spaSaveRequest, {
-  //       SuccessFunc<void> onSuccess,
-  //       Function(dynamic error)? onError,  Function()?onComplete,
-  //     }) {
-  //   ApiProvider().post<void>(
-  //       'spa/save',
-  //       onSuccess: onSuccess,
-  //       data: spaSaveRequest.toJson(),
-  //       onError: onError,
-  //       convertor: (_){return null;},
-  //       onComplete: onComplete
-  //   );
-  // }
+  getCityRooms(
+      RoomSearchFilterRequest roomSearchFilterRequest, {
+        Function()? onComplete,
+        SuccessFunc<List<RoomcityResponse>> onSuccess,
+        Function(dynamic error)? onError,
+      }) =>
+      ApiProvider().post<List<RoomcityResponse>>('rooms/findRoomsByCittId',
+        onComplete: onComplete,
+        onSuccess: onSuccess,
+        data: roomSearchFilterRequest.toJson(),
+        onError: onError,
+        convertor: RoomcityResponse.fromList,
+      );
+
+  getHotelRooms(
+      RoomSearchFilterRequest roomSearchFilterRequest, {
+        Function()? onComplete,
+        SuccessFunc<List<RoomcityResponse>> onSuccess,
+        Function(dynamic error)? onError,
+      }) =>
+      ApiProvider().post<List<RoomcityResponse>>('rooms/findRoomsByCittId',
+        onComplete: onComplete,
+        onSuccess: onSuccess,
+        data: roomSearchFilterRequest.toJson(),
+        onError: onError,
+        convertor: RoomcityResponse.fromList,
+      );
+
+  getRoomDetail(
+      RoomDetailRequest roomDetailRequest, {
+        SuccessFunc<RoomResponse> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<RoomResponse>(
+        'rooms/FindRoomDto',
+        onSuccess: onSuccess,
+        data: roomDetailRequest.toJson(),
+        onError: onError,
+        convertor: RoomResponse.fromJson,
+        onComplete: onComplete
+    );
+  }
+
+  getRoomSave(
+      RoomsSaveRequest roomsSaveRequest, {
+        SuccessFunc<void> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<void>(
+        'rooms/save',
+        onSuccess: onSuccess,
+        data: roomsSaveRequest.toJson(),
+        onError: onError,
+        convertor: (_){return null;},
+        onComplete: onComplete
+    );
+  }
 
 }

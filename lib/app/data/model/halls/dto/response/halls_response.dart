@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+
 
 
 class HallsResponse {
@@ -205,7 +207,7 @@ class AdditionsGroupModel {
   dynamic igmaOwnerSerial;
   dynamic userCode;
   String? name;
-  List<AddtionsModel>? addtionsDtoList;
+  RxList<AddtionsModel>? addtionsDtoList;
   int ?appId;
 
   static List<AdditionsGroupModel> fromList(dynamic json) => List.from(json.map((e) => AdditionsGroupModel.fromJson(e)));
@@ -234,7 +236,7 @@ class AdditionsGroupModel {
     igmaOwnerSerial: json["igmaOwnerSerial"],
     userCode: json["userCode"],
     name: json["name"] == null ? null : json["name"],
-    addtionsDtoList: json["addtionsDTOList"] == null ? null : List<AddtionsModel>.from(json["addtionsDTOList"].map((x) => AddtionsModel.fromJson(x))),
+    addtionsDtoList: json["addtionsDTOList"] == null ? null : RxList<AddtionsModel>.from(json["addtionsDTOList"].map((x) => AddtionsModel.fromJson(x))),
     appId: json["appId"] == null ? null : json["appId"],
   );
 

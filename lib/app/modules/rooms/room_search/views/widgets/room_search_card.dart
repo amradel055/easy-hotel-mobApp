@@ -20,11 +20,11 @@ class RoomSearchCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap:(){
         if(type == 0) {
-          Get.toNamed(Routes.ROOM_SEARCH_FILTER, arguments: id);
+          Get.toNamed(Routes.CITY_ROOM_SEARCH_FILTER, arguments: id);
         } else if(type == 1) {
-          Get.toNamed(Routes.ROOM_SEARCH_FILTER, arguments: id);
+          Get.toNamed(Routes.HOTEL_ROOM_SEARCH_FILTER, arguments: id);
         }else{
-          Get.toNamed(Routes.SPADETAILS, arguments: id);
+          Get.toNamed(Routes.ROOM_DETAIL, arguments: id);
         }
       },
       child: Padding(
