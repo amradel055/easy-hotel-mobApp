@@ -13,12 +13,11 @@ class SpaReviewsWidget extends GetView<SpaDetailsController> {
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
-    return    Column(children: [
+    return Column(children: [
       Column(children: [
-         TextWidget(controller.spa!.reviewDtoList![0].reviewStars!.toString(),weight: FontWeight.bold),
-
+        TextWidget(controller.spa!.reviewStar != null ? controller.spa!.reviewStar!.toString() : "0",weight: FontWeight.bold),
         RatingBar.builder(
-          initialRating: controller.spa!.reviewDtoList![0].reviewStars!,
+          initialRating: controller.spa!.reviewStar != null ? controller.spa!.reviewStar! : 0,
           minRating: 1,
           direction: Axis.horizontal,
           ignoreGestures: true,
@@ -54,10 +53,7 @@ class SpaReviewsWidget extends GetView<SpaDetailsController> {
           child: Column(
             children: [
               for(int i = 0 ; i < controller.spa!.reviewDtoList!.length ; i++)
-                 SpaReviewWidget(image: 'https://www.wearegurgaon.com/wp-content/uploads/2022/04/Affinity-Salon-Gurgaon.jpg', name: controller.spa!.reviewDtoList![i].customerName!, comment: "",date:DateFormat("dd-MM-yyyy").format(controller.spa!.reviewDtoList![i].reviewDate!) ,)
-
-
-
+                 SpaReviewWidget(image: '', name: controller.spa!.reviewDtoList![i].customerName!, comment: "",date:DateFormat("dd-MM-yyyy").format(controller.spa!.reviewDtoList![i].reviewDate!) ,)
             ],
           ),
         ),

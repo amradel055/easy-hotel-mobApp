@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/image.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
@@ -13,6 +14,7 @@ import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../core/themes/app_text_theme.dart';
+import 'full_screen_image.dart';
 
 
 class SpaImagesShow extends GetView<SpaDetailsController> {
@@ -33,8 +35,13 @@ class SpaImagesShow extends GetView<SpaDetailsController> {
           itemCount: controller.spa!.itemImages!.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            return  SpaImage(image:
-               " http://192.168.1.22:8090/${controller.spa!.itemImages![index].image!}"
+            return  GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) =>  FullScreenImage(image:'${ApiProvider.imageUrl}${controller.spa!.itemImages![index].image}',) ));
+              },
+              child: SpaImage(
+                  image: "${ApiProvider.imageUrl}${controller.spa!.itemImages![index].image!}"
+              ),
             );
           },
 

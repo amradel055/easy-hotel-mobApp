@@ -30,7 +30,7 @@ class SpaReservationPriceWidget extends GetView<SpaDetailsController> {
                 child: Column(
                   children: [
                     for(int i = 0 ; i < controller.spa!.spaItemsDtoList!.length ; i++)
-                      SpaReservationPrice( controller.spa!.spaItemsDtoList![i].name, controller.spa!.spaItemsDtoList![i].price.toString(),i.obs)
+                      SpaReservationPrice( controller.spa!.spaItemsDtoList![i].name, controller.spa!.spaItemsDtoList![i].price.toString() ,controller.spa!.spaItemsDtoList![i].salePrice ,i.obs)
                   ],
                 ),
               ),

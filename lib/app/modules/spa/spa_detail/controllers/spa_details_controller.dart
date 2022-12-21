@@ -9,9 +9,9 @@ import 'package:get/get.dart';
 
 class SpaDetailsController extends GetxController {
 
-  final int id = Get.arguments;
-   RxInt  index = 1.obs;
-  RxInt  serviceIndex = 0.obs;
+  int? id = Get.arguments;
+  RxInt  index = 1.obs;
+  RxInt  serviceIndex = 2.obs;
   RxInt selectedType = 1.obs;
   SpaResponse? spa ;
   final isLoading = false.obs;
@@ -21,23 +21,37 @@ class SpaDetailsController extends GetxController {
 
    @override
   void onInit() {
-    super.onInit();
-    getSpaDetail();
-
-
+     if(id != null){
+       getSpaDetailById();
+     }else{
+       getSpaDetailByHotel();
+     }
+     super.onInit();
   }
 
-
-  getSpaDetail() async {
+  getSpaDetailById() async {
     isLoading(true);
     final request = SpaDetailRequest(
-      id:id ,
-
+      id: id ,
     );
     SpaRepository().getSpaDetail(request,
         onSuccess: (data) {
           spa=data.data;
+        },
+        onError: (e) => showPopupText( e.toString()),
+        onComplete: () => isLoading(false)
+    );
+  }
 
+
+  getSpaDetailByHotel() async {
+    isLoading(true);
+    final request = SpaDetailRequest(
+      branchId: UserManager().selectedBranch?.id ,
+    );
+    SpaRepository().getSpaDetailByHotel(request,
+        onSuccess: (data) {
+          spa=data.data;
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
@@ -45,10 +59,14 @@ class SpaDetailsController extends GetxController {
   }
 
    getSpaSave() async {
+     if(servicesSelected.toList().isEmpty){
+       showPopupText("يجب اختيار خدمة") ;
+       return ;
+     }
      isLoading(true);
      final request = SpaSaveRequest(
        spaId:spa!.id! ,
-       spaItemDTOList: servicesSelected,
+       spaItemDTOList: servicesSelected.toList(),
        salesDetailSpaItemDTOList: [],
        companyId: AppConstants.companyId,
        createdBy: AppConstants.createdBy,
@@ -58,6 +76,7 @@ class SpaDetailsController extends GetxController {
      SpaRepository().getSpaSave(request,
          onSuccess: (data) {
            showPopupText( "تم الحفظ بنجاح");
+           servicesSelected([]);
          },
          onError: (e) => showPopupText( e.toString()),
          onComplete: () => isLoading(false)

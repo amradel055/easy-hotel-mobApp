@@ -4,6 +4,7 @@ import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/bar_widget.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_images_Widget.dart';
 
@@ -13,6 +14,8 @@ import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_services
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../components/text_field_widget.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/spa_details_controller.dart';
 import 'widgets/filter_bar.dart';
 import 'widgets/spa_info_widget.dart';
@@ -31,7 +34,32 @@ class SpaDetailView extends GetView<SpaDetailsController> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
-          title: TextWidget('DETAILS', size: 30.h,textColor: Colors.white,),
+          title: Row(
+            children: [
+              SizedBox(
+                  width: size.width * .75,
+                  child:
+                  GestureDetector(
+                    onTap: () {
+                      Get.offAndToNamed(Routes.SPASEARCHPAGE);
+                    },
+                    child: TextFieldWidget(
+                      enabled: false,
+                      hint: AppStrings.search,
+                      suffixIcon: Icons.search,
+                      ltr: true,
+                      onTap: () {
+                        Get.offAndToNamed(Routes.SPASEARCHPAGE);
+                      },
+
+                    ),
+                  )
+
+
+              ),
+
+            ],
+          ),
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -60,45 +88,67 @@ class SpaDetailView extends GetView<SpaDetailsController> {
             children: [
               Container(
                 height: 300.h,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(AppAssets.salon),
-                        fit: BoxFit.cover)),
+                        image: NetworkImage('${ApiProvider.imageUrl}${controller.spa!.image}'),
+                        fit: BoxFit.cover
+                    )),
 
                 padding: EdgeInsets.fromLTRB(50.h, 120.h, 50.h, 20.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TextWidget(controller.spa!.name!, size: 20.h,
+                    TextWidget(controller.spa!.name ?? "", size: 20.h,
                       weight: FontWeight.bold,
                       textColor: Colors.white,),
                     TextWidget(
-                        controller.spa!.cityName!,
+                        controller.spa!.cityName ?? '',
                         textColor: Colors.white,
                         weight: FontWeight.bold),
                     Row(
                       children: [
                         const Icon(Icons.star, color: Colors.yellowAccent,),
-                        const TextWidget(
-                            '3.5    (130 مراجعة)', textColor: Colors.white,
-                            weight: FontWeight.bold),
-                        Padding(
-                          padding: EdgeInsets.only(left: size.width * .3),
-                          child: Container(
-                            height: size.height * 0.05,
-                            width: size.width * 0.15,
-                            decoration: BoxDecoration(
-                              color: AppColors.appHallsRedDark,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(size.width * 0.05)),
-                            ),
-                            child:  TextWidget(
-                              controller.spa!.activeName!, textAlign: TextAlign.center,
-                              weight: FontWeight.bold,
-                              textColor: Colors.white,),
+                        controller.spa != null &&  controller.spa!.reviewDtoList != null
+                            && controller.spa!.reviewDtoList!.isNotEmpty ?
+                        SizedBox(
+                          // width: size.width *0.2,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              controller.spa!.reviewStar != null ?
+                               TextWidget(
+                                  controller.spa!.reviewStar!.toString(), textColor: Colors.white,
+                                  weight: FontWeight.bold) :
+                              TextWidget(
+                                  0.toString(), textColor: Colors.white,
+                                  weight: FontWeight.bold)
+                              ,
+                              TextWidget(
+                                  '  (${controller.spa!.reviewDtoList!.length} ${AppStrings.reviews.tr})  ', textColor: Colors.white,
+                                  weight: FontWeight.bold),
+                            ],
                           ),
-                        ),
+                        )
+                        : const TextWidget(
+                            '0    (0 ${AppStrings.reviews})', textColor: Colors.white,
+                            weight: FontWeight.bold),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: size.width * .3),
+                        //   child: Container(
+                        //     height: size.height * 0.05,
+                        //     width: size.width * 0.15,
+                        //     decoration: BoxDecoration(
+                        //       color: AppColors.appHallsRedDark,
+                        //       borderRadius: BorderRadius.all(
+                        //           Radius.circular(size.width * 0.05)),
+                        //     ),
+                        //     child:  TextWidget(
+                        //       controller.spa!.activeName!, textAlign: TextAlign.center,
+                        //       weight: FontWeight.bold,
+                        //       textColor: Colors.white,),
+                        //   ),
+                        // ),
                       ],
                     )
                   ],
@@ -106,14 +156,15 @@ class SpaDetailView extends GetView<SpaDetailsController> {
 
 
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const FilterBarWidgets(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  FilterBarWidgets(
                     title: AppStrings.information, index: 0,),
-                  const FilterBarWidgets(
+                  FilterBarWidgets(
                     title: AppStrings.services, index: 1,),
-                  const FilterBarWidgets(title: AppStrings.photos, index: 2,),
-                  const FilterBarWidgets(title: AppStrings.reviews, index: 3,)
+                  FilterBarWidgets(title: AppStrings.photos, index: 2,),
+                  FilterBarWidgets(title: AppStrings.reviews, index: 3,)
                 ],),
 
               Container(

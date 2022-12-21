@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -28,7 +29,7 @@ class SpaReviewWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: NetworkImage(
-                  image),
+                ApiProvider.imageUrl +  image),
               radius: 40.00,
             ),
             Padding(

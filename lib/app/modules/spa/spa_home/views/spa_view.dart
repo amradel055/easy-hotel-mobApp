@@ -58,7 +58,6 @@ class SpaView extends GetView<SpaController> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(AppAssets.salon), fit: BoxFit.cover)),
-
                 padding: EdgeInsets.fromLTRB(
                     size.width * .1, 175.h, size.width * .1, 0),
                 child: Column(
@@ -72,7 +71,6 @@ class SpaView extends GetView<SpaController> {
                       children: [
                         SizedBox(
                             width: size.width * .8,
-
                             child:
                             GestureDetector(
                               onTap: () {

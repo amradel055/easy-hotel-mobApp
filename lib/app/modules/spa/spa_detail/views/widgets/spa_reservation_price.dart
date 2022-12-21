@@ -13,12 +13,12 @@ import '../../../../../core/themes/app_text_theme.dart';
 
 
 class SpaReservationPrice extends GetView<SpaDetailsController> {
-  const SpaReservationPrice(this.name, this.price, this.index, {Key? key})
+  const SpaReservationPrice(this.name, this.price,this.salePrice, this.index, {Key? key})
       : super(key: key);
   final String? name;
   final String? price;
   final RxInt? index;
-
+  final double? salePrice;
 
 
   @override
@@ -29,7 +29,7 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: Container(
-        height: size.height * .05,
+        height: size.height * .07,
         width: size.width * .9,
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20))
@@ -48,7 +48,7 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
               children: [
                 Container(
                   width: size.width * .435,
-                  height: size.height * .05,
+                  height: size.height * .07,
                   decoration: BoxDecoration(
                     borderRadius:const BorderRadius.only(
                         bottomRight: Radius.circular(20.00),
@@ -58,19 +58,27 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                   ),
                   child: Padding(
                     padding:const EdgeInsets.only(right: 10),
-                    child: TextWidget(name!, textAlign: TextAlign.right,
-                      weight: FontWeight.bold,
+                    child: Center(
+                      child: TextWidget(name!, textAlign: TextAlign.right,
+                        weight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-
                 Container(
                   color: Colors.grey[300],
                   width: size.width * .35,
-                  height: size.height * .05,
-                  child: TextWidget(
-                    price! + AppStrings.LE, textAlign: TextAlign.center,
-                    weight: FontWeight.bold,
+                  height: size.height * .1,
+                  child:salePrice == null ? Center(
+                    child: TextWidget(
+                      price! + AppStrings.LE.tr, textAlign: TextAlign.center,
+                      weight: FontWeight.bold,
+                    ),
+                  ): Column(
+                    children: [
+                      Text(price! + AppStrings.LE.tr , textAlign: TextAlign.center, style: const TextStyle(fontWeight:FontWeight.w800 ,decoration: TextDecoration.lineThrough ,fontSize: 10),),
+                      Text(salePrice!.toString() + AppStrings.LE.tr , textAlign: TextAlign.center, style: const TextStyle(fontWeight:FontWeight.bold ,fontSize: 14),),
+                    ],
                   ),
                 ),
                 GestureDetector(
@@ -92,19 +100,24 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                   },
                   child: Container(
                       width: size.width * .1,
-                      height: size.height * .05,
+                      height: size.height * .07,
                       decoration: BoxDecoration(
                         borderRadius:const  BorderRadius.only(bottomLeft: Radius
                             .circular(20.00), topLeft: Radius.circular(20.00)),
-                        color: controller.spa!.spaItemsDtoList![index!.value].selected!
-                            .value==true ? Colors.green : AppColors.appHallsRedDark,
+                        color:  controller.servicesSelected.toList().contains(controller.spa!.spaItemsDtoList![index!.value].id)? Colors.green : AppColors.appHallsRedDark
+                        // controller.spa!.spaItemsDtoList![index!.value].selected!
+                        //     .value==true ? Colors.green : AppColors.appHallsRedDark,
 
                       ),
 
-                      child: Icon(controller.spa!.spaItemsDtoList![index!.value]
-                          .selected!.value ==true  ? Icons.check : Icons.add,
-                          color: controller.spa!.spaItemsDtoList![index!.value]
-                              .selected!.value == true ? Colors.white : Colors.black,
+                      child: Icon(
+                          // controller.spa!.spaItemsDtoList![index!.value]
+                          // .selected!.value ==true
+                          controller.servicesSelected.toList().contains(controller.spa!.spaItemsDtoList![index!.value].id)? Icons.check : Icons.add,
+                          color:
+                          // controller.spa!.spaItemsDtoList![index!.value]
+                          //     .selected!.value == true ?
+                          controller.servicesSelected.toList().contains(controller.spa!.spaItemsDtoList![index!.value].id)?Colors.white : Colors.black,
                           size: size.width * .08)),
                 ),
 

@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:flutter/foundation.dart';
@@ -29,12 +30,11 @@ class BarWidgets extends GetView<SpaDetailsController> {
                 color: index == controller.serviceIndex.value ? AppColors
                     .appHallsRedDark : AppColors.appHallsRed,
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Text(
+            child: TextWidget(
               title,
-              style: TextStyle(fontSize: size.width * 0.05,
-                fontWeight: index == controller.serviceIndex.value ? FontWeight.bold : FontWeight.normal,
-                color: index == controller.serviceIndex.value ? Colors.white : Colors.black,
-                fontFamily: "Cairo",), textAlign: TextAlign.center,
+              size:size.width * 0.05 ,
+              weight: index == controller.serviceIndex.value ? FontWeight.bold : FontWeight.normal,
+              textColor: index == controller.serviceIndex.value ? Colors.white : Colors.black,  textAlign: TextAlign.center,
             ),
           ),
         );

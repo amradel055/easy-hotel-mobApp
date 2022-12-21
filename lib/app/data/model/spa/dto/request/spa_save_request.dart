@@ -32,7 +32,7 @@ class SpaSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
-      spaItemDTOList: json["spaItemDTOList"] == null ? null : List<int>.from(json["spaItemDTOList"].map((x) => x)),
+      spaItemDTOList: json["spaItemsDTOList"] == null ? null : List<int>.from(json["spaItemsDTOList"].map((x) => x)),
       salesDetailSpaItemDTOList : json["salesDetailSpaItemDTOList"] == null ? null : List<SalesDetailsSpaItem>.from(json["salesDetailSpaItemDTOList"].map((e) => SalesDetailsSpaItem.fromJson(e)))
   );
 
@@ -42,7 +42,7 @@ class SpaSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
-    "spaItemDTOList": spaItemDTOList == null ? null : List<dynamic>.from(spaItemDTOList!.map((x) => x)),
+    "spaItemsDTOList": spaItemDTOList == null ? [] : spaItemDTOList,
     "salesDetailSpaItemDTOList" : salesDetailSpaItemDTOList == null ? null : List<dynamic>.from(salesDetailSpaItemDTOList!.map((x) => x.toJson()))
   };
 }

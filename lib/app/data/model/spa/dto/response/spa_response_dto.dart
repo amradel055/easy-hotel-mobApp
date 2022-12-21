@@ -40,7 +40,8 @@ class SpaResponse {
     this.address,
     this.reviewDtoList,
     this.hotelName,
-    this.cityName
+    this.cityName,
+    this.reviewStar
 
   });
 
@@ -74,6 +75,7 @@ class SpaResponse {
   List<ImageModel>? itemImages;
   List<WorkHoursDtosModel>? workHoursDTOs;
   dynamic lang;
+  double? reviewStar;
   dynamic lat;
   List<SpaItemModel> ? spaItemsDtoList;
   List<SpaOfferResponse> ? offersDetailsDTOList;
@@ -120,6 +122,8 @@ class SpaResponse {
     offersDTOList: json["offersDTOList"] == null ? null : List<SpaOfferResponse>.from(json["offersDTOList"].map((x) => SpaOfferResponse.fromJson(x) )),
     address: json["address"] == null ? null : json["address"],
     reviewDtoList: json["reviewDTOList"] == null ? null : List<ReviewModel>.from(json["reviewDTOList"].map((x) =>ReviewModel.fromJson(x))),
+    reviewStar: json["reviewStar"] == null ? null : json["reviewStar"],
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -159,6 +163,7 @@ class SpaResponse {
     "offersDTOList": offersDTOList == null ? null : List<SpaOfferResponse>.from(offersDTOList!.map((x) => x)),
     "address": address == null ? null : address,
     "reviewDTOList": reviewDtoList == null ? null : List<ReviewModel>.from(reviewDtoList!.map((x) => x)),
+    "reviewStar": reviewStar == null ? null : reviewStar,
   };
 }
 
@@ -184,6 +189,7 @@ class SpaItemModel {
     this.name,
     this.spaId,
     this.price,
+    this.salePrice,
     this.selected
   });
 
@@ -207,6 +213,7 @@ class SpaItemModel {
   String? name;
   int? spaId;
   double? price;
+  double? salePrice;
   RxBool? selected = false.obs;
 
 
@@ -231,6 +238,7 @@ class SpaItemModel {
       name: json["name"] == null ? null : json["name"],
       spaId: json["spaId"] == null ? null : json["spaId"],
       price: json["price"] == null ? null : json["price"],
+      salePrice: json["salePrice"] == null ? null : json["salePrice"],
       selected: false.obs
   );
 
@@ -447,10 +455,10 @@ class WorkHoursDtosModel {
   dynamic branchSerial;
   dynamic igmaOwnerSerial;
   dynamic userCode;
-  String ?fromHour;
-  String ?toHour;
-  String ?fromDate;
-  String ?toDate;
+  String? fromHour;
+  String? toHour;
+  String? fromDate;
+  String? toDate;
   int ?appId;
   String? appName;
   int ?itemId;

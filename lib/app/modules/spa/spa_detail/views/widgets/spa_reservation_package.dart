@@ -1,8 +1,10 @@
 
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,9 +13,11 @@ import 'package:get/get.dart';
 
 
 class SpaReservationPackage extends GetView<SpaDetailsController> {
-  const SpaReservationPackage(this.name, this.title, {Key? key}) : super(key: key);
+  const SpaReservationPackage(this.name, this.title,this.image , this.price , {Key? key}) : super(key: key);
   final String name;
   final String title;
+  final String? image ;
+  final String price ;
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
@@ -27,7 +31,7 @@ class SpaReservationPackage extends GetView<SpaDetailsController> {
         ),
         child: Column(
           children:[
-            ImageWidget(path: "https://www.wearegurgaon.com/wp-content/uploads/2022/04/Affinity-Salon-Gurgaon.jpg",width: size.width*.9,
+              ImageWidget(path:image != null ? ApiProvider.imageUrl + image! : AppAssets.salon,width: size.width*.9,
               height: size.height*.18, fit: BoxFit.cover,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +66,7 @@ class SpaReservationPackage extends GetView<SpaDetailsController> {
                           child:const Center(child:  TextWidget(AppStrings.reserve , textAlign: TextAlign.center,weight: FontWeight.bold,)),
                         ),
                       ),
-                      const TextWidget('250 LE',weight: FontWeight.bold)
+                       TextWidget('$price LE',weight: FontWeight.bold)
 
                     ],
                   ),

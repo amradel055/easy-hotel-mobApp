@@ -1,7 +1,9 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/extensions/string_ext.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -51,46 +53,55 @@ class SpaInfoWidget extends GetView<SpaDetailsController> {
             Column(
               children: [
                 SizedBox(width: size.width*.8,
-                    child: const TextWidget(AppStrings.workhours ,textAlign: TextAlign.start,weight: FontWeight.bold)),
+                    child:  TextWidget(AppStrings.workhours ,textAlign: TextAlign.start,weight: FontWeight.w900 , size: size.width *0.045 ,)),
+                for(WorkHoursDtosModel workHour in controller.spa!.workHoursDTOs!)
                 SizedBox(width: size.width*.9,
 
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const CircleAvatar(
                         radius: 5.00,
                         backgroundColor: Colors.green,
                       )
-                      , TextWidget(controller.spa!.workHoursDTOs![0].fromDate!,weight: FontWeight.bold, ),
+                      ,
+                      TextWidget(workHour.fromDate!,weight: FontWeight.bold, ),
+                      const TextWidget(":",weight: FontWeight.bold,),
+                      TextWidget(workHour.toDate!,weight: FontWeight.bold, ),
                       SizedBox(width: size.width*.2,),
-                       TextWidget(controller.spa!.workHoursDTOs![0].fromHour!,weight: FontWeight.bold,)
+                      TextWidget(workHour.fromHour!.timeStringFromDateString,weight: FontWeight.bold,),
+                      const TextWidget(":",weight: FontWeight.bold,),
+                      TextWidget(workHour.toHour!.timeStringFromDateString,weight: FontWeight.bold,)
                     ],
                   ),
                 ),
-                SizedBox(width: size.width*.9,
-
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const CircleAvatar(
-                        radius: 5.00,
-                        backgroundColor: Colors.green,
-                      )
-                      , TextWidget(controller.spa!.workHoursDTOs![0].toDate!,weight: FontWeight.bold,),
-                      SizedBox(width: size.width*.2,),
-                       TextWidget(controller.spa!.workHoursDTOs![0].toHour!,weight: FontWeight.bold,)
-                    ],
-                  ),
-                )],),
+                // SizedBox(
+                //   width: size.width*.9,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       const CircleAvatar(
+                //         radius: 5.00,
+                //         backgroundColor: Colors.green,
+                //       ),
+                //       TextWidget(controller.spa!.workHoursDTOs![0].toDate!,weight: FontWeight.bold,),
+                //       SizedBox(width: size.width*.2,),
+                //       TextWidget(controller.spa!.workHoursDTOs![0].toHour!,weight: FontWeight.bold,)
+                //     ],
+                //   ),
+                // )
+              ],),
             SizedBox(
               width: size.width*.8,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextWidget(AppStrings.address,weight: FontWeight.bold),
+                   TextWidget(AppStrings.address,weight: FontWeight.w900 , size: size.width *0.045 ,),
                   TextWidget(name,weight: FontWeight.bold,),
                   TextWidget(town,weight: FontWeight.bold,),
                   Row(
                     children: [
-                      Icon(Icons.directions ,size: size.width*.03,color:AppColors.appHallsRedDark,),
-                      const TextWidget(AppStrings.directions,weight: FontWeight.bold)
+                      Icon(Icons.directions ,size: size.width*.1,color:AppColors.appHallsRedDark,),
+                      TextWidget(AppStrings.directions,weight: FontWeight.w900 , size: size.width *0.045 ,)
                     ],
                   )
 
@@ -121,6 +132,5 @@ class SpaInfoWidget extends GetView<SpaDetailsController> {
       ),
     );
   }
-
 }
 

@@ -28,7 +28,7 @@ class SpaReservationPackageWidget extends GetView<SpaDetailsController> {
           child: Column(
             children: [
               for(int i = 0 ; i <controller.spa!.offersDTOList!.length ; i++)
-                SpaReservationPackage(controller.spa!.offersDTOList![i].name! ,controller.spa!.offersDTOList![i].name!  ,)
+                SpaReservationPackage(controller.spa!.offersDTOList![i].name! , controller.spa!.offersDTOList![i].name! , controller.spa!.offersDTOList![i].image , controller.spa!.offersDTOList![i].offerValue.toString() )
             ],
           ),
         ),

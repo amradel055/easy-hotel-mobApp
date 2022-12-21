@@ -42,7 +42,9 @@ class SpaServices extends GetView<SpaDetailsController> {
 
         Obx((){
           return [
-            SpaReservationPriceWidget(),const SpaReservationServicesWidget(),const SpaReservationPackageWidget(),
+            const SpaReservationPriceWidget(),
+            const SpaReservationServicesWidget(),
+            const SpaReservationPackageWidget(),
           ][controller.serviceIndex.value];
         })
       ],

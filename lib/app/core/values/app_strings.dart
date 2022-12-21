@@ -80,7 +80,7 @@ abstract class AppStrings {
   static const reviews = "Reviews";
   static const photos = "Photos";
   static const prices = "Prices";
-  static const packages = "Packages";
+  static const packages = "Offers";
   static const show = "Show";
   static const time = "Time";
   static const hotelHalls = "hotelHalls";
@@ -109,6 +109,7 @@ abstract class AppStrings {
   static const hotelsServices = "Hotels Services";
   static const searchHotelForService = "Search Hotel Or City...";
   static const enterHotel = "Enter";
+  static const shouldSelectService = "يجب اختيار خدمة";
 
 
 

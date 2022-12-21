@@ -97,6 +97,20 @@ class SpaRepository {
         onComplete: onComplete
     );
   }
+  getSpaDetailByHotel(
+      SpaDetailRequest spaDetailRequest, {
+        SuccessFunc<SpaResponse> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<SpaResponse>(
+        'spa/spaByHotel',
+        onSuccess: onSuccess,
+        data: spaDetailRequest.toJson(),
+        onError: onError,
+        convertor: SpaResponse.fromJson,
+        onComplete: onComplete
+    );
+  }
 
   getSpaSave(
       SpaSaveRequest spaSaveRequest, {

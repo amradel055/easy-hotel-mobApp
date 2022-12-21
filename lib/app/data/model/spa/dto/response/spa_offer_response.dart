@@ -30,8 +30,8 @@ class SpaOfferResponse {
     this.address,
     this.hotelName,
     this.cityName,
-    this.spaId
-
+    this.spaId,
+   this.offerValue
   });
 
   int ?id;
@@ -66,6 +66,7 @@ class SpaOfferResponse {
   dynamic lat;
   // List<OfferResponse> ? offersDTOList;
   String? address;
+  double? offerValue;
 
   static List<SpaOfferResponse> fromList(dynamic json) => List.from(json.map((e) => SpaOfferResponse.fromJson(e)));
 
@@ -102,6 +103,7 @@ class SpaOfferResponse {
     lat: json["lat"],
     // offersDTOList: json["offersDTOList"] == null ? null : List<OfferResponse>.from(json["offersDTOList"].map((x) => OfferResponse.fromJson(x) )),
     address: json["address"] == null ? null : json["address"],
+    offerValue: json["offerValue"] == null ? null : json["offerValue"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -137,5 +139,6 @@ class SpaOfferResponse {
     "lat": lat,
     // "offersDTOList": offersDTOList == null ? null : List<OfferResponse>.from(offersDTOList!.map((x) => x)),
     "address": address == null ? null : address,
+    "offerValue": offerValue == null ? null : offerValue,
   };
 }
