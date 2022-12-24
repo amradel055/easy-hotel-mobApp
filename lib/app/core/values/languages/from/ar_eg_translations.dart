@@ -99,5 +99,6 @@ final Map<String, String> arEG = {
   AppStrings.searchHotelForService: 'ابحث عن فندق او مدينة',
   AppStrings.enterHotel: 'دخول',
   AppStrings.shouldSelectService: "يجب اختيار خدمة",
+  AppStrings.locationNotAvailable: "بيانات الموقع غير متوفره لهذه الخدمه",
 
 };

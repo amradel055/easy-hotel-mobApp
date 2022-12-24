@@ -51,7 +51,7 @@ class SpaDetailsController extends GetxController {
     );
     SpaRepository().getSpaDetailByHotel(request,
         onSuccess: (data) {
-          spa=data.data;
+          spa = data.data;
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
@@ -81,6 +81,13 @@ class SpaDetailsController extends GetxController {
          onError: (e) => showPopupText( e.toString()),
          onComplete: () => isLoading(false)
      );
+   }
+
+
+   getOfferItems(int offerItemId){
+     if(!servicesSelected.toList().contains(offerItemId)){
+       servicesSelected.add(offerItemId);
+     }
    }
 
 

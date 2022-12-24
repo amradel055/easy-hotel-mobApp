@@ -1,3 +1,5 @@
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_offer_detail_response.dart';
+
 class SpaOfferResponse {
   SpaOfferResponse({
     this.id,
@@ -31,7 +33,8 @@ class SpaOfferResponse {
     this.hotelName,
     this.cityName,
     this.spaId,
-   this.offerValue
+   this.offerValue,
+    required this.offersDetailsDTOList
   });
 
   int ?id;
@@ -67,7 +70,7 @@ class SpaOfferResponse {
   // List<OfferResponse> ? offersDTOList;
   String? address;
   double? offerValue;
-
+  List<SpaOfferDetailResponse>? offersDetailsDTOList;
   static List<SpaOfferResponse> fromList(dynamic json) => List.from(json.map((e) => SpaOfferResponse.fromJson(e)));
 
   factory SpaOfferResponse.fromJson( dynamic json) => SpaOfferResponse(
@@ -104,6 +107,7 @@ class SpaOfferResponse {
     // offersDTOList: json["offersDTOList"] == null ? null : List<OfferResponse>.from(json["offersDTOList"].map((x) => OfferResponse.fromJson(x) )),
     address: json["address"] == null ? null : json["address"],
     offerValue: json["offerValue"] == null ? null : json["offerValue"],
+    offersDetailsDTOList: json['offersDetailsDTOList'] == null ? null : SpaOfferDetailResponse.fromList(json['offersDetailsDTOList'])
   );
 
   Map<String, dynamic> toJson() => {

@@ -1,6 +1,7 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/extensions/string_ext.dart';
+import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../core/themes/app_text_theme.dart';
@@ -95,14 +97,23 @@ class SpaInfoWidget extends GetView<SpaDetailsController> {
               width: size.width*.8,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   TextWidget(AppStrings.address,weight: FontWeight.w900 , size: size.width *0.045 ,),
+                  TextWidget(AppStrings.address,weight: FontWeight.w900 , size: size.width *0.045 ,),
                   TextWidget(name,weight: FontWeight.bold,),
                   TextWidget(town,weight: FontWeight.bold,),
-                  Row(
-                    children: [
-                      Icon(Icons.directions ,size: size.width*.1,color:AppColors.appHallsRedDark,),
-                      TextWidget(AppStrings.directions,weight: FontWeight.w900 , size: size.width *0.045 ,)
-                    ],
+                  GestureDetector(
+                    onTap: (){
+                      if(controller.spa!.lat == null || controller.spa!.lang == null){
+                        showPopupText(AppStrings.locationNotAvailable.tr);
+                        return ;
+                      }
+                      Get.toNamed(Routes.MAP , arguments: LatLng(controller.spa!.lat, controller.spa!.lang));
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.directions ,size: size.width*.1,color:AppColors.appHallsRedDark,),
+                        TextWidget(AppStrings.directions,weight: FontWeight.w900 , size: size.width *0.045 ,)
+                      ],
+                    ),
                   )
 
 

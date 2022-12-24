@@ -45,6 +45,7 @@ abstract class Routes {
   static const HOTEL_SEARCH_FOR_SERVICES = _Paths.HOTEL_SEARCH_FOR_SERVICES ;
   static const HOTEL_SEARCH_SEARCH_PAGE = _Paths.HOTEL_SEARCH_SEARCH_PAGE ;
   static const MY_ACCOUNT = _Paths.MY_ACCOUNT ;
+  static const MAP = _Paths.MAP;
 }
 
 abstract class _Paths {
@@ -91,5 +92,6 @@ abstract class _Paths {
   static const HOTEL_SEARCH_FOR_SERVICES = '/hotel_search_services';
   static const HOTEL_SEARCH_SEARCH_PAGE = '/hotel_search_search_page';
   static const MY_ACCOUNT = '/myAccount';
+  static const MAP = '/map';
 
 }

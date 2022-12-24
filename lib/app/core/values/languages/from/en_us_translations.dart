@@ -99,4 +99,5 @@ final Map<String, String> enUs = {
   AppStrings.searchHotelForService: '"Search Hotel Or City..."',
   AppStrings.enterHotel: 'Enter Hotel',
   AppStrings.shouldSelectService: 'Must Select one Service At Least',
+  AppStrings.locationNotAvailable: "Location Information Not Available For this Service",
 };

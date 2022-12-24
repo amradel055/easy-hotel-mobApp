@@ -6,6 +6,8 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/permission_handler.dart';
+
 class LoginController extends GetxController {
   var userNameController = TextEditingController();
   var passwordController = TextEditingController();
@@ -14,6 +16,11 @@ class LoginController extends GetxController {
   final requestDto = LoginRequestDto();
   final showPassword = false.obs ;
 
+  @override
+  void onInit() async{
+    await AppPermissionHandler().requestLocationPermission();
+    super.onInit();
+  }
 
   Future login() async {
     if(!loginForm.currentState!.validate()) return;

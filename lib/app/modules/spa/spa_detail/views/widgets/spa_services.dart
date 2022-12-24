@@ -26,14 +26,14 @@ class SpaServices extends GetView<SpaDetailsController> {
     return Column(
       children: [
         Padding(
-          padding:  EdgeInsets.fromLTRB(20,5,20,5),
+          padding:  const EdgeInsets.fromLTRB(20,5,20,5),
           child: Container(
             decoration:const  BoxDecoration(
               color: AppColors.appHallsRed,
               borderRadius: BorderRadius.all( Radius.circular(10)),
             ),
             child:  Row(
-              children: [
+              children: const[
                  BarWidgets( title: AppStrings.services,index:0,),
                  BarWidgets( title: AppStrings.packages,index: 2,),
               ],),

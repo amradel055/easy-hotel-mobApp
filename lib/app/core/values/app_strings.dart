@@ -110,6 +110,7 @@ abstract class AppStrings {
   static const searchHotelForService = "Search Hotel Or City...";
   static const enterHotel = "Enter";
   static const shouldSelectService = "يجب اختيار خدمة";
+  static const locationNotAvailable = "Location Information Not Available For this Service";
 
 
 

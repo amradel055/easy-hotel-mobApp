@@ -1,5 +1,6 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_review.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class SpaReviewsWidget extends GetView<SpaDetailsController> {
     Size size =MediaQuery.of(context).size;
     return Column(children: [
       Column(children: [
-        TextWidget(controller.spa!.reviewStar != null ? controller.spa!.reviewStar!.toString() : "0",weight: FontWeight.bold),
+        TextWidget(controller.spa!.reviewStar != null ? controller.spa!.reviewStar!.toString() : "0",weight: FontWeight.w800 , size: 20,),
         RatingBar.builder(
           initialRating: controller.spa!.reviewStar != null ? controller.spa!.reviewStar! : 0,
           minRating: 1,
@@ -52,8 +53,8 @@ class SpaReviewsWidget extends GetView<SpaDetailsController> {
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              for(int i = 0 ; i < controller.spa!.reviewDtoList!.length ; i++)
-                 SpaReviewWidget(image: '', name: controller.spa!.reviewDtoList![i].customerName!, comment: "",date:DateFormat("dd-MM-yyyy").format(controller.spa!.reviewDtoList![i].reviewDate!) ,)
+              for(ReviewModel review in controller.spa!.reviewDtoList!)
+                 SpaReviewWidget(image: '', name: review.customerName!, comment: review.reviewText,date:DateFormat("dd-MM-yyyy").format(review.reviewDate!) , reviewStars: review.reviewStars ,)
             ],
           ),
         ),

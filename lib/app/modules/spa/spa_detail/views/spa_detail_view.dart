@@ -89,6 +89,7 @@ class SpaDetailView extends GetView<SpaDetailsController> {
               Container(
                 height: 300.h,
                 decoration: BoxDecoration(
+                    color: AppColors.black,
                     image: DecorationImage(
                         image: NetworkImage('${ApiProvider.imageUrl}${controller.spa!.image}'),
                         fit: BoxFit.cover

@@ -190,7 +190,6 @@ class SpaItemModel {
     this.spaId,
     this.price,
     this.salePrice,
-    this.selected
   });
 
   int? id;
@@ -214,7 +213,6 @@ class SpaItemModel {
   int? spaId;
   double? price;
   double? salePrice;
-  RxBool? selected = false.obs;
 
 
   factory SpaItemModel.fromJson(Map<String, dynamic> json) => SpaItemModel(
@@ -239,7 +237,6 @@ class SpaItemModel {
       spaId: json["spaId"] == null ? null : json["spaId"],
       price: json["price"] == null ? null : json["price"],
       salePrice: json["salePrice"] == null ? null : json["salePrice"],
-      selected: false.obs
   );
 
   Map<String, dynamic> toJson() => {

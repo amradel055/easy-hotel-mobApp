@@ -43,8 +43,8 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   dropdown_search:
   flutter_expandable_fab : ^1.6.1
-
-
+  permission_handler: ^10.2.0
+  flutter_polyline_points: ^1.0.0
 
 
 dev_dependencies: 

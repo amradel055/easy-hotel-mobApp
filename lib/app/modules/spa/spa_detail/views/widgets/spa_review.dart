@@ -8,11 +8,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SpaReviewWidget extends StatelessWidget {
-  const SpaReviewWidget({Key? key, required this.image, required this.name, required this.comment, required this.date}) : super(key: key);
+  const SpaReviewWidget({Key? key, required this.image, required this.name, required this.comment, required this.date , required this.reviewStars}) : super(key: key);
   final String image;
   final String name ;
-  final String comment;
+  final String? comment;
   final String date;
+  final double? reviewStars ;
 
 
   @override
@@ -22,29 +23,31 @@ class SpaReviewWidget extends StatelessWidget {
       padding:  EdgeInsets.fromLTRB(0,0,0,size.height*.01),
       child: Container(
         width: size.width*.9,
-        height: size.height*.15,
         decoration: const BoxDecoration( border: Border(bottom: BorderSide(color: AppColors.appHallsRedDark))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                ApiProvider.imageUrl +  image),
-              radius: 40.00,
-            ),
-            Padding(
-              padding:  EdgeInsets.only(left: size.width*.03),
-              child: GestureDetector(
-                onTap: (){
-                  Get.toNamed(Routes.SPA);
-                },
-                child: SizedBox(width: size.width*.4,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    ApiProvider.imageUrl +  image),
+                  radius: 33.00,
+                ),
+              ),
+              Padding(
+                padding:  EdgeInsets.only(left: size.width*.04),
+                child: SizedBox(
+                  width: size.width*.4,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextWidget(name,weight: FontWeight.bold),
+                      TextWidget(name,weight: FontWeight.bold , size: 15,),
                       RatingBar.builder(
-                        initialRating: 3,
+                        initialRating: reviewStars ?? 0 ,
                         minRating: 1,
                         direction: Axis.horizontal,
                         allowHalfRating: true,
@@ -58,18 +61,19 @@ class SpaReviewWidget extends StatelessWidget {
                         ),
                         onRatingUpdate: (rating) {
                         },
-                      ),  TextWidget(comment),
+                      ),
+                      TextWidget(comment ?? '' , size: 16, weight: FontWeight.w600,),
 
                     ],
                   ),
                 ),
+              ), Padding(
+                padding:  EdgeInsets.fromLTRB(0, 0, size.width*0,0),
+                child: TextWidget(date,weight: FontWeight.bold),
               ),
-            ), Padding(
-              padding:  EdgeInsets.fromLTRB(0, 0, size.width*0,0),
-              child: TextWidget(date,weight: FontWeight.bold),
-            ),
 
-          ],
+            ],
+          ),
         ),
       ),
     );

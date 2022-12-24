@@ -65,6 +65,8 @@ import '../modules/hotels_search/bindings/hotel_search_binding.dart';
 import '../modules/hotels_search/views/hotel_search_search_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/maps/bindings/map_binding.dart';
+import '../modules/maps/views/map_view.dart';
 import '../modules/my_account/bindings/my_account_binding.dart';
 import '../modules/polman/bindings/polman_binding.dart';
 import '../modules/polman/views/polman_view.dart';
@@ -307,6 +309,11 @@ class AppPages {
       name: _Paths.MY_ACCOUNT,
       page: () => const MyAccountView(),
       binding: MyAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAP,
+      page: () => const MapsView(),
+      binding: MapBinding(),
     ),
   ];
 }
