@@ -117,6 +117,8 @@ abstract class AppStrings {
   static const startWith = "Starts With";
   static const options = "More Options";
   static const reviewedBy = "Reviewed By";
+  static const additionsForHall = "Addition For this Hall";
+  static const totalPrice = "Total Price";
 
 
 

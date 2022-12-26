@@ -168,9 +168,12 @@ class HallDetailView extends GetView<HallDetailsController> {
                               itemCount: controller.hall!.additionsGroupDTOList!.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                return HallServices(
-                                    image: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
-                                    name: controller.hall!.additionsGroupDTOList![index].name!);
+                                return Padding(
+                                  padding: const EdgeInsets.fromLTRB(5 , 0 , 5 , 0),
+                                  child: HallServices(
+                                      image: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
+                                      name: controller.hall!.additionsGroupDTOList![index].name!),
+                                );
                               },
                             )),
                         divider,
@@ -212,7 +215,7 @@ class HallDetailView extends GetView<HallDetailsController> {
                             backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),
                           ),
                           child: const TextWidget(
-                            AppStrings.options,
+                            AppStrings.additions,
                             textColor: Colors.white,
                             weight: FontWeight.w800,
                             size: 16,

@@ -9,5 +9,30 @@ import 'package:get/get.dart';
 
 class HallReservationPageController extends GetxController {
   final HallsDetailResponse hall = Get.arguments;
+  final selectedAdd = <AddtionsModel>[].obs;
+  final totalPrice = 0.0.obs ;
+
+
+  @override
+  onInit(){
+    calcTotalPrice();
+    super.onInit();
+  }
+
+  changeAddedAdditions (AddtionsModel add){
+    if(selectedAdd.toList().contains(add)){
+      selectedAdd.remove(add);
+    }else{
+      selectedAdd.add(add);
+    }
+    calcTotalPrice();
+  }
+
+  calcTotalPrice(){
+    totalPrice((hall.salePrice != null && hall.salePrice != 0 ? hall.salePrice : hall.price)?.toDouble());
+    selectedAdd.toList().forEach((addition) {
+      totalPrice.value += (addition.salePrice != null && addition.salePrice != 0 ? addition.salePrice : addition.price)!.toDouble();
+    });
+  }
 
 }

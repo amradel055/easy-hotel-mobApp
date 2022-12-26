@@ -106,5 +106,7 @@ final Map<String, String> enUs = {
   AppStrings.startWith: "Starts With",
   AppStrings.options: "More Options",
   AppStrings.reviewedBy: "Reviewed By",
+  AppStrings.additionsForHall: "Addition For this Hall",
+  AppStrings.totalPrice: "Total Price",
 
 };

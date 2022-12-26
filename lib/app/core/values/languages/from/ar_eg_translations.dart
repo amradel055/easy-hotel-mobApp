@@ -106,5 +106,7 @@ final Map<String, String> arEG = {
   AppStrings.startWith: "يبدأ من",
   AppStrings.options: "الاختيارات",
   AppStrings.reviewedBy: "تمت المراجعه بواسطة",
+  AppStrings.additionsForHall: "الاضافات الخاصه بالقاعة",
+  AppStrings.totalPrice: "السعر الاجمالي",
 
 };
