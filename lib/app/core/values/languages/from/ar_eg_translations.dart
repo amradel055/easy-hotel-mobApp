@@ -57,7 +57,7 @@ final Map<String, String> arEG = {
   AppStrings.information: 'معلومات',
   AppStrings.reviews: 'مراجعات',
   AppStrings.photos: 'معرض الاعمال',
-  AppStrings.prices: 'الاسعار',
+  AppStrings.prices: 'السعر',
   AppStrings.packages: 'العروض',
   AppStrings.show: 'عرض',
   AppStrings.polmanService: 'خدمة حامل الحقائب',
@@ -100,5 +100,11 @@ final Map<String, String> arEG = {
   AppStrings.enterHotel: 'دخول',
   AppStrings.shouldSelectService: "يجب اختيار خدمة",
   AppStrings.locationNotAvailable: "بيانات الموقع غير متوفره لهذه الخدمه",
+  AppStrings.hallsSearchLabel: "ايحث عن القاعات و احجزها",
+  AppStrings.capacity: "السعة",
+  AppStrings.person: "شخص",
+  AppStrings.startWith: "يبدأ من",
+  AppStrings.options: "الاختيارات",
+  AppStrings.reviewedBy: "تمت المراجعه بواسطة",
 
 };

@@ -9,21 +9,19 @@ class HallServices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
-    return GestureDetector(onTap: (){
-    },
+    return GestureDetector(
+      onTap: (){},
       child: Container(
-        width: size.width * .45,
-        height: size.height * .1,
+        width: size.width * .2,
+        height: size.height * .06,
         decoration:const  BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(
               10.0)),
         ),
-
-
         child: Column(
           children: [
             Container(
-              height: size.height * 0.1,
+              height: size.height * 0.06,
               width: size.width * 0.4,
               decoration: BoxDecoration(
                   borderRadius:const BorderRadius.all(
@@ -35,8 +33,9 @@ class HallServices extends StatelessWidget {
                       image),
                   )
               ),
-
-            ), SizedBox(width: size.width*.4,
+            ),
+            SizedBox(
+              width: size.width*.4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -286,6 +286,8 @@ class ReviewModel {
   String? customerName;
   int? id;
 
+  static List<ReviewModel> fromList(dynamic json) => List<ReviewModel>.from(json.map((e) => ReviewModel.fromJson(e)));
+
   factory ReviewModel.fromJson(Map<String, dynamic> json) => ReviewModel(
     id: json["id"] == null ? null : json["id"],
     reviewDate: json["reviewDate"] == null ? null : DateTime.parse(json["reviewDate"]),

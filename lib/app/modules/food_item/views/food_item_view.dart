@@ -191,7 +191,8 @@ class FoodItemView extends GetView<FoodItemController> {
                   children: [TextWidget(":")],
                 ),
                 const SizedBox(height: 5),
-                for (int i = 0; i < 2; i++) const ReviewWidget(),
+                // for (int i = 0; i < 2; i++)
+                  // const ReviewWidget(),
               ],
             ),
           )

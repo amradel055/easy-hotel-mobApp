@@ -5,6 +5,9 @@
 
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 
+import '../../../item_image_response_dto.dart';
+import '../../../spa/dto/response/spa_response_dto.dart';
+
 class HallsDetailResponse {
   HallsDetailResponse({
     this.id,
@@ -42,6 +45,8 @@ class HallsDetailResponse {
     this.additionsGroupDTOList,
     this.cityId,
     this.salePrice,
+    this.reviewStar ,
+    this.reviewHoleDTOList
   });
 
   int ?id;
@@ -68,17 +73,19 @@ class HallsDetailResponse {
   int ?capacity;
   dynamic appId;
   dynamic currencySerial;
-  int ?discountType;
+  int? discountType;
   num? discountValue;
-  int ?discountRate;
-  bool ?saleItem;
+  int? discountRate;
+  bool? saleItem;
   dynamic offerId;
   dynamic occasionsDtoList;
   dynamic image;
-  List<dynamic>? itemImages;
+  List<ItemImageResponse>? itemImages;
   List<AdditionsGroupModel> ?additionsGroupDTOList;
   dynamic cityId;
-  int ?salePrice;
+  int? salePrice;
+  num? reviewStar;
+  List<ReviewModel>? reviewHoleDTOList ;
 
   factory HallsDetailResponse.fromJson( dynamic json) => HallsDetailResponse(
     id: json["id"],
@@ -112,10 +119,12 @@ class HallsDetailResponse {
     offerId: json["offerId"],
     occasionsDtoList: json["occasionsDTOList"],
     image: json["image"],
-    itemImages: List<dynamic>.from((json["itemImages"]??[]).map((x) => x)),
+    itemImages: ItemImageResponse.fromList(json['itemImages'] ?? []),
     additionsGroupDTOList: List<AdditionsGroupModel>.from((json["additionsGroupDTOList"]??[]).map((x) => AdditionsGroupModel.fromJson(x))),
     cityId: json["cityId"],
     salePrice: json["salePrice"],
+    reviewHoleDTOList: ReviewModel.fromList(json["reviewHoleDTOList"] ?? []),
+    reviewStar: json["reviewStar"] == null ? 0.0 : json["reviewStar"]
   );
 
   Map<String, dynamic> toJson() => {

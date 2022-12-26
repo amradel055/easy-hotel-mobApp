@@ -42,7 +42,8 @@ abstract class AppStrings {
   static const hello = "Hello ";
   static const logout = "Log out";
   static const search = "search";
-  static const searchlabel = "search for services and reseve it..";
+  static const searchlabel = "search for services and Reserve it..";
+  static const hallsSearchLabel = "Search For Halls and Reserve it..";
   static const offers = "offers";
   static const towns = "Towns";
   static const hotels = "Hotels";
@@ -111,6 +112,11 @@ abstract class AppStrings {
   static const enterHotel = "Enter";
   static const shouldSelectService = "يجب اختيار خدمة";
   static const locationNotAvailable = "Location Information Not Available For this Service";
+  static const capacity = "Capacity";
+  static const person = "Person";
+  static const startWith = "Starts With";
+  static const options = "More Options";
+  static const reviewedBy = "Reviewed By";
 
 
 

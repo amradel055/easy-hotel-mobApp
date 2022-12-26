@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,6 +53,11 @@ class ImageWidget extends StatelessWidget {
     Widget? child;
     if(path.contains("http")) {
       child = CachedNetworkImage(imageUrl: path,fit: fit,height: height,width: width,color: color,
+        errorWidget: (_,__ , ___){
+          return SizedBox(
+              child: Image.asset(AppAssets.placeHolderImg),
+          );
+        },
         placeholder:  (_,__){
           return LayoutBuilder(
               builder: (context,c) {

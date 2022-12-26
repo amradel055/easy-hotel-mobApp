@@ -100,4 +100,11 @@ final Map<String, String> enUs = {
   AppStrings.enterHotel: 'Enter Hotel',
   AppStrings.shouldSelectService: 'Must Select one Service At Least',
   AppStrings.locationNotAvailable: "Location Information Not Available For this Service",
+  AppStrings.hallsSearchLabel: "Search For Halls and Reserve it..",
+  AppStrings.capacity: "Capacity",
+  AppStrings.person: "Person",
+  AppStrings.startWith: "Starts With",
+  AppStrings.options: "More Options",
+  AppStrings.reviewedBy: "Reviewed By",
+
 };
