@@ -1,4 +1,6 @@
+import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:flutter/material.dart';
 
 class HallServices extends StatelessWidget {
@@ -19,32 +21,25 @@ class HallServices extends StatelessWidget {
               10.0)),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: size.height * 0.06,
-              width: size.width * 0.4,
-              decoration: BoxDecoration(
-                  borderRadius:const BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      image),
-                  )
+              width: size.width * 0.1,
+              child: ImageWidget(
+                path: ApiProvider.imageUrl + image,
               ),
             ),
             SizedBox(
-              width: size.width*.4,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextWidget(
-                    name,
-                    maxLines: 1,
-                    weight: FontWeight.bold,
-                  ),
-                ],),
+              width: size.width*0.2,
+              child: Center(
+                child: TextWidget(
+                  name,
+                  maxLines: 1,
+                  weight: FontWeight.bold,
+                ),
+              ),
             )
 
           ],

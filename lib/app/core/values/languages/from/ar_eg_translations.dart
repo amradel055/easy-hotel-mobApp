@@ -108,5 +108,9 @@ final Map<String, String> arEG = {
   AppStrings.reviewedBy: "تمت المراجعه بواسطة",
   AppStrings.additionsForHall: "الاضافات الخاصه بالقاعة",
   AppStrings.totalPrice: "السعر الاجمالي",
+  AppStrings.availablePeriods: "الفترات المتاحه هذا اليوم",
+  AppStrings.hallReserve: "حجز قاعة",
+  AppStrings.shouldSelectPeriod: "يجب اختيار فترة",
+  AppStrings.requiredDays: "الايام التي تريد حجزها",
 
 };

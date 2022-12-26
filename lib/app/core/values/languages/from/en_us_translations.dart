@@ -108,5 +108,9 @@ final Map<String, String> enUs = {
   AppStrings.reviewedBy: "Reviewed By",
   AppStrings.additionsForHall: "Addition For this Hall",
   AppStrings.totalPrice: "Total Price",
+  AppStrings.availablePeriods: "Available Periods This Day",
+  AppStrings.hallReserve: "Hall Reserve",
+  AppStrings.shouldSelectPeriod: "You Should Select a Period",
+  AppStrings.requiredDays: "Required Days",
 
 };
