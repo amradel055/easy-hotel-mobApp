@@ -24,6 +24,7 @@ class HousekeepingGroupResponse {
     this.parent,
     this.groupType,
     this.appId,
+    this.img,
   });
 
   int? id;
@@ -31,6 +32,7 @@ class HousekeepingGroupResponse {
   String? msg;
   String? msgType;
   String? markDisable;
+  String? img;
   int? createdBy;
   DateTime? createdDate;
   int? index;
@@ -52,6 +54,7 @@ class HousekeepingGroupResponse {
     id: json["id"] == null ? null : json["id"],
     markEdit: json["markEdit"] == null ? null : json["markEdit"],
     msg: json["msg"] == null ? null : json["msg"],
+    img: json["img"] == null ? null : json["img"],
     msgType: json["msgType"] == null ? null : json["msgType"],
     markDisable: json["markDisable"] == null ? null : json["markDisable"],
     createdBy: json["createdBy"] == null ? null : json["createdBy"],
@@ -86,6 +89,7 @@ class HousekeepingGroupResponse {
     "deletedDate": deletedDate == null ? null : deletedDate!.toIso8601String(),
     "igmaOwnerId": igmaOwnerId == null ? null : igmaOwnerId,
     "serial": serial == null ? null : serial,
+    "img": img == null ? null : img,
     "name": name == null ? null : name,
     "parent": parent == null ? null : parent,
     "groupType": groupType == null ? null : groupType,

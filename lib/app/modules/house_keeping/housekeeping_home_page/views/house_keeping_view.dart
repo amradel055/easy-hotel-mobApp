@@ -51,10 +51,11 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
           children: [
             Container(
               height: 200.h,
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                   image: DecorationImage(
-                      image: CachedNetworkImageProvider(
-                          "https://image.shutterstock.com/image-photo/group-friends-professional-cleaners-tiding-260nw-395889778.jpg"),
+                      image: AssetImage(
+                        "controller.imagIn"
+                      ),
                       fit: BoxFit.fitWidth)),
 
               padding: EdgeInsets.fromLTRB(0, 75.h, 0, 0),
@@ -106,12 +107,13 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
                               crossAxisSpacing: 20.w,
                             ),
                             padding: EdgeInsets.symmetric(
-                                horizontal: 30.w, vertical: 15),
+                                horizontal: 15.w, vertical: 15.h),
                             itemCount: controller.housekeepingGroup.length,
                             scrollDirection: Axis.vertical,
                             itemBuilder: (context, index) {
                               return HousekeepingServicesWidget(
-                                 "https://image.shutterstock.com/image-photo/group-friends-professional-cleaners-tiding-260nw-395889778.jpg",
+                                  controller.housekeepingGroup[index]
+                                      .img ?? "",
                                  controller.housekeepingGroup[index]
                                     .name!,controller.housekeepingGroup[index]
                                   .id!,index);

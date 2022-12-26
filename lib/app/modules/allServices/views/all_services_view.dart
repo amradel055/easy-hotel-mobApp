@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
@@ -15,7 +16,8 @@ import 'package:get/get.dart';
 import '../controllers/all_services_controller.dart';
 
 class AllServicesView extends GetView<AllServicesController> {
-  const AllServicesView( {Key? key}) : super(key: key);
+  const AllServicesView({Key? key}) : super(key: key);
+
   // final String image;
   // final String name;
   // final String pageRoute;
@@ -26,34 +28,35 @@ class AllServicesView extends GetView<AllServicesController> {
         appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
           leading: Padding(
-            padding: const EdgeInsets.fromLTRB(10.0, 3, 10, 0),
-            child:
-            Row(
-              children: [
-                TextWidget(
-                  AppStrings.hello,
-                  size: 25.h,
-                  textColor: AppColors.appBlue,
-                  weight: FontWeight.bold,
-                ),
-                TextWidget(
-                  UserManager().user!.name!,
-                  size: 25.h,
-                  textColor: AppColors.appBlue,
-                  weight: FontWeight.bold,
-                ),
-              ],
-            )
+              padding: const EdgeInsets.fromLTRB(10.0, 3, 10, 0),
+              child:
+              Row(
+                children: [
+                  TextWidget(
+                    AppStrings.hello,
+                    size: 25.h,
+                    textColor: AppColors.appBlue,
+                    weight: FontWeight.bold,
+                  ),
+                  TextWidget(
+                    UserManager().user!.name!,
+                    size: 25.h,
+                    textColor: AppColors.appBlue,
+                    weight: FontWeight.bold,
+                  ),
+                ],
+              )
           ),
           leadingWidth: 300.h,
           actions: [
             PopupMenuButton<int>(
-              itemBuilder: (context) => [
+              itemBuilder: (context) =>
+              [
                 PopupMenuItem(
                   value: 1,
-                  onTap: ()async{
-                      await UserManager().logout();
-                      Get.toNamed(Routes.LOGIN);
+                  onTap: () async {
+                    await UserManager().logout();
+                    Get.toNamed(Routes.LOGIN);
                   },
                   child: Row(
                     children: [
@@ -61,7 +64,7 @@ class AllServicesView extends GetView<AllServicesController> {
                         width: 10.h,
                       ),
                       const Text(AppStrings.logout),
-                      const Icon(Icons.logout,color: Colors.black,)
+                      const Icon(Icons.logout, color: Colors.black,)
                     ],
                   ),
                 ),
@@ -73,20 +76,30 @@ class AllServicesView extends GetView<AllServicesController> {
             ),
           ],
         ),
-        body: GridView.builder(
-          padding: const EdgeInsets.all(15.0),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 15,
-            crossAxisSpacing: 15,
-          ),
-          itemCount: controller.allServices.length,
-          itemBuilder: (context, index) {
-            final service = controller.allServices[index];
-            return ServiceCard(serviceModel: service);
-          },
+        body: Obx(() {
+          if(controller.isLoading.value){
+            return Center(
+              child: Common.getSpin(),
+            );
+          }
+          return GridView.builder(
+            padding: const EdgeInsets.all(15.0),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 15,
+              crossAxisSpacing: 15,
+            ),
+            itemCount: controller.appServicesList.length,
+            itemBuilder: (context, index) {
+              return ServiceCard(
+                name: controller.appServicesList[index].applicationName!,
+                image: controller.appServicesList[index].imgOut ?? "" ,
+                appId: controller.appServicesList[index].applications! ,
+                 );
+            },
 
-        ));
+          );
+        }));
   }
 
 }

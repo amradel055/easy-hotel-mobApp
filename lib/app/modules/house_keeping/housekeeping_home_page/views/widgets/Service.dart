@@ -1,6 +1,7 @@
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_home_page/controllers/house_keeping_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,11 @@ class HousekeepingServicesWidget extends GetView<HouseKeepingController> {
         ),
         child: Column(
           children: [
-            ImageWidget(path: image
-              ,fit: BoxFit.cover,),
+            SizedBox(
+              width: 700, height: 140,
+              child: ImageWidget(path:ApiProvider.imageUrl+ image,fit: BoxFit.fitWidth,
+               ),
+            ),
             TextWidget(name, textAlign: TextAlign.center,weight:FontWeight.bold,size: 20,textColor: Colors.white,)
           ],
         ),

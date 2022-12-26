@@ -2,7 +2,7 @@ class ServiceModel {
   ServiceModel({
      this.name,
      this.pageRoute,
-     this.image,
+     image,
   });
 
   String ? name;

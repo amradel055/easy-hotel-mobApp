@@ -16,7 +16,7 @@ class ImageWidget extends StatelessWidget {
     required this.path,
     this.tag,
     this.secondPath,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.fitWidth,
     this.keepOriginalColor,
     this.radius,
     this.color,
@@ -55,7 +55,9 @@ class ImageWidget extends StatelessWidget {
       child = CachedNetworkImage(imageUrl: path,fit: fit,height: height,width: width,color: color,
         errorWidget: (_,__ , ___){
           return SizedBox(
-              child: Image.asset(AppAssets.placeHolderImg),
+            width: width,
+              height: height,
+              child: Image.asset(AppAssets.placeHolderImg , fit: fit,),
           );
         },
         placeholder:  (_,__){
