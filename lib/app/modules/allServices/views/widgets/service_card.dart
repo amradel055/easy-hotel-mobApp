@@ -11,13 +11,13 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(serviceModel.pageRoute),
+      onTap: () => Get.toNamed(serviceModel.pageRoute!),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(20.00)),
             color: AppColors.appGreyLight,
             image: DecorationImage(
-                image: AssetImage(serviceModel.image), fit: BoxFit.cover)),
+                image: AssetImage(serviceModel.image!), fit: BoxFit.cover)),
         clipBehavior: Clip.antiAlias,
         child: DecoratedBox(
             decoration: const BoxDecoration(
@@ -30,7 +30,7 @@ class ServiceCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: TextWidget(
-                    serviceModel.name,
+                    serviceModel.name!,
                     textColor: Colors.white,
                     weight: FontWeight.bold,
                     textAlign: TextAlign.center,

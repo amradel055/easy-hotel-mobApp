@@ -15,7 +15,10 @@ import 'package:get/get.dart';
 import '../controllers/all_services_controller.dart';
 
 class AllServicesView extends GetView<AllServicesController> {
-  const AllServicesView({Key? key}) : super(key: key);
+  const AllServicesView( {Key? key}) : super(key: key);
+  // final String image;
+  // final String name;
+  // final String pageRoute;
 
   @override
   Widget build(BuildContext context) {

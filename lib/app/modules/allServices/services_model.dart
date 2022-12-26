@@ -1,13 +1,13 @@
 class ServiceModel {
   ServiceModel({
-    required this.name,
-    required this.pageRoute,
-    required this.image,
+     this.name,
+     this.pageRoute,
+     this.image,
   });
 
-  String name;
-  String pageRoute;
-  String image;
+  String ? name;
+  String ? pageRoute;
+  String ? image;
 
 
 }
