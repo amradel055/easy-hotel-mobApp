@@ -4,21 +4,20 @@ import 'package:easy_hotel/app/data/model/halls/dto/response/hall_detail_respons
 import 'package:easy_hotel/app/data/repository/halls/halls_repository.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/model/item_image_response_dto.dart';
+
 class HallDetailsController extends GetxController {
 
   final int id = Get.arguments;
   final isLoading = false.obs;
   HallsDetailResponse? hall ;
   final servicesSelected = <int>[].obs;
-
-
+  final Rxn selectedImage = Rxn() ;
 
   @override
   void onInit() {
     super.onInit();
     getHallDetail();
-
-
   }
 
 
@@ -29,12 +28,20 @@ class HallDetailsController extends GetxController {
     );
     HallsRepository().getHallDetail(request,
         onSuccess: (data) {
-          hall=data.data;
-
+          hall = data.data;
+          selectedImage(hall!.image);
+          if(hall!.itemImages != null &&  hall!.image != null ){
+            hall!.itemImages!.add(ItemImageResponse(image: hall!.image));
+          }
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
     );
+  }
+
+
+  setSelectedImage(String? image){
+    selectedImage(image);
   }
 
 }

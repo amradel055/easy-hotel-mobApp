@@ -27,7 +27,7 @@ class HallsView extends GetView<HallsController> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
-          title: TextWidget(AppStrings.home, size: 30.h,textColor: Colors.white,),
+          title: TextWidget(AppStrings.halls, size: 30.h,textColor: Colors.white,),
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -60,11 +60,11 @@ class HallsView extends GetView<HallsController> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Center(child: TextWidget(
-                    AppStrings.searchlabel, textColor: Colors.white,
+                    AppStrings.hallsSearchLabel, textColor: Colors.white,
                     size: 20.h,
                     weight: FontWeight.bold,)),
                   Center(
-                    child: Container(
+                    child: SizedBox(
                         width: size.width * .8,
                         child: TextFieldWidget(
                           enabled: false,
@@ -95,8 +95,8 @@ class HallsView extends GetView<HallsController> {
                           padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 20.h),
                           child: TextWidget(
                             AppStrings.hotelHalls, textAlign: TextAlign.left,
-                            weight: FontWeight.bold,
-                            size: 20.h,),
+                            weight: FontWeight.w800,
+                            size: 22.h,),
                         ),
                         SizedBox(
                             height: size.height * .18,
@@ -106,37 +106,43 @@ class HallsView extends GetView<HallsController> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return Halls(
-                                  image: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
+                                  image: controller.allHalls[index].image,
                                   name: controller.allHalls[index].name!,
                                   id: controller.allHalls[index].id!,
-                                  onTap: null,);
+                                 );
                               },
 
                             )
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 20.h),
-                          child: TextWidget(
-                            AppStrings.offers, textAlign: TextAlign.left,
-                            weight: FontWeight.bold,
-                            size: 20.h,),
-                        ),
-                        SizedBox(
-                            height: size.height * .23,
-                            child:
-                            ListView.builder(
-                              itemCount: controller.offersHalls.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                return Halls(
-                                  image: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
-                                  name: controller.offersHalls[index].name!,
-                                  id: controller.offersHalls[index].id!,
-                                  onTap: null,);
-                              },
+                        controller.offersHalls.isNotEmpty?   Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 20.h),
+                              child: TextWidget(
+                                AppStrings.offers, textAlign: TextAlign.left,
+                                weight: FontWeight.w800,
+                                size: 22.h,),
+                            ),
+                            SizedBox(
+                                height: size.height * .23,
+                                child:
+                                ListView.builder(
+                                  itemCount: controller.offersHalls.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return Halls(
+                                      image: controller.offersHalls[index].image,
+                                      name: controller.offersHalls[index].name!,
+                                      id: controller.offersHalls[index].id!,
+                                    );
+                                  },
 
-                            )
-                        ),
+                                )
+                            ),
+                          ],
+                        ): const SizedBox(),
+
                       ]),
                 ),
               );

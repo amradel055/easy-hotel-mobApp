@@ -8,7 +8,7 @@ import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/bar_widget.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_images_Widget.dart';
 
-import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_review_widget.dart';
+import 'package:easy_hotel/app/components/review_List_widget.dart';
 
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_services.dart';
 import 'package:flutter/material.dart';
@@ -179,7 +179,11 @@ class SpaDetailView extends GetView<SpaDetailsController> {
                      controller.spa!.address ?? ""),
                   SpaServices(),
                   SpaImagesShow(),
-                  SpaReviewsWidget()
+                  ReviewsListWidget(
+                    reviewNumber: controller.spa!.reviewDtoList!.length,
+                    reviewsList: controller.spa!.reviewDtoList! ,
+                    reviewStars: controller.spa!.reviewStar!,
+                  )
                 ][controller.index.value];
               })
 

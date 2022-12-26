@@ -6,6 +6,8 @@ import 'dart:convert';
 
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
+import '../../../item_image_response_dto.dart';
+
 
 
 class HallsResponse {
@@ -78,7 +80,7 @@ class HallsResponse {
   dynamic offerId;
   dynamic occasionsDtoList;
   dynamic image;
-  List<dynamic>? itemImages;
+  List<ItemImageResponse>? itemImages;
   List<AdditionsGroupModel> ?additionsGroupDTOList;
   dynamic cityId;
   int ?salePrice;
@@ -117,7 +119,7 @@ class HallsResponse {
     offerId: json["offerId"],
     occasionsDtoList: json["occasionsDTOList"],
     image: json["image"],
-    itemImages: List<dynamic>.from((json["itemImages"]??[]).map((x) => x)),
+    itemImages: ItemImageResponse.fromList(json['itemImages'] ?? []),
     additionsGroupDTOList: List<AdditionsGroupModel>.from((json["additionsGroupDTOList"]??[]).map((x) => AdditionsGroupModel.fromJson(x))),
     cityId: json["cityId"],
     salePrice: json["salePrice"],

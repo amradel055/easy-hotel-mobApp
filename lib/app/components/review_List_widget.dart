@@ -1,24 +1,32 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
-import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_review.dart';
+import 'package:easy_hotel/app/components/review_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:intl/intl.dart';
 
 
-class SpaReviewsWidget extends GetView<SpaDetailsController> {
-  const SpaReviewsWidget({Key? key}) : super(key: key);
+class ReviewsListWidget extends StatelessWidget {
+  const ReviewsListWidget({Key? key ,
+    required this.reviewNumber ,
+    required this.reviewStars ,
+    required this.reviewsList,
+  }) : super(key: key);
+  final double reviewStars ;
+  final int reviewNumber ;
+  final List<ReviewModel> reviewsList ;
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
     return Column(children: [
       Column(children: [
-        TextWidget(controller.spa!.reviewStar != null ? controller.spa!.reviewStar!.toString() : "0",weight: FontWeight.w800 , size: 20,),
+        TextWidget(reviewStars.toString(),weight: FontWeight.w800 , size: 20,),
         RatingBar.builder(
-          initialRating: controller.spa!.reviewStar != null ? controller.spa!.reviewStar! : 0,
+          initialRating: reviewStars,
           minRating: 1,
           direction: Axis.horizontal,
           ignoreGestures: true,
@@ -37,24 +45,26 @@ class SpaReviewsWidget extends GetView<SpaDetailsController> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TextWidget('تم المراجعه بواسطه ',weight: FontWeight.bold),
-               TextWidget(controller.spa!.reviewDtoList!.length.toString(),weight: FontWeight.bold),
-              const TextWidget('اشخاص',weight: FontWeight.bold),
-
-
+              const TextWidget(AppStrings.reviewedBy ,weight: FontWeight.bold),
+               Padding(
+                 padding: const EdgeInsets.only(left: 8 , right: 8),
+                 child: TextWidget(reviewNumber.toString(),weight: FontWeight.bold),
+               ),
+              const TextWidget(AppStrings.person,weight: FontWeight.bold),
             ],
           ),
         )
-
-
-      ],),
-      SizedBox(height: size.height*.5,
+      ],
+      ),
+      SizedBox(
+        height: size.height*.5,
+        width: size.width,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              for(ReviewModel review in controller.spa!.reviewDtoList!)
-                 SpaReviewWidget(image: '', name: review.customerName!, comment: review.reviewText,date:DateFormat("dd-MM-yyyy").format(review.reviewDate!) , reviewStars: review.reviewStars ,)
+              for(ReviewModel review in reviewsList)
+                 ReviewWidget(image: '', name: review.customerName!, comment: review.reviewText,date:DateFormat("dd-MM-yyyy").format(review.reviewDate!) , reviewStars: review.reviewStars ,)
             ],
           ),
         ),

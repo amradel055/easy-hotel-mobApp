@@ -10,7 +10,7 @@ import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_reservat
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_reservation_service_widget.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_reservation_services.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_reservation_price.dart';
-import 'package:easy_hotel/app/modules/spa/spa_detail/views/widgets/spa_review_widget.dart';
+import 'package:easy_hotel/app/components/review_List_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
