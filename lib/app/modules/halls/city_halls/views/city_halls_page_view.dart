@@ -64,11 +64,12 @@ class CityHallsPageView extends GetView<CityHallsPageController> {
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
                       return HallsCardWidget(
-                        image: 'https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png',
+                        image: controller.hallsCity[index].image,
                         title: controller.hallsCity[index].hallName! ?? "",
                         subtitle: controller.hallsCity[index].hotelName!,
                         id: controller.hallsCity[index].id!, type: 1,
-                        price:controller.hallsCity[index].price!.toString() ,rate:controller.hallsCity[index].rate.toString() ,
+                        price:controller.hallsCity[index].price!.toString() ,
+                        rate:controller.hallsCity[index].rate.toString() ,
                       );
                     },
 

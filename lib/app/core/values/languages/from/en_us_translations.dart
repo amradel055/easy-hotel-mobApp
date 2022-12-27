@@ -113,5 +113,8 @@ final Map<String, String> enUs = {
   AppStrings.shouldSelectPeriod: "You Should Select a Period",
   AppStrings.requiredDays: "Required Days",
   AppStrings.add: "Add",
+  AppStrings.reserved: "RESERVED",
+  AppStrings.shouldSelectDays: "You Must Add a Day",
+  AppStrings.savedSuccessfully: "Saved Successfully",
 
 };

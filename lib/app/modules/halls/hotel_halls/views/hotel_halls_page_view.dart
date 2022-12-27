@@ -67,7 +67,8 @@ class HotelHallsPageView extends GetView<HotelHallsPageController> {
                     itemCount: controller.hallsHotel.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
-                      return HallsCardWidget(type: 0,
+                      return HallsCardWidget(
+                        type: 0,
                         image: 'https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png',
                         title: controller.hallsHotel[index].hallName!,
                         subtitle: controller.hallsHotel[index].hotelName!,

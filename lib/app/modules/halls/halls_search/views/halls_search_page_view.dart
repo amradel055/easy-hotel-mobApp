@@ -103,9 +103,9 @@ class HallsSearchPageView extends GetView<HallsSearchPageController> {
                         return HallsSearchCardWidget(
                           type: controller.selectedType.value,
                           image: controller.selectedType.value == 0 ? controller
-                              .items[index].image! : controller.selectedType
+                              .items[index].image : controller.selectedType
                               .value == 1
-                              ? "controller.hotels[index].image!"
+                              ? controller.hotels[index].image
                               : controller.halls[index].name!,
                           title: controller.selectedType.value == 0 ? controller
                               .items[index].name! : controller.selectedType

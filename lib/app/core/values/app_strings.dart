@@ -76,6 +76,7 @@ abstract class AppStrings {
   static const LE = "LE";
   static const open = "Open";
   static const reserve = "RESERVE";
+  static const reserved = "RESERVED";
   static const services = "Services";
   static const information = "Information";
   static const reviews = "Reviews";
@@ -122,8 +123,10 @@ abstract class AppStrings {
   static const availablePeriods = "Available Periods This Day";
   static const hallReserve = "Hall Reserve";
   static const shouldSelectPeriod = "You Must Select a Period";
+  static const shouldSelectDays = "You Must Add a Day";
   static const requiredDays = "Required Days";
   static const add = "Add";
+  static const savedSuccessfully = "Saved Successfully";
 
 
 

@@ -98,9 +98,22 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                                                     ),
                                                     Padding(
                                                       padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                                                      child: Text(
-                                                        "${addition.price!} ج",
-                                                        style: const TextStyle(color: Colors.black, fontSize: 15),
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                            "${addition.price!} ج",
+                                                            style: TextStyle(
+                                                                color: Colors.black,
+                                                                fontSize: 15 ,
+                                                              decoration: addition.salePrice != null &&  addition.salePrice != 0 ? TextDecoration.lineThrough :  TextDecoration.none
+                                                            ),
+
+                                                          ),
+                                                         addition.salePrice != null &&  addition.salePrice != 0 ?Text(
+                                                            "${addition.salePrice!} ج",
+                                                            style: const TextStyle(color: Colors.black, fontSize: 15),
+                                                          ): const SizedBox.shrink(),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
@@ -153,7 +166,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                                 width: size.width * .4,
                                 child: TextButton(
                                   onPressed: () {
-                                    Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value]);
+                                    Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value , controller.totalPrice.value]);
                                   },
                                   style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),

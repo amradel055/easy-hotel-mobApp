@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ class HallsSearchCardWidget extends StatelessWidget {
   const HallsSearchCardWidget({Key? key, required this.type, required this.image, required this.title, required this.subtitle, required this.id}) : super(key: key);
   final int type;
   final int id;
-  final String image;
+  final String? image;
   final String title ;
   final String subtitle ;
 
@@ -21,10 +22,10 @@ class HallsSearchCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap:(){
         if(type == 0) {
-          Get.toNamed(Routes.HALLS_SEARCH_FILTER, arguments: id);
+          Get.toNamed(Routes.CITY_HALLS,arguments: id);
         } else if(type == 1) {
-          Get.toNamed(Routes.HALLS_SEARCH_HOTEL_FILTER, arguments: id);
-        }else{
+          Get.toNamed(Routes.HALLS  ,arguments: id);
+        } else {
           Get.toNamed(Routes.HALL_DETAILS, arguments: id);
         }
       },
@@ -32,7 +33,7 @@ class HallsSearchCardWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
         child: Row(
           children: [
-            ImageWidget(path: image, width: size.width*.15,height: size.height*.07),
+            ImageWidget(path:ApiProvider.imageUrl + image.toString(), width: size.width*.15,height: size.height*.07),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),

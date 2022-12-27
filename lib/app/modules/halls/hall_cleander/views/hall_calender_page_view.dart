@@ -1,11 +1,15 @@
 import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../../../data/model/halls/dto/response/halls_periods_response.dart';
 import '../controllers/hall_calender_page_controller.dart';
 
 class HallCalenderPageView extends GetView<HallCalenderPageController> {
@@ -76,15 +80,31 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                                   weight: FontWeight.w600,
                                 ),
                                 Container(
-                                  width: size.width * 0.4,
+                                  width: size.width * 0.45,
                                   height: size.height * 0.06,
                                   decoration: BoxDecoration(color: Colors.brown[50], borderRadius: BorderRadius.circular(20)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10, right: 10),
                                     child: DropdownButtonHideUnderline(
-                                      child: DropdownButton(
-                                        items: const ['1', '2', '3']
-                                            .map((e) => DropdownMenuItem(alignment: Alignment.center, value: e, child: Text(e)))
+
+                                      child: DropdownButton<HallsPeriodsResponse>(
+                                        items: controller.isPeriodLoading.value == true ? [] :
+                                            controller.hallPeriods.toList()
+                                            .map((e) => DropdownMenuItem<HallsPeriodsResponse>(
+                                            alignment: Alignment.center,
+                                            value: e,
+                                            enabled: e.enabled!,
+                                            child: Container(
+                                              color: e.enabled == false ? Colors.grey[300] : Colors.transparent,
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: [
+                                                  TextWidget(e.name!),
+                                                 e.enabled == false ? const TextWidget(AppStrings.reserved ,size: 11, textColor: AppColors.appHallsRedDark, weight: FontWeight.bold,):const SizedBox.shrink(),
+                                                ],
+                                              ),
+                                            ),
+                                        ))
                                             .toList(),
                                         onChanged: (val) => controller.setSelectedPeriod(val!),
                                         value: controller.selectedPeriod.value,
@@ -135,7 +155,22 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                                 weight: FontWeight.w600,
                               ),
                               for(int i = 0; i < controller.selectedDaysList.length; i++)
-                                TextWidget(controller.selectedDaysList[i])
+                                SizedBox(
+                                  width: size.width * 0.9,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TextWidget(controller.selectedDaysList[i].name! , weight: FontWeight.bold,),
+                                      TextWidget(DateFormat('yyyy:MM:dd').format(controller.selectedDaysList[i].date!), weight: FontWeight.bold,),
+                                      TextWidget(controller.dayTotalPrice.value.toString(), weight: FontWeight.bold,),
+                                      IconButton(
+                                          onPressed: (){
+                                            controller.deleteDay(i);
+                                          },
+                                          icon: const Icon(Icons.delete_forever_outlined , color: AppColors.appHallsRedDark))
+                                    ],
+                                  ),
+                                )
                             ],
                           ),
                         );
@@ -158,16 +193,14 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                             width: size.width * .9,
                             height: 30,
                             child: Row(
-                              children: const [
-                                TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
-                                // Obx((){
-                                //   return
-                                Padding(
-                                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
-                                    child: TextWidget('15', size: 18, weight: FontWeight.bold,),
-                                  )
-    // ;
-    //                             })
+                              children: [
+                               const TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
+                                Obx((){
+                                  return Padding(
+                                    padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                                    child: TextWidget(controller.allTotalPrice.value.toString(), size: 18, weight: FontWeight.bold,),
+                                  ) ;
+                                })
                               ],
                             ),
                           ),
@@ -176,7 +209,7 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                             height: size.height * 0.06,
                             child: TextButton(
                               onPressed: () {
-                                controller.getSpaSave();
+                                controller.getHallSave();
                               },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark), shape: MaterialStateProperty.all(const StadiumBorder())),
@@ -192,6 +225,14 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                       ),
                     ),
                   )),
+              Obx((){
+                if(controller.isPeriodLoading.value == true){
+                  return Center(child: Common.getSpin());
+                }else{
+                  return const SizedBox.shrink();
+                }
+              }
+              )
             ],
           ),
         ));

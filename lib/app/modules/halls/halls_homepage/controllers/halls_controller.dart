@@ -11,7 +11,7 @@ class HallsController extends GetxController {
   final allHalls = <HallsResponse>[].obs;
   final offersHalls = <HallsResponse>[].obs;
   final isLoading = false.obs;
-
+  final int? hotelId = Get.arguments ;
 
   @override
   void onInit() {
@@ -25,7 +25,7 @@ class HallsController extends GetxController {
   getAllHalls() async {
     isLoading(true);
     final request = AllHallsRequest(
-      branchId: UserManager().selectedBranch!.id!,
+      branchId: hotelId ?? UserManager().selectedBranch!.id!,
     );
     HallsRepository().getAllHalls(request,
         onSuccess: (data) {

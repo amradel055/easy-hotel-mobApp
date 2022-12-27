@@ -17,6 +17,9 @@ import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping
 import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping_groups_response.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 
+import '../../model/halls/dto/request/halls_period_request.dart';
+import '../../model/halls/dto/response/halls_periods_response.dart';
+
 class HallsRepository {
 
   getAllHalls(
@@ -98,6 +101,35 @@ class HallsRepository {
         data: hallDetailRequest.toJson(),
         onError: onError,
         convertor: HallsDetailResponse.fromJson,
+        onComplete: onComplete
+    );
+  }
+  getHallPeriods(
+      HallsPeriodsRequest hallsPeriodsRequest, {
+        SuccessFunc<List<HallsPeriodsResponse>> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<List<HallsPeriodsResponse>>(
+        'halls/findHolePeriods',
+        onSuccess: onSuccess,
+        data: hallsPeriodsRequest.toJson(),
+        onError: onError,
+        convertor: HallsPeriodsResponse.fromList,
+        onComplete: onComplete
+    );
+  }
+
+  getHallReservedPeriods(
+      HallsPeriodsRequest hallsPeriodsRequest, {
+        SuccessFunc<List<HallsPeriodsResponse>> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<List<HallsPeriodsResponse>>(
+        'halls/findPeriodsReservedForHall',
+        onSuccess: onSuccess,
+        data: hallsPeriodsRequest.toJson(),
+        onError: onError,
+        convertor: HallsPeriodsResponse.fromList,
         onComplete: onComplete
     );
   }

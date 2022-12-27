@@ -91,7 +91,7 @@ class HallDetailView extends GetView<HallDetailsController> {
                         ),
                         divider,
                         SizedBox(
-                          width: size.width * 0.4,
+                          width: size.width * 0.6,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -124,7 +124,7 @@ class HallDetailView extends GetView<HallDetailsController> {
                         ),
                         divider,
                         SizedBox(
-                          width: size.width * 0.4,
+                          width: size.width * 0.6,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -146,10 +146,20 @@ class HallDetailView extends GetView<HallDetailsController> {
                                ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(4 , 0 , 4,0),
-                                child: TextWidget(
-                                  controller.hall!.price.toString(),
-                                  weight: FontWeight.bold,
-                                  size: 15,
+                                child: Row(
+                                  children: [
+                                    TextWidget(
+                                      controller.hall!.price.toString(),
+                                      weight: FontWeight.bold,
+                                      showInline: controller.hall!.salePrice != null &&  controller.hall!.salePrice != 0 ? true : null,
+                                      size: 15,
+                                    ),
+                                    controller.hall!.salePrice != null &&  controller.hall!.salePrice != 0 ? TextWidget(
+                                      controller.hall!.salePrice.toString(),
+                                      weight: FontWeight.bold,
+                                      size: 15,
+                                    ): const SizedBox.shrink(),
+                                  ],
                                 ),
                               ),
                             ],
