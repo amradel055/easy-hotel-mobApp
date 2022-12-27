@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
@@ -43,9 +44,9 @@ class PolmanView extends GetView<PolmanController> {
           padding: EdgeInsets.zero,
           children: [
             Container(
-              height: 400.h,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage(AppAssets.polman), fit: BoxFit.cover)),
+              height: 250.h,
+              decoration:  BoxDecoration(
+                  image: DecorationImage(image: AssetImage(controller.res[0]), fit: BoxFit.cover)),
 
               padding:  EdgeInsets.fromLTRB(40.h, 300.h,40.h, 0),
               child:  Column(
@@ -60,11 +61,32 @@ class PolmanView extends GetView<PolmanController> {
             Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.fromLTRB(20.h, 0, 20.h, 10.h),
+                    padding:  EdgeInsets.fromLTRB(30.h, 0, 30.h, 10.h),
                     child: TextWidget(AppStrings.orderpolman,textAlign: TextAlign.left,weight: FontWeight.bold,size: 20.h,),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20,0,20,0),
+                    child: const TextWidget(
+                      'الملاحظات..',
+                      weight: FontWeight.bold,
+                      size: 20,
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: SizedBox(
+                      height: 100,
+                      child: TextFieldWidget(
+                        maxLines: 5,
+                        controller:controller.remark,
+                        onChange: (value) => controller.remark.text = value,
+
+                      ),
+                    ),
+                  ),
                   SizedBox(
-                      height: size.height*.43,
+                      height: size.height*.3,
                       child:Column(
                         children: [
                           SizedBox(height: size.height*.2,width: size.width*.9,
@@ -80,7 +102,7 @@ class PolmanView extends GetView<PolmanController> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 120.0),
+                            padding: const EdgeInsets.only(top: 25.0),
                             child: Center(
                               child: GestureDetector(
                                 onTap: (){

@@ -3,11 +3,12 @@
 
 class CarsGroupsResponse {
   CarsGroupsResponse({
-  this.id , this.serial , this.name , this.groupType , this.parent
+  this.id , this.serial , this.name , this.groupType , this.parent,this.img
 });
   int? id;
   int? serial;
   String? name;
+  String? img;
   int? parent;
   int? groupType;
 
@@ -17,6 +18,7 @@ class CarsGroupsResponse {
     id : json['id'] != null ? json['id'] : null ,
     name : json['name'] != null ? json['name'] : null ,
     serial : json['serial'] != null ? json['serial'] : null ,
+    img : json['img'] != null ? json['img'] : null ,
     parent : json['parent'] != null ? json['parent'] : null ,
     groupType : json['groupType'] != null ? json['groupType'] : null ,
   );

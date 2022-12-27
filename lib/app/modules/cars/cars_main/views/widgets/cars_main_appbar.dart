@@ -3,11 +3,12 @@ import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CarsMainAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CarsMainAppbar(this.height , this.title , this.subTitle , this.centerTitle ,{Key? key}) : super(key: key);
+  const CarsMainAppbar(this.height , this.title , this.subTitle , this.centerTitle ,this.imageIn,{Key? key }) : super(key: key);
   final double height ;
   final String title ;
   final String subTitle ;
   final bool centerTitle ;
+  final String imageIn ;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
@@ -16,7 +17,12 @@ class CarsMainAppbar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         height: size.height,
         width: size.width ,
-        color: Colors.black,
+        decoration:  BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(
+                   imageIn
+                ),
+                fit: BoxFit.fitWidth)),
         child: Padding(
           padding:  EdgeInsets.fromLTRB(size.width * 0.01,0,size.width * 0.04,0),
           child: Column(

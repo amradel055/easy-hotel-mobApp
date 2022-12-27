@@ -23,6 +23,7 @@ class CarsOrderRequest {
     this.comingDate,
     this.comingTime,
     this.salesId,
+    this.remark,
   });
 
 
@@ -47,6 +48,7 @@ class CarsOrderRequest {
   DateTime? comingDate;
   String? comingTime;
   int? salesId;
+  String? remark;
 
 
   Map<String, dynamic> toJson() => {
@@ -71,5 +73,6 @@ class CarsOrderRequest {
     "comingDate": comingDate == null ? null : comingDate?.toIso8601String(),
     "comingTime": comingTime == null ? null : comingTime,
     "salesId": salesId == null ? null : salesId,
+    "remark": remark == null ? null : remark,
   };
 }

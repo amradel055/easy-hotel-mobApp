@@ -17,6 +17,7 @@ class PolmanSaveRequest {
     this.companyId,
     this.customerId,
     this.time,
+    this.remark,
   });
 
   int? serviceTypeId;
@@ -25,6 +26,7 @@ class PolmanSaveRequest {
   int?companyId;
   int? customerId ;
   DateTime? time ;
+  String? remark ;
 
   factory PolmanSaveRequest.fromJson( dynamic json) => PolmanSaveRequest(
       serviceTypeId: json["serviceTypeId"] == null ? null : json["serviceTypeId"],
@@ -33,6 +35,7 @@ class PolmanSaveRequest {
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
       time: json["time"] == null ? null : json["time"],
+    remark: json["remark"] == null ? null : json["remark"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -41,6 +44,7 @@ class PolmanSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
+    "remark": remark == null ? null : remark,
     "time": time == null ? null : time?.toIso8601String(),
   };
 }

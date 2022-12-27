@@ -116,5 +116,6 @@ final Map<String, String> arEG = {
   AppStrings.reserved: "محجوز",
   AppStrings.shouldSelectDays: "يجب اضافة يوم الحجز",
   AppStrings.savedSuccessfully: "تم الحفظ بنجاح",
+  AppStrings.free: "مجاني",
 
 };

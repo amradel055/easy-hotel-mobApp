@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ServiceCard extends StatelessWidget {
-  const ServiceCard({Key? key, required this.name,required this.image, required this.appId}) : super(key: key);
+  const ServiceCard({Key? key, required this.name,required this.image, required this.appId, required this.imageIn}) : super(key: key);
   final String name;
   final String image;
-  // final String imageIn;
+  final String imageIn;
   final int appId;
 
   @override
@@ -21,15 +21,17 @@ class ServiceCard extends StatelessWidget {
         }else if(appId==2){
           Get.toNamed(Routes.FOOD_SECTION);
         }else if(appId==3){
-          Get.toNamed(Routes.CARS);
+          Get.toNamed(Routes.CARS,arguments: [imageIn,appId]);
         }else if(appId==4){
           Get.toNamed(Routes.SPADETAILS);
         }else if(appId==5){
-          Get.toNamed(Routes.HOUSE_KEEPING);
+          Get.toNamed(Routes.HOUSE_KEEPING,arguments: [imageIn,appId]);
         }else if(appId==6){
           Get.toNamed(Routes.HALLS);
         }else if(appId==7){
           Get.toNamed(Routes.ROOMS);
+        }else if(appId==8){
+          Get.toNamed(Routes.POLMAN,arguments: [imageIn,appId]);
         }
       } ,
       child: Container(

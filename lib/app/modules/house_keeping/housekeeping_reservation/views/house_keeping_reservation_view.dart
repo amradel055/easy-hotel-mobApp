@@ -1,9 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
+import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/views/widgets/timer.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/price_services.dart';
 import 'package:flutter/material.dart';
@@ -32,19 +36,21 @@ class HouseKeepingReservationView
             children: [
               Positioned(
                 top: 0,
-                height: size.height * .4,
+                height: size.height * .35,
                 right: 0,
                 left: 0,
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                       image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                              'https://image.shutterstock.com/image-photo/group-friends-professional-cleaners-tiding-260nw-395889778.jpg'),
+                          image: AssetImage(
+                              ApiProvider.imageUrl+controller.res[3]
+                            // AppAssets.housekeeping
+                          ),
                           fit: BoxFit.fill
                       )
                   ),
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 50),
+                      horizontal: 20, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -57,43 +63,17 @@ class HouseKeepingReservationView
                           ),
                         ),
                       ),
-                      const Spacer(),
-                       TextWidget(
-                        controller.res[1],
-                        weight: FontWeight.bold,
-                        size: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                              height: size.height * .04,
-                              width: size.width * .1,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(10)),
-                                color: Colors.white,
-                              ),
-                              child: const Center(
-                                  child: TextWidget(
-                                    '4.4',
-                                    size: 15,
-                                    weight: FontWeight.bold,
-
-                                  ))),
-                          const TextWidget(
-                            'مراجعات',
-                            weight: FontWeight.bold,
-                            size: 20,
-                          ),
-                        ],
-                      ),
+                      //  TextWidget(
+                      //   controller.res[1],
+                      //   weight: FontWeight.bold,
+                      //   size: 20,
+                      // ),
                     ],
                   ),
                 ),
               ),
               Positioned(
-                top: size.height * .33,
+                top: size.height * .3,
                 child: Container(
                   width: size.width,
                   decoration: const BoxDecoration(
@@ -108,6 +88,24 @@ class HouseKeepingReservationView
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TextWidget(
+                          'الملاحظات..',
+                          weight: FontWeight.bold,
+                          textColor: AppColors.appBlue,
+                          size: 20,
+                        ),
+
+                        SizedBox(
+                          height: 100,
+
+                          child: TextFieldWidget(
+                            maxLines: 5,
+                            controller:controller.remark,
+                            onChange: (value) => controller.remark.text = value,
+
+                          ),
+                        ),
+
+                        const TextWidget(
                           'يرجي تحديد الموعد..',
                           weight: FontWeight.bold,
                           textColor: AppColors.appBlue,
@@ -117,7 +115,6 @@ class HouseKeepingReservationView
                           padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                           child: Container(
                             width: size.width,
-                            height: size.height * .25,
                             decoration: BoxDecoration(
                               color: Colors.white70,
                               borderRadius: BorderRadius.circular(5),
@@ -134,7 +131,8 @@ class HouseKeepingReservationView
                                   child: Obx(() {
                                     return TextWidget(
                                       controller.dateTo.value == null
-                                          ? "yyyy-mm-dd"
+                                          ? DateFormat("yyyy-MM-dd").format(
+                                          DateTime.now())
                                           : DateFormat("yyyy-MM-dd").format(
                                           controller.dateTo.value!),
                                       weight: FontWeight.bold,

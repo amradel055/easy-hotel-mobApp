@@ -4,9 +4,9 @@
 
 
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
+import 'package:easy_hotel/app/data/model/services_features/dto/response/service_feature_response.dart';
 
 import '../../../item_image_response_dto.dart';
-import '../../../services_features/dto/response/service_feature_response.dart';
 import '../../../spa/dto/response/spa_response_dto.dart';
 
 class HallsDetailResponse {

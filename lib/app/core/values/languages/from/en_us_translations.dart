@@ -116,5 +116,6 @@ final Map<String, String> enUs = {
   AppStrings.reserved: "RESERVED",
   AppStrings.shouldSelectDays: "You Must Add a Day",
   AppStrings.savedSuccessfully: "Saved Successfully",
+  AppStrings.free: "Free",
 
 };

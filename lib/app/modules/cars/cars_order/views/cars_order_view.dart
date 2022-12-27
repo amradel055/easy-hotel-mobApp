@@ -1,7 +1,9 @@
+import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/cars/cars_order/controllers/cars_order_controller.dart';
 import 'package:easy_hotel/app/modules/cars/cars_order/views/widgets/cars_order_appbar.dart';
@@ -72,6 +74,24 @@ class CarsOrderView extends GetView<CarsOrderController> {
                           ),
                         )),
                     const TextWidget(
+                      'الملاحظات..',
+                      weight: FontWeight.bold,
+                      textColor: Colors.blue,
+                      size: 20,
+                    ),
+
+                    SizedBox(
+                      height: 100,
+                      width: size.width*.9,
+
+                      child: TextFieldWidget(
+                        maxLines: 5,
+                        controller:controller.remark,
+                        onChange: (value) => controller.remark.text = value,
+
+                      ),
+                    ),
+                    const TextWidget(
                       "نوع السياره التي تم اختيارها",
                       textColor: Colors.blue,
                       size: 17,
@@ -115,7 +135,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                                   size: 15,
                                 ),
                                 TextWidget(
-                                  controller.selectedCar.pricePerDay!.toString() + "LE/day",
+                                  controller.selectedCar.pricePerDay!.toString() + AppStrings.LE,
                                   textColor: Colors.blue,
                                   maxLines: 1,
                                   weight: FontWeight.bold,
@@ -181,6 +201,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                               )
                               // : const SizedBox(),
                               ),
+
                         ],
                       ),
                     ),
@@ -201,25 +222,25 @@ class CarsOrderView extends GetView<CarsOrderController> {
                                     backgroundColor: MaterialStateProperty.all(Colors.redAccent),
                                   ),
                                   child: const TextWidget(
-                                    "احجز الان",
+                                    AppStrings.reserve,
                                     textColor: Colors.white,
                                     weight: FontWeight.bold,
                                     size: 20,
                                   )),
                             ),
-                            SizedBox(
-                              child: OutlinedButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  child: const TextWidget(
-                                    "القائمة الرئيسيه",
-                                    textColor: Colors.redAccent,
-                                    weight: FontWeight.bold,
-                                    size: 20,
-                                  )),
-                            ),
+                            // SizedBox(
+                            //   child: OutlinedButton(
+                            //       onPressed: () {},
+                            //       style: ButtonStyle(
+                            //         backgroundColor: MaterialStateProperty.all(Colors.white),
+                            //       ),
+                            //       child: const TextWidget(
+                            //         "القائمة الرئيسيه",
+                            //         textColor: Colors.redAccent,
+                            //         weight: FontWeight.bold,
+                            //         size: 20,
+                            //       )),
+                            // ),
                           ],
                         ),
                       ),

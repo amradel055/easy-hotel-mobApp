@@ -95,6 +95,7 @@ class AllServicesView extends GetView<AllServicesController> {
                 name: controller.appServicesList[index].applicationName!,
                 image: controller.appServicesList[index].imgOut ?? "" ,
                 appId: controller.appServicesList[index].applications! ,
+                imageIn:controller.appServicesList[index].imgIn ?? "" ,
                  );
             },
 

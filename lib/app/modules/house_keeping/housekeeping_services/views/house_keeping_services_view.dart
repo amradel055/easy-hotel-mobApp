@@ -1,9 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
+import 'package:easy_hotel/app/components/image_widget.dart';
+import 'package:easy_hotel/app/components/review_List_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/price_services.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -27,17 +31,22 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
               child: Common.getSpin(),
             );
           }
-          return Stack(children: [
-            Positioned(
-              top: 0,
-              height: size.height * .4,
-              right: 0,
-              left: 0,
-              child: Container(
-                decoration: const BoxDecoration(
+          return SingleChildScrollView(
+            physics:const  AlwaysScrollableScrollPhysics(),
+
+            child: Column(
+              children: [
+              // ImageWidget(path:  ApiProvider.imageUrl+controller.args[2]!)
+              Container(
+                  height: size.height * .3,
+
+
+                  decoration:  BoxDecoration(
                     image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            'https://image.shutterstock.com/image-photo/group-friends-professional-cleaners-tiding-260nw-395889778.jpg'),
+                        image: AssetImage(
+                            ApiProvider.imageUrl+controller.args[2]!,
+                          // AppAssets.housekeeping
+                        ),
                         fit: BoxFit.fill
                     )
                 ),
@@ -62,38 +71,11 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                         weight: FontWeight.bold,
                         size: 20,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                              height: size.height * .04,
-                              width: size.width * .1,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(10)),
-                                color: Colors.white,
-                              ),
-                              child: const Center(
-                                  child: TextWidget(
-                                    '4.4',
-                                    size: 15,
-                                    weight: FontWeight.bold,
-
-                                  ))),
-                          const TextWidget(
-                            'مراجعات',
-                            size: 20,
-                            weight: FontWeight.bold,
-
-                          ),
-                        ],
-                      ),
                     ],
                   )
               ),
-            ),
-            Positioned(top: 230,
-              child: Container(width: size.width,
+              Container(width: size.width,
+                height: size.height*.7,
                 decoration: const BoxDecoration(borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.00),
                     topRight: Radius.circular(30.00)),
@@ -107,22 +89,22 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                         child: Common.getSpin(),
                       );
                     }
-                    return Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextWidget('يرجي اختيار الخدمه',
-                          weight: FontWeight.bold,
-                          textColor: AppColors.appBlue,
-                          size: 20,),
-                        SizedBox(
-                          height: size.height * 0.55,
-                          child: SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: size.height * 0.54,
-                                  child: SingleChildScrollView(
-                                    physics: const AlwaysScrollableScrollPhysics(),
+                    return SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        // height: size.height*.8,
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const TextWidget('يرجي اختيار الخدمه',
+                              weight: FontWeight.bold,
+                              textColor: AppColors.appBlue,
+                              size: 20,),
+                            SizedBox(
+                              height: size.height * 0.3,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    // height: size.height * 0.54,
                                     child: Column(
                                       children: [
                                         for(int i = 0; i <
@@ -131,6 +113,8 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                           HousekeepingServicesPriceWidget(
                                             controller.housekeepingDetail[i]
                                                 .name!,
+                                            controller.housekeepingDetail[i].price==null||
+                                                controller.housekeepingDetail[i].price==0?AppStrings.free:
                                             controller.housekeepingDetail[i]
                                                 .price!.toString(),
                                             i.obs,
@@ -141,41 +125,55 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                       ],
                                     ),
                                   ),
-                                ),
 
 
-                              ],
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.toNamed(Routes.HOUSEKEEPING_RESERVATION,
-                                arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value]
-                                   );
-                            },
-                            child: Container(
-                              height: size.height * 0.05,
-                              width: size.width * 0.7,
-                              decoration: BoxDecoration(
-                                color: AppColors.appHallsRedDark,
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(size.width * 0.05)),
+                                ],
                               ),
-                              child: const TextWidget(
-                                "استمرار", textAlign: TextAlign.center,
-                                weight: FontWeight.bold,
-                                textColor: Colors.white,),
                             ),
-                          ),
-                        ),
-                      ],);
+                            controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
+                              weight: FontWeight.bold,
+                              textColor: AppColors.appBlue,
+                              size: 20,),
+                            controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
+                                child: ReviewsListWidget(
+                                  reviewStars: controller.reviewsResponse!.starAverage!,
+                                  reviewsList:controller.reviewsResponse!.reviewHouseKeepingDtoList!,
+                                  reviewNumber: controller.reviewsResponse!.reviewHouseKeepingDtoList!.length,
+                                )),
+
+                            controller.servicesSelected.isNotEmpty ?   Padding(
+                              padding:  EdgeInsets.only(top:controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?200:0),
+                              child: Center(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed(Routes.HOUSEKEEPING_RESERVATION,
+                                      arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value,controller.args[2],controller.args[3]]
+                                         );
+                                  },
+                                  child: Container(
+                                    height: size.height * 0.05,
+                                    width: size.width * 0.7,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.appHallsRedDark,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(size.width * 0.05)),
+                                    ),
+                                    child: const TextWidget(
+                                      "استمرار", textAlign: TextAlign.center,
+                                      weight: FontWeight.bold,
+                                      textColor: Colors.white,),
+                                  ),
+                                ),
+                              ),
+                            ):SizedBox()
+                          ],),
+                      ),
+                    );
                   }),
                 ),
               ),
-            ),
-          ],);
+            ],),
+          );
         })
     );
   }

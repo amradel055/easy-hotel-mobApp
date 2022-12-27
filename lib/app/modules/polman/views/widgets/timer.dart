@@ -12,9 +12,8 @@ class TimerWidget extends GetView<PolmanController> {
   const TimerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Size size =MediaQuery.of(context).size;
     return TimePickerSpinner(
-      is24HourMode: true,
+      is24HourMode: false,
       normalTextStyle: TextStyle(
           fontSize: 17,
           color: Colors.black
@@ -27,6 +26,7 @@ class TimerWidget extends GetView<PolmanController> {
       itemHeight: 25,
       isForce2Digits: true,
       alignment: Alignment.center,
+      time: DateTime.now(),
       onTimeChange: (time) {
 
         controller.dateTime.value=time;

@@ -7,6 +7,7 @@ import 'package:easy_hotel/app/data/model/cars/dto/request/cars_traffic_line_req
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_response_dto.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_traffic_lines_response.dart';
 import 'package:easy_hotel/app/data/repository/cars/cars_repository.dart';
+import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,8 @@ class CarsOrderController extends GetxController {
   final trafficLines = <CarsTrafficLinesResponse>[].obs;
 
   final selectedTrafficLine = Rxn<CarsTrafficLinesResponse>();
+  var remark = TextEditingController();
+
 
   final travelTypes = [
     {"id": 0, "name": "ذهاب و عوده"},
@@ -42,7 +45,7 @@ class CarsOrderController extends GetxController {
 
   getTrafficLines() {
     loading(true);
-    final request = CarsTrafficLinesRequest(branchId: 232);
+    final request = CarsTrafficLinesRequest(branchId: selectedCar.branchId!);
     CarsRepository().getAllTrafficLines(request,
         onComplete: () => loading(false),
         onError: (e) => showPopupText(e),
@@ -65,12 +68,15 @@ class CarsOrderController extends GetxController {
       personNumber: selectedPersonsNumber.value,
       fromDestination: selectedTrafficLine.value?.id,
       customerId: UserManager().user!.id!,
-      //TODO change branchId
-      branchId: 232,
-      companyId: AppConstants.companyId
+      branchId: selectedCar.branchId,
+      companyId: AppConstants.companyId,
+      remark: remark.text
     );
     CarsRepository().saveCarsOrder(request,
-        onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) => showPopupText('تم الحفظ بنجاح'));
+        onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {
+        showPopupText('تم الحفظ بنجاح');
+        Get.toNamed(Routes.ALLSERVICES);
+        } );
   }
 
   changeSelectedTrafficLines(CarsTrafficLinesResponse selected) {
