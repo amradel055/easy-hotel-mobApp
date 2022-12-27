@@ -119,6 +119,10 @@ abstract class AppStrings {
   static const reviewedBy = "Reviewed By";
   static const additionsForHall = "Addition For this Hall";
   static const totalPrice = "Total Price";
+  static const availablePeriods = "Available Periods This Day";
+  static const hallReserve = "Hall Reserve";
+  static const shouldSelectPeriod = "You Must Select a Period";
+  static const requiredDays = "Required Days";
 
 
 

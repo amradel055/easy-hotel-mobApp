@@ -6,6 +6,7 @@
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 
 import '../../../item_image_response_dto.dart';
+import '../../../services_features/dto/response/service_feature_response.dart';
 import '../../../spa/dto/response/spa_response_dto.dart';
 
 class HallsDetailResponse {
@@ -46,7 +47,8 @@ class HallsDetailResponse {
     this.cityId,
     this.salePrice,
     this.reviewStar ,
-    this.reviewHoleDTOList
+    this.reviewHoleDTOList ,
+    this.featureHoleDTOListSelected
   });
 
   int ?id;
@@ -86,6 +88,7 @@ class HallsDetailResponse {
   int? salePrice;
   num? reviewStar;
   List<ReviewModel>? reviewHoleDTOList ;
+  List<ServiceFeatureResponse>? featureHoleDTOListSelected ;
 
   factory HallsDetailResponse.fromJson( dynamic json) => HallsDetailResponse(
     id: json["id"],
@@ -124,6 +127,7 @@ class HallsDetailResponse {
     cityId: json["cityId"],
     salePrice: json["salePrice"],
     reviewHoleDTOList: ReviewModel.fromList(json["reviewHoleDTOList"] ?? []),
+    featureHoleDTOListSelected: ServiceFeatureResponse.fromList(json["featureHoleDTOListSelected"] ?? []),
     reviewStar: json["reviewStar"] == null ? 0.0 : json["reviewStar"]
   );
 

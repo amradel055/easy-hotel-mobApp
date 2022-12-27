@@ -156,27 +156,34 @@ class HallDetailView extends GetView<HallDetailsController> {
                           ),
                         ),
                         divider,
-                        const TextWidget(
-                          AppStrings.servicesHall,
-                          weight: FontWeight.w800,
-                          textColor: AppColors.appHallsRedDark,
-                          size: 17,
-                        ),
-                        SizedBox(
-                            height: size.height * .1,
-                            child: ListView.builder(
-                              itemCount: controller.hall!.additionsGroupDTOList!.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.fromLTRB(5 , 0 , 5 , 0),
-                                  child: HallServices(
-                                      image: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
-                                      name: controller.hall!.additionsGroupDTOList![index].name!),
-                                );
-                              },
-                            )),
-                        divider,
+                        controller.hall!.featureHoleDTOListSelected!.isNotEmpty ?
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const TextWidget(
+                              AppStrings.servicesHall,
+                              weight: FontWeight.w800,
+                              textColor: AppColors.appHallsRedDark,
+                              size: 17,
+                            ),
+                            SizedBox(
+                                height: size.height * .1,
+                                child: ListView.builder(
+                                  itemCount: controller.hall!.featureHoleDTOListSelected!.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.fromLTRB(5 , 0 , 5 , 0),
+                                      child: HallServices(
+                                          image: controller.hall!.featureHoleDTOListSelected![index].icon!,
+                                          name: controller.hall!.featureHoleDTOListSelected![index].name!),
+                                    );
+                                  },
+                                )),
+                            divider,
+                          ],
+                        ): const SizedBox.shrink() ,
+
                         const TextWidget(
                           AppStrings.reviews,
                           weight: FontWeight.w800,
@@ -213,6 +220,8 @@ class HallDetailView extends GetView<HallDetailsController> {
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),
+                            shape: MaterialStateProperty.all(const StadiumBorder())
+                            
                           ),
                           child: const TextWidget(
                             AppStrings.additions,
@@ -230,6 +239,7 @@ class HallDetailView extends GetView<HallDetailsController> {
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.black),
+                            shape: MaterialStateProperty.all(const StadiumBorder())
                           ),
                           child: const TextWidget(
                             AppStrings.directions,

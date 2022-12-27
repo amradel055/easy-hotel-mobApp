@@ -155,7 +155,11 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                                   onPressed: () {
                                     Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value]);
                                   },
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark)),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),
+                                      shape: MaterialStateProperty.all(const StadiumBorder())
+
+                                  ),
                                   child: const TextWidget(
                                     'استمرار',
                                     textColor: Colors.white,
@@ -170,7 +174,11 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.black)),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                                      shape: MaterialStateProperty.all(const StadiumBorder())
+
+                                  ),
                                   child: const TextWidget(
                                     'رجوع',
                                     textColor: Colors.white,
