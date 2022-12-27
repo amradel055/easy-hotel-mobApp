@@ -1,23 +1,43 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/modules/allServices/services_model.dart';
+import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ServiceCard extends StatelessWidget {
-  const ServiceCard({Key? key, required this.serviceModel}) : super(key: key);
-  final ServiceModel serviceModel;
+  const ServiceCard({Key? key, required this.name,required this.image, required this.appId}) : super(key: key);
+  final String name;
+  final String image;
+  // final String imageIn;
+  final int appId;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(serviceModel.pageRoute),
+      onTap: () {
+        if(appId==1){
+          Get.toNamed(Routes.FOOD_SECTION);
+        }else if(appId==2){
+          Get.toNamed(Routes.FOOD_SECTION);
+        }else if(appId==3){
+          Get.toNamed(Routes.CARS);
+        }else if(appId==4){
+          Get.toNamed(Routes.SPADETAILS);
+        }else if(appId==5){
+          Get.toNamed(Routes.HOUSE_KEEPING);
+        }else if(appId==6){
+          Get.toNamed(Routes.HALLS);
+        }else if(appId==7){
+          Get.toNamed(Routes.ROOMS);
+        }
+      } ,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(20.00)),
             color: AppColors.appGreyLight,
             image: DecorationImage(
-                image: AssetImage(serviceModel.image), fit: BoxFit.cover)),
+                image: AssetImage(image), fit: BoxFit.cover)),
         clipBehavior: Clip.antiAlias,
         child: DecoratedBox(
             decoration: const BoxDecoration(
@@ -30,7 +50,7 @@ class ServiceCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: TextWidget(
-                    serviceModel.name,
+                    name,
                     textColor: Colors.white,
                     weight: FontWeight.bold,
                     textAlign: TextAlign.center,

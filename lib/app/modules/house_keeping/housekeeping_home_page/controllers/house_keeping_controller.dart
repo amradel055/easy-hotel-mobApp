@@ -9,6 +9,8 @@ class HouseKeepingController extends GetxController {
   var housekeepingGroup = <HousekeepingGroupResponse>[].obs;
   var HousekeepingSearchlist = <HousekeepingGroupResponse>[].obs;
   final isLoading = false.obs;
+  // final String imagIn =Get.arguments;
+
 
 
   @override

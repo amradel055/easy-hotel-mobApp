@@ -76,6 +76,14 @@ class HotelsearchModel {
     this.id,
     this.name,
     this.image,
+    this.imgHole,
+    this.imgCar,
+    this.imgFood,
+    this.imgBar,
+    this.imgRoom,
+    this.imgSpa,
+    this.imgPolman,
+    this.imgHouseKeeping,
     this.cityName,
     this.companyId,
     this.cityId,
@@ -86,6 +94,14 @@ class HotelsearchModel {
   int ?id;
   String? name;
   String ?image;
+  String ?imgHole;
+  String ?imgCar;
+  String ?imgFood;
+  String ?imgBar;
+  String ?imgRoom;
+  String ?imgSpa;
+  String ?imgPolman;
+  String ?imgHouseKeeping;
   String ?cityName;
   int? cityId ;
   String? nameAr ;
@@ -98,6 +114,14 @@ class HotelsearchModel {
     id: json["id"] == null ? null : json["id"],
     name: json["name"] == null ? null : json["name"],
     image: json["image"] == null ? null : json["image"],
+    imgHole: json["imgHole"] == null ? null : json["imgHole"],
+    imgCar: json["imgCar"] == null ? null : json["imgCar"],
+    imgFood: json["imgFood"] == null ? null : json["imgFood"],
+    imgBar: json["imgBar"] == null ? null : json["imgBar"],
+    imgRoom: json["imgRoom"] == null ? null : json["imgRoom"],
+    imgSpa: json["imgSpa"] == null ? null : json["imgSpa"],
+    imgPolman: json["imgPolman"] == null ? null : json["imgPolman"],
+    imgHouseKeeping: json["imgHouseKeeping"] == null ? null : json["imgHouseKeeping"],
     cityName: json["cityName"] == null ? null : json["cityName"],
     cityId: json["cityId"] == null ? null : json["cityId"],
     nameAr: json["nameAr"] == null ? null : json["nameAr"],
@@ -109,6 +133,14 @@ class HotelsearchModel {
     "id": id == null ? null : id,
     "name": name == null ? null : name,
     "image": image == null ? null : image,
+    "imgHole": imgHole == null ? null : imgHole,
+    "imgCar": imgCar == null ? null : imgCar,
+    "imgFood": imgFood == null ? null : imgFood,
+    "imgBar": imgBar == null ? null : imgBar,
+    "imgRoom": imgRoom == null ? null : imgRoom,
+    "imgSpa": imgSpa == null ? null : imgSpa,
+    "imgPolman": imgPolman == null ? null : imgPolman,
+    "imgHouseKeeping": imgHouseKeeping == null ? null : imgHouseKeeping,
     "cityName": cityName == null ? null : cityName,
     "cityId": cityId == null ? null : cityId,
     "nameAr": nameAr == null ? null : nameAr,
