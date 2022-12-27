@@ -112,5 +112,6 @@ final Map<String, String> arEG = {
   AppStrings.hallReserve: "حجز قاعة",
   AppStrings.shouldSelectPeriod: "يجب اختيار فترة",
   AppStrings.requiredDays: "الايام التي تريد حجزها",
+  AppStrings.add: "اضافة",
 
 };

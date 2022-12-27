@@ -111,7 +111,7 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                             decoration: BoxDecoration(color: AppColors.appHallsRedDark, borderRadius: BorderRadius.circular(25)),
                             child: const Center(
                               child: TextWidget(
-                                AppStrings.confirm,
+                                AppStrings.add,
                                 textColor: Colors.white,
                                 weight: FontWeight.bold,
                                 size: 15,
@@ -158,12 +158,12 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                             width: size.width * .9,
                             height: 30,
                             child: Row(
-                              children: [
-                                const TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
+                              children: const [
+                                TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
                                 // Obx((){
                                 //   return
-                                    Padding(
-                                    padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
                                     child: TextWidget('15', size: 18, weight: FontWeight.bold,),
                                   )
     // ;

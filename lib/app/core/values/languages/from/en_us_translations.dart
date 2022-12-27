@@ -112,5 +112,6 @@ final Map<String, String> enUs = {
   AppStrings.hallReserve: "Hall Reserve",
   AppStrings.shouldSelectPeriod: "You Should Select a Period",
   AppStrings.requiredDays: "Required Days",
+  AppStrings.add: "Add",
 
 };
