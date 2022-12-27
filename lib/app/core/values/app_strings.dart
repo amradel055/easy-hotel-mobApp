@@ -123,6 +123,7 @@ abstract class AppStrings {
   static const hallReserve = "Hall Reserve";
   static const shouldSelectPeriod = "You Must Select a Period";
   static const requiredDays = "Required Days";
+  static const add = "Add";
 
 
 
