@@ -9,7 +9,7 @@ class HouseKeepingController extends GetxController {
   var housekeepingGroup = <HousekeepingGroupResponse>[].obs;
   var HousekeepingSearchlist = <HousekeepingGroupResponse>[].obs;
   final isLoading = false.obs;
-  // final String imagIn =Get.arguments;
+  final List res =Get.arguments;
 
 
 
@@ -24,22 +24,20 @@ class HouseKeepingController extends GetxController {
   getHousekeepingGroup() async {
     isLoading(true);
     final request = AllHousekeepingRequest(
-      appId: 5,
+      appId: res[1],
 
     );
     HousekeepingRepository().getHousekeepingGroup(request,
         onSuccess: (data) {
           housekeepingGroup.assignAll(data.data);
-          HousekeepingSearchlist=housekeepingGroup;
+          // HousekeepingSearchlist=housekeepingGroup;
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
     );
   }
-  filter(String name){
-
-    housekeepingGroup.value = List<HousekeepingGroupResponse>.from(HousekeepingSearchlist.where((element) => element.name!.contains(name)).toList());
-
-  }
+  // filter(String name){
+  //   housekeepingGroup.value = List<HousekeepingGroupResponse>.from(HousekeepingSearchlist.where((element) => element.name!.contains(name)).toList());
+  // }
 
 }

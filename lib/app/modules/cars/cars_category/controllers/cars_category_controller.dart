@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CarsCategoryController extends GetxController {
-  final selectedCategory = Get.arguments ;
+  // final selectedCategory = Get.arguments ;
   Rx<RangeValues> currentRangeFilterValues = const RangeValues(40, 80).obs;
   final loading = false.obs ;
   final catCars = <CarsResponse>[].obs ;
+  final List res =Get.arguments;
+
   @override
   void onInit() {
     getCarsOfGroups();
@@ -20,7 +22,7 @@ class CarsCategoryController extends GetxController {
 
   getCarsOfGroups(){
     loading(true);
-    final request = CarsRequest(groupId: selectedCategory);
+    final request = CarsRequest(groupId: res[0]);
     CarsRepository().getCarsOfGroup( request ,
         onComplete: ()=> loading(false),
         onError: (e) => showPopupText(e),

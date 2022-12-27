@@ -66,7 +66,8 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
                   width: size.width * .35,
                   height: size.height * .05,
                   child: TextWidget(
-                    price! + AppStrings.LE, textAlign: TextAlign.center,
+
+                    price! , textAlign: TextAlign.center,
                     weight: FontWeight.bold,
                   ),
                 ),
@@ -82,7 +83,7 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
                           [index!.value].id!);
                       print(controller.servicesSelected);
                     } else {
-                      controller.servicesSelected.remove(controller.housekeepingDetail!
+                      controller.servicesSelected.remove(controller.housekeepingDetail
                         [index!.value].id!);
                       print(controller.servicesSelected);
                     }

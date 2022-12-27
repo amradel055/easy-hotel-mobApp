@@ -113,6 +113,8 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                           HousekeepingServicesPriceWidget(
                                             controller.housekeepingDetail[i]
                                                 .name!,
+                                            controller.housekeepingDetail[i].price==null||
+                                                controller.housekeepingDetail[i].price==0?AppStrings.free:
                                             controller.housekeepingDetail[i]
                                                 .price!.toString(),
                                             i.obs,
@@ -128,24 +130,24 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                 ],
                               ),
                             ),
-                            controller.reviewsResponse!.reviewHouseKeepingDtoList!.length==0 ?SizedBox(): TextWidget(AppStrings.reviews,
+                            controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
                               weight: FontWeight.bold,
                               textColor: AppColors.appBlue,
                               size: 20,),
-                            controller.reviewsResponse!.reviewHouseKeepingDtoList!.length==0 ?const SizedBox(): SizedBox(
+                            controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
                                 child: ReviewsListWidget(
                                   reviewStars: controller.reviewsResponse!.starAverage!,
                                   reviewsList:controller.reviewsResponse!.reviewHouseKeepingDtoList!,
                                   reviewNumber: controller.reviewsResponse!.reviewHouseKeepingDtoList!.length,
                                 )),
 
-                            Padding(
-                              padding:  EdgeInsets.only(top:controller.reviewsResponse!.reviewHouseKeepingDtoList!.length==0 ?200:0),
+                            controller.servicesSelected.isNotEmpty ?   Padding(
+                              padding:  EdgeInsets.only(top:controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?200:0),
                               child: Center(
                                 child: GestureDetector(
                                   onTap: () {
                                     Get.toNamed(Routes.HOUSEKEEPING_RESERVATION,
-                                      arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value,controller.args[2]]
+                                      arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value,controller.args[2],controller.args[3]]
                                          );
                                   },
                                   child: Container(
@@ -163,7 +165,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ):SizedBox()
                           ],),
                       ),
                     );

@@ -12,13 +12,15 @@ class CarsMainController extends GetxController {
   final categories = <CarsGroupsResponse> [].obs ;
   Rx<int>? selectedCat ;
   final loading = false.obs ;
+  final List res =Get.arguments;
+
 
   @override
   void onInit() {
     loading(true);
     final carsGroupRequest = CarsGroupRequest(
-      appId: 3 ,
-      branchId: 232
+      appId: res[1] ,
+      branchId: UserManager().selectedBranch!.id!
     );
      CarsRepository().getCarsGroup(carsGroupRequest,
        onSuccess: (data){

@@ -21,6 +21,7 @@ class HousekeepingSaveRequest {
     this.customerId,
     this.date,
     this.time,
+    this.remark
   });
 
   int? serviceTypeId;
@@ -31,6 +32,7 @@ class HousekeepingSaveRequest {
   int? customerId ;
   DateTime? date ;
   DateTime? time ;
+  String? remark ;
 
   factory HousekeepingSaveRequest.fromJson( dynamic json) => HousekeepingSaveRequest(
       serviceTypeId: json["serviceTypeId"] == null ? null : json["serviceTypeId"],
@@ -38,6 +40,7 @@ class HousekeepingSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
+      remark: json["remark"] == null ? null : json["remark"],
       salesDetailHouseKeepingDTOList : json["salesDetailHouseKeepingDTOList"] == null ? null : List<int>.from(json["salesDetailHouseKeepingDTOList"].map((e) => SalesDetailsSpaItem.fromJson(e)))
   );
 
@@ -47,6 +50,7 @@ class HousekeepingSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
+    "remark": remark == null ? null : remark,
     "date": date == null ? null : date?.toIso8601String(),
     "time": time == null ? null : time?.toIso8601String(),
     "salesDetailHouseKeepingDTOList": salesDetailHouseKeepingDTOList == null ? null : List<dynamic>.from(salesDetailHouseKeepingDTOList!.map((x) => x)),

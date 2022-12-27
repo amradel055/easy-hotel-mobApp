@@ -6,14 +6,15 @@ import '../../../../../components/text_widget.dart';
 import '../../../../../core/values/app_colors.dart';
 import 'package:get/get.dart';
 class CarsMainCategoryWidget extends StatelessWidget {
-  const CarsMainCategoryWidget({Key? key , required this.carsGroup}) : super(key: key);
+  const CarsMainCategoryWidget({Key? key , required this.carsGroup, required this.image}) : super(key: key);
   final CarsGroupsResponse carsGroup ;
+  final String image ;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
     return GestureDetector(
       onTap: (){
-        Get.toNamed(Routes.carsCategory , arguments: carsGroup.id);
+        Get.toNamed(Routes.carsCategory , arguments: [carsGroup.id,image]);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -25,10 +26,21 @@ class CarsMainCategoryWidget extends StatelessWidget {
           children: [
             Container(
               height: size.height * 0.1,
-              decoration:const BoxDecoration(
+
+              decoration:   BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                          image
+                      ),
+                      fit: BoxFit.fitWidth,
+                  ),
                 shape: BoxShape.circle,
-                color: AppColors.appGreyLight,
               ),
+
+              // decoration: BoxDecoration(
+              //      image: AssetImage("imageIn"),
+              //   shape: BoxShape.circle,
+              // ),
             ),
              TextWidget(
               carsGroup.name! ,

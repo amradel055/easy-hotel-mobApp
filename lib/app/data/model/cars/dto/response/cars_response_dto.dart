@@ -13,6 +13,7 @@ class CarsResponse {
         this.type,
         this.pricePerDay,
         this.image,
+        this.branchId,
         this.seatsNumber});
 
   int? id;
@@ -27,7 +28,8 @@ class CarsResponse {
   double? pricePerDay;
   dynamic image;
   int? seatsNumber;
-  
+  int? branchId;
+
   static List<CarsResponse> fromList(dynamic json) => List.from(json.map((e) => CarsResponse.fromJson(e)));
 
   factory CarsResponse.fromJson(Map<String, dynamic> json) => CarsResponse(
@@ -43,6 +45,7 @@ class CarsResponse {
     pricePerDay: json["pricePerDay"] == null ? null : json["pricePerDay"],
     image: json["image"],
     seatsNumber: json["seatsNumber"] == null ? null : json["seatsNumber"],
+    branchId: json["branchId"] == null ? null : json["branchId"],
   );
 
 }

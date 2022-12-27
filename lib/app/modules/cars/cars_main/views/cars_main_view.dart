@@ -17,7 +17,7 @@ class CarsMainView extends GetView<CarsMainController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar:CarsMainAppbar(size.height * 0.25 , "تمتع بالراحة" , "استمتع بخدمات اضافية مميزه لرحلتك" , false),
+      appBar:CarsMainAppbar(size.height * 0.25 , "تمتع بالراحة" , "استمتع بخدمات اضافية مميزه لرحلتك" , false,controller.res[0]),
       body: Obx((){
         if(controller.loading.value == true){
           return Common.getSpin();
@@ -64,7 +64,7 @@ class CarsMainView extends GetView<CarsMainController> {
                       children: [
                         // for(GroupModel category in _categories)
                         for(CarsGroupsResponse carsCat in controller.categories)
-                          CarsMainCategoryWidget(carsGroup: carsCat,)
+                          CarsMainCategoryWidget(carsGroup: carsCat,image: carsCat.img==null?"":carsCat.img!,)
                       ],
                     ),
                   ),

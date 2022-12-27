@@ -10,17 +10,18 @@ import 'package:get/get.dart';
 
 
 class HousekeepingServicesWidget extends GetView<HouseKeepingController> {
-  const HousekeepingServicesWidget(this.image, this.name, this.id, this.index,  {Key? key}) : super(key: key);
+  const HousekeepingServicesWidget(this.image, this.name, this.id, this.index, this.branchId,  {Key? key}) : super(key: key);
   final String image;
   final String name;
   final int id;
   final int index;
+  final int branchId;
 
   @override
   Widget build(BuildContext context) {
 
     return GestureDetector(onTap: (){
-      Get.toNamed(Routes.HOUSEKEEPING_SERVICES,arguments:[id,name,image],);
+      Get.toNamed(Routes.HOUSEKEEPING_SERVICES,arguments:[id,name,image,branchId],);
     },
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.00)),

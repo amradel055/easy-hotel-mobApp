@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_home_page/views/widgets/Service.dart';
@@ -54,7 +55,7 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
               decoration:  BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        "controller.imagIn"
+                        controller.res[0]
                       ),
                       fit: BoxFit.fitWidth)),
 
@@ -66,19 +67,20 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
                     AppStrings.searchlabel, textColor: Colors.white,
                     size: 20.h,
                     weight: FontWeight.bold,)),
-                  Center(
-                    child: SizedBox(
-                        width: size.width * .8,
-                        child: TextFieldWidget(
-                          label: AppStrings.search,
-                          suffixIcon: Icons.search,
-                          onChange: (value) {
-                            controller.filter(value);
-                          },
-                          ltr: true,
-                        )
-                    ),
-                  ),
+                  // Center(
+                  //   child: SizedBox(
+                  //       width: size.width * .8,
+                  //       child: TextFieldWidget(
+                  //         label: AppStrings.search,
+                  //         suffixIcon: Icons.search,
+                  //         onChange: (value) {
+                  //           controller.filter(value);
+                  //         },
+                  //
+                  //         ltr: true,
+                  //       )
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -116,7 +118,9 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
                                       .img ?? "",
                                  controller.housekeepingGroup[index]
                                     .name!,controller.housekeepingGroup[index]
-                                  .id!,index);
+                                  .id!,index,controller.housekeepingGroup[index]
+                                  .branchId ==null?UserManager().selectedBranch!.id!:controller.housekeepingGroup[index]
+                                  .branchId!);
                             },
 
                           )

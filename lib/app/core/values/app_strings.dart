@@ -124,6 +124,7 @@ abstract class AppStrings {
   static const shouldSelectPeriod = "You Must Select a Period";
   static const requiredDays = "Required Days";
   static const add = "Add";
+  static const free = "Free";
 
 
 

@@ -89,15 +89,25 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                         ],
                       ),
                     ),
-                    Obx(() => DropdownSearch<CarsTrafficLinesResponse>(
-                          // showSearchBox: true,
-                          items: controller.trafficLines,
-                          itemAsString: (e) => e.lineName.toString(),
-                          // dropdownSearchDecoration: InputDecoration(
-                          // ),
-                          onChanged: (value) => controller.changeSelectedTrafficLines(value!),
-                          selectedItem: controller.selectedTrafficLine.value,
-                        )),
+                    Obx(() => Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: DropdownSearch<CarsTrafficLinesResponse>(
+
+                            // showSearchBox: true,
+                            items: controller.trafficLines,
+                            itemAsString: (e) => e.lineName.toString(),
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              textAlign: TextAlign.center,
+                              textAlignVertical: TextAlignVertical.center,
+
+
+
+
+                            ),
+                            onChanged: (value) => controller.changeSelectedTrafficLines(value!),
+                            selectedItem: controller.selectedTrafficLine.value,
+                          ),
+                    )),
                     Obx(() => SizedBox(
                           width: size.width,
                           height: size.height * 0.07,

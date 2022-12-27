@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class HouseKeepingServicesController extends GetxController {
   var housekeepingDetail = <HouseKeepingDetailResponse>[].obs;
-    ReviewsResponse ?reviewsResponse;
+   ReviewsResponse ?reviewsResponse;
   final isLoading = false.obs;
   final servicesSelected = <int>[].obs;
   final List args = Get.arguments;

@@ -113,5 +113,6 @@ final Map<String, String> arEG = {
   AppStrings.shouldSelectPeriod: "يجب اختيار فترة",
   AppStrings.requiredDays: "الايام التي تريد حجزها",
   AppStrings.add: "اضافة",
+  AppStrings.free: "مجاني",
 
 };

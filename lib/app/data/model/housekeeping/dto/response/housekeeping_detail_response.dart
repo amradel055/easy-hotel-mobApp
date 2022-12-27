@@ -52,7 +52,7 @@ class HouseKeepingDetailResponse {
   dynamic igmaOwnerSerial;
   dynamic userCode;
   String? name;
-  num ?price;
+  double ?price;
   int ?groupId;
   RxBool?selected=false.obs;
 
@@ -79,7 +79,7 @@ class HouseKeepingDetailResponse {
     igmaOwnerSerial: json["igmaOwnerSerial"],
     userCode: json["userCode"],
     name: json["name"] == null ? null : json["name"],
-    price: json["price"] == null ? null : json["price"],
+    price: json["price"] == null ? null : json["price"].toDouble(),
     groupId: json["groupId"] == null ? null : json["groupId"],
     selected: false.obs,
 
