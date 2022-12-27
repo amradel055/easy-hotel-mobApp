@@ -20,7 +20,7 @@ class HousekeepingServicesWidget extends GetView<HouseKeepingController> {
   Widget build(BuildContext context) {
 
     return GestureDetector(onTap: (){
-      Get.toNamed(Routes.HOUSEKEEPING_SERVICES,arguments:[id,name],);
+      Get.toNamed(Routes.HOUSEKEEPING_SERVICES,arguments:[id,name,image],);
     },
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.00)),

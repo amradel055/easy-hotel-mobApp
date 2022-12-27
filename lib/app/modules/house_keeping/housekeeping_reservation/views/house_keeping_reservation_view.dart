@@ -36,10 +36,10 @@ class HouseKeepingReservationView
                 right: 0,
                 left: 0,
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                       image: DecorationImage(
                           image: CachedNetworkImageProvider(
-                              'https://image.shutterstock.com/image-photo/group-friends-professional-cleaners-tiding-260nw-395889778.jpg'),
+                              controller.res[3]),
                           fit: BoxFit.fill
                       )
                   ),
@@ -62,31 +62,6 @@ class HouseKeepingReservationView
                         controller.res[1],
                         weight: FontWeight.bold,
                         size: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                              height: size.height * .04,
-                              width: size.width * .1,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(10)),
-                                color: Colors.white,
-                              ),
-                              child: const Center(
-                                  child: TextWidget(
-                                    '4.4',
-                                    size: 15,
-                                    weight: FontWeight.bold,
-
-                                  ))),
-                          const TextWidget(
-                            'مراجعات',
-                            weight: FontWeight.bold,
-                            size: 20,
-                          ),
-                        ],
                       ),
                     ],
                   ),

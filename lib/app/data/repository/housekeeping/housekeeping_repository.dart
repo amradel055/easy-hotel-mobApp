@@ -2,8 +2,10 @@
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/all_housekeeping_request_dto.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/housekeeping_detail_request_dto.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/housekeeping_save_request.dart';
+import 'package:easy_hotel/app/data/model/housekeeping/dto/response/Reviews_response.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping_detail_response.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping_groups_response.dart';
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 
 class HousekeepingRepository {
@@ -34,6 +36,21 @@ class HousekeepingRepository {
         onError: onError,
         convertor: HouseKeepingDetailResponse.fromList,
       );
+  getHousekeepingReview(
+      HousekeepingDetailRequest housekeepingDetailRequest, {
+        SuccessFunc<ReviewsResponse> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<ReviewsResponse>(
+        'houseKeeping/getAverageAndReviewByItemId',
+        onSuccess: onSuccess,
+        data: housekeepingDetailRequest.toJson(),
+        onError: onError,
+        convertor: ReviewsResponse.fromJson,
+        onComplete: onComplete
+    );
+  }
+
 
   getHousekeepingSave(
       HousekeepingSaveRequest housekeepingSaveRequest, {

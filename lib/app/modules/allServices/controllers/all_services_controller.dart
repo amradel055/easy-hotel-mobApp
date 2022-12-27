@@ -16,7 +16,7 @@ import '../../../data/model/user/dto/request/get_hotel_for_service_request.dart'
 class AllServicesController extends GetxController {
   final appServicesList = <ApplicationResponse>[].obs;
 
-  final isLoading = false.obs;
+  final isLoading = true.obs;
   @override
   void onInit() {
     getAppServices();

@@ -35,7 +35,7 @@ class ApiProvider {
   }
 
   // static const String _domainUrl = "http://192.168.1.22:8050/";
-  static const String _domainUrl = "http://192.168.1.11:8005";
+  static const String _domainUrl = "http://192.168.1.11:8050";
   // static const String _domainUrl = "http://192.168.1.59:8070/hotelApp";
   static const String apiUrl = "$_domainUrl/";
   static const String imageUrl = "$_domainUrl/restaurantItem/itemImage/";
