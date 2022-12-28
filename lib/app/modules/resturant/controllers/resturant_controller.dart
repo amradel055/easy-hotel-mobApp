@@ -1,23 +1,75 @@
+import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
+import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:get/get.dart';
 
-class ResturantController extends GetxController {
-  //TODO: Implement ResturantController
+import '../../../data/model/restaurant/dto/request/group_request.dart';
+import '../../../data/model/restaurant/dto/request/offers_request.dart';
+import '../../../data/model/restaurant/dto/request/slider_request.dart';
+import '../../../data/model/restaurant/dto/response/group_response.dart';
+import '../../../data/model/restaurant/dto/response/item_mini_response.dart';
+import '../../../data/model/restaurant/dto/response/slider_response.dart';
+import '../../../data/repository/restaurant/restaurant_repository.dart';
 
-  final count = 0.obs;
+class RestaurantController extends GetxController {
+
+  final sliderList = <SlidersResponse>[].obs;
+  final offerList = <ItemMiniResponse>[].obs;
+  final groupList = <GroupResponse>[].obs;
+  final loading = false.obs ;
+  final offerLoading = false.obs ;
+  final groupLoading = false.obs ;
   @override
   void onInit() {
+    getSliders();
+    getOfferList();
+    getGroupList();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  getSliders(){
+    loading(true);
+    final request = SlidersRequest(
+      branchId: UserManager().selectedBranch!.id! ,
+      appId: 1 ,
+      pageId: 271,
+      positionNumber: 0
+    );
+    RestaurantRepository().getSliders(
+        request,
+      onComplete: () => loading(false),
+      onError: (e) => showPopupText(e),
+      onSuccess: (data) => sliderList.assignAll(data.data)
+    );
+    
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  getOfferList(){
+    offerLoading(true);
+    final request = OffersRequest(
+        appId: 1 ,
+        branchId:UserManager().selectedBranch!.id!,
+        currencySerial: 1
+    );
+    RestaurantRepository().getOfferList(
+        request,
+        onComplete: () => offerLoading(false),
+        onError: (e) => showPopupText(e),
+        onSuccess: (data) => offerList.assignAll(data.data)
+    );
+  }
+  getGroupList(){
+    groupLoading(true);
+    final request = GroupRequest(
+        appId: 1 ,
+        branchId:UserManager().selectedBranch!.id!,
+    );
+    RestaurantRepository().getGroupList(
+        request,
+        onComplete: () => groupLoading(false),
+        onError: (e) => showPopupText(e),
+        onSuccess: (data) => groupList.assignAll(data.data)
+    );
   }
 
-  void increment() => count.value++;
+
 }

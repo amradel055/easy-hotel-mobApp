@@ -1,7 +1,11 @@
 import 'package:easy_hotel/app/components/filter_dialog.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/modules/food_section/views/widgets/app_bar.dart';
+import 'package:easy_hotel/app/modules/food_section/views/widgets/items_list_widget.dart';
+import 'package:easy_hotel/app/modules/food_section/views/widgets/rest_info_widget.dart';
 import 'package:easy_hotel/app/modules/resturant/views/widgets/food_item_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,29 +13,15 @@ import 'package:get/get.dart';
 
 import '../controllers/food_section_controller.dart';
 
-class FoodSectionView extends GetView<FoodSectionController> {
+class FoodSectionView extends StatelessWidget {
   const FoodSectionView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(AppStrings.sections),
-        centerTitle: true,
-      ),
+      appBar: const RestaurantSectionsAppBar(),
       body: Column(
         children: [
-          Container(
-            margin: AppConstants.pagePadding,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300, width: 2),
-                borderRadius: BorderRadius.circular(AppConstants.radius)
-            ),
-            child: ListTile(
-              title: TextWidget("Crown Restaurant - New Cairo"),
-              subtitle: TextWidget("Pickup From : New Cairo 90 st."),
-              trailing: Icon(Icons.store,color: Colors.black,),
-            ),
-          ),
+          const RestInfoWidget(),
           const Divider(height: 0,color: Colors.black87,),
           SingleChildScrollView(
             padding: const EdgeInsets.only(top: 15, right: 10, bottom: 15),
@@ -52,17 +42,7 @@ class FoodSectionView extends GetView<FoodSectionController> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView.separated(
-              padding: AppConstants.pagePadding,
-                itemCount: 10,
-                shrinkWrap: true,
-                separatorBuilder: (_, __) => const SizedBox(height: 20),
-                itemBuilder: (context, index){
-                  return const FoodItemCard();
-                },
-            ),
-          )
+        const ItemsListWidget()
         ],
       ),
       floatingActionButton: FloatingActionButton(

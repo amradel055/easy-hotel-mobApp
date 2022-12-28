@@ -3,11 +3,14 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:flutter/material.dart';
 
-class OfferCard extends StatelessWidget {
-  const OfferCard({Key? key}) : super(key: key);
+import '../../../../data/model/restaurant/dto/response/item_mini_response.dart';
 
+class OfferCard extends StatelessWidget {
+  const OfferCard({Key? key , required this.item}) : super(key: key);
+  final ItemMiniResponse item ;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -26,7 +29,7 @@ class OfferCard extends StatelessWidget {
               children: [
                 Positioned.fill(
                     child: ImageWidget(
-                  path: AppAssets.restraunt,
+                  path: ApiProvider.imageUrl + item.image.toString(),
                   fit: BoxFit.fill,
                   backgroundColor: Colors.black12,
                 )),
@@ -43,7 +46,7 @@ class OfferCard extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                       textColor: Colors.white,
                       weight: FontWeight.bold,
-                      children: const [TextWidget(" 15 "), TextWidget("%"), TextWidget(" - "), TextWidget(" 2000 "), TextWidget("LE")],
+                      children: [TextWidget(item.salePrice != null ? item.salePrice!.toString()  : item.price != null ? item.price!.toString() : ""), TextWidget( "LE" )],
                     ),
                   ),
                 ),
@@ -64,7 +67,7 @@ class OfferCard extends StatelessWidget {
                         Expanded(
                           flex: 2,
                             child: TextWidget(
-                          "كفته",
+                          item.name!,
                           maxLines: 1,
                           size: w * .06,
                           textColor: Colors.white,
@@ -74,7 +77,7 @@ class OfferCard extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                TextWidget("4.5",textColor: Colors.white,size: w * .05),
+                                TextWidget(item.reviewsStars != null ? item.reviewsStars.toString() : "0" ,textColor: Colors.white,size: w * .05),
                                 Icon(Icons.star_rounded,color: Colors.white,size: w * .08)
                               ],
                             )),
@@ -82,7 +85,7 @@ class OfferCard extends StatelessWidget {
                           child: Align(
                             alignment: AlignmentDirectional.bottomEnd,
                             child: TextWidget(
-                              "40-50 ",
+                              item.time != null ? item.time.toString() : "",
                               size: w * .05,
                               textColor: Colors.white,
                               weight: FontWeight.bold,

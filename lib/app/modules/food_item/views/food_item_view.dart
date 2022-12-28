@@ -179,7 +179,7 @@ class FoodItemView extends GetView<FoodItemController> {
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (_, __) => const SizedBox(width: 10),
                       itemBuilder: (context, index) {
-                        return const OfferCard();
+                        // return const OfferCard();
                       },
                     ),
                   ),
