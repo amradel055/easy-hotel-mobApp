@@ -35,7 +35,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
         backgroundColor: AppColors.appHallsRedDark,
         foregroundColor: Colors.white,
         title: const TextWidget(
-         "غرف المدينه",weight: FontWeight.bold,size: 25,textColor: Colors.white,
+         AppStrings.cityRooms,weight: FontWeight.bold,size: 25,textColor: Colors.white,
         ),
         centerTitle: true,
       ),
@@ -49,7 +49,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
           itemCount: controller.roomsCity.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            return  RoomsCardWidget( price: controller.roomsCity[index].price!.toDouble(), image: 'https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png', title:controller.roomsCity[index].hotelName!, subtitle: controller.roomsCity[index].cityName!,id:controller.roomsCity[index].id!,onTap:(){},);
+            return  RoomsCardWidget( price: controller.roomsCity[index].price!.toDouble(), image: controller.roomsCity[index].image ?? "", title:controller.roomsCity[index].hotelName!, subtitle: controller.roomsCity[index].cityName!,id:controller.roomsCity[index].id!,onTap:(){},);
           },
 
         );
@@ -63,11 +63,11 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
         children: [
           FloatingActionButton.small(
             backgroundColor: AppColors.appHallsRedDark,
-            child: const Icon(Icons.filter, color: Colors.white,),
+            child: const Icon(Icons.sort, color: Colors.white,),
             onPressed: () {
               Widget okButton = TextButton(
                 child: const Center(child: TextWidget(
-                  "بحث", textColor: Colors.white,
+                  AppStrings.search, textColor: Colors.white,
                   size: 15,
                   weight: FontWeight.bold,)),
                 onPressed: () {
@@ -254,7 +254,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
           ),
           FloatingActionButton.small(
             backgroundColor: AppColors.appHallsRedDark,
-            child: const Icon(Icons.sort, color: Colors.white,),
+            child: const Icon(Icons.filter, color: Colors.white,),
             onPressed: () {},
           ),
         ],
