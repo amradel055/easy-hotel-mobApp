@@ -66,7 +66,7 @@ class CarWidget extends StatelessWidget {
                 Expanded(
                     flex: 9,
                     child:
-                    TextWidget( "${car.pricePerDay!.toString()+AppStrings.LE}" ,
+                    TextWidget( "${car.pricePerDay.toString()+AppStrings.LE??""}" ,
                       textColor:Colors.blue , maxLines: 1, weight: FontWeight.bold, size: 20,),
                 ),
                 Expanded(

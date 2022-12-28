@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
+import 'package:easy_hotel/app/data/model/item_image_response_dto.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 
 
@@ -86,7 +87,7 @@ class RoomResponse {
   double? clientsEvaluation;
   double? teamWorkEvaluation;
   dynamic appId;
-  List<ImageModel>? itemImages;
+  List<ItemImageResponse>? itemImages;
   double? saleprice;
   String? description;
   String? branchName;
@@ -134,7 +135,7 @@ class RoomResponse {
     clientsEvaluation: json["clientsEvaluation"] == null ? null : json["clientsEvaluation"],
     teamWorkEvaluation: json["teamWorkEvaluation"] == null ? null : json["teamWorkEvaluation"],
     appId: json["appId"],
-    itemImages: json["itemImages"] == null ? null : List<ImageModel>.from(json["itemImages"].map((x) => ImageModel.fromJson(x))),
+    itemImages: json["itemImages"] == null ? null : List<ItemImageResponse>.from(json["itemImages"].map((x) => ItemImageResponse.fromJson(x))),
     saleprice: json["saleprice"] == null ? null : json["saleprice"],
     branchName: json["branchName"] == null ? null : json["branchName"],
     description: json["description"] == null ? null : json["description"],
@@ -178,7 +179,7 @@ class RoomResponse {
     "clientsEvaluation": clientsEvaluation == null ? null : clientsEvaluation,
     "teamWorkEvaluation": teamWorkEvaluation == null ? null : teamWorkEvaluation,
     "appId": appId,
-    "itemImages": itemImages == null ? null : List<ImageModel>.from(itemImages!.map((x) => x.toJson())),
+    // "itemImages": itemImages == null ? null : List<ItemImageResponse>.from(itemImages!.map((x) => x.toJson())),
     "saleprice": saleprice == null ? null : saleprice,
     "description": description == null ? null : description,
     "branchName": branchName == null ? null : branchName,

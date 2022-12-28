@@ -30,11 +30,11 @@ class RoomsCardWidget extends StatelessWidget {
 
 
           Padding(
-            padding:  EdgeInsets.fromLTRB(size.width*.05, size.height*.005, size.width*.05, size.height*.005),
+            padding:  EdgeInsets.fromLTRB(size.width*.05, size.height*.01, size.width*.05, size.height*.005),
             child: Container(
               height: size.height*.2,
               width: size.width*.9,
-              decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)),
+              decoration:const  BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)),
                 color: AppColors.appGreyDark,
               ),
 
@@ -47,46 +47,47 @@ class RoomsCardWidget extends StatelessWidget {
                         height:  size.height * 0.2,
                         width: size.width * 0.28,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                            borderRadius: const BorderRadius.all(Radius.circular(15)),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                   AppAssets.rooms)
+                                  image)
                             )
                         ),
 
                       ),
                       Padding(
                         padding: const EdgeInsets.all(5),
-                        child: Container(width: size.width*.5,
+                        child: SizedBox(width: size.width*.5,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children:   [
-                              Text(title,style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-                              Text(subtitle,style: TextStyle(color: Colors.grey,fontSize: 12),),
-                              Text("${price}LE/night",style: TextStyle(color: Colors.grey,fontSize: 10)),
-                              RatingBar.builder(
-                                  initialRating: 3,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: true,
-                                  itemCount: 5,
-                                  itemSize: 15.0,
-                                  ignoreGestures: true,
-                                  itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.star,
-                                    color: AppColors.appBlue,
-                                  ),
-                                  onRatingUpdate: (rating) {
-                                    print(rating);
-                                  }),
+                              TextWidget(title,textColor: Colors.black,size: 20,weight: FontWeight.bold),
+                              TextWidget(subtitle, textColor: Colors.grey,size: 12,weight: FontWeight.bold,),
+                              TextWidget("${price.toString()}"+AppStrings.LE,textColor: Colors.grey,size: 10,weight: FontWeight.bold,),
                               Expanded(
                                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("17.900view",style: TextStyle(color: Colors.grey,fontSize: 10)),
-                                    Container(
+                                    RatingBar.builder(
+                                        initialRating: 3,
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        itemSize: 20.0,
+                                        ignoreGestures: true,
+                                        itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: AppColors.appBlue,
+                                        ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        }),
+
+                                    GestureDetector(
+
                                       child: Container(alignment: Alignment.centerRight,
 
                                         height: size.height*.04,
@@ -98,7 +99,7 @@ class RoomsCardWidget extends StatelessWidget {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.fromLTRB(0, 0, 5, 5),
-                                              child: Center(child: TextWidget(AppStrings.reserve,weight: FontWeight.bold,textColor: Colors.white, )),
+                                              child: Center(child: TextWidget(AppStrings.reserve,weight: FontWeight.bold,textColor: Colors.white,)),
                                             ),
                                           ],
                                         ),
