@@ -109,7 +109,7 @@ class RoomsView extends GetView<RoomsController> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 0),
                       child: TextWidget(
-                        AppStrings.searchlabel, textAlign: TextAlign.left,
+                        AppStrings.offers, textAlign: TextAlign.left,
                         weight: FontWeight.bold,
                         size: 20.h,),
                     ),
@@ -122,12 +122,13 @@ class RoomsView extends GetView<RoomsController> {
                           itemBuilder: (context, index) {
                             return RoomCard(name: controller.roomsOffer[index]
                                 .name!,
-                              price: controller.roomsOffer[index].numBeds!,
+                              price: controller.roomsOffer[index].price! ?? 0,
                               stars: controller.roomsOffer[index]
                                   .clientsEvaluation!.toInt(),
                               percentage: controller.roomsOffer[index]
-                                  .numBeds!.toInt(),
-                            id: controller.roomsOffer[index].id!,);
+                                  .numBeds!.toInt() ?? 0,
+                            id: controller.roomsOffer[index].id!,
+                            image: controller.roomsOffer[index].image??"",);
                           },
 
                         )

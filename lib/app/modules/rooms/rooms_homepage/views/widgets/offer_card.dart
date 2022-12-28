@@ -9,12 +9,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class RoomCard extends StatelessWidget {
-  const RoomCard({Key? key, required this.stars, required this.price, required this.percentage, required this.name, required this.id}) : super(key: key);
+  const RoomCard({Key? key, required this.stars, required this.price, required this.percentage, required this.name, required this.id, required this.image}) : super(key: key);
   final int stars;
   final num price;
   final int percentage;
   final String name;
   final int id;
+  final String image;
 
 
   @override
@@ -36,7 +37,7 @@ class RoomCard extends StatelessWidget {
             children: [
               Positioned.fill(
                   child: ImageWidget(
-                    path: AppAssets.rooms,
+                    path: image,
                     fit: BoxFit.fill,
                     backgroundColor: Colors.black12,
                   )),

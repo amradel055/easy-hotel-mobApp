@@ -27,8 +27,13 @@ final Map<String, String> arEG = {
   AppStrings.login: 'تسجيل الدخول',
   AppStrings.hello: 'مرحبا ',
   AppStrings.logout: 'تسجيل الخروج',
-  // AppStrings.search: 'بحث ',
-  AppStrings.search: 'ابحث عن الخدمه التي تريدها',
+  AppStrings.search: 'بحث ',
+  AppStrings.arrivalTime: 'ميعاد الوصول ',
+  AppStrings.leavingTime: 'ميعاد المغاده ',
+  AppStrings.children: 'عدد الأطفال',
+  AppStrings.adults: 'عدد البالغين',
+  AppStrings.search: 'بحث ',
+  // AppStrings.search: 'ابحث عن الخدمه التي تريدها',
   AppStrings.searchlabel: 'إبحــث عـــن الخدمـــات وإحجزهــــا؟',
   AppStrings.offers: 'العروض',
   AppStrings.home: 'الرئيسيه',
@@ -72,10 +77,6 @@ final Map<String, String> arEG = {
   AppStrings.number: 'السعه ',
   AppStrings.design: 'التصميم ',
   AppStrings.servicesHall: 'خدمات القاعه ',
-
-
-
-
   AppStrings.description: 'الوصف',
   AppStrings.moreInformation: 'معلومات إضافية',
   AppStrings.relatedItems: 'العناصر المشابهة',
@@ -117,5 +118,11 @@ final Map<String, String> arEG = {
   AppStrings.shouldSelectDays: "يجب اضافة يوم الحجز",
   AppStrings.savedSuccessfully: "تم الحفظ بنجاح",
   AppStrings.free: "مجاني",
+  AppStrings.cityRooms: "غرف المدينه",
+  AppStrings.hotelRooms: "غرف الفندق",
+  AppStrings.stars: "نجوم",
+  AppStrings.roomDetail: "تفاصيل الغرفه",
+  AppStrings.around: "ماذا حولك..",
+  AppStrings.location: "المكان",
 
 };

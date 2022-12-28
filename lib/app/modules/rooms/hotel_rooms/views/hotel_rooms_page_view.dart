@@ -34,7 +34,7 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
         backgroundColor: AppColors.appHallsRedDark,
         foregroundColor: Colors.white,
         title: const TextWidget(
-          "غرف الفندق", size: 25,
+          AppStrings.hotelRooms, size: 25,
           weight: FontWeight.bold,
           textColor: Colors.white,
         ),
@@ -64,7 +64,7 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
                     itemCount: controller.roomsHotel.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
-                      return  RoomsCardWidget( price: controller.roomsHotel[index].price!.toDouble(), image: 'https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png', title:controller.roomsHotel[index].hotelName!, subtitle: controller.roomsHotel[index].cityName!,id:controller.roomsHotel[index].id!,onTap:(){},);
+                      return  RoomsCardWidget( price: controller.roomsHotel[index].price!.toDouble(), image:controller.roomsHotel[index].image??"", title:controller.roomsHotel[index].hotelName!, subtitle: controller.roomsHotel[index].cityName!,id:controller.roomsHotel[index].id!,onTap:(){},);
                     },
 
                   ),),
@@ -88,7 +88,7 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
             onPressed: () {
               Widget okButton = TextButton(
                 child: const Center(child: TextWidget(
-                  "بحث", textColor: Colors.white,
+                  AppStrings.search, textColor: Colors.white,
                   size: 15,
                   weight: FontWeight.bold,)),
                 onPressed: () {

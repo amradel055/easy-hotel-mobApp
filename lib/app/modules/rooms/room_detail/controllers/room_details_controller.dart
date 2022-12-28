@@ -1,4 +1,5 @@
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
+import 'package:easy_hotel/app/data/model/item_image_response_dto.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/request/room_detail_request.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/response/room_response.dart';
 import 'package:easy_hotel/app/data/repository/rooms/rooms_repository.dart';
@@ -13,6 +14,7 @@ class RoomDetailController extends GetxController {
   RoomResponse? room ;
   final isLoading = false.obs;
   final servicesSelected = <int>[].obs;
+  final Rxn selectedImage = Rxn() ;
 
 
 
@@ -34,6 +36,10 @@ class RoomDetailController extends GetxController {
     RoomsRepository().getRoomDetail(request,
         onSuccess: (data) {
           room=data.data;
+          selectedImage(room!.image);
+          if(room!.itemImages != null &&  room!.image != null ){
+            room!.itemImages!.add(ItemImageResponse(image: room!.image));
+          }
 
         },
         onError: (e) => showPopupText( e.toString()),
@@ -41,6 +47,9 @@ class RoomDetailController extends GetxController {
     );
   }
 
+  setSelectedImage(String? image){
+    selectedImage(image);
+  }
 
 
 }

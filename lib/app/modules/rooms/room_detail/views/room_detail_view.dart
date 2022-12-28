@@ -3,10 +3,12 @@ import 'dart:collection';
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/rooms/dto/response/room_response.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/halls/hall_detail/views/widgets/hall_services.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -48,36 +50,41 @@ class RoomDetailView extends GetView<RoomDetailController> {
           return ListView(
             padding: EdgeInsets.zero,
             children: [
-              Container(
-                height: 250.h,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(AppAssets.rooms), fit: BoxFit.cover)),
-
-                padding: EdgeInsets.fromLTRB(50.h, 120.h, 50.h, 20.h),
-
-
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: SizedBox(
+                  height: 250.h,
+                  child: ImageWidget(
+                    path: ApiProvider.imageUrl + controller.selectedImage.value.toString(),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-              SizedBox(
+              controller.room!.itemImages != null && controller.room!.itemImages!.isNotEmpty
+                  ? SizedBox(
                   height: size.height * .1,
-                  child:
-                  ListView.builder(
-                    itemCount: 4,
+                  child: ListView.builder(
+                    itemCount: controller.room!.itemImages!.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.fromLTRB(1, 0, 1, 0),
-                        child: ImageWidget(
-                          path: "https://www.arabiaweddings.com/sites/default/files/articles/2020/02/wedding_venues_in_amman.png",
-                          radius: 0,
-                          width: size.width * .3,
-                          height: size.height * .18,
-                          fit: BoxFit.fill,),
+                        padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            controller.setSelectedImage(controller.room!.itemImages![index].image);
+                          },
+                          child: ImageWidget(
+                            path: ApiProvider.imageUrl + controller.room!.itemImages![index].image,
+                            radius: 20.w,
+                            width: size.width * .3,
+                            height: size.height * .18,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       );
                     },
-
-                  )
-              ),
+                  ))
+                  : const SizedBox.shrink(),
               SizedBox(
                 width: double.infinity,
                 child: Column(mainAxisAlignment: MainAxisAlignment.start,
@@ -105,9 +112,9 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                       Padding(
                                         padding:
                                         const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                                        child: TextWidget(
+                                        child:  TextWidget(
                                           "${controller.room!.evaluation
-                                              .toString()}.نجوم",
+                                              .toString()+AppStrings.stars}",
                                           weight: FontWeight.bold,
 
                                         ),
@@ -122,33 +129,21 @@ class RoomDetailView extends GetView<RoomDetailController> {
                               ),
                             ),
                           ),
-                          Column(
-                            children: [
-                              Text(
-                                "${controller.room!.price.toString()}LE ",
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.grey[700],
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "per day ",
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.grey[700],
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ],
-                          )
+                          TextWidget(
+                            "${controller.room!.price.toString()+AppStrings.LE} ",
+                            size: 15.0,
+                            textColor: Colors.grey[700],
+                            weight: FontWeight.bold,
+
+                          ),
+
                         ],
                       ),
 
                       SizedBox(
                         width: size.width * .9,
                         child: const TextWidget(
-                          "تفاصيل الغرفه ",
+                          AppStrings.roomDetail,
                           textAlign: TextAlign.start,
                           weight: FontWeight.bold,
                         ),
@@ -196,7 +191,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                       SizedBox(
                         width: size.width * .9,
                         child: const TextWidget(
-                            "تقييم العملاء",
+                           AppStrings.reviews,
                             textAlign: TextAlign.start, weight: FontWeight.bold
                         ),
                       ),
@@ -280,39 +275,38 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                     mainAxisAlignment: MainAxisAlignment
                                         .spaceEvenly,
                                     children: [
-                                      Container(
-                                          child: Column(
-                                            children: [
-                                              const TextWidget(
-                                                'فريق العمل',
-                                                weight: FontWeight.bold,
+                                      Column(
+                                        children: [
+                                          const TextWidget(
+                                            'فريق العمل',
+                                            weight: FontWeight.bold,
 
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              RatingBar.builder(
-                                                initialRating:
-                                                controller.room!
-                                                    .teamWorkEvaluation!,
-                                                minRating: 1,
-                                                direction: Axis.horizontal,
-                                                allowHalfRating: true,
-                                                itemCount: 5,
-                                                itemSize: 10.0,
-                                                ignoreGestures: true,
-                                                itemPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 1.0),
-                                                itemBuilder: (context, _) =>
-                                                const Icon(
-                                                  Icons.star,
-                                                  color: Colors.amber,
-                                                ),
-                                                onRatingUpdate: (rating) {
-                                                  print(rating);
-                                                },
-                                              )
-                                            ],
-                                          )),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          RatingBar.builder(
+                                            initialRating:
+                                            controller.room!
+                                                .teamWorkEvaluation!,
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            itemSize: 10.0,
+                                            ignoreGestures: true,
+                                            itemPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            itemBuilder: (context, _) =>
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                            ),
+                                            onRatingUpdate: (rating) {
+                                              print(rating);
+                                            },
+                                          )
+                                        ],
+                                      ),
                                       Column(
                                         children: [
                                           const TextWidget(
@@ -353,14 +347,15 @@ class RoomDetailView extends GetView<RoomDetailController> {
                             child: SizedBox(
                               width: size.width * .35,
                               child: CircleAvatar(
-                                backgroundColor: Colors.indigo,
+                                backgroundColor: AppColors.appBlue,
                                 radius: 40,
                                 child: CircleAvatar(
-                                  backgroundColor: AppColors.appBlue,
+                                  backgroundColor: Colors.blueAccent,
                                   radius: 32,
                                   child: TextWidget(
 
-                                      controller.room!.evaluation.toString()
+                                      controller.room!.evaluation.toString(),
+                                    weight: FontWeight.bold,size: 20,textColor: AppColors.white,
 
                                   ),
 
@@ -375,28 +370,29 @@ class RoomDetailView extends GetView<RoomDetailController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const TextWidget(
-                              'المكان',
+                             TextWidget(
+                              AppStrings.location,
                               weight: FontWeight.bold,
+                                size:  size.width *0.045
 
                             ),
-                            Container(
-                              // decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(30)),border: Border.all(color: Colors.red)),
-                              height: size.height * .25, width: double.infinity,
-                              child: GoogleMap(
-                                // mapType: MapType.hybrid,
-                                initialCameraPosition: CameraPosition(
-                                  target:
-                                  LatLng(
-                                      37.43296265331129, -122.08832357078792),
-                                  zoom: size.height * .01,
-                                ),
-                                onMapCreated:
-                                    (GoogleMapController googleMapController) {
-
+                            GestureDetector(
+                                onTap: (){
+                                  if(controller.room!.recipeEvaluation == null || controller.room!.recipeEvaluation == null){
+                                    showPopupText(AppStrings.locationNotAvailable.tr);
+                                    return ;
+                                  }
+                                  Get.toNamed(Routes.MAP , arguments: LatLng(controller.room!.recipeEvaluation!, controller.room!.recipeEvaluation!));
                                 },
-                                markers: myMarkers,
-                                polylines: myPolilines.toSet(),
+
+
+                              child: SizedBox(
+                                child:  Row(
+                                  children: [
+                                    Icon(Icons.directions ,size: size.width*.1,color:AppColors.appBlue,),
+                                    TextWidget(AppStrings.directions,weight: FontWeight.w900 , size: size.width *0.045 ,)
+                                  ],
+                                ),
                               ),
                             )
                           ],
@@ -414,7 +410,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const TextWidget(
-                                'ماذا حولك',
+                               AppStrings.around,
                                 weight: FontWeight.bold,
                               ),
                               SizedBox(
@@ -449,8 +445,8 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                                   x++)
                                                     Row(
                                                       children: [
-                                                        const Icon(Icons.home),
-                                                        Text(remark.remarkDtoListForGroup![x].name!)
+                                                        const Icon(Icons.home,color: AppColors.appBlue,),
+                                                        TextWidget(remark.remarkDtoListForGroup![x].name!,weight: FontWeight.bold,)
                                                       ],
                                                     ),
                                                 ],
@@ -502,7 +498,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                               ),
                             ),
                             TextWidget(controller.room!.price!.toString() +
-                                AppStrings.LE,
+                                AppStrings.LE,weight: FontWeight.bold,size: 20,
                             )
                           ],
                         ),

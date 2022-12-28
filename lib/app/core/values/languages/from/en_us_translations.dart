@@ -28,6 +28,10 @@ final Map<String, String> enUs = {
   AppStrings.hello: 'Hello ',
   AppStrings.logout: 'Log out',
   AppStrings.search: 'search',
+  AppStrings.arrivalTime: 'Arrival Time ',
+  AppStrings.leavingTime: 'Leaving Time',
+  AppStrings.children: 'Children',
+  AppStrings.adults: 'Adults',
   AppStrings.searchlabel: 'search for service..',
   AppStrings.offers: 'Offers',
   AppStrings.towns: 'Towns',
@@ -117,5 +121,11 @@ final Map<String, String> enUs = {
   AppStrings.shouldSelectDays: "You Must Add a Day",
   AppStrings.savedSuccessfully: "Saved Successfully",
   AppStrings.free: "Free",
+  AppStrings.cityRooms: "City Rooms",
+  AppStrings.hotelRooms: "Hotel Rooms",
+  AppStrings.stars: "Stars",
+  AppStrings.roomDetail: "Room Detail",
+  AppStrings.around: "Around You..",
+  AppStrings.location: "Location",
 
 };
