@@ -16,7 +16,8 @@ class HallsSaveRequest {
     this.addtionsDTOList,
     this.customerId,
     this.currencySerial,
-    required this.holePeriodIdList
+    required this.holePeriodIdList,
+    this.remark
   });
 
   int? hallId;
@@ -27,6 +28,7 @@ class HallsSaveRequest {
   int? customerId ;
   int? currencySerial ;
   List<HallsPeriodsResponse>? holePeriodIdList ;
+  String? remark ;
 
   factory HallsSaveRequest.fromJson(Map<String, dynamic> json) => HallsSaveRequest(
       hallId: json["hallId"] == null ? null : json["hallId"],
@@ -35,6 +37,7 @@ class HallsSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
+      remark: json["remark"] == null ? null : json["remark"],
       holePeriodIdList: json["branchId"] == null ? null : HallsPeriodsResponse.fromList(json["holePeriodIdList"])
       // addtionsDTOList : json["addtionsDTOList"] == null ? null : List<AddtionsModel>.from(json["addtionsDTOList"].map((e) => addtionsDTOList.fromJson(e)))
   );
@@ -46,6 +49,7 @@ class HallsSaveRequest {
     "companyId": companyId == null ? null : companyId,
     "currencySerial": currencySerial == null ? null : currencySerial,
     "branchId": branchId == null ? null : branchId,
+    "remark": remark == null ? null : remark,
     "addtionsDTOList" : addtionsDTOList == null ? null : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
     "holePeriodIdList" : holePeriodIdList == null ? null : List<dynamic>.from(holePeriodIdList!.map((x) => x.toJson()))
   };

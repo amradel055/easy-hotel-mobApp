@@ -1,5 +1,3 @@
-
-
 import 'package:easy_hotel/app/modules/food_section/controllers/food_section_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,10 +9,12 @@ class RestaurantSectionsAppBar extends GetView<FoodSectionController> with Prefe
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: TextWidget(controller.group.name!),
-      centerTitle: true,
-    );
+    return Obx(() {
+      return AppBar(
+        title: TextWidget(controller.group.value!.name!),
+        centerTitle: true,
+      );
+    });
   }
 
   @override

@@ -36,12 +36,12 @@ class ResturantView extends StatelessWidget {
       ),
       body: ListView(
         padding: AppConstants.pagePadding,
-        children: [
-          const SlidersWidget(),
-          const SizedBox(height: 20),
-          const OfferListWidget(),
-          const SizedBox(height: 20),
-          const SectionListWidget()
+        children: const [
+          SlidersWidget(),
+          SizedBox(height: 20),
+          OfferListWidget(),
+          SizedBox(height: 20),
+          SectionListWidget()
         ],
       ),
     );

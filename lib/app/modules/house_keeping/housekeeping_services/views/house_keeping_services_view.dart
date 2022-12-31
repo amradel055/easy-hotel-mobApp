@@ -130,15 +130,15 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                 ],
                               ),
                             ),
-                            controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
+                            controller.reviewsResponse  == null &&   controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
                               weight: FontWeight.bold,
                               textColor: AppColors.appBlue,
                               size: 20,),
-                            controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
+                            controller.reviewsResponse  == null &&   controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
                                 child: ReviewsListWidget(
-                                  reviewStars: controller.reviewsResponse!.starAverage!,
-                                  reviewsList:controller.reviewsResponse!.reviewHouseKeepingDtoList!,
-                                  reviewNumber: controller.reviewsResponse!.reviewHouseKeepingDtoList!.length,
+                                  reviewStars: controller.reviewsResponse!.starAverage ?? 0,
+                                  reviewsList:controller.reviewsResponse!.reviewHouseKeepingDtoList ?? [],
+                                  reviewNumber: controller.reviewsResponse!.reviewHouseKeepingDtoList!.length ,
                                 )),
 
                             controller.servicesSelected.isNotEmpty ?   Padding(

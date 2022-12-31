@@ -124,5 +124,6 @@ final Map<String, String> arEG = {
   AppStrings.roomDetail: "تفاصيل الغرفه",
   AppStrings.around: "ماذا حولك..",
   AppStrings.location: "المكان",
+  AppStrings.notes: "الملاحظات...",
 
 };

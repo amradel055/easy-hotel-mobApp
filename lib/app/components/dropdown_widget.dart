@@ -4,9 +4,9 @@ import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
-class DropDownWidget extends StatelessWidget {
+class DropDownWidget<T> extends StatelessWidget {
 
-  final List<DropdownMenuItem<dynamic>>? items;
+  final List<DropdownMenuItem<T>>? items;
   final String? hint;
   final dynamic value;
   final ValueChanged<dynamic>? onChanged;
@@ -52,7 +52,7 @@ class DropDownWidget extends StatelessWidget {
     );
     return Padding(
       padding: EdgeInsets.only(top: topPadding ?? 0, right: rightPadding ?? 0, left: leftPadding ?? 0),
-      child: DropdownButtonFormField<dynamic>(
+      child: DropdownButtonFormField<T>(
         value: value,
         validator: validator,
         decoration: decoration,

@@ -80,8 +80,6 @@ class PolmanView extends GetView<PolmanController> {
                       child: TextFieldWidget(
                         maxLines: 5,
                         controller:controller.remark,
-                        onChange: (value) => controller.remark.text = value,
-
                       ),
                     ),
                   ),

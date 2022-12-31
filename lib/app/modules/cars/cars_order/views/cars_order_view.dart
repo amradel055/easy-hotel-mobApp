@@ -83,12 +83,9 @@ class CarsOrderView extends GetView<CarsOrderController> {
                     SizedBox(
                       height: 100,
                       width: size.width*.9,
-
                       child: TextFieldWidget(
                         maxLines: 5,
                         controller:controller.remark,
-                        onChange: (value) => controller.remark.text = value,
-
                       ),
                     ),
                     const TextWidget(

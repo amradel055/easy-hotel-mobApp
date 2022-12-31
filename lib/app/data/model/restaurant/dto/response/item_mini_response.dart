@@ -15,7 +15,7 @@ class ItemMiniResponse {
 
   final double? discountRate;
 
-  final double? discountType;
+  final int? discountType;
 
   final String? image;
 

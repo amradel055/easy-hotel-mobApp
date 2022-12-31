@@ -127,5 +127,6 @@ final Map<String, String> enUs = {
   AppStrings.roomDetail: "Room Detail",
   AppStrings.around: "Around You..",
   AppStrings.location: "Location",
+  AppStrings.notes: "Notes",
 
 };

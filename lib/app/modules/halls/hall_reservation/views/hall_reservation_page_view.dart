@@ -36,6 +36,24 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
         body: Stack(
           children: [
             ListView(padding: const EdgeInsets.all(15), children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20,0,20,0),
+                child: const TextWidget(
+                  AppStrings.notes,
+                  weight: FontWeight.bold,
+                  size: 20,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  height: 100,
+                  child: TextFieldWidget(
+                    maxLines: 5,
+                    controller:controller.remark,
+                  ),
+                ),
+              ),
               const TextWidget(
                 AppStrings.additionsForHall,
                 weight: FontWeight.bold,
@@ -166,7 +184,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                                 width: size.width * .4,
                                 child: TextButton(
                                   onPressed: () {
-                                    Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value , controller.totalPrice.value]);
+                                    Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value , controller.totalPrice.value , controller.remark.text]);
                                   },
                                   style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),

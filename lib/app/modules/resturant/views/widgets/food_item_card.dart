@@ -18,7 +18,7 @@ class FoodItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => Get.toNamed(Routes.FOOD_ITEM),
+      onTap: () => Get.toNamed(Routes.FOOD_ITEM , arguments: item.id),
       child: Card(
         elevation: 5,
         shadowColor: Colors.black87,

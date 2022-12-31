@@ -138,6 +138,7 @@ abstract class AppStrings {
   static const roomDetail = "Room Detail";
   static const around = "Around you..";
   static const location = "Location";
+  static const notes = "Notes";
 
 
 
