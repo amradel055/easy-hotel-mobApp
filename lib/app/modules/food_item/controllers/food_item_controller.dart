@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/repository/restaurant/restaurant_repository.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/res_cart_manager.dart';
 import '../../../data/model/restaurant/dto/request/group_items_request.dart';
 import '../../../data/model/restaurant/dto/request/item_request.dart';
 import '../../../data/model/restaurant/dto/response/attribute_details_model.dart';
@@ -46,6 +48,15 @@ class FoodItemController extends GetxController {
     }else{
       selectedAdditions.add(selected);
     }
+    calcAddPrice();
+  }
+
+  calcAddPrice(){
+    pro.value!.sumPrice = pro.value!.price! ;
+    for(Additions add in selectedAdditions){
+      pro.value!.sumPrice = pro.value!.sumPrice! + (add.price ?? 0).toDouble() ;
+    }
+    pro.refresh();
   }
 
   getItem(){
@@ -61,6 +72,7 @@ class FoodItemController extends GetxController {
         String list = jsonEncode(pro.value!.attributeList);
         List _list = jsonDecode(list);
         attributeList(List<Attribute>.from(_list.map((e) => Attribute.fromJson(e))));
+        calcAddPrice();
       }
     );
   }
@@ -70,6 +82,7 @@ class FoodItemController extends GetxController {
     pro.value!.chooseValues.add(term);
     // checkVariation(pro!.variationsList!, i);
     checkVariationNew();
+    calcAddPrice();
   }
 
   void checkVariationNew(){
@@ -87,10 +100,12 @@ class FoodItemController extends GetxController {
       product.name = "${product.name!.split("-").first}-${selectedTerms.map((e) => e.value??"").join("-")}";
       if(possibleVariations.isNotEmpty){
         product.price = (possibleVariations.first.price??0).toDouble();
+        product.sumPrice = product.price ;
         product.salePrice = (possibleVariations.first.salePrice??0).toDouble();
         product.selectedVariation = possibleVariations.first;
       } else {
         product.price =  product.priceNoAttribute;
+        product.sumPrice = product.price ;
         product.salePrice =  product.salePriceNoAttribute;
       }
       pro(product);
@@ -99,4 +114,11 @@ class FoodItemController extends GetxController {
       print("$e\n$s");
     }
   }
+
+
+  addToCart(){
+    RestaurantCartManager().addToCart(pro.value!);
+    showPopupText(AppStrings.savedSuccessfully);
+  }
+
 }

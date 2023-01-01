@@ -2,6 +2,7 @@ import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/res_cart_manager.dart';
 import '../../../data/model/restaurant/dto/request/group_request.dart';
 import '../../../data/model/restaurant/dto/request/offers_request.dart';
 import '../../../data/model/restaurant/dto/request/slider_request.dart';
@@ -18,13 +19,18 @@ class RestaurantController extends GetxController {
   final loading = false.obs ;
   final offerLoading = false.obs ;
   final groupLoading = false.obs ;
+  final cartLength = 0.obs ;
+
   @override
   void onInit() {
+    cartLength(RestaurantCartManager().cartList.length);
     getSliders();
     getOfferList();
     getGroupList();
     super.onInit();
   }
+
+
 
   getSliders(){
     loading(true);

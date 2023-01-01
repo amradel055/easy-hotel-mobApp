@@ -1,23 +1,34 @@
 import 'package:get/get.dart';
+import '../../../core/utils/res_cart_manager.dart';
+import '../../../data/model/restaurant/dto/response/item_response.dart';
 
 class FoodCartController extends GetxController {
-  //TODO: Implement FoodCartController
 
-  final count = 0.obs;
+  final cartList = <ItemResponse>[].obs ;
+  // final count = 0.obs;
+
+
   @override
-  void onInit() {
+  onInit(){
     super.onInit();
+    cartList.assignAll(RestaurantCartManager().cartList);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+
+
+  add(ItemResponse item){
+    cartList.add(item);
+    RestaurantCartManager().addToCart(item);
+  }
+  remove(int index){
+    cartList.removeAt(index);
+    RestaurantCartManager().removeFromCart(index);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  removeAll(){
+    cartList.clear();
+    RestaurantCartManager().removeAllFromCart();
   }
 
-  void increment() => count.value++;
+
 }

@@ -14,12 +14,12 @@ class BottomWidget extends GetView<FoodItemController> {
   Widget build(BuildContext context) {
     return Obx(() {
       return Container(
-        height: 45,
+        height: 60,
         decoration: BoxDecoration(
             color: Theme
                 .of(context)
                 .colorScheme
-                .background,
+                .primary.withOpacity(0.9),
             borderRadius:  const BorderRadius.vertical(top: Radius.circular(AppConstants.radius)),
             boxShadow: [BoxShadow(color: Theme
                 .of(context)
@@ -31,17 +31,17 @@ class BottomWidget extends GetView<FoodItemController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
                TextWidget(
-          controller.pro.value == null ? "" :  controller.pro.value!.price.toString(),
+          controller.pro.value == null ? "" :  controller.pro.value!.sumPrice.toString(),
                 height: 1,
                 weight: FontWeight.bold,
-                size: 16,
+                size: 20,
                 children: [TextWidget(AppStrings.LE)],
               ),
               const Spacer(),
               IconButtonWidget(
                 icon: Icons.add_shopping_cart_rounded,
-                iconSize: 20,
-                onPressed: () {},
+                iconSize: 25,
+                onPressed: () => controller.addToCart(),
               )
             ],
           ),

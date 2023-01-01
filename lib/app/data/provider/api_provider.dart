@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:easy_hotel/app/core/utils/crashlytics.dart';
-import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
-import 'package:easy_hotel/app/core/values/languages/app_translation.dart';
 import 'package:easy_hotel/app/data/model/generic/response/generic_response.dart';
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -36,7 +34,7 @@ class ApiProvider {
 
   // static const String _domainUrl = "http://192.168.1.22:8050/";
   static const String _domainUrl = "http://192.168.1.13:8050/";
-  // static const String _domainUrl = "http://192.168.1.59:8070/hotelApp";
+  // static const String _domainUrl = "http://easyhotelsys.com/";
   static const String apiUrl = "$_domainUrl/";
   static const String imageUrl = "$_domainUrl/restaurantItem/itemImage/";
   final InternetConnectionChecker _checker = InternetConnectionChecker();

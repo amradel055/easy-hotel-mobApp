@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/modules/resturant/views/widgets/offer_list_widget.dart';
+import 'package:easy_hotel/app/modules/resturant/views/widgets/res_app_bar.dart';
 import 'package:easy_hotel/app/modules/resturant/views/widgets/sections_list_widget.dart';
 import 'package:easy_hotel/app/modules/resturant/views/widgets/sliders_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,26 +15,7 @@ class ResturantView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(AppStrings.foodService),
-        centerTitle: true,
-        actions: [
-          Center(
-            // child: Badge(
-            //   label: const TextWidget("2", height: 1.5),
-            //   alignment: AlignmentDirectional.topEnd,
-            //   // largeSize: 20,
-            //   smallSize: 20,
-            //   child: UnconstrainedBox(
-            //     child: IconButtonWidget(
-            //         onPressed: () => Get.toNamed(Routes.FOOD_CART),
-            //         icon: Icons.shopping_cart_outlined
-            //     ),
-            //   ),
-            // ),
-          )
-        ],
-      ),
+      appBar: const RestaurantAppBar(),
       body: ListView(
         padding: AppConstants.pagePadding,
         children: const [

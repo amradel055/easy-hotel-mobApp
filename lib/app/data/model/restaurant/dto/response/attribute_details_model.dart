@@ -1,6 +1,8 @@
 
 
 
+import 'package:easy_hotel/app/data/model/restaurant/dto/response/sales_details_attribute.dart';
+
 class AttributeDetails {
   AttributeDetails({
     this.id,
@@ -42,13 +44,13 @@ class AttributeDetails {
   int? orderBy;
   String? value;
 
-  // SalesDetailsAttribute get toDetailsAttribute{
-  //   return SalesDetailsAttribute(
-  //     attributeDetailsName: value,
-  //     attributeDetailsId: id,
-  //     attributeHeadId: headId,
-  //   );
-  // }
+  SalesDetailsAttribute get toDetailsAttribute{
+    return SalesDetailsAttribute(
+      attributeDetailsName: value,
+      attributeDetailsId: id,
+      attributeHeadId: headId,
+    );
+  }
 
   factory AttributeDetails.fromJson(Map<String, dynamic> json) => AttributeDetails(
     id: json["id"] == null ? null : json["id"],
