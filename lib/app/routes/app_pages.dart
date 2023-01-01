@@ -58,6 +58,8 @@ import '../modules/cars/cars_order/bindings/cars_order_binding.dart';
 import '../modules/cars/cars_order/views/cars_order_view.dart';
 import '../modules/food_cart/bindings/food_cart_binding.dart';
 import '../modules/food_cart/views/food_cart_view.dart';
+import '../modules/food_item/bindings/food_item_binding.dart';
+import '../modules/food_item/views/food_item_view.dart';
 import '../modules/forget_password/bindings/forget_password_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -221,11 +223,11 @@ class AppPages {
       page: () => const FoodSectionView(),
       binding: FoodSectionBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.FOOD_ITEM,
-    //   page: () => const FoodItemView(),
-    //   binding: FoodItemBinding(),
-    // ),
+    GetPage(
+      name: _Paths.FOOD_ITEM,
+      page: () => const FoodItemView(),
+      binding: FoodItemBinding(),
+    ),
     GetPage(
       name: _Paths.carsCategory,
       page: () => const CarsCategoryView(),

@@ -5,13 +5,14 @@ import 'package:easy_hotel/app/data/model/halls/dto/request/halls_save_request.d
 import 'package:easy_hotel/app/data/model/halls/dto/response/hall_detail_response.dart';
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 import 'package:easy_hotel/app/data/repository/halls/halls_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HallReservationPageController extends GetxController {
   final HallsDetailResponse hall = Get.arguments;
   final selectedAdd = <AddtionsModel>[].obs;
   final totalPrice = 0.0.obs ;
-
+  var remark = TextEditingController() ;
 
   @override
   onInit(){

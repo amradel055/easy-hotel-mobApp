@@ -3,18 +3,27 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
+import 'package:easy_hotel/app/modules/resturant/controllers/resturant_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class FoodSectionCard extends StatelessWidget {
-  const FoodSectionCard({Key? key}) : super(key: key);
+import '../../../../data/model/restaurant/dto/group_selected_dto.dart';
+import '../../../../data/model/restaurant/dto/response/group_response.dart';
 
+class FoodSectionCard extends GetView<RestaurantController> {
+  const FoodSectionCard({Key? key , required this.group}) : super(key: key);
+   final GroupResponse group ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(Routes.FOOD_SECTION),
+      onTap: (){
+        final GroupSelectedDTO selected = GroupSelectedDTO(
+            selectedGroups: group , groupList: controller.groupList );
+        Get.toNamed(Routes.FOOD_SECTION , arguments: selected);
+      } ,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppConstants.radius),
@@ -27,7 +36,7 @@ class FoodSectionCard extends StatelessWidget {
           children: [
             Positioned.fill(
                 child: ImageWidget(
-              path: AppAssets.restraunt,
+              path: ApiProvider.imageUrl + group.img.toString(),
               fit: BoxFit.cover,
               backgroundColor: Colors.black12,
             )),
@@ -42,7 +51,7 @@ class FoodSectionCard extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                 child: TextWidget(
-                  "حلويات",
+                  group.name!,
                   maxLines: 1,
                   size: 18,
                   textColor: Colors.white,

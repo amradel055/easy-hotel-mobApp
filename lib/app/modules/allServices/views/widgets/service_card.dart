@@ -19,7 +19,7 @@ class ServiceCard extends StatelessWidget {
         if(appId==1){
           Get.toNamed(Routes.RESTURANT);
         }else if(appId==2){
-          Get.toNamed(Routes.FOOD_SECTION);
+          Get.toNamed(Routes.RESTURANT);
         }else if(appId==3){
           Get.toNamed(Routes.CARS,arguments: [imageIn,appId]);
         }else if(appId==4){

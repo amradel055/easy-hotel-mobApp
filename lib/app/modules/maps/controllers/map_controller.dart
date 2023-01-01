@@ -15,7 +15,7 @@ class MapController extends GetxController {
   final  polyLineList = (List<Polyline>.of([])).obs ;
   PolylinePoints polylinePoints = PolylinePoints();
   final Completer<GoogleMapController> mapController = Completer<GoogleMapController>();
-  final String apiKey = "AIzaSyAiUFX4bsJ5gflJYQzrmX9NuvH-s-jWnrU";
+  final String apiKey = "AIzaSyBrBEab0jI1gdFQfH_pHyQO6PwWjkyl32A";
 
   List<LatLng> polylineCoordinates = [];
 

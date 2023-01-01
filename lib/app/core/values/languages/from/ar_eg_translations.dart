@@ -77,6 +77,10 @@ final Map<String, String> arEG = {
   AppStrings.number: 'السعه ',
   AppStrings.design: 'التصميم ',
   AppStrings.servicesHall: 'خدمات القاعه ',
+
+
+
+
   AppStrings.description: 'الوصف',
   AppStrings.moreInformation: 'معلومات إضافية',
   AppStrings.relatedItems: 'العناصر المشابهة',
@@ -124,5 +128,12 @@ final Map<String, String> arEG = {
   AppStrings.roomDetail: "تفاصيل الغرفه",
   AppStrings.around: "ماذا حولك..",
   AppStrings.location: "المكان",
+  AppStrings.cityRooms: "غرف المدينه",
+  AppStrings.hotelRooms: "غرف الفندق",
+  AppStrings.stars: "نجوم",
+  AppStrings.roomDetail: "تفاصيل الغرفه",
+  AppStrings.around: "ماذا حولك..",
+  AppStrings.location: "المكان",
+  AppStrings.notes: "الملاحظات...",
 
 };
