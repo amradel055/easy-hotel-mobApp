@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/modules/food_cart/views/widgets/items_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/values/app_constants.dart';
@@ -22,7 +23,7 @@ class FoodCartView extends GetView<FoodCartController> {
             child: UnconstrainedBox(
               child: IconButtonWidget(
                 icon: Icons.history_rounded,
-                onPressed: (){},
+                onPressed: () => controller.removeAll(),
               ),
             ),
           )
@@ -32,22 +33,6 @@ class FoodCartView extends GetView<FoodCartController> {
         length: 3,
         child: Column(
           children: [
-            BoxWidget(
-              child: Row(
-                children: [
-                  Expanded(child: Column(
-                    children: [
-
-                    ],
-                  )),
-                  Expanded(child: Column(
-                    children: [
-
-                    ],
-                  )),
-                ],
-              ),
-            ),
             BoxWidget(
               height: 50,
               margin: const EdgeInsets.fromLTRB(AppConstants.padding, 10, AppConstants.padding, 0),
@@ -70,7 +55,8 @@ class FoodCartView extends GetView<FoodCartController> {
                     Tab(child: TextWidget(AppStrings.delivered, size:13)),
                   ]
               ),
-            )
+            ) ,
+            const ItemListWidget()
           ],
         ),
       ),
