@@ -17,6 +17,7 @@ class HotelRoomsPageController extends GetxController {
   final selectedAdd = <AddtionsModel>[].obs;
   final allAdditions = <AdditionsGroupModel>[].obs;
   final List args = Get.arguments;
+  final selectedStarsNumber = 1.obs;
 
 
 
@@ -34,7 +35,9 @@ class HotelRoomsPageController extends GetxController {
         hotelId: args[0],
         cityId: null,
         childrenNumber: args[1],
-        adaptNumber: args[2]
+        adaptNumber: args[2],
+        arrivalTime:args[3],
+        leavingTime:args[4]
 
     );
     RoomsRepository().getCityRooms(request,
@@ -44,5 +47,8 @@ class HotelRoomsPageController extends GetxController {
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
     );
+  }
+  changeSelectedStarsNumber(int selected) {
+    selectedStarsNumber(selected);
   }
 }

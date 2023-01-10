@@ -150,10 +150,10 @@ class RoomDetailView extends GetView<RoomDetailController> {
                       ),
                       SizedBox(
                         width: size.width * .9,
-                        height: size.height * .09,
+                        height: size.height * .06,
                         child:
                         GridView.count(
-                          crossAxisCount: 4,
+                          crossAxisCount: 3,
                           crossAxisSpacing: 0,
                           mainAxisSpacing: 0,
                           childAspectRatio: size.aspectRatio * 5,
@@ -162,28 +162,28 @@ class RoomDetailView extends GetView<RoomDetailController> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
                               child: TextWidget(
-                                "${controller.room!.numBalconies.toString() + ' بلكونه'}",
+                                controller.room!.numBalconies.toString() + AppStrings.balconies,
                                 weight: FontWeight.bold,),
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
                               child: TextWidget(
-                                  "${controller.room!.numBathrooms.toString() + ' حمام'}",
+                                  controller.room!.numBathrooms.toString() + AppStrings.bathrooms,
                                   weight: FontWeight.bold),
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
                               child: TextWidget(
-                                  "${controller.room!.numBeds.toString() + 'سرير'}",
+                                  controller.room!.numBeds.toString() + AppStrings.beds,
                                   weight: FontWeight.bold),
                             )
                             ,
 
-                            for(int i = 0; i <= 1; i++)
-                              const Center(child: TextWidget(
-                                  'قاعة اضافية', weight: FontWeight.bold)
-
-                              )
+                            // for(int i = 0; i <= 4; i++)
+                            //   const Center(child: TextWidget(
+                            //       'قاعة اضافية', weight: FontWeight.bold)
+                            //
+                            //   )
                           ],
                         ),
                       ),
@@ -211,7 +211,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                       Column(
                                         children: [
                                           const TextWidget(
-                                            'النظافه'
+                                            AppStrings.clean
                                             , weight: FontWeight.bold,
                                             textAlign: TextAlign.center,
                                           ),
@@ -241,7 +241,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                       Column(
                                         children: [
                                           const TextWidget(
-                                            'رضاء العملاء',
+                                            AppStrings.clientsEvaluation,
                                             weight: FontWeight.bold,
 
                                             textAlign: TextAlign.center,
@@ -278,7 +278,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                       Column(
                                         children: [
                                           const TextWidget(
-                                            'فريق العمل',
+                                            AppStrings.teamWorkEvaluation,
                                             weight: FontWeight.bold,
 
                                             textAlign: TextAlign.center,
@@ -310,7 +310,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                       Column(
                                         children: [
                                           const TextWidget(
-                                            'التكاليف',
+                                            AppStrings.recipeEvaluation,
                                             weight: FontWeight.bold,
                                             textAlign: TextAlign.center,
                                           ),
@@ -382,7 +382,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                     showPopupText(AppStrings.locationNotAvailable.tr);
                                     return ;
                                   }
-                                  Get.toNamed(Routes.MAP , arguments: LatLng(controller.room!.recipeEvaluation!, controller.room!.recipeEvaluation!));
+                                  Get.toNamed(Routes.MAP , arguments: LatLng(controller.room!.lat!, controller.room!.lang!));
                                 },
 
 

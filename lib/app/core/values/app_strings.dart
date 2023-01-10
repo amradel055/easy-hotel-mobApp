@@ -76,6 +76,7 @@ abstract class AppStrings {
   static const LE = "LE";
   static const open = "Open";
   static const reserve = "RESERVE";
+  static const reserveNow = "RESERVE NOW";
   static const reserved = "RESERVED";
   static const services = "Services";
   static const information = "Information";
@@ -149,6 +150,21 @@ abstract class AppStrings {
   // static const around = "Around you..";
   // static const location = "Location";
   static const notes = "Notes";
+  static const mange = "Mange Your Account";
+  static const setting = "Setting";
+  static const terms = "Terms";
+  static const language = "Language";
+  static const mode = "Mode";
+  static const currency = "Currency";
+  static const advertisement = "Advertisements";
+  static const discover = "Discover";
+  static const clean = "Clean";
+  static const recipeEvaluation = "Recipe Evaluation";
+  static const clientsEvaluation = "Clients Evaluation";
+  static const teamWorkEvaluation = "TeamWork Evaluation";
+  static const beds = "beds";
+  static const balconies = "balconies";
+  static const bathrooms = "bathrooms";
 
 
 

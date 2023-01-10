@@ -102,7 +102,7 @@ class RoomsRepository {
         SuccessFunc<List<RoomcityResponse>> onSuccess,
         Function(dynamic error)? onError,
       }) =>
-      ApiProvider().post<List<RoomcityResponse>>('rooms/findRoomsByCittId',
+      ApiProvider().post<List<RoomcityResponse>>('rooms/findRoomsByFiltterData',
         onComplete: onComplete,
         onSuccess: onSuccess,
         data: roomSearchFilterRequest.toJson(),

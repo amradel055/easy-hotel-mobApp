@@ -1,8 +1,11 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/my_account/views/widgets/setting_tab_widget.dart';
+import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +18,7 @@ class MyAccountView extends GetView<MyAccountView> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Icon(Icons.add),
+        leading: Icon(Icons.notifications),
       ),
       body:Padding(
         padding: const EdgeInsets.all(10.0),
@@ -32,24 +35,23 @@ class MyAccountView extends GetView<MyAccountView> {
                   radius: 33.00,
                 ),
               ),
-              TextWidget("namenamenamenamename",weight: FontWeight.bold , size: 15,),
+              TextWidget(UserManager().user?.name??"",weight: FontWeight.bold , size: 15,),
               Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              TextWidget("M",weight: FontWeight.bold , size: 20,),
-              SettingTabWidget(Icons.edit,"setting"),
+              TextWidget(AppStrings.mange,weight: FontWeight.bold , size: 20,),
+              GestureDetector(
+                  onTap: (){
+                    Get.toNamed(Routes.ALLSERVICES);
+                  },
+                  child: SettingTabWidget(Icons.settings,AppStrings.setting,)),
               Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              SettingTabWidget(Icons.edit,"profile"),
+              GestureDetector(onTap: (){
+                Get.toNamed(Routes.SETTINGS);
+              },child: SettingTabWidget(Icons.account_circle,AppStrings.mange)),
               Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              SettingTabWidget(Icons.edit,"change password"),
+              SettingTabWidget(Icons.book,AppStrings.terms),
               Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              SettingTabWidget(Icons.edit,"terms"),
-              TextWidget("Language",weight: FontWeight.bold , size: 20,),
-              SettingTabWidget(Icons.edit,"Language"),
-              Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              TextWidget("Mode",weight: FontWeight.bold , size: 20,),
-              SettingTabWidget(Icons.edit,"mode"),
-              Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
-              SettingTabWidget(Icons.logout,"Logout"),
-              Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
+              SettingTabWidget(Icons.logout,AppStrings.logout),
+              // Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
 
 
 

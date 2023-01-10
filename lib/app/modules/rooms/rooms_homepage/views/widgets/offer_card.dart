@@ -9,13 +9,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class RoomCard extends StatelessWidget {
-  const RoomCard({Key? key, required this.stars, required this.price, required this.percentage, required this.name, required this.id, required this.image}) : super(key: key);
+  const RoomCard({Key? key, required this.stars, required this.price, required this.percentage, required this.name, required this.id, required this.image, required this.sale}) : super(key: key);
   final int stars;
   final num price;
   final int percentage;
   final String name;
   final int id;
   final String image;
+  final int sale;
 
 
   @override
@@ -53,7 +54,7 @@ class RoomCard extends StatelessWidget {
                     textDirection: TextDirection.rtl,
                     textColor: Colors.white,
                     weight: FontWeight.bold,
-                    children: [TextWidget(percentage.toString()), TextWidget("%"), TextWidget(" - "), TextWidget(price.toString()), TextWidget("LE")],
+                    children: [TextWidget(percentage.toString()), sale ==0?TextWidget("%"):TextWidget(AppStrings.LE), TextWidget(" - "), TextWidget(price.toString()), TextWidget(AppStrings.LE)],
                   ),
                 ),
               ),

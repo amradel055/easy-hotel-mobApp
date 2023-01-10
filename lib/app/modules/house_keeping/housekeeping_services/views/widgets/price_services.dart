@@ -81,11 +81,23 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
                         true) {
                       controller.servicesSelected.add(controller.housekeepingDetail
                           [index!.value].id!);
+                      controller.servicesSelectedNames.add(controller.housekeepingDetail
+                          [index!.value].name!);
+                      controller.servicesSelectedPrices.add(controller.housekeepingDetail
+                          [index!.value].price!.toString());
                       print(controller.servicesSelected);
+                      print(controller.servicesSelectedNames);
+                      print(controller.servicesSelectedPrices);
                     } else {
                       controller.servicesSelected.remove(controller.housekeepingDetail
                         [index!.value].id!);
+                      controller.servicesSelectedNames.remove(controller.housekeepingDetail
+                        [index!.value].name!);
+                      controller.servicesSelectedPrices.remove(controller.housekeepingDetail
+                        [index!.value].price!.toString());
                       print(controller.servicesSelected);
+                      print(controller.servicesSelectedNames);
+                      print(controller.servicesSelectedPrices);
                     }
                   },
                   child: Container(

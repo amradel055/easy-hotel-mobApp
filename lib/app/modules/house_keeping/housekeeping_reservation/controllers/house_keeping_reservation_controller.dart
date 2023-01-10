@@ -10,13 +10,11 @@ import 'package:get/get.dart';
 
 class HouseKeepingReservationController extends GetxController {
   final isLoading = false.obs;
-  // final servicesSelected = <int>[].obs;
-  // final int id = Get.arguments;
-  // final int branchId = Get.arguments;
   final List res =Get.arguments;
    Rx<DateTime> dateTime =DateTime.now().obs;
   final Rxn<DateTime> dateTo = Rxn();
   var remark = TextEditingController();
+
 
 
 
@@ -43,6 +41,30 @@ class HouseKeepingReservationController extends GetxController {
         onComplete: () => isLoading(false)
     );
   }
+  getHousekeepingSaveNow() async {
+    isLoading(true);
+    final request = HousekeepingSaveRequest(
+        serviceTypeId:res[0] ,
+        branchId:res[4],
+        createdBy:AppConstants.createdBy,
+        companyId: AppConstants.companyId,
+        customerId: UserManager().user!.id,
+        salesDetailHouseKeepingDTOList: res[2],
+        date: DateTime.now(),
+        time: DateTime.now(),
+        remark: remark.text
+    );
+    HousekeepingRepository().getHousekeepingSave(request,
+        onSuccess: (data) {
+          showPopupText( "تم الحفظ بنجاح");
+          Get.toNamed(Routes.ALLSERVICES);
+
+        },
+        onError: (e) => showPopupText( e.toString()),
+        onComplete: () => isLoading(false)
+    );
+  }
+
   pickToDate() async {
     dateTo(await _pickDate(initialDate: dateTo.value ?? DateTime.now(), firstDate: dateTo.value ?? DateTime.now(), lastDate:  DateTime.utc(2030, 3, 14)));
   }

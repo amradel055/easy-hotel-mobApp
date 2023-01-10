@@ -32,7 +32,7 @@ class RoomSearchPageView extends GetView<RoomSearchPageController> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.appHallsRedDark,
+        backgroundColor: AppColors.appBlue,
         foregroundColor: Colors.white,
         title: const TextFieldWidget(
           enabled: true,

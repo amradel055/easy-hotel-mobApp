@@ -36,4 +36,25 @@ class PolmanController extends GetxController {
         onComplete: () => isLoading(false)
     );
   }
+  getpolmanSaveNow() async {
+    isLoading(true);
+    final request = PolmanSaveRequest(
+        remark: remark.text,
+        serviceTypeId:res[1] ,
+        branchId: UserManager().selectedBranch!.id!,
+        createdBy:AppConstants.createdBy,
+        companyId: AppConstants.companyId,
+        customerId: UserManager().user!.id,
+        time: DateTime.now()
+    );
+    PolmanRepository().getPolmanSave(request,
+        onSuccess: (data) {
+          showPopupText( "تم الحفظ بنجاح");
+          Get.toNamed(Routes.ALLSERVICES);
+        },
+        onError: (e) => showPopupText( e.toString()),
+        onComplete: () => isLoading(false)
+    );
+  }
+
 }

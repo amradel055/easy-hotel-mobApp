@@ -21,6 +21,8 @@ import 'package:easy_hotel/app/modules/halls/search_filter_city/views/search_fil
 import 'package:easy_hotel/app/modules/halls/search_filter_hotel/bindings/search_filter_hotel_page_binding.dart';
 import 'package:easy_hotel/app/modules/halls/search_filter_hotel/views/search_filter_hotel_page_view.dart';
 import 'package:easy_hotel/app/modules/hotels_search/views/hotel_search_home_view.dart';
+import 'package:easy_hotel/app/modules/house_keeping/housekeeping_checkout/bindings/house_keeping_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/house_keeping/housekeeping_checkout/views/house_keeping_checkout_view.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_home_page/bindings/house_keeping_binding.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_home_page/views/house_keeping_view.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/bindings/house_keeping_reservation_binding.dart';
@@ -44,6 +46,8 @@ import 'package:easy_hotel/app/modules/rooms/search_filter_city/bindings/search_
 import 'package:easy_hotel/app/modules/rooms/search_filter_city/views/search_filter_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/bindings/search_filter_hotel_page_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/views/search_filter_hotel_page_view.dart';
+import 'package:easy_hotel/app/modules/settings/bindings/settings_binding.dart';
+import 'package:easy_hotel/app/modules/settings/views/settings_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/bindings/spa_city_binding.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/views/spa_city_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_home/views/spa_view.dart';
@@ -316,6 +320,14 @@ class AppPages {
       name: _Paths.MAP,
       page: () => const MapsView(),
       binding: MapBinding(),
+    ),    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
+    ), GetPage(
+      name: _Paths.HOUSEKEEPING_CHECKOUT,
+      page: () => const HouseKeepingCheckoutView(),
+      binding: HouseKeepingCheckoutBinding(),
     ),
   ];
 }

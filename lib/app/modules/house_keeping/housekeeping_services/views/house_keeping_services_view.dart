@@ -130,11 +130,11 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                 ],
                               ),
                             ),
-                            controller.reviewsResponse  == null &&   controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
+                            controller.reviewsResponse  == null ||   controller.reviewsResponse!.reviewHouseKeepingDtoList==null ?SizedBox(): TextWidget(AppStrings.reviews,
                               weight: FontWeight.bold,
                               textColor: AppColors.appBlue,
                               size: 20,),
-                            controller.reviewsResponse  == null &&   controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
+                            controller.reviewsResponse  == null ||   controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty ?const SizedBox(): SizedBox(
                                 child: ReviewsListWidget(
                                   reviewStars: controller.reviewsResponse!.starAverage ?? 0,
                                   reviewsList:controller.reviewsResponse!.reviewHouseKeepingDtoList ?? [],
@@ -147,7 +147,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                 child: GestureDetector(
                                   onTap: () {
                                     Get.toNamed(Routes.HOUSEKEEPING_RESERVATION,
-                                      arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value,controller.args[2],controller.args[3]]
+                                      arguments: [controller.args[0],controller.args[1],controller.servicesSelected.value,controller.args[2],controller.args[3],controller.servicesSelectedNames.value,controller.servicesSelectedPrices.value]
                                          );
                                   },
                                   child: Container(

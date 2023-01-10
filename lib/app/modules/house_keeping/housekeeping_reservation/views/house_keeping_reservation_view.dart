@@ -10,6 +10,7 @@ import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/views/widgets/timer.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/price_services.dart';
+import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -177,30 +178,69 @@ class HouseKeepingReservationView
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(40.0),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.getHousekeepingSave();
-                              },
-                              child: Container(
-                                height: size.height * 0.05,
-                                width: size.width * 0.4,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.appHallsRedDark,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
-                                ),
-                                child: const TextWidget(
-                                  AppStrings.reserve,
-                                  textAlign: TextAlign.center,
-                                  weight: FontWeight.bold,
-                                  textColor: Colors.white,
+                          padding: const EdgeInsets.fromLTRB(0,20,0,20),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      controller.getHousekeepingSave();
+                                    },
+                                    child: Container(
+                                      height: size.height * 0.05,
+                                      width: size.width * 0.4,
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.appHallsRedDark,
+                                        borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                      ),
+                                      child: const TextWidget(
+                                        AppStrings.reserve,
+                                        textAlign: TextAlign.center,
+                                        weight: FontWeight.bold,
+                                        textColor: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      // controller.getHousekeepingSaveNow();
+                                      Get.toNamed(Routes.HOUSEKEEPING_CHECKOUT,
+                                          arguments: [controller.res[2],controller.dateTo.value,controller.dateTime.value,controller.remark.text,controller.res[5],controller.res[6]]
+                                      );
+                                    },
+                                    child: Container(
+                                      height: size.height * 0.05,
+                                      width: size.width * 0.4,
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.appHallsRedDark,
+                                        borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                      ),
+                                      child: const TextWidget(
+                                        AppStrings.reserveNow,
+                                        textAlign: TextAlign.center,
+                                        weight: FontWeight.bold,
+                                        textColor: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+
+                            ],
+
+
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

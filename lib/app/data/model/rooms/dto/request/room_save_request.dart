@@ -32,8 +32,10 @@ class RoomsSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
-    "salesDetailRoomDTOModel": salesDetailRoomDTOModel == null ? null : salesDetailRoomDTOModel,
-  };
+    "salesDetailRoomDTOModel": salesDetailRoomDTOModel == null ? null : salesDetailRoomDTOModel!.toJson(),
+  // salesDetailRoomDTOModel = SalesDetailRoomDTOModel.fromJson(value);
+
+};
 }
 
 class SalesDetailRoomDTOModel {
@@ -90,7 +92,7 @@ class SalesDetailRoomDTOModel {
 
   String toRawJson() => json.encode(toJson());
 
-  factory SalesDetailRoomDTOModel.fromJson(Map<String, dynamic> json) => SalesDetailRoomDTOModel(
+  factory SalesDetailRoomDTOModel.fromJson( dynamic json) => SalesDetailRoomDTOModel(
     id: json["id"] == null ? null : json["id"],
     msg: json["msg"] == null ? null : json["msg"],
     msgType: json["msgType"] == null ? null : json["msgType"],
@@ -117,7 +119,7 @@ class SalesDetailRoomDTOModel {
 
   );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson()=> {
     "id": id == null ? null : id,
     "msg": msg == null ? null : msg,
     "msgType": msgType == null ? null : msgType,
@@ -126,15 +128,13 @@ class SalesDetailRoomDTOModel {
     "companyId": companyId == null ? null : companyId,
     "createdByName": createdByName == null ? null : createdByName,
     "branchId": branchId == null ? null : branchId,
-
     "igmaOwnerId": igmaOwnerId == null ? null : igmaOwnerId,
     "companyCode": companyCode == null ? null : companyCode,
     "branchSerial": branchSerial == null ? null : branchSerial,
     "igmaOwnerSerial": igmaOwnerSerial == null ? null : igmaOwnerSerial,
-
     "roomId": roomId == null ? null : roomId,
-    "leavingTime": leavingTime == null ? null : leavingTime,
-    "arrivalTime": arrivalTime == null ? null : arrivalTime,
+    "leavingTime": leavingTime == null ? null : leavingTime!.toIso8601String(),
+    "arrivalTime": arrivalTime == null ? null : arrivalTime!.toIso8601String(),
     "adaptNumber": adaptNumber == null ? null : adaptNumber,
     "childrenNumber": childrenNumber == null ? null : childrenNumber,
     "price": price == null ? null : price,

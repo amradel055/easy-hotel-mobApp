@@ -241,7 +241,7 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                   ),
                 );
               }), GestureDetector(onTap: () {
-                Get.toNamed(Routes.HOTEL_ROOMS,arguments: [controller.id,controller.children.value,controller.adults.value]);
+                Get.toNamed(Routes.HOTEL_ROOMS,arguments: [controller.id,controller.children.value,controller.adults.value,controller.selectedDate.value,controller.selectedDatetwo.value]);
               },
                 child: Container(
                   alignment: Alignment.centerRight,

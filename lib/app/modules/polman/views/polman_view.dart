@@ -99,25 +99,55 @@ class PolmanView extends GetView<PolmanController> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 25.0),
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: (){
-                                  controller.getpolmanSave();
-                                },
-                                child: Container(
-                                  height:size.height * 0.05 ,
-                                  width: size.width * 0.8,
-                                  decoration: const BoxDecoration(
-                                    color: AppColors.appHallsRedDark,
-                                    borderRadius: BorderRadius.all( Radius.circular(5)),
+                          Center(
+                            child: SizedBox(
+                              width: size.width,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 25.0),
+                                    child: Center(
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          controller.getpolmanSave();
+                                        },
+                                        child: Container(
+                                          height:size.height * 0.05 ,
+                                          width: size.width * 0.4,
+                                          decoration: const BoxDecoration(
+                                            color: AppColors.appHallsRedDark,
+                                            borderRadius: BorderRadius.all( Radius.circular(5)),
+                                          ),
+                                          child:const TextWidget("تآكيد الطلب" , textAlign: TextAlign.center,weight: FontWeight.bold,textColor: Colors.white,),
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  child:const TextWidget("تآكيد الطلب" , textAlign: TextAlign.center,weight: FontWeight.bold,textColor: Colors.white,),
-                                ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 25.0),
+                                    child: Center(
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          controller.getpolmanSaveNow();
+                                        },
+                                        child: Container(
+                                          height:size.height * 0.05 ,
+                                          width: size.width * 0.4,
+                                          decoration: const BoxDecoration(
+                                            color: AppColors.appHallsRedDark,
+                                            borderRadius: BorderRadius.all( Radius.circular(5)),
+                                          ),
+                                          child:const TextWidget(AppStrings.reserveNow , textAlign: TextAlign.center,weight: FontWeight.bold,textColor: Colors.white,),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
                               ),
                             ),
-                          ),
+                          )
                         ],
                       )
                   ),

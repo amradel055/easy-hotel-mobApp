@@ -134,5 +134,22 @@ final Map<String, String> enUs = {
   AppStrings.roomDetail: "Room Detail",
   AppStrings.around: "Around You..",
   AppStrings.location: "Location",
+  AppStrings.mange: "Mange Your Account",
+  AppStrings.setting: "Setting",
+  AppStrings.terms: "Terms",
+  AppStrings.language: "Language",
+  AppStrings.mode: "Mode",
+  AppStrings.currency: "Currency",
+  AppStrings.advertisement: "Advertisement",
+  AppStrings.discover: "Discover",
+  AppStrings.clean: "Clean Evaluation",
+  AppStrings.recipeEvaluation: "Recipe Evaluation",
+  AppStrings.clientsEvaluation: "Clients Evaluation",
+  AppStrings.teamWorkEvaluation: "TeamWork Evaluation",
+  AppStrings.beds: "Beds",
+  AppStrings.balconies: "Balaconies",
+  AppStrings.bathrooms: "BathRooms",
+  AppStrings.reserveNow: "Reserve Now",
+
 
 };

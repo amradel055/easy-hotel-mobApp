@@ -232,7 +232,7 @@ class RoomSearchCityFilterPageView
                   ),
                 );
               }), GestureDetector(onTap: () {
-                Get.toNamed(Routes.CITY_ROOMS,arguments: [controller.id,controller.children.value,controller.adults.value]);
+                Get.toNamed(Routes.CITY_ROOMS,arguments: [controller.id,controller.children.value,controller.adults.value,controller.selectedDate.value,controller.selectedDatetwo.value]);
               },
                 child: Container(
                   alignment: Alignment.centerRight,

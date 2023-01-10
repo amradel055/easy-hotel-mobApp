@@ -46,10 +46,18 @@ class RoomResponse {
     this.teamWorkEvaluation,
     this.appId,
     this.itemImages,
-    this.saleprice,
+    this.salePrice,
     this.description,
     this.branchName,
     this.groupRemarkDTOList,
+    this.discountType,
+    this.discountRate,
+    this.saleItem,
+    this.offerId,
+    this.discountValue,
+    this.lang,
+    this.lat,
+
 
   });
 
@@ -88,10 +96,17 @@ class RoomResponse {
   double? teamWorkEvaluation;
   dynamic appId;
   List<ItemImageResponse>? itemImages;
-  double? saleprice;
+  double? salePrice;
   String? description;
   String? branchName;
   List<RemarkGroupModel>? groupRemarkDTOList;
+  int? discountType;
+  num? discountRate;
+  bool? saleItem;
+  int? offerId;
+  num? discountValue;
+  dynamic lang;
+  dynamic lat;
 
 
   static List<RoomResponse> fromList(dynamic json) => List.from(json.map((e) => RoomResponse.fromJson(e)));
@@ -136,11 +151,17 @@ class RoomResponse {
     teamWorkEvaluation: json["teamWorkEvaluation"] == null ? null : json["teamWorkEvaluation"],
     appId: json["appId"],
     itemImages: json["itemImages"] == null ? null : List<ItemImageResponse>.from(json["itemImages"].map((x) => ItemImageResponse.fromJson(x))),
-    saleprice: json["saleprice"] == null ? null : json["saleprice"],
+    salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
     branchName: json["branchName"] == null ? null : json["branchName"],
     description: json["description"] == null ? null : json["description"],
     groupRemarkDTOList: json["groupRemarkDTOList"] == null ? null : List<RemarkGroupModel>.from(json["groupRemarkDTOList"].map((x) => RemarkGroupModel.fromJson(x))),
-
+    discountType: json["discountType"],
+    discountRate: json["discountRate"],
+    saleItem: json["saleItem"],
+    offerId: json["offerId"],
+    discountValue: json["discountValue"],
+    lang: json["lang"],
+    lat: json["lat"],
 
   );
 
@@ -180,11 +201,17 @@ class RoomResponse {
     "teamWorkEvaluation": teamWorkEvaluation == null ? null : teamWorkEvaluation,
     "appId": appId,
     // "itemImages": itemImages == null ? null : List<ItemImageResponse>.from(itemImages!.map((x) => x.toJson())),
-    "saleprice": saleprice == null ? null : saleprice,
+    "salePrice": salePrice == null ? null : salePrice,
     "description": description == null ? null : description,
     "branchName": branchName == null ? null : branchName,
     "groupRemarkDTOList": groupRemarkDTOList == null ? null : List<RemarkGroupModel>.from(groupRemarkDTOList!.map((x) => x.toJson())),
-
+    "discountType": discountType,
+    "discountRate": discountRate,
+    "saleItem": saleItem,
+    "offerId": offerId,
+    "discountValue": discountValue,
+    "lang": lang,
+    "lat": lat,
 
   };
 }

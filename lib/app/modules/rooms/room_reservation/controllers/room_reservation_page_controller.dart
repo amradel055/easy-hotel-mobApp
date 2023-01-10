@@ -26,12 +26,25 @@ class RoomReservationPageController extends GetxController {
 
   getRoomSave() async {
     isLoading(true);
-    SalesDetailRoomDTOModel ?sale;
-    sale!.roomId= room.id;
+     SalesDetailRoomDTOModel sale=SalesDetailRoomDTOModel(
+         roomId:room.id,
+         leavingTime:DateTime.now(),
+         arrivalTime: DateTime.now(),
+         adaptNumber: 3,
+         childrenNumber: 3,
+         price: totalPrice.value,
+         addtionsDtoList: selectedAdd,
+         phone:UserManager().user!.phone!,
+         email:UserManager().user!.email!,
+         name: UserManager().user!.name!,
+         purposeType: ""
+     );
+
+
     final request = RoomsSaveRequest(
       companyId: AppConstants.companyId,
       createdBy: AppConstants.createdBy,
-      branchId: room.branchId,
+      branchId: 232,
       salesDetailRoomDTOModel:sale
     );
     RoomsRepository().getRoomSave(request,

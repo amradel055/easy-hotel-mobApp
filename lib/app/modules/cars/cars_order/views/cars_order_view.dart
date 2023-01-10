@@ -225,19 +225,23 @@ class CarsOrderView extends GetView<CarsOrderController> {
                                     size: 20,
                                   )),
                             ),
-                            // SizedBox(
-                            //   child: OutlinedButton(
-                            //       onPressed: () {},
-                            //       style: ButtonStyle(
-                            //         backgroundColor: MaterialStateProperty.all(Colors.white),
-                            //       ),
-                            //       child: const TextWidget(
-                            //         "القائمة الرئيسيه",
-                            //         textColor: Colors.redAccent,
-                            //         weight: FontWeight.bold,
-                            //         size: 20,
-                            //       )),
-                            // ),
+                            SizedBox(
+                              width: size.width * 0.4,
+                              child: OutlinedButton(
+                                  onPressed: () {
+                                    controller.saveOrderNow();
+
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+                                  ),
+                                  child: const TextWidget(
+                                    AppStrings.reserveNow,
+                                    textColor: Colors.white,
+                                    weight: FontWeight.bold,
+                                    size: 20,
+                                  )),
+                            ),
                           ],
                         ),
                       ),

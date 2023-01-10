@@ -11,6 +11,7 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CarsOrderController extends GetxController {
   final CarsResponse selectedCar = Get.arguments;
@@ -78,6 +79,29 @@ class CarsOrderController extends GetxController {
         Get.toNamed(Routes.ALLSERVICES);
         } );
   }
+
+  saveOrderNow() {
+    loading(true);
+    final request = CarsOrderRequest(
+        carId: selectedCar.id,
+        comingDate: DateTime.now(),
+        createdBy: AppConstants.createdBy,
+        comingTime: DateFormat(' hh:mm ').format(DateTime.now()),
+        isGoingAndRetrun: selectedTravelType.value,
+        personNumber: selectedPersonsNumber.value,
+        fromDestination: selectedTrafficLine.value?.id,
+        customerId: UserManager().user!.id!,
+        branchId: selectedCar.branchId,
+        companyId: AppConstants.companyId,
+        remark: remark.text
+    );
+    CarsRepository().saveCarsOrder(request,
+        onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {
+          showPopupText('تم الحفظ بنجاح');
+          Get.toNamed(Routes.ALLSERVICES);
+        } );
+  }
+
 
   changeSelectedTrafficLines(CarsTrafficLinesResponse selected) {
     selectedTrafficLine(selected);

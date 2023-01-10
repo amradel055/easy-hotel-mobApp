@@ -122,13 +122,14 @@ class RoomsView extends GetView<RoomsController> {
                           itemBuilder: (context, index) {
                             return RoomCard(name: controller.roomsOffer[index]
                                 .name!,
-                              price: controller.roomsOffer[index].price! ?? 0,
+                              price: controller.roomsOffer[index].salePrice ?? 0,
                               stars: controller.roomsOffer[index]
                                   .clientsEvaluation!.toInt(),
                               percentage: controller.roomsOffer[index]
-                                  .numBeds!.toInt() ?? 0,
+                                  .discountValue!.toInt() ?? 0,
                             id: controller.roomsOffer[index].id!,
-                            image: controller.roomsOffer[index].image??"",);
+                            image: controller.roomsOffer[index].image??"",
+                            sale: controller.roomsOffer[index].discountType!,);
                           },
 
                         )
@@ -156,7 +157,7 @@ class RoomsView extends GetView<RoomsController> {
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 0),
-                      child: TextWidget("الاعلانات", textAlign: TextAlign.left,
+                      child: TextWidget(AppStrings.advertisement, textAlign: TextAlign.left,
                         weight: FontWeight.bold,
                         size: 20.h,),
                     ),
@@ -168,7 +169,7 @@ class RoomsView extends GetView<RoomsController> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return  AdCard(
-                              id: controller.roomsAds[index].id!,
+                              id: controller.roomsAds[index].itemId!,
                               name: controller.roomsAds[index].name!,hotel: controller.roomsAds[index].hotelName.toString(),image: controller.roomsAds[index].imgUrl!,);
                           },
 
@@ -177,7 +178,7 @@ class RoomsView extends GetView<RoomsController> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20.h, 0, 20.h, 0),
                       child: TextWidget(
-                        "اكتشف المزيد", textAlign: TextAlign.left,
+                       AppStrings.discover, textAlign: TextAlign.left,
                         weight: FontWeight.bold,
                         size: 20.h,),
                     ),
@@ -189,7 +190,7 @@ class RoomsView extends GetView<RoomsController> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return  DiscoverCard(
-                              id: controller.roomsDiscover[index].id!,
+                              id: controller.roomsDiscover[index].itemId!,
                                 image: controller.roomsDiscover[index].imgUrl!, name: controller.roomsDiscover[index].name!);
                           },
 

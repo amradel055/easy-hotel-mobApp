@@ -11,6 +11,8 @@ class HouseKeepingServicesController extends GetxController {
    ReviewsResponse ?reviewsResponse;
   final isLoading = false.obs;
   final servicesSelected = <int>[].obs;
+  final servicesSelectedNames = <String>[].obs;
+  final servicesSelectedPrices = <String>[].obs;
   final List args = Get.arguments;
   // final int branchId = Get.arguments;
   // final int index = Get.arguments;

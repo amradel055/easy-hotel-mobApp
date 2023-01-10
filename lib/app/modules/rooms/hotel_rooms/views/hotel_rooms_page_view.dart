@@ -10,6 +10,7 @@ import 'package:easy_hotel/app/modules/rooms/hotel_rooms/views/widgets/rooms_sea
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.appHallsRedDark,
+        backgroundColor: AppColors.appBlue,
         foregroundColor: Colors.white,
         title: const TextWidget(
           AppStrings.hotelRooms, size: 25,
@@ -77,13 +78,13 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
       }),
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: ExpandableFab(
-        backgroundColor: AppColors.appHallsRedDark,
+        backgroundColor: AppColors.appBlue,
         closeButtonHeroTag: UniqueKey(),
         openButtonHeroTag: UniqueKey(),
         child: const Icon(Icons.filter_list_rounded, color: Colors.white,),
         children: [
           FloatingActionButton.small(
-            backgroundColor: AppColors.appHallsRedDark,
+            backgroundColor: AppColors.appBlue,
             child: const Icon(Icons.filter, color: Colors.white,),
             onPressed: () {
               Widget okButton = TextButton(
@@ -104,98 +105,98 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
                         return AlertDialog(
                           title: const Center(child: TextWidget("Filter",weight: FontWeight.bold,)),
                           content: SizedBox(
-                            height: size.height * .9,
+                            height: size.height * .5,
                             width: size.width,
 
                             child: Column(
                               children: [
-                                for(AdditionsGroupModel add in controller.allAdditions)
-                                  Column(
-                                    children: [
-                                      Text(add.name!),
-                                      SizedBox(width: size.width*.9,
-                                        height:size.height*.1,
-
-                                        child:
-                                        SingleChildScrollView(
-                                          physics: const AlwaysScrollableScrollPhysics(),
-
-                                          child:
-                                          Wrap(children: add.addtionsDtoList!.map((hobby) {
-                                            bool isSelected = false;
-                                            if (controller.selectedAdd.contains(hobby)) {
-                                              isSelected = true;
-                                            }
-                                            return GestureDetector(
-                                              onTap: () {
-                                                if (!controller.selectedAdd.contains(hobby)) {
-                                                  if (controller.selectedAdd.length<add.addtionsDtoList!.length) {
-                                                    controller.selectedAdd.add(hobby);
-                                                    setState(() {});
-                                                    print(controller.selectedAdd);
-                                                  }
-                                                } else {
-                                                  controller.selectedAdd
-                                                      .removeWhere((element) => element == hobby);
-                                                  setState(() {});
-                                                  print(controller.selectedAdd);
-                                                }
-                                              },
-                                              child: Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 5, vertical: 4),
-                                                  child: Container(
-                                                    padding: EdgeInsets.symmetric(
-                                                        vertical: 5, horizontal: 12),
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.brown[300],
-                                                        borderRadius: BorderRadius.circular(18),
-                                                        border: Border.all(
-                                                            color: isSelected
-                                                                ? Colors.green
-                                                                : Colors.grey,
-                                                            width: 2)),
-                                                    child: Text(
-                                                      hobby.name!,
-                                                      style: TextStyle(
-                                                          color:
-                                                          isSelected ? Colors.red : Colors.white,
-                                                          fontSize: 14),
-                                                    ),
-                                                  )),
-                                            );
-                                          },
-                                          ).toList(),
-                                          ),
-
-                                        ),
-
-
-                                        // GridView.count(crossAxisCount: 3,
-                                        //   crossAxisSpacing: 2,
-                                        //   mainAxisSpacing: 1,
-                                        //   childAspectRatio: size.aspectRatio * 9,
-                                        //
-                                        //   children: [
-                                        //     for(int i = 0 ; i <= 6 ; i++)
-                                        //       GestureDetector(
-                                        //         onTap: (){},
-                                        //         child: Container(height: size.height*.02,
-                                        //             decoration: BoxDecoration(color: Colors.brown[300],
-                                        //                 borderRadius: BorderRadius.all(Radius.circular(20))),
-                                        //
-                                        //
-                                        //             child: Text('قاعة اضافية' ,style: smallTextStyleNormal(size,color: Colors.white),textAlign:TextAlign.center,)),
-                                        //
-                                        //
-                                        //       )
-                                        //
-                                        //
-                                        //   ],
-                                        // ),
-                                      ),
-                                    ],
-                                  ),
+                                // for(AdditionsGroupModel add in controller.allAdditions)
+                                //   Column(
+                                //     children: [
+                                //       Text(add.name!),
+                                //       SizedBox(width: size.width*.9,
+                                //         height:size.height*.1,
+                                //
+                                //         child:
+                                //         SingleChildScrollView(
+                                //           physics: const AlwaysScrollableScrollPhysics(),
+                                //
+                                //           child:
+                                //           Wrap(children: add.addtionsDtoList!.map((hobby) {
+                                //             bool isSelected = false;
+                                //             if (controller.selectedAdd.contains(hobby)) {
+                                //               isSelected = true;
+                                //             }
+                                //             return GestureDetector(
+                                //               onTap: () {
+                                //                 if (!controller.selectedAdd.contains(hobby)) {
+                                //                   if (controller.selectedAdd.length<add.addtionsDtoList!.length) {
+                                //                     controller.selectedAdd.add(hobby);
+                                //                     setState(() {});
+                                //                     print(controller.selectedAdd);
+                                //                   }
+                                //                 } else {
+                                //                   controller.selectedAdd
+                                //                       .removeWhere((element) => element == hobby);
+                                //                   setState(() {});
+                                //                   print(controller.selectedAdd);
+                                //                 }
+                                //               },
+                                //               child: Container(
+                                //                   margin: EdgeInsets.symmetric(
+                                //                       horizontal: 5, vertical: 4),
+                                //                   child: Container(
+                                //                     padding: EdgeInsets.symmetric(
+                                //                         vertical: 5, horizontal: 12),
+                                //                     decoration: BoxDecoration(
+                                //                         color: Colors.brown[300],
+                                //                         borderRadius: BorderRadius.circular(18),
+                                //                         border: Border.all(
+                                //                             color: isSelected
+                                //                                 ? Colors.green
+                                //                                 : Colors.grey,
+                                //                             width: 2)),
+                                //                     child: Text(
+                                //                       hobby.name!,
+                                //                       style: TextStyle(
+                                //                           color:
+                                //                           isSelected ? Colors.red : Colors.white,
+                                //                           fontSize: 14),
+                                //                     ),
+                                //                   )),
+                                //             );
+                                //           },
+                                //           ).toList(),
+                                //           ),
+                                //
+                                //         ),
+                                //
+                                //
+                                //         // GridView.count(crossAxisCount: 3,
+                                //         //   crossAxisSpacing: 2,
+                                //         //   mainAxisSpacing: 1,
+                                //         //   childAspectRatio: size.aspectRatio * 9,
+                                //         //
+                                //         //   children: [
+                                //         //     for(int i = 0 ; i <= 6 ; i++)
+                                //         //       GestureDetector(
+                                //         //         onTap: (){},
+                                //         //         child: Container(height: size.height*.02,
+                                //         //             decoration: BoxDecoration(color: Colors.brown[300],
+                                //         //                 borderRadius: BorderRadius.all(Radius.circular(20))),
+                                //         //
+                                //         //
+                                //         //             child: Text('قاعة اضافية' ,style: smallTextStyleNormal(size,color: Colors.white),textAlign:TextAlign.center,)),
+                                //         //
+                                //         //
+                                //         //       )
+                                //         //
+                                //         //
+                                //         //   ],
+                                //         // ),
+                                //       ),
+                                //     ],
+                                //   ),
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       0, 15, 0, 0),
@@ -271,6 +272,39 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
                                     });
                                   },
                                 ),
+                                Obx(() => Container(
+                                  width: size.width * 0.8,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(size.width * 0.03), color: AppColors.appRedLight),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Center(
+                                      child: Column(
+                                        children: [
+                                          RatingBar.builder(
+                                            initialRating: 1,
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: false,
+                                            itemCount:5,
+                                            itemSize: size.width * 0.1,
+                                            itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+                                            itemBuilder: (context, _) => const Icon(
+                                              Icons.star,
+                                              color: AppColors.appHallsRedDark,
+                                            ),
+                                            onRatingUpdate: (value) => controller.changeSelectedStarsNumber(value.toInt()),
+                                          ),
+                                          TextWidget(
+                                            "${controller.selectedStarsNumber.value}" + " نجوم",
+                                            textColor: Colors.grey,
+                                            size: 16,
+                                            weight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )),
 
 
                               ],
@@ -296,9 +330,12 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
             },
           ),
           FloatingActionButton.small(
-            backgroundColor: AppColors.appHallsRedDark,
+            backgroundColor: AppColors.appBlue,
             child: const Icon(Icons.sort, color: Colors.white,),
-            onPressed: () {},
+            onPressed: () {
+
+
+            },
           ),
         ],
       ),
