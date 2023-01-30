@@ -2,6 +2,7 @@ import 'package:easy_hotel/app.dart';
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/request/cars_order_request.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/request/cars_traffic_line_request_dto.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_response_dto.dart';
@@ -33,9 +34,9 @@ class CarsOrderController extends GetxController {
 
 
   final travelTypes = [
-    {"id": 0, "name": "ذهاب و عوده"},
-    {"id": 1, "name": "ذهاب "},
-    {"id": 2, "name": " عوده"},
+    {"id": 0, "name":AppStrings.goingAndReturn},
+    {"id": 1, "name": AppStrings.going},
+    {"id": 2, "name": AppStrings.returning},
   ];
 
   @override
@@ -58,49 +59,7 @@ class CarsOrderController extends GetxController {
         });
   }
 
-  saveOrder() {
-    loading(true);
-    final request = CarsOrderRequest(
-      carId: selectedCar.id,
-      comingDate: selectedDate,
-      createdBy: AppConstants.createdBy,
-      comingTime: timeController.value.text,
-      isGoingAndRetrun: selectedTravelType.value,
-      personNumber: selectedPersonsNumber.value,
-      fromDestination: selectedTrafficLine.value?.id,
-      customerId: UserManager().user!.id!,
-      branchId: selectedCar.branchId,
-      companyId: AppConstants.companyId,
-      remark: remark.text
-    );
-    CarsRepository().saveCarsOrder(request,
-        onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {
-        showPopupText('تم الحفظ بنجاح');
-        Get.toNamed(Routes.ALLSERVICES);
-        } );
-  }
 
-  saveOrderNow() {
-    loading(true);
-    final request = CarsOrderRequest(
-        carId: selectedCar.id,
-        comingDate: DateTime.now(),
-        createdBy: AppConstants.createdBy,
-        comingTime: DateFormat(' hh:mm ').format(DateTime.now()),
-        isGoingAndRetrun: selectedTravelType.value,
-        personNumber: selectedPersonsNumber.value,
-        fromDestination: selectedTrafficLine.value?.id,
-        customerId: UserManager().user!.id!,
-        branchId: selectedCar.branchId,
-        companyId: AppConstants.companyId,
-        remark: remark.text
-    );
-    CarsRepository().saveCarsOrder(request,
-        onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {
-          showPopupText('تم الحفظ بنجاح');
-          Get.toNamed(Routes.ALLSERVICES);
-        } );
-  }
 
 
   changeSelectedTrafficLines(CarsTrafficLinesResponse selected) {

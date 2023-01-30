@@ -262,7 +262,7 @@ class AdditionsGroupModel {
     "igmaOwnerSerial": igmaOwnerSerial,
     "userCode": userCode,
     "name": name == null ? null : name,
-    "addtionsDTOList": addtionsDtoList == null ? null : List<AddtionsModel>.from(addtionsDtoList!.map((x) => x)),
+    "addtionsDtoList": addtionsDtoList == null ? null : List<AddtionsModel>.from(addtionsDtoList!.map((x) => x)),
     "appId": appId == null ? null : appId,
   };
 }

@@ -190,6 +190,7 @@ class SpaItemModel {
     this.spaId,
     this.price,
     this.salePrice,
+    this.image,
   });
 
   int? id;
@@ -210,6 +211,7 @@ class SpaItemModel {
   dynamic igmaOwnerSerial;
   dynamic userCode;
   String? name;
+  String? image;
   int? spaId;
   double? price;
   double? salePrice;
@@ -236,7 +238,8 @@ class SpaItemModel {
       name: json["name"] == null ? null : json["name"],
       spaId: json["spaId"] == null ? null : json["spaId"],
       price: json["price"] == null ? null : json["price"],
-      salePrice: json["salePrice"] == null ? null : json["salePrice"],
+      salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
+      image: json["image"] == null ? null : json["image"],
   );
 
   Map<String, dynamic> toJson() => {

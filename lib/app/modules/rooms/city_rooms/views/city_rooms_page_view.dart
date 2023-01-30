@@ -50,12 +50,12 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             return RoomsCardWidget(
-              price: controller.roomsCity[index].price!.toDouble(),
-              image: controller.roomsCity[index].image ?? "",
-              title: controller.roomsCity[index].hotelName!,
-              subtitle: controller.roomsCity[index].cityName!,
-              id: controller.roomsCity[index].id!,
-              onTap: () {},);
+             controller.roomsCity[index].price!.toDouble(),
+               controller.roomsCity[index].id!,
+               controller.roomsCity[index].image ?? "",
+               controller.roomsCity[index].hotelName!,
+               controller.roomsCity[index].cityName!,
+              () {},);
           },
 
         );

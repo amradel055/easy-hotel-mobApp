@@ -21,7 +21,10 @@ class HousekeepingSaveRequest {
     this.customerId,
     this.date,
     this.time,
-    this.remark
+    this.remark,
+    this.phone,
+    this.email,
+    this.name,
   });
 
   int? serviceTypeId;
@@ -33,6 +36,9 @@ class HousekeepingSaveRequest {
   DateTime? date ;
   DateTime? time ;
   String? remark ;
+  String ?phone;
+  String?email;
+  String?name;
 
   factory HousekeepingSaveRequest.fromJson( dynamic json) => HousekeepingSaveRequest(
       serviceTypeId: json["serviceTypeId"] == null ? null : json["serviceTypeId"],
@@ -54,6 +60,8 @@ class HousekeepingSaveRequest {
     "date": date == null ? null : date?.toIso8601String(),
     "time": time == null ? null : time?.toIso8601String(),
     "salesDetailHouseKeepingDTOList": salesDetailHouseKeepingDTOList == null ? null : List<dynamic>.from(salesDetailHouseKeepingDTOList!.map((x) => x)),
-
+    "phone": phone == null ? null : phone,
+    "email": email == null ? null : email,
+    "name": name == null ? null : name,
   };
 }

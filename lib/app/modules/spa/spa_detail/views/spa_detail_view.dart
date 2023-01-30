@@ -91,7 +91,7 @@ class SpaDetailView extends GetView<SpaDetailsController> {
                 decoration: BoxDecoration(
                     color: AppColors.black,
                     image: DecorationImage(
-                        image: NetworkImage('${ApiProvider.imageUrl}${controller.spa!.image}'),
+                        image: NetworkImage('${ApiProvider.imageUrl}${controller.spa!.image??""}'),
                         fit: BoxFit.cover
                     )),
 

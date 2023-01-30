@@ -14,9 +14,34 @@ class HouseKeepingCheckoutController extends GetxController {
   var phoneController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-
-
   final registerForm = GlobalKey<FormState>();
+  final isLoading = false.obs;
   final List res =Get.arguments;
+  getHousekeepingSave() async {
+    isLoading(true);
+    final request = HousekeepingSaveRequest(
+        serviceTypeId:res[6] ,
+        branchId:res[7],
+        createdBy:AppConstants.createdBy,
+        companyId: AppConstants.companyId,
+        customerId: UserManager().user!.id,
+        salesDetailHouseKeepingDTOList: res[0],
+        date: res[1],
+        time: res[2],
+        remark: res[3],
+      name: "",
+      email: "",
+      phone: ""
+    );
+    HousekeepingRepository().getHousekeepingSave(request,
+        onSuccess: (data) {
+          showPopupText( "تم الحفظ بنجاح");
+          Get.toNamed(Routes.ALLSERVICES);
+
+        },
+        onError: (e) => showPopupText( e.toString()),
+        onComplete: () => isLoading(false)
+    );
+  }
 
 }

@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 
 class RoomReservationPageController extends GetxController {
   final RoomResponse room = Get.arguments;
-   RxList selectedadditions=[].obs;
+   // RxList selectedadditions=[].obs;
   final selectedAdd = <AddtionsModel>[].obs;
   final isLoading = false.obs;
   final totalPrice = 0.0.obs ;
@@ -24,38 +24,6 @@ class RoomReservationPageController extends GetxController {
     super.onInit();
   }
 
-  getRoomSave() async {
-    isLoading(true);
-     SalesDetailRoomDTOModel sale=SalesDetailRoomDTOModel(
-         roomId:room.id,
-         leavingTime:DateTime.now(),
-         arrivalTime: DateTime.now(),
-         adaptNumber: 3,
-         childrenNumber: 3,
-         price: totalPrice.value,
-         addtionsDtoList: selectedAdd,
-         phone:UserManager().user!.phone!,
-         email:UserManager().user!.email!,
-         name: UserManager().user!.name!,
-         purposeType: ""
-     );
-
-
-    final request = RoomsSaveRequest(
-      companyId: AppConstants.companyId,
-      createdBy: AppConstants.createdBy,
-      branchId: 232,
-      salesDetailRoomDTOModel:sale
-    );
-    RoomsRepository().getRoomSave(request,
-        onSuccess: (data) {
-          showPopupText( "تم الحفظ بنجاح");
-          Get.toNamed(Routes.ALLSERVICES);
-        },
-        onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
-    );
-  }
   changeAddedAdditions (AddtionsModel add){
     if(selectedAdd.toList().contains(add)){
       selectedAdd.remove(add);

@@ -34,7 +34,7 @@ class FilterBarWidgets extends GetView<SpaDetailsController> {
                   size: size.width * 0.05,
                   weight: index == controller.index.value ? FontWeight
                       .bold : FontWeight.normal,
-                  textColor: Colors.black,
+                  // textColor: Colors.black,
                   textAlign: TextAlign.center,
                 ),
               )

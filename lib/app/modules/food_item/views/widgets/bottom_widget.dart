@@ -1,5 +1,6 @@
 
 import 'package:easy_hotel/app/modules/food_item/controllers/food_item_controller.dart';
+import 'package:easy_hotel/app/modules/my_account/fav_products/controllers/fav_products_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class BottomWidget extends GetView<FoodItemController> {
 
   @override
   Widget build(BuildContext context) {
+
     return Obx(() {
       return Container(
         height: 60,

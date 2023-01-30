@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:easy_hotel/app/core/themes/app_theme.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
@@ -122,7 +123,7 @@ class TextFieldWidget extends StatelessWidget {
                   maxLines: multiLines? null : (maxLines??1),
                   onEditingComplete: nextFocusNode == null ? null : () => nextFocusNode!.requestFocus(),
                   textInputAction: textInputAction,
-                  style: const TextStyle(height: 1.5,leadingDistribution: TextLeadingDistribution.proportional,fontSize: 15),
+                  style: const TextStyle(height: 1.5,leadingDistribution: TextLeadingDistribution.proportional,fontSize: 20),
                   keyboardType: textInputType,
                   obscureText: obscure,
                   inputFormatters: [
@@ -135,7 +136,7 @@ class TextFieldWidget extends StatelessWidget {
                     labelText: label?.tr,
                     hintText: hint?.tr,
                     counterText: "",
-                    fillColor: AppColors.white,
+                    fillColor:AppTheme.isDark?Colors.grey[800]: Colors.white,
                     filled: true,
                     errorStyle: hideErrorText ? const TextStyle(height: 0,color: Colors.transparent) : null,
                     constraints: const BoxConstraints(minHeight: 30,maxHeight: 100),
@@ -143,11 +144,11 @@ class TextFieldWidget extends StatelessWidget {
                     hintStyle: TextStyle(color: AppColors.textFieldHintColor, height: 1.5, leadingDistribution: TextLeadingDistribution.even,),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(AppConstants.radius),
-                        borderSide: const BorderSide(color: AppColors.appBlue,width: 2)
+                        borderSide: const BorderSide(color: AppColors.appGreyDark,width: 2)
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(AppConstants.radius),
-                        borderSide: const BorderSide(color: AppColors.appBlue, width: 2)
+                        borderSide: const BorderSide(color: AppColors.appGreyDark, width: 2)
                     ),
                     isDense: true,
                     prefix: prefix,

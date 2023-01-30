@@ -15,8 +15,9 @@ abstract class AppColors {
   static const appGreyDark = Color(0xFFdedede);
   static const appHallsRedLight = Color(0xFFF4DFDC);
   static const appHallsRed = Color(0xFFDD8378);
-  static const appHallsRedDark = Color(0xFFC84C40);
+  static const appHallsRedDark = Color(0xFF953665);
   static const colorBar = Color(0xFFB02c5c);
+  static const colorLogo = Color(0xFFeba037);
   static const appRedLight = Color(0x7ff1e0e0);
 
   static Color get fieldBorderColor => grey;

@@ -98,12 +98,18 @@ class HouseKeepingReservationView
                         SizedBox(
                           height: 100,
 
-                          child: TextFieldWidget(
+                          child:
+                          TextFieldWidget(
                             maxLines: 5,
                             controller:controller.remark,
-                            onChange: (value) => controller.remark.text = value,
-
                           ),
+
+                          // TextFieldWidget(
+                          //   maxLines: 5,
+                          //   controller:controller.remark,
+                          //   onChange: (value) => controller.remark.text = value,
+                          //
+                          // ),
                         ),
 
                         const TextWidget(
@@ -186,7 +192,10 @@ class HouseKeepingReservationView
                                 child: Center(
                                   child: GestureDetector(
                                     onTap: () {
-                                      controller.getHousekeepingSave();
+                                      Get.toNamed(Routes.HOUSEKEEPING_CHECKOUT,
+                                          arguments: [controller.res[2],controller.dateTo.value,controller.dateTime.value,controller.remark.text,controller.res[5],controller.res[6],controller.res[0],controller.res[7]]
+                                      );
+                                      // controller.getHousekeepingSave();
                                     },
                                     child: Container(
                                       height: size.height * 0.05,
@@ -213,7 +222,7 @@ class HouseKeepingReservationView
                                     onTap: () {
                                       // controller.getHousekeepingSaveNow();
                                       Get.toNamed(Routes.HOUSEKEEPING_CHECKOUT,
-                                          arguments: [controller.res[2],controller.dateTo.value,controller.dateTime.value,controller.remark.text,controller.res[5],controller.res[6]]
+                                          arguments: [controller.res[2],DateTime.now(),DateTime.now(),controller.remark.text,controller.res[5],controller.res[6],controller.res[0],controller.res[7]]
                                       );
                                     },
                                     child: Container(

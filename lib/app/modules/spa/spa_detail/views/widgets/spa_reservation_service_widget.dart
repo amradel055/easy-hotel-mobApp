@@ -1,5 +1,6 @@
 
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
@@ -28,7 +29,7 @@ class SpaReservationServicesWidget extends GetView<SpaDetailsController> {
         child: Column(
           children: [
             for(int i = 0 ; i < controller.spa!.spaItemsDtoList!.length ; i++)
-              SpaReservationServices(controller.spa!.spaItemsDtoList![i].name, controller.spa!.spaItemsDtoList![i].price.toString(), )
+              SpaReservationServices(controller.spa!.spaItemsDtoList![i].name, controller.spa!.spaItemsDtoList![i].price.toString(),controller.spa!.spaItemsDtoList![i].image??AppAssets.placeHolderImg )
           ],
         ),
       ),

@@ -26,28 +26,31 @@ class AllServicesView extends GetView<AllServicesController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
-          leading: Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 3, 10, 0),
-              child:
-              Row(
-                children: [
-                  TextWidget(
-                    AppStrings.hello,
-                    size: 25.h,
-                    textColor: AppColors.appBlue,
-                    weight: FontWeight.bold,
-                  ),
-                  TextWidget(
-                    UserManager().user!.name!,
-                    size: 25.h,
-                    textColor: AppColors.appBlue,
-                    weight: FontWeight.bold,
-                  ),
-                ],
-              )
+          leading:
+          GestureDetector(
+              onTap: (){
+                Get.back();
+              },
+              child: const Icon(Icons.arrow_back_ios)),
+          // leadingWidth: 70.h,
+
+          // backgroundColor: AppColors.backgroundColor,
+          title: Row(
+            children: [
+              TextWidget(
+                AppStrings.hello,
+                size: 25.h,
+                textColor: AppColors.appBlue,
+                weight: FontWeight.bold,
+              ),
+              TextWidget(
+                UserManager().user!.name!,
+                size: 25.h,
+                textColor: AppColors.appBlue,
+                weight: FontWeight.bold,
+              ),
+            ],
           ),
-          leadingWidth: 300.h,
           actions: [
             PopupMenuButton<int>(
               itemBuilder: (context) =>
@@ -56,7 +59,6 @@ class AllServicesView extends GetView<AllServicesController> {
                   value: 1,
                   onTap: () async {
                     await UserManager().logout();
-                    Get.toNamed(Routes.LOGIN);
                   },
                   child: Row(
                     children: [

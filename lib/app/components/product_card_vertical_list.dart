@@ -1,6 +1,9 @@
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_response.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
+import 'package:easy_hotel/app/modules/my_account/fav_products/controllers/fav_products_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
@@ -10,7 +13,7 @@ class ProductCard extends StatefulWidget {
 
   String? quantity;
 
-  bool fav;
+  RxBool fav;
 
   VoidCallback? onDeletePressed;
 
@@ -28,6 +31,8 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+    // final favController = Get.find<FavProductsController>();
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: Container(
@@ -119,18 +124,20 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          if(widget.fav){
-                            // context.read<FavouriteProvider>().remove(widget.product!.id!, context);
+                          Get.back();
+                          if(widget.fav.value){
+
+                            // favController.remove(widget.product!.id!, context);
                           }else {
-                            // context.read<FavouriteProvider>().addProduct(widget.product!, context);
+                            // favController.addProduct(widget.product!, context);
                           }
                           setState(() {
-                            widget.fav = !widget.fav;
+                            widget.fav.value = !widget.fav.value;
                           });
 
                         },
                         icon: Icon(
-                          widget.fav ? Icons.favorite : Icons.favorite_border,
+                          widget.fav.value ? Icons.favorite : Icons.favorite_border,
                           size: widget.size.width * 0.07,
                         )),
                     widget.cartProduct
@@ -143,7 +150,7 @@ class _ProductCardState extends State<ProductCard> {
                             ))
                         : IconButton(
                             onPressed: () {
-                              // context.read<CartProvider>().addProduct(widget.product!, context);
+                              // favController.addProduct(widget.product!, context);
                             },
                             icon: Icon(
                               Icons.add_shopping_cart,

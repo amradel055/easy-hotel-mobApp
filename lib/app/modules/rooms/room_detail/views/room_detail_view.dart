@@ -1,8 +1,10 @@
 import 'dart:collection';
 
+import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/utils/products_fav_manager.dart';
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
@@ -29,8 +31,7 @@ class RoomDetailView extends GetView<RoomDetailController> {
         .size;
 
     bool onshow = true;
-    var myMarkers = HashSet<Marker>();
-    List<Polyline> myPolilines = [];
+
 
 
     return Scaffold(
@@ -38,8 +39,18 @@ class RoomDetailView extends GetView<RoomDetailController> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          foregroundColor: Colors.white,
-
+          foregroundColor: Colors.black,
+          actions: [
+            UnconstrainedBox(
+              child: IconButtonWidget(
+                icon: Icons.favorite_border_rounded,
+                onPressed: () {
+                  // FavProductsManager().addProduct(controller.room!, context);
+                },
+              ),
+            ),
+            const SizedBox(width: 10),
+          ],
         ),
         body: Obx(() {
           if(controller.isLoading.value){
@@ -459,15 +470,6 @@ class RoomDetailView extends GetView<RoomDetailController> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: size.height * .04,
-                                child: TextButton(
-                                    onPressed: () {
-
-                                    },
-                                    child: Text(
-                                        onshow ? 'see more' : 'see less')),
-                              )
                             ],
                           )),
                       Container(

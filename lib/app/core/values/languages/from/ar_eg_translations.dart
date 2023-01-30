@@ -16,7 +16,7 @@ final Map<String, String> arEG = {
   AppStrings.unauthenticated: 'الجلسة منتهية',
   AppStrings.Welcome: 'مرحبا',
   AppStrings.userName: 'اسم المستخدم',
-  AppStrings.name: ' الاسم الاخير',
+  AppStrings.name: ' الاسم ',
   AppStrings.phone: 'الهاتف',
   AppStrings.email: 'البريد الالكتروني',
   AppStrings.password: 'كلمه المرور',
@@ -77,7 +77,22 @@ final Map<String, String> arEG = {
   AppStrings.number: 'السعه ',
   AppStrings.design: 'التصميم ',
   AppStrings.servicesHall: 'خدمات القاعه ',
-
+  AppStrings.myProfile: "حسابي",
+  AppStrings.city: "المدينه",
+  AppStrings.changePassword: 'تغيير كلمه المرور',
+  AppStrings.changeEmail: 'تغيير البريد الالكتروني',
+  AppStrings.liked: 'المفضله',
+  AppStrings.contactUs: 'اتصل بنا',
+  AppStrings.ordesr: 'طلباتي',
+  AppStrings.personalInfo: 'البيانات الشخصيه',
+  AppStrings.oldPass: 'كلمه السر القديمه',
+  AppStrings.newPass: 'كلمه السر الجديده',
+  AppStrings.confirmNewPass: 'تاكيد كلمه السر الجديده',
+  AppStrings.subject: 'العنوان',
+  AppStrings.message: 'الرساله',
+  AppStrings.send: 'ارسال',
+  AppStrings.orderConfirmationText: 'طلب رمز التحقق',
+  AppStrings.confirmationText: 'رمز التحقق',
 
 
 
@@ -151,5 +166,15 @@ final Map<String, String> arEG = {
   AppStrings.balconies: "بلكونه",
   AppStrings.bathrooms: "حمام",
   AppStrings.reserveNow: "حجز الآن",
+  AppStrings.carsBar: "استمتع بخدمات اضافية مميزه لرحلتك",
+  AppStrings.carsCom: "تمتع بالراحه ",
+  AppStrings.carType: "نوع السياره التي تم اختيارها ",
+  AppStrings.seats: "مقاعد",
+  AppStrings.arrivalDate: "تاريخ الوصول",
+  AppStrings.go: "ذهاب",
+  AppStrings.back: "عوده",
+  AppStrings.goAndBack: "ذهاب وعوده",
+  AppStrings.tripType: "نوع الرحله",
+  AppStrings.road: "المسار",
 
 };

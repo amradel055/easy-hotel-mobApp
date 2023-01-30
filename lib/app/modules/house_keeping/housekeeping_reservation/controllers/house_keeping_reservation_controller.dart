@@ -18,29 +18,6 @@ class HouseKeepingReservationController extends GetxController {
 
 
 
-  getHousekeepingSave() async {
-    isLoading(true);
-    final request = HousekeepingSaveRequest(
-      serviceTypeId:res[0] ,
-      branchId:res[4],
-      createdBy:AppConstants.createdBy,
-      companyId: AppConstants.companyId,
-      customerId: UserManager().user!.id,
-      salesDetailHouseKeepingDTOList: res[2],
-      date: dateTo.value,
-      time: dateTime.value,
-      remark: remark.text
-    );
-    HousekeepingRepository().getHousekeepingSave(request,
-        onSuccess: (data) {
-          showPopupText( "تم الحفظ بنجاح");
-          Get.toNamed(Routes.ALLSERVICES);
-
-        },
-        onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
-    );
-  }
   getHousekeepingSaveNow() async {
     isLoading(true);
     final request = HousekeepingSaveRequest(

@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_traffic_lines_response.dart';
 import 'package:easy_hotel/app/modules/cars/cars_order/controllers/cars_order_controller.dart';
 import 'package:flutter/material.dart';
@@ -45,13 +46,13 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                           color: Colors.white,
                           size: size.width * 0.06,
                         )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                          size: size.width * 0.06,
-                        )),
+                    // IconButton(
+                    //     onPressed: () {},
+                    //     icon: Icon(
+                    //       Icons.menu,
+                    //       color: Colors.white,
+                    //       size: size.width * 0.06,
+                    //     )),
                   ],
                 ),
               ),
@@ -70,10 +71,10 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                             child: Container(
                               height: size.height * 0.04,
                               width: size.width * 0.3,
-                              color: Colors.white,
+                              // color: Colors.white,
                               child: const Center(
                                   child: TextWidget(
-                                "نقل من و الي المطار",
+                                "نقل من و الي ",
                                 size: 14,
                                 weight: FontWeight.bold,
                               )),
@@ -81,7 +82,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                           ),
                           const Center(
                               child: TextWidget(
-                            "تآجير السيارات",
+                            AppStrings.carsServices,
                             textColor: Colors.white,
                             size: 14,
                             weight: FontWeight.bold,
@@ -120,7 +121,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                                   groupValue: controller.selectedTravelType.value,
                                   onChanged: (value) => controller.changeSelectedType(value!),
                                   activeColor: Colors.black,
-                                  title: const TextWidget(AppStrings.goingAndReturn , size: 11, weight: FontWeight.bold),
+                                  title: const TextWidget(AppStrings.goingAndReturn , size: 8, weight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(
@@ -130,7 +131,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                                   activeColor: Colors.black,
                                   groupValue: controller.selectedTravelType.value,
                                   onChanged: (value) => controller.changeSelectedType(value!),
-                                  title: const TextWidget(AppStrings.going , size: 12, weight: FontWeight.bold),
+                                  title: const TextWidget(AppStrings.going , size: 8, weight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(
@@ -140,7 +141,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                                   activeColor: Colors.black,
                                   groupValue: controller.selectedTravelType.value,
                                   onChanged: (value) => controller.changeSelectedType(value!),
-                                  title: const TextWidget(AppStrings.returning , size: 12, weight: FontWeight.bold),
+                                  title: const TextWidget(AppStrings.returning , size: 8, weight: FontWeight.bold),
                                 ),
                               ),
                             ],
@@ -151,7 +152,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                       child: Container(
                         width: size.width * 0.85,
                         height: size.height * 0.1,
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(size.width * 0.03)),
+                        decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(size.width * 0.03)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -162,7 +163,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const TextWidget(
-                                    "وقت وصول الرحلة",
+                                   AppStrings.arrivalTime,
                                     textColor: Colors.black,
                                     size: 14,
                                     weight: FontWeight.bold,
@@ -183,7 +184,7 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const TextWidget(
-                                    "تاريخ وصول الرحلة",
+                                   AppStrings.arrivalDate,
                                     textColor: Colors.black,
                                     size: 14,
                                     weight: FontWeight.bold,

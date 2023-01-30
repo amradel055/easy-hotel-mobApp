@@ -150,7 +150,7 @@ class SpaView extends GetView<SpaController> {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return SpaOffersWidgets(
-                                    image: 'https://www.wearegurgaon.com/wp-content/uploads/2022/04/Affinity-Salon-Gurgaon.jpg',
+                                    image: controller.spaOffer[index].image??AppAssets.placeHolderImg,
                                     name: controller.spaOffer[index].name,
                                     city: controller.spaOffer[index].cityName,
                                     hotel: controller.spaOffer[index].hotelName,

@@ -43,6 +43,7 @@ class UserManager{
     AppTranslation().saveLocale(AppTranslation.getLocale());
     AppTheme().changeThemeMode(isDark);
     Get.forceAppUpdate();
+    Get.toNamed(Routes.LOGIN);
   }
 
   // Future updateToken(RefreshTokenResponse data) async {

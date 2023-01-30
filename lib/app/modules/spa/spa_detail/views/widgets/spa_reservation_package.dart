@@ -1,6 +1,7 @@
 
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/themes/app_theme.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
@@ -26,12 +27,12 @@ class SpaReservationPackage extends GetView<SpaDetailsController> {
       child: Container(
         width: size.width*.9,
         height: size.height*.3,
-        decoration:const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20.00)),color: AppColors.appGreyDark
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(20.00)),color: AppTheme.isDark?Colors.grey[800]:AppColors.appGreyDark
         ),
         child: Column(
           children:[
-              ImageWidget(path:image != null ? ApiProvider.imageUrl + image! : AppAssets.salon,width: size.width*.9,
+              ImageWidget(path:image != null ? ApiProvider.imageUrl + image! : AppAssets.placeHolderImg,width: size.width*.9,
               height: size.height*.18, fit: BoxFit.cover,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,6 +57,7 @@ class SpaReservationPackage extends GetView<SpaDetailsController> {
                         onTap: (){
                           controller.getOfferItems(offerItemId!);
                           controller.serviceIndex.value=0;
+
                         },
                         child: Container(
                           height:size.height * 0.07 ,

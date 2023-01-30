@@ -15,7 +15,11 @@ class SpaSaveRequest {
     this.companyId,
     this.salesDetailSpaItemDTOList,
     this.customerId,
-    this.spaItemDTOList
+    this.spaItemDTOList,
+    this.phone,
+    this.email,
+    this.name,
+
   });
 
   int? spaId;
@@ -25,6 +29,9 @@ class SpaSaveRequest {
   List<SalesDetailsSpaItem>? salesDetailSpaItemDTOList ;
   int? customerId ;
   List<int>?spaItemDTOList;
+  String ?phone;
+  String?email;
+  String?name;
 
   factory SpaSaveRequest.fromJson(Map<String, dynamic> json) => SpaSaveRequest(
       spaId: json["spaId"] == null ? null : json["spaId"],
@@ -43,6 +50,9 @@ class SpaSaveRequest {
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
     "spaItemsDTOList": spaItemDTOList == null ? [] : spaItemDTOList,
+    "phone": phone == null ? null : phone,
+    "email": email == null ? null : email,
+    "name": name == null ? null : name,
     "salesDetailSpaItemDTOList" : salesDetailSpaItemDTOList == null ? null : List<dynamic>.from(salesDetailSpaItemDTOList!.map((x) => x.toJson()))
   };
 }

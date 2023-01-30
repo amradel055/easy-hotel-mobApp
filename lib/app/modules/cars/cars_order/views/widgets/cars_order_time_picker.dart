@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +13,7 @@ class CarsOrderTimePicker extends GetView<CarsOrderController> {
       controller: time ? controller.timeController.value : controller.dateController.value,
       maxLines: 1,
       readOnly: true,
-      style: TextStyle(fontSize: 15 , fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 15 , fontWeight: FontWeight.bold,color: Colors.black),
       decoration: const InputDecoration(
           suffixIcon: Icon(Icons.date_range),
           hintText: "",

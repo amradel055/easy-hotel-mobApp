@@ -18,12 +18,19 @@ class CarsOrderRequest {
     this.customerId,
     this.fromDestination,
     this.carId,
+    this.carName,
+    this.groupId,
+    this.groupName,
     this.personNumber,
     this.isGoingAndRetrun,
     this.comingDate,
     this.comingTime,
     this.salesId,
     this.remark,
+    this.phone,
+    this.email,
+    this.name,
+    this.customerName,
   });
 
 
@@ -43,12 +50,19 @@ class CarsOrderRequest {
   dynamic customerId;
   int? fromDestination;
   int? carId;
+  String? carName;
+  int? groupId;
+  String? groupName;
   int? personNumber;
   int? isGoingAndRetrun;
   DateTime? comingDate;
   String? comingTime;
   int? salesId;
   String? remark;
+  String ?phone;
+  String?email;
+  String?name;
+  String?customerName;
 
 
   Map<String, dynamic> toJson() => {
@@ -68,11 +82,18 @@ class CarsOrderRequest {
     "customerId": customerId,
     "fromDestination": fromDestination == null ? null : fromDestination,
     "carId": carId == null ? null : carId,
+    "carName": carName == null ? null : carName,
+    "groupId": groupId == null ? null : groupId,
+    "groupName": groupName == null ? null : groupName,
     "personNumber": personNumber == null ? null : personNumber,
     "isGoingAndRetrun": isGoingAndRetrun == null ? null : isGoingAndRetrun,
     "comingDate": comingDate == null ? null : comingDate?.toIso8601String(),
     "comingTime": comingTime == null ? null : comingTime,
     "salesId": salesId == null ? null : salesId,
     "remark": remark == null ? null : remark,
+    "phone": phone == null ? null : phone,
+    "email": email == null ? null : email,
+    "name": name == null ? null : name,
+    "customerName": customerName == null ? null : customerName,
   };
 }

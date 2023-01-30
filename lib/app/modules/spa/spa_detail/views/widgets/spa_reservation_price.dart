@@ -1,6 +1,8 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/themes/app_theme.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/modules/spa/spa_detail/controllers/spa_details_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +14,12 @@ import 'package:readmore/readmore.dart';
 import '../../../../../core/themes/app_text_theme.dart';
 
 class SpaReservationPrice extends GetView<SpaDetailsController> {
-  const SpaReservationPrice(this.name, this.price, this.salePrice, this.index, {Key? key}) : super(key: key);
+  const SpaReservationPrice(this.name, this.price, this.salePrice, this.index, this.add, {Key? key}) : super(key: key);
   final String? name;
   final String? price;
   final RxInt? index;
   final double? salePrice;
+  final SpaItemModel ?add;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                   height: size.height * .07,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20.00), topRight: Radius.circular(20.00)),
-                    color: Colors.grey[300],
+                    color: AppTheme.isDark?Colors.grey[800]:AppColors.appGreyDark,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(right: 10),
@@ -54,7 +57,7 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                   ),
                 ),
                 Container(
-                  color: Colors.grey[300],
+                  color: AppTheme.isDark?Colors.grey[800]:AppColors.appGreyDark,
                   width: size.width * .35,
                   height: size.height * .1,
                   child: salePrice == null
@@ -82,12 +85,22 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    controller.changeAddedAdditions(add!);
                     if (!controller.servicesSelected.toList().contains(controller.spa!.spaItemsDtoList![index!.value].id)) {
                       controller.servicesSelected.add(controller.spa!.spaItemsDtoList![index!.value].id!);
-                      // print(controller.servicesSelected);
+                      // controller.selectedAdd.add(controller.spa!.spaItemsDtoList![index!.value]);
+                      controller.servicesSelectedNames.add(controller.spa!.spaItemsDtoList![index!.value].name!);
+                      controller.servicesSelectedPrices.add( salePrice == null?controller.spa!.spaItemsDtoList![index!.value].price!.toString():salePrice.toString());
+                      // controller.changeAddedAdditions(controller.spa!);
+                      // print(controller.selectedAdd);
                     } else {
                       controller.servicesSelected.remove(controller.spa!.spaItemsDtoList![index!.value].id!);
-                      // print(controller.servicesSelected);
+                      // controller.selectedAdd.remove(controller.spa!.spaItemsDtoList![index!.value]);
+                      controller.servicesSelectedNames.remove(controller.spa!.spaItemsDtoList![index!.value].name!);
+                      controller.servicesSelectedPrices.remove( salePrice == null?controller.spa!.spaItemsDtoList![index!.value].price!.toString():salePrice.toString());
+                      // print(controller.selectedAdd);
+                      // controller.changeAddedAdditions();
+
                     }
                   },
                   child: Container(

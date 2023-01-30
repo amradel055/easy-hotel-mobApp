@@ -19,7 +19,7 @@ class HousekeepingServicesWidget extends GetView<HouseKeepingController> {
 
   @override
   Widget build(BuildContext context) {
-
+    Size size =MediaQuery.of(context).size;
     return GestureDetector(onTap: (){
       Get.toNamed(Routes.HOUSEKEEPING_SERVICES,arguments:[id,name,image,branchId],);
     },
@@ -31,7 +31,7 @@ class HousekeepingServicesWidget extends GetView<HouseKeepingController> {
         child: Column(
           children: [
             SizedBox(
-              width: 700, height: 140,
+              width: size.width*.44, height: size.height*.16,
               child: ImageWidget(path:ApiProvider.imageUrl+ image,fit: BoxFit.fitWidth,
                ),
             ),

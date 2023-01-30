@@ -45,6 +45,12 @@ dependencies:
   flutter_expandable_fab : ^1.6.1
   permission_handler: ^10.2.0
   flutter_polyline_points: ^1.0.0
+  image_picker:
+  flutter_email_sender: ^5.2.0
+  whatsapp: ^2.0.0
+  whatsapp_unilink: ^2.0.2
+
+
 
 
 dev_dependencies: 

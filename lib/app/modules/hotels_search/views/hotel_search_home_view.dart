@@ -38,12 +38,11 @@ class HotelSearchView extends GetView<HotelSearchController> {
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [
-                      Colors.amber[300]!,
-                      Colors.amber[300]!,
-                      Colors.amber[200]!,
-                      Colors.amber[100]!,
-                      Colors.amber[100]!.withOpacity(0.5),
-                      Colors.amber[100]!.withOpacity(0.5),
+                      AppColors.colorLogo,
+
+                      Colors.deepOrange[100]!,
+                      Colors.deepOrange[100]!.withOpacity(0.5),
+                      Colors.deepOrange[100]!.withOpacity(0.5),
                       // Colors.transparent
                     ],
                     begin: Alignment.topCenter,
@@ -53,7 +52,7 @@ class HotelSearchView extends GetView<HotelSearchController> {
         ),
         body: Container(
           height: size.height,
-          color: Colors.amber[100]!.withOpacity(0.5),
+          color:  AppColors.colorLogo.withOpacity(0.2),
           padding: EdgeInsets.fromLTRB(size.width * .1, 175.h, size.width * .1, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

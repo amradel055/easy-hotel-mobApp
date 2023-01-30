@@ -26,7 +26,7 @@ class SpaServices extends GetView<SpaDetailsController> {
     return Column(
       children: [
         Padding(
-          padding:  const EdgeInsets.fromLTRB(20,5,20,5),
+          padding:  const EdgeInsets.fromLTRB(20,5,18,5),
           child: Container(
             decoration:const  BoxDecoration(
               color: AppColors.appHallsRed,

@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
@@ -17,7 +18,7 @@ class CarsMainView extends GetView<CarsMainController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar:CarsMainAppbar(size.height * 0.25 , "تمتع بالراحة" , "استمتع بخدمات اضافية مميزه لرحلتك" , false,controller.res[0]),
+      appBar:CarsMainAppbar(size.height * 0.25  , AppStrings.carsCom , AppStrings.carsBar, false,controller.res[0]??AppAssets.placeHolderImg),
       body: Obx((){
         if(controller.loading.value == true){
           return Common.getSpin();
@@ -64,7 +65,7 @@ class CarsMainView extends GetView<CarsMainController> {
                       children: [
                         // for(GroupModel category in _categories)
                         for(CarsGroupsResponse carsCat in controller.categories)
-                          CarsMainCategoryWidget(carsGroup: carsCat,image: carsCat.img==null?"":carsCat.img!,)
+                          CarsMainCategoryWidget(carsGroup: carsCat,image: carsCat.img==null?AppAssets.placeHolderImg:carsCat.img!,)
                       ],
                     ),
                   ),

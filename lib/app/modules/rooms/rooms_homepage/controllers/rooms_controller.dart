@@ -14,6 +14,10 @@ class RoomsController extends GetxController {
   final roomsAds = <AdvertisementResponse>[].obs;
   final roomsDiscover = <AdvertisementResponse>[].obs;
   final isLoading = false.obs;
+  final roomsOfferLoading = false.obs;
+  final roomsAdsLoading = false.obs;
+  final roomsDiscoverLoading = false.obs;
+  final citiesLoading = false.obs;
 
 
   @override
@@ -28,7 +32,7 @@ class RoomsController extends GetxController {
   }
 
   getRoomOffer() async {
-    isLoading(true);
+    roomsOfferLoading(true);
     final request = OffersRoomsRequest(
       appId: 7,
 
@@ -38,11 +42,11 @@ class RoomsController extends GetxController {
           roomsOffer.assignAll(data.data);
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => roomsOfferLoading(false)
     );
   }
   getCities() async {
-    isLoading(true);
+    citiesLoading(true);
     final request = CitiesRequest(
       branchId: 232,
 
@@ -52,11 +56,11 @@ class RoomsController extends GetxController {
           cities.assignAll(data.data);
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => citiesLoading(false)
     );
   }
   getAds() async {
-    isLoading(true);
+    roomsAdsLoading(true);
     final request = AdvertisementRequest(
       appId: 7,
       itemType: 4
@@ -67,11 +71,11 @@ class RoomsController extends GetxController {
           roomsAds.assignAll(data.data);
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => roomsAdsLoading(false)
     );
   }
   getDiscover() async {
-    isLoading(true);
+    roomsDiscoverLoading(true);
     final request = AdvertisementRequest(
         appId: 7,
         itemType: 5
@@ -81,7 +85,7 @@ class RoomsController extends GetxController {
           roomsDiscover.assignAll(data.data);
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => roomsDiscoverLoading(false)
     );
   }
 

@@ -10,6 +10,8 @@ class HouseKeepingServicesController extends GetxController {
   var housekeepingDetail = <HouseKeepingDetailResponse>[].obs;
    ReviewsResponse ?reviewsResponse;
   final isLoading = false.obs;
+  final servicesLoading = false.obs;
+  final reviewsLoading = false.obs;
   final servicesSelected = <int>[].obs;
   final servicesSelectedNames = <String>[].obs;
   final servicesSelectedPrices = <String>[].obs;
@@ -29,7 +31,7 @@ class HouseKeepingServicesController extends GetxController {
   }
 
   getHousekeepingGroup() async {
-    isLoading(true);
+    servicesLoading(true);
     final request = HousekeepingDetailRequest(
       groupId: args[0],
 
@@ -39,11 +41,11 @@ class HouseKeepingServicesController extends GetxController {
           housekeepingDetail.assignAll(data.data);
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => servicesLoading(false)
     );
   }
   getHousekeepingGroupReviews() async {
-    isLoading(true);
+    reviewsLoading(true);
     final request = HousekeepingDetailRequest(
       groupId: args[0],
 
@@ -54,7 +56,7 @@ class HouseKeepingServicesController extends GetxController {
 
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () => reviewsLoading(false)
     );
   }
 

@@ -4,25 +4,29 @@ import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/modules/rooms/city_rooms/controllers/city_rooms_page_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class RoomsCardWidget extends StatelessWidget {
-  const RoomsCardWidget({Key? key, required this.price, required this.image, required this.title, required this.subtitle, required this.id, this.onTap}) : super(key: key);
+
+class RoomsCardWidget extends GetView<CityRoomsPageController> {
+  const RoomsCardWidget(this.price, this.id, this.image, this.title, this.subtitle, this.onTap, {Key? key}) : super(key: key);
   final num price;
   final int id;
   final String image;
   final String title ;
   final String subtitle ;
   final Function()? onTap;
-
-
   @override
   Widget build(BuildContext context) {
-    Size size =MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
+
+
     return GestureDetector(onTap: (){
       Get.toNamed(Routes.ROOM_DETAIL,arguments:id );    },
       child: Column(
@@ -51,7 +55,7 @@ class RoomsCardWidget extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                   image )
+                                    image )
                             )
                         ),
 
@@ -122,6 +126,5 @@ class RoomsCardWidget extends StatelessWidget {
         ],
       ),
     );
-
   }
 }

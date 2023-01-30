@@ -114,7 +114,12 @@ class LoginResponse {
     this.supplierType,
     this.contractorType,
     this.globalFilter,
-    this.hotelBoking
+    this.hotelBoking,
+    this.cityId,
+    this.cityName,
+    this.currencyName,
+    this.languageName,
+    this.image,
   });
 
   int? id;
@@ -174,6 +179,12 @@ class LoginResponse {
   dynamic contractorType;
   dynamic globalFilter;
   int? hotelBoking;
+  int? cityId;
+  String ? cityName;
+  String ? languageName;
+  String ? currencyName;
+  int? image;
+
 
   factory LoginResponse.fromJson( dynamic json) => LoginResponse(
     id: json["id"] == null ? null : json["id"],
@@ -232,7 +243,12 @@ class LoginResponse {
     supplierType: json["supplierType"],
     contractorType: json["contractorType"],
     globalFilter: json["globalFilter"],
-    hotelBoking: json["hotelBoking"] == null ? null : json["hotelBoking"],
+    hotelBoking: json["hotelBoking"] == null ? null : json["cityId"],
+    cityId: json["cityId"] == null ? null : json["hotelBoking"],
+    cityName: json["cityName"] == null ? null : json["cityName"],
+    currencyName: json["currencyName"] == null ? null : json["currencyName"],
+    languageName: json["languageName"] == null ? null : json["languageName"],
+    image: json["image"] == null ? null : json["image"],
 
 
   );
@@ -295,6 +311,11 @@ class LoginResponse {
     "contractorType": contractorType,
     "globalFilter": globalFilter,
     "hotelBoking": hotelBoking == null ? null : hotelBoking,
+    "cityId": cityId == null ? null : cityId,
+    "cityName": cityName == null ? null : cityName,
+    "languageName": languageName == null ? null : languageName,
+    "currencyName": currencyName == null ? null : currencyName,
+    "image": image == null ? null : image,
 
   };
 }

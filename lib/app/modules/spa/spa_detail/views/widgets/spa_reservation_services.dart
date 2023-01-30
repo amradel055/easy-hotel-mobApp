@@ -10,9 +10,10 @@ import 'package:get/get.dart';
 
 
 class SpaReservationServices extends GetView<SpaDetailsController> {
-  const SpaReservationServices(this.name, this.groupName, {Key? key}) : super(key: key);
+  const SpaReservationServices(this.name, this.groupName, this.image, {Key? key}) : super(key: key);
   final String ?name;
   final String ?groupName;
+  final String ?image;
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
@@ -29,7 +30,7 @@ class SpaReservationServices extends GetView<SpaDetailsController> {
               ),
               child:Row(
                 children: [
-                  ImageWidget(path: 'https://www.wearegurgaon.com/wp-content/uploads/2022/04/Affinity-Salon-Gurgaon.jpg' ,height:  size.height * 0.1,
+                  ImageWidget(path: image! ,height:  size.height * 0.1,
                     fit: BoxFit.cover,
                     width: size.width * 0.2,),
                   Padding(

@@ -36,7 +36,7 @@ class HouseKeepingCheckoutView
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Column(
-          children: [
+          children: const [
             TextWidget("Checkout",size: 20,),
             TextWidget(AppStrings.housekeepingService,size: 15,textColor: AppColors.appGreyDark,)
           ],
@@ -46,7 +46,7 @@ class HouseKeepingCheckoutView
             color: AppColors.white,
             width: size.width,
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -54,7 +54,7 @@ class HouseKeepingCheckoutView
                      padding: const EdgeInsets.all(10.0),
                      child: Container(
                       width: size.width * 0.9,
-                       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.00)),
+                       decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(20.00)),
                          border:  Border.all(color: AppColors.black,width: 1),
                        ),
                       child: Padding(
@@ -66,8 +66,8 @@ class HouseKeepingCheckoutView
                               Row(
 
                                 children: [
-                                  TextWidget(
-                                    " الخدمه",
+                                  const TextWidget(
+                                   AppStrings.services,
                                     textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -85,23 +85,23 @@ class HouseKeepingCheckoutView
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.timer),
-                                  TextWidget(
-                                    "الوقت",
+                                  const Icon(Icons.timer),
+                                  const TextWidget(
+                                    AppStrings.time,
                                     textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
                                   TextWidget(
                                     DateFormat("yyyy-MM-dd").format(
-                                        controller.res[1])
+                                        controller.res[1] ?? DateTime.now())
                                    ,
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ), TextWidget(
                                     DateFormat('  hh:mm aaa').format(
-                                        controller.res[2]
+                                        controller.res[2] ?? DateTime.now()
                                     )
                                    ,
                                     textColor: Colors.grey,
@@ -186,8 +186,8 @@ class HouseKeepingCheckoutView
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                                 children: [
-                                  TextWidget(
-                                    "السعر",
+                                  const TextWidget(
+                                    AppStrings.prices,
                                     textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -205,9 +205,9 @@ class HouseKeepingCheckoutView
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                                children: [
+                                children: const [
                                   TextWidget(
-                                    "الاضافه",
+                                    AppStrings.additions,
                                     textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -225,15 +225,15 @@ class HouseKeepingCheckoutView
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                                children: [
+                                children: const [
                                   TextWidget(
-                                    "المجموع",
+                                    AppStrings.totalPrice,
                                     textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
                                   TextWidget(
-                                    " السعر",
+                                    AppStrings.free,
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -260,8 +260,8 @@ class HouseKeepingCheckoutView
 
                             Row(
                               children: [
-                                TextWidget(
-                                  " الملاحظات",
+                                const TextWidget(
+                                 AppStrings.notes,
                                   textColor: Colors.black,
                                   size: 16,
                                   weight: FontWeight.w600,
@@ -354,7 +354,7 @@ class HouseKeepingCheckoutView
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
-                          // controller.getHousekeepingSave();
+                          controller.getHousekeepingSave();
                         },
                         child: Container(
                           height: size.height * 0.05,

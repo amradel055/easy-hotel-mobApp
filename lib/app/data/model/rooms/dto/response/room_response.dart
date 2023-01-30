@@ -57,10 +57,16 @@ class RoomResponse {
     this.discountValue,
     this.lang,
     this.lat,
+    this.childrenNumber,
+    this.adaptNumber,
+    this.fav ,
 
 
-  });
 
+
+  }): localId = idCount++;
+  static int idCount = 0;
+  int localId = -1;
   int? id;
   bool? markEdit;
   dynamic msg;
@@ -104,9 +110,13 @@ class RoomResponse {
   num? discountRate;
   bool? saleItem;
   int? offerId;
+  int? childrenNumber;
+  int? adaptNumber;
   num? discountValue;
   dynamic lang;
   dynamic lat;
+  bool? fav = false;
+
 
 
   static List<RoomResponse> fromList(dynamic json) => List.from(json.map((e) => RoomResponse.fromJson(e)));
@@ -114,56 +124,82 @@ class RoomResponse {
 
 
   String toRawJson() => json.encode(toJson());
+  // factory ItemResponse.fromJson(dynamic json) {
+  //   final product =
+  factory RoomResponse.fromJson( dynamic json) {
+    final product = RoomResponse(
+      id: json["id"] == null ? null : json["id"],
+      markEdit: json["markEdit"] == null ? null : json["markEdit"],
+      msg: json["msg"],
+      msgType: json["msgType"],
+      markDisable: json["markDisable"],
+      createdBy: json["createdBy"] == null ? null : json["createdBy"],
+      createdDate: json["createdDate"] == null ? null : json["createdDate"],
+      index: json["index"] == null ? null : json["index"],
+      companyId: json["companyId"],
+      createdByName: json["createdByName"],
+      branchId: json["branchId"],
+      deletedBy: json["deletedBy"],
+      deletedDate: json["deletedDate"],
+      igmaOwnerId: json["igmaOwnerId"],
+      companyCode: json["companyCode"],
+      branchSerial: json["branchSerial"],
+      igmaOwnerSerial: json["igmaOwnerSerial"],
+      userCode: json["userCode"],
+      name: json["name"] == null ? null : json["name"],
+      address: json["address"] == null ? null : json["address"],
+      numBeds: json["numBeds"],
+      numBalconies: json["numBalconies"],
+      numBathrooms: json["numBathrooms"],
+      image: json["image"],
+      price: json["price"],
+      additionsGroupDTOList: json["additionsGroupDTOList"] == null
+          ? null
+          : List<AdditionsGroupModel>.from(
+          json["additionsGroupDTOList"].map((x) =>
+              AdditionsGroupModel.fromJson(x))),
+      roomAdditionDTOList: json["roomAdditionDTOList"] == null ? null : List<
+          RoomadditionModel>.from(json["roomAdditionDTOList"].map((x) =>
+          RoomadditionModel.fromJson(x))),
+      onSale: json["onSale"] == null ? null : json["onSale"],
+      evaluation: json["evaluation"] == null ? null : json["evaluation"],
+      cleanEvaluation: json["cleanEvaluation"] == null
+          ? null
+          : json["cleanEvaluation"],
+      recipeEvaluation: json["recipeEvaluation"] == null
+          ? null
+          : json["recipeEvaluation"],
+      clientsEvaluation: json["clientsEvaluation"] == null
+          ? null
+          : json["clientsEvaluation"],
+      teamWorkEvaluation: json["teamWorkEvaluation"] == null
+          ? null
+          : json["teamWorkEvaluation"],
+      appId: json["appId"],
+      itemImages: json["itemImages"] == null ? null : List<
+          ItemImageResponse>.from(
+          json["itemImages"].map((x) => ItemImageResponse.fromJson(x))),
+      salePrice: json["salePrice"] == null ? null : json["salePrice"]
+          .toDouble(),
+      branchName: json["branchName"] == null ? null : json["branchName"],
+      description: json["description"] == null ? null : json["description"],
+      groupRemarkDTOList: json["groupRemarkDTOList"] == null ? null : List<
+          RemarkGroupModel>.from(
+          json["groupRemarkDTOList"].map((x) => RemarkGroupModel.fromJson(x))),
+      discountType: json["discountType"],
+      discountRate: json["discountRate"],
+      saleItem: json["saleItem"],
+      offerId: json["offerId"],
+      discountValue: json["discountValue"],
+      lang: json["lang"],
+      lat: json["lat"],
+      adaptNumber: json["adaptNumber"],
+      childrenNumber: json["childrenNumber"],
+      fav: false,);
+    return product;
+  }
 
-  factory RoomResponse.fromJson( dynamic json) => RoomResponse(
-    id: json["id"] == null ? null : json["id"],
-    markEdit: json["markEdit"] == null ? null : json["markEdit"],
-    msg: json["msg"],
-    msgType: json["msgType"],
-    markDisable: json["markDisable"],
-    createdBy: json["createdBy"] == null ? null : json["createdBy"],
-    createdDate: json["createdDate"] == null ? null : json["createdDate"],
-    index: json["index"] == null ? null : json["index"],
-    companyId: json["companyId"],
-    createdByName: json["createdByName"],
-    branchId: json["branchId"],
-    deletedBy: json["deletedBy"],
-    deletedDate: json["deletedDate"],
-    igmaOwnerId: json["igmaOwnerId"],
-    companyCode: json["companyCode"],
-    branchSerial: json["branchSerial"],
-    igmaOwnerSerial: json["igmaOwnerSerial"],
-    userCode: json["userCode"],
-    name: json["name"] == null ? null : json["name"],
-    address: json["address"] == null ? null : json["address"],
-    numBeds: json["numBeds"],
-    numBalconies: json["numBalconies"],
-    numBathrooms: json["numBathrooms"],
-    image: json["image"],
-    price: json["price"],
-    additionsGroupDTOList: json["additionsGroupDTOList"] == null ? null : List<AdditionsGroupModel>.from(json["additionsGroupDTOList"].map((x) => AdditionsGroupModel.fromJson(x))),
-    roomAdditionDTOList: json["roomAdditionDTOList"] == null ? null : List<RoomadditionModel>.from(json["roomAdditionDTOList"].map((x) => RoomadditionModel.fromJson(x))),
-    onSale: json["onSale"] == null ? null : json["onSale"],
-    evaluation: json["evaluation"] == null ? null : json["evaluation"],
-    cleanEvaluation: json["cleanEvaluation"] == null ? null : json["cleanEvaluation"],
-    recipeEvaluation: json["recipeEvaluation"] == null ? null : json["recipeEvaluation"],
-    clientsEvaluation: json["clientsEvaluation"] == null ? null : json["clientsEvaluation"],
-    teamWorkEvaluation: json["teamWorkEvaluation"] == null ? null : json["teamWorkEvaluation"],
-    appId: json["appId"],
-    itemImages: json["itemImages"] == null ? null : List<ItemImageResponse>.from(json["itemImages"].map((x) => ItemImageResponse.fromJson(x))),
-    salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
-    branchName: json["branchName"] == null ? null : json["branchName"],
-    description: json["description"] == null ? null : json["description"],
-    groupRemarkDTOList: json["groupRemarkDTOList"] == null ? null : List<RemarkGroupModel>.from(json["groupRemarkDTOList"].map((x) => RemarkGroupModel.fromJson(x))),
-    discountType: json["discountType"],
-    discountRate: json["discountRate"],
-    saleItem: json["saleItem"],
-    offerId: json["offerId"],
-    discountValue: json["discountValue"],
-    lang: json["lang"],
-    lat: json["lat"],
 
-  );
 
   Map<String, dynamic> toJson() => {
     "id": id == null ? null : id,
@@ -212,6 +248,8 @@ class RoomResponse {
     "discountValue": discountValue,
     "lang": lang,
     "lat": lat,
+    "adaptNumber": adaptNumber,
+    "childrenNumber": childrenNumber,
 
   };
 }
@@ -414,6 +452,7 @@ class RemarkGroupModel {
     remarkDtoListForGroup: json["remarkDTOListForGroup"] == null ? null : List<RemarkModel>.from(json["remarkDTOListForGroup"].map((x) => RemarkModel.fromJson(x))),
     groupId: json["groupId"] == null ? null : json["groupId"],
     groupName: json["groupName"] == null ? null : json["groupName"],
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -443,6 +482,7 @@ class RemarkGroupModel {
     "remarkDTOListForGroup": remarkDtoListForGroup == null ? null : List<RemarkModel>.from(remarkDtoListForGroup!.map((x) => x.toJson())),
     "groupId": groupId == null ? null : groupId,
     "groupName": groupName == null ? null : groupName,
+
   };
 }
 // To parse this JSON data, do

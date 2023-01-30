@@ -30,11 +30,13 @@ class BarWidgets extends GetView<SpaDetailsController> {
                 color: index == controller.serviceIndex.value ? AppColors
                     .appHallsRedDark : AppColors.appHallsRed,
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: TextWidget(
-              title,
-              size:size.width * 0.05 ,
-              weight: index == controller.serviceIndex.value ? FontWeight.bold : FontWeight.normal,
-              textColor: index == controller.serviceIndex.value ? Colors.white : Colors.black,  textAlign: TextAlign.center,
+            child: Center(
+              child: TextWidget(
+                title,
+                size:size.width * 0.05 ,
+                weight: index == controller.serviceIndex.value ? FontWeight.bold : FontWeight.normal,
+                textColor: index == controller.serviceIndex.value ? Colors.white : Colors.black,  textAlign: TextAlign.center,
+              ),
             ),
           ),
         );

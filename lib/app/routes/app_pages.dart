@@ -1,3 +1,5 @@
+import 'package:easy_hotel/app/modules/cars/car_checkout/bindings/car_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/cars/car_checkout/views/car_checkout_view.dart';
 import 'package:easy_hotel/app/modules/food_section/bindings/food_section_binding.dart';
 import 'package:easy_hotel/app/modules/food_section/views/food_section_view.dart';
 import 'package:easy_hotel/app/modules/forget_password/views/forget_password_view.dart';
@@ -29,11 +31,34 @@ import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/bi
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/views/house_keeping_reservation_view.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/bindings/house_keeping_services_binding.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/house_keeping_services_view.dart';
-import 'package:easy_hotel/app/modules/my_account/views/my_account_view.dart';
+import 'package:easy_hotel/app/modules/my_account/acoount_homepage/bindings/my_account_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/acoount_homepage/views/my_account_view.dart';
+import 'package:easy_hotel/app/modules/my_account/change_email/bindings/change_email_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/change_email/views/change_email_view.dart';
+import 'package:easy_hotel/app/modules/my_account/change_password/bindings/change_password_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/change_password/views/change_password_view.dart';
+import 'package:easy_hotel/app/modules/my_account/contact_us/bindings/contact_us_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/contact_us/views/contact_us_view.dart';
+import 'package:easy_hotel/app/modules/my_account/fav_products/bindings/fav_products_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/fav_products/views/fav_products_view.dart';
+import 'package:easy_hotel/app/modules/my_account/mange_account/bindings/mange_account_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/mange_account/views/mange_account_view.dart';
+import 'package:easy_hotel/app/modules/my_account/my_orders/bindings/my_orders_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/my_orders/views/my_orders_view.dart';
+import 'package:easy_hotel/app/modules/my_account/my_orders_detail/bindings/my_orders_detail_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/my_orders_detail/views/my_orders_detail_view.dart';
+import 'package:easy_hotel/app/modules/my_account/settings/bindings/settings_binding.dart';
+import 'package:easy_hotel/app/modules/my_account/settings/views/settings_view.dart';
+import 'package:easy_hotel/app/modules/polman/polman_checkout/bindings/polman_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/polman/polman_checkout/views/polman_checkout_view.dart';
+import 'package:easy_hotel/app/modules/polman/polman_homepage/bindings/polman_binding.dart';
+import 'package:easy_hotel/app/modules/polman/polman_homepage/views/polman_view.dart';
 import 'package:easy_hotel/app/modules/rooms/city_rooms/bindings/city_rooms_page_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/city_rooms/views/city_rooms_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/hotel_rooms/bindings/hotel_rooms_page_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/hotel_rooms/views/hotel_rooms_page_view.dart';
+import 'package:easy_hotel/app/modules/rooms/room_checkout/bindings/room_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/rooms/room_checkout/views/room_checkout_view.dart';
 import 'package:easy_hotel/app/modules/rooms/room_detail/bindings/room_details_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/room_detail/views/room_detail_view.dart';
 import 'package:easy_hotel/app/modules/rooms/room_reservation/bindings/room_reservation_page_binding.dart';
@@ -46,8 +71,8 @@ import 'package:easy_hotel/app/modules/rooms/search_filter_city/bindings/search_
 import 'package:easy_hotel/app/modules/rooms/search_filter_city/views/search_filter_page_view.dart';
 import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/bindings/search_filter_hotel_page_binding.dart';
 import 'package:easy_hotel/app/modules/rooms/search_filter_hotel/views/search_filter_hotel_page_view.dart';
-import 'package:easy_hotel/app/modules/settings/bindings/settings_binding.dart';
-import 'package:easy_hotel/app/modules/settings/views/settings_view.dart';
+import 'package:easy_hotel/app/modules/spa/spa_checkout/bindings/spa_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/spa/spa_checkout/views/spa_checkout_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/bindings/spa_city_binding.dart';
 import 'package:easy_hotel/app/modules/spa/spa_city/views/spa_city_view.dart';
 import 'package:easy_hotel/app/modules/spa/spa_home/views/spa_view.dart';
@@ -73,9 +98,6 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/maps/bindings/map_binding.dart';
 import '../modules/maps/views/map_view.dart';
-import '../modules/my_account/bindings/my_account_binding.dart';
-import '../modules/polman/bindings/polman_binding.dart';
-import '../modules/polman/views/polman_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/resturant/bindings/resturant_binding.dart';
@@ -328,6 +350,51 @@ class AppPages {
       name: _Paths.HOUSEKEEPING_CHECKOUT,
       page: () => const HouseKeepingCheckoutView(),
       binding: HouseKeepingCheckoutBinding(),
+    ), GetPage(
+      name: _Paths.SPA_CHECKOUT,
+      page: () => const SpaCheckoutView(),
+      binding: SpaCheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.POLMAN_CHECKOUT,
+      page: () => const PolmanCheckoutView(),
+      binding: PolmanCheckoutBinding(),
+    ), GetPage(
+      name: _Paths.CAR_CHECKOUT,
+      page: () => const CarCheckoutView(),
+      binding: CarCheckoutBinding(),
+    ),GetPage(
+      name: _Paths.ROOM_CHECKOUT,
+      page: () => const RoomCheckoutView(),
+      binding: RoomCheckoutBinding(),
+    ),GetPage(
+      name: _Paths.MANGE_ACCOUNT,
+      page: () => const MangeAccountView(),
+      binding: MangeAccountBinding(),
+    ),GetPage(
+      name: _Paths.MY_ORDERS,
+      page: () => const MyOrdersView(),
+      binding: MyOrdersBinding(),
+    ),GetPage(
+      name: _Paths.MY_ORDERS_DETAIL,
+      page: () => const MyOrdersDetailView(),
+      binding: MyOrdersDetailBinding(),
+    ),GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
+    ),GetPage(
+      name: _Paths.CHANGE_EMAIL,
+      page: () => const ChangeEmailView(),
+      binding: ChangeEmailBinding(),
+    ),GetPage(
+      name: _Paths.CONTACT_US,
+      page: () => const ContactUsView(),
+      binding: ContactUsBinding(),
+    ),GetPage(
+      name: _Paths.FAV_PRODUCTS,
+      page: () => const FavProductsView(),
+      binding: FavProductsBinding(),
     ),
   ];
 }

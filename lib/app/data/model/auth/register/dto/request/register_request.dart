@@ -7,6 +7,9 @@ class RegisterRequestDto extends BaseRequest {
     this.password  = "",
     this.name,
     this.userName,
+    this.cityId,
+    this.currencyId,
+    this.languageId
   });
 
   String? mobile;
@@ -14,6 +17,9 @@ class RegisterRequestDto extends BaseRequest {
   String? userName;
   String? email;
   String? password;
+  int?cityId;
+  int?currencyId;
+  int?languageId;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -22,5 +28,8 @@ class RegisterRequestDto extends BaseRequest {
     "mobile": mobile,
     "email": email,
     "password": password,
+    "cityId": cityId,
+    "currencyId": currencyId,
+    "languageId": languageId,
   };
 }

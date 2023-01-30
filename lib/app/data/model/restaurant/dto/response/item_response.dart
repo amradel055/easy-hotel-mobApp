@@ -5,6 +5,7 @@
 
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/sales_details_additions.dart';
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/variation_model.dart';
+import 'package:get/get.dart';
 
 import '../../../spa/dto/response/spa_response_dto.dart';
 import 'attribute_details_model.dart';
@@ -100,7 +101,7 @@ class ItemResponse {
   List<ReviewModel>? reviewsList;
   List<AttributeDetails> chooseValues = [];
   double? reviewsStars ;
-  bool? fav = false;
+  RxBool? fav = false.obs;
   Variation? selectedVariation;
   double? sumPrice ;
   bool? saved ;
@@ -147,7 +148,7 @@ class ItemResponse {
     resSalesDetailsAdditionsDTOList: List<SalesDetailsAdditions>.from((json["resSalesDetailsAdditionsDTOList"]??[]).map((x) => SalesDetailsAdditions.fromJson(x))),
     quantity: json["quantity"] ?? 1 ,
     reviewsStars: json["reviewsStars"] ,
-    fav : false ,
+    fav : false.obs ,
     saved : false ,
     selectedVariation: json["selectedVariation"] == null ? null : Variation.fromJson(json["selectedVariation"]),
   );

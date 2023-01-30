@@ -46,6 +46,7 @@ abstract class AppStrings {
   static const hallsSearchLabel = "Search For Halls and Reserve it..";
   static const offers = "offers";
   static const towns = "Towns";
+  static const city = "City";
   static const hotels = "Hotels";
   static const spas = "Spa";
   static const spasHotel = "Hotel Spa";
@@ -165,10 +166,31 @@ abstract class AppStrings {
   static const beds = "beds";
   static const balconies = "balconies";
   static const bathrooms = "bathrooms";
-
-
-
-
+  static const myProfile = "My Profile";
+  static const changePassword = "Change Password";
+  static const changeEmail = "Change Email";
+  static const liked = "Liked";
+  static const contactUs = "Contact Us";
+  static const ordesr = "My Orders";
+  static const personalInfo = "Personal Information";
+  static const oldPass = "Old Password";
+  static const newPass = "New Password";
+  static const confirmNewPass = "Confirm New Password";
+  static const subject = "Subject";
+  static const message = "Message";
+  static const send = "Send";
+  static const orderConfirmationText = "Order Confirmation Text";
+  static const confirmationText = "Confirmation Text";
+  static const carsBar = "Enjoy your Trip";
+  static const carsCom = "Comfortable Trip";
+  static const carType = "Car Type";
+  static const seats = "seats";
+  static const arrivalDate = "Arrival Date";
+  static const go = "Go";
+  static const back = "Back";
+  static const goAndBack = "Go&Back";
+  static const tripType = "Trip Type";
+  static const road = "Road";
 
 
 

@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_response_dto.dart';
 import 'package:easy_hotel/app/modules/cars/cars_category/controllers/cars_category_controller.dart';
 import 'package:easy_hotel/app/modules/cars/cars_category/views/widgets/car_widget.dart';
@@ -17,17 +18,18 @@ class CarsCategoryView extends GetView<CarsCategoryController> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: CarsMainAppbar(size.height * 0.27,
-            " احجز بافضل الاسعار وقارن بين عروض  \nتآجير السيارات عبر اكتر من ٤٥٠ سياره \nو تمتع.... برحلات الذهاب و العودة", "", true
+             AppStrings.carsCom, AppStrings.carsBar, true
        ,controller.res[1] ),
         body: Obx(() {
           if (controller.loading.value == true) {
             return Common.getSpin();
           }
-          return Directionality(
-            textDirection: TextDirection.rtl,
-            child: SizedBox(
-              height: size.height * 0.75,
-              width: size.width,
+          return SizedBox(
+            height: size.height * 0.75,
+            width: size.width,
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+
               child: Column(
                 children: [
                   Obx(() => Padding(

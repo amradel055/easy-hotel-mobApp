@@ -48,6 +48,17 @@ abstract class Routes {
   static const MAP = _Paths.MAP;
   static const SETTINGS = _Paths.SETTINGS;
   static const HOUSEKEEPING_CHECKOUT = _Paths.HOUSEKEEPING_CHECKOUT;
+  static const SPA_CHECKOUT = _Paths.SPA_CHECKOUT;
+  static const POLMAN_CHECKOUT = _Paths.POLMAN_CHECKOUT;
+  static const CAR_CHECKOUT = _Paths.CAR_CHECKOUT;
+  static const ROOM_CHECKOUT = _Paths.ROOM_CHECKOUT;
+  static const MANGE_ACCOUNT = _Paths.MANGE_ACCOUNT;
+  static const MY_ORDERS = _Paths.MY_ORDERS;
+  static const MY_ORDERS_DETAIL = _Paths.MY_ORDERS_DETAIL;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const CHANGE_EMAIL = _Paths.CHANGE_EMAIL;
+  static const CONTACT_US = _Paths.CONTACT_US;
+  static const FAV_PRODUCTS = _Paths.FAV_PRODUCTS;
 }
 
 abstract class _Paths {
@@ -97,5 +108,16 @@ abstract class _Paths {
   static const MAP = '/map';
   static const SETTINGS = '/settings';
   static const HOUSEKEEPING_CHECKOUT = '/housekeeping-checkout';
+  static const SPA_CHECKOUT = '/spa-checkout';
+  static const POLMAN_CHECKOUT = '/polman-checkout';
+  static const CAR_CHECKOUT = '/car-checkout';
+  static const ROOM_CHECKOUT = '/room-checkout';
+  static const MANGE_ACCOUNT = '/mange-account';
+  static const MY_ORDERS = '/my-orders';
+  static const MY_ORDERS_DETAIL = '/my-orders-detail';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const CHANGE_EMAIL = '/change-email';
+  static const CONTACT_US = '/contact-us';
+  static const FAV_PRODUCTS = '/fav-products';
 
 }

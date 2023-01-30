@@ -75,7 +75,20 @@ final Map<String, String> enUs = {
   AppStrings.servicesHall: 'services Hall',
   AppStrings.allServices: 'All Services',
   AppStrings.myAccount: 'My Account',
-
+  AppStrings.changePassword: 'Change Password',
+  AppStrings.changeEmail: 'Change Email',
+  AppStrings.liked: 'Liked',
+  AppStrings.contactUs: 'Contact Us',
+  AppStrings.ordesr: 'My Orders',
+  AppStrings.personalInfo: 'Personal Information',
+  AppStrings.oldPass: 'Old Password',
+  AppStrings.newPass: 'New Password',
+  AppStrings.confirmNewPass: 'Confirm New Password',
+  AppStrings.subject: 'Subject',
+  AppStrings.message: 'Message',
+  AppStrings.send: 'Send',
+  AppStrings.orderConfirmationText: 'Order Confirmation Text',
+  AppStrings.confirmationText: 'Confirmation Text',
 
 
 
@@ -150,6 +163,19 @@ final Map<String, String> enUs = {
   AppStrings.balconies: "Balaconies",
   AppStrings.bathrooms: "BathRooms",
   AppStrings.reserveNow: "Reserve Now",
+  AppStrings.myProfile: "My Profile",
+  AppStrings.city: "City",
+  AppStrings.carsBar: "Enjoy Your Trip",
+  AppStrings.carsCom: "Comfortable Trip",
+  AppStrings.carType: "Car Type",
+  AppStrings.seats: "Seats",
+  AppStrings.arrivalDate: "Arrival Date",
+  AppStrings.go: "Go",
+  AppStrings.back: "Back",
+  AppStrings.goAndBack: "Go&Back",
+  AppStrings.tripType: "Trip Type",
+  AppStrings.road: "Road",
+
 
 
 };

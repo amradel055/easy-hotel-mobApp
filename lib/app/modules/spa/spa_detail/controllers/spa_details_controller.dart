@@ -16,16 +16,23 @@ class SpaDetailsController extends GetxController {
   SpaResponse? spa ;
   final isLoading = false.obs;
   final servicesSelected = <int>[].obs;
+  final servicesSelectedNames = <String>[].obs;
+  final servicesSelectedPrices = <String>[].obs;
+  final totalPrice = 0.0.obs ;
+  final selectedAdd = <SpaItemModel>[].obs;
 
 
 
-   @override
+
+
+  @override
   void onInit() {
      if(id != null){
        getSpaDetailById();
      }else{
        getSpaDetailByHotel();
      }
+     calcTotalPrice();
      super.onInit();
   }
 
@@ -58,38 +65,37 @@ class SpaDetailsController extends GetxController {
     );
   }
 
-   getSpaSave() async {
-     if(servicesSelected.toList().isEmpty){
-       showPopupText("يجب اختيار خدمة") ;
-       return ;
-     }
-     isLoading(true);
-     final request = SpaSaveRequest(
-       spaId:spa!.id! ,
-       spaItemDTOList: servicesSelected.toList(),
-       salesDetailSpaItemDTOList: [],
-       companyId: AppConstants.companyId,
-       createdBy: AppConstants.createdBy,
-       customerId: UserManager().user!.id,
-       branchId: spa!.branchId,
-     );
-     SpaRepository().getSpaSave(request,
-         onSuccess: (data) {
-           showPopupText( "تم الحفظ بنجاح");
-           servicesSelected([]);
-         },
-         onError: (e) => showPopupText( e.toString()),
-         onComplete: () => isLoading(false)
-     );
-   }
 
 
    getOfferItems(int offerItemId){
      if(!servicesSelected.toList().contains(offerItemId)){
        servicesSelected.add(offerItemId);
+       servicesSelectedNames.add(spa!.spaItemsDtoList![index.value].name!);
+       servicesSelectedPrices.add( spa!.spaItemsDtoList![index.value].salePrice == null?spa!.spaItemsDtoList![index.value].price!.toString():spa!.spaItemsDtoList![index.value].salePrice.toString());
+       changeAddedAdditions(spa!.spaItemsDtoList![index.value]);
      }
    }
 
+  changeAddedAdditions (SpaItemModel add){
+    if(selectedAdd.toList().contains(add)){
+      selectedAdd.remove(add);
+    }else{
+      selectedAdd.add(add);
+    }
+    calcTotalPrice();
+  }
 
 
+  calcTotalPrice(){
+    totalPrice((0).toDouble());
+    selectedAdd.toList().forEach((addition) {
+      totalPrice.value += (addition.salePrice != null && addition.salePrice != 0 ? addition.salePrice : addition.price)!.toDouble();
+    });
+  }
+  // mulTotalPrice(){
+  //   totalPrice((totalPrice).toDouble());
+  //   selectedAdd.toList().forEach((addition) {
+  //     totalPrice.value -= (addition.salePrice != null && addition.salePrice != 0 ? addition.salePrice : addition.price)!.toDouble();
+  //   });
+  // }
 }
