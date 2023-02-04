@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/allServices/services_model.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class ServiceCard extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(20.00)),
             color: AppColors.appGreyLight,
             image: DecorationImage(
-                image: AssetImage(image), fit: BoxFit.cover)),
+                image: NetworkImage(ApiProvider.imageUrl+image), fit: BoxFit.cover)),
         clipBehavior: Clip.antiAlias,
         child: DecoratedBox(
             decoration: const BoxDecoration(

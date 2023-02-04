@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/components/button_widget.dart';
 import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
@@ -119,7 +120,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                         ),
                       ),
                       SizedBox(
-                        width: size.width * 0.38,
+                        width: size.width * 0.28,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +133,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                               size: 15,
                             ),
                             TextWidget(
-                              (controller.selectedCar.pricePerDay??0).toString() + AppStrings.LE,
+                              (controller.selectedCar.reviewStars??0).toString() + AppStrings.LE,
                               textColor: Colors.blue,
                               maxLines: 1,
                               weight: FontWeight.bold,
@@ -177,12 +178,12 @@ class CarsOrderView extends GetView<CarsOrderController> {
                       ),
                       SizedBox(
                           height: size.height * 0.1,
-                          width: size.width * 0.4,
+                          width: size.width * 0.2,
                           child:
                               // _car.image != null ?
                               FadeInImage(
                             height: size.height * 0.15,
-                            width: size.width * 0.45,
+                            width: size.width * 0.2,
                             fit: BoxFit.cover,
                             placeholder: const AssetImage("assets/images/placeholder.jpeg"),
                             image: NetworkImage(
@@ -197,7 +198,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                             },
                           )
                           // : const SizedBox(),
-                          ),
+                          ),ButtonWidget(text:AppStrings.information,onPressed: ()=>Get.toNamed(Routes.CAR_DETAIL,arguments:controller.selectedCar),buttonColor: Colors.redAccent,)
 
                     ],
                   ),

@@ -63,14 +63,14 @@ class CarWidget extends StatelessWidget {
                         textColor: Colors.red[900]! , maxLines: 1, size: 20, weight: FontWeight.bold,),
                     ),
                 ),
+                // Expanded(
+                //     flex: 5,
+                //     child:
+                //     TextWidget( "${car.pricePerDay.toString()+AppStrings.LE??""}" ,
+                //       textColor:Colors.blue , maxLines: 1, weight: FontWeight.bold, size: 20,),
+                // ),
                 Expanded(
-                    flex: 5,
-                    child:
-                    TextWidget( "${car.pricePerDay.toString()+AppStrings.LE??""}" ,
-                      textColor:Colors.blue , maxLines: 1, weight: FontWeight.bold, size: 20,),
-                ),
-                Expanded(
-                    flex: 9,
+                    flex: 6,
                     child:
                     SizedBox(
                       child: Row(
@@ -79,7 +79,6 @@ class CarWidget extends StatelessWidget {
                           const TextWidget(AppStrings.seats, textColor: Colors.blue , maxLines: 1,),
                           Icon(Icons.person , color:Colors.blue , size: size.width * 0.08,),
                           TextWidget(car.seatsNumber.toString(), textColor : Colors.blue , maxLines: 1, size: 20,),
-                          const TextWidget("+" ,textColor:Colors.blue ),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:flutter/material.dart';
 
 class CarsMainAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -20,8 +21,8 @@ class CarsMainAppbar extends StatelessWidget implements PreferredSizeWidget {
 
         decoration:  BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(
-                   imageIn
+                image: NetworkImage(
+                    ApiProvider.imageUrl+imageIn
                 ),
                 fit: BoxFit.fitWidth)),
         child: Padding(

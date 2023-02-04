@@ -30,7 +30,7 @@ class CarsCategoryView extends GetView<CarsCategoryController> {
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
 
-              child: Column(
+              child: controller.catCars.isEmpty?const Center(child: TextWidget(AppStrings.noCarsFound,size: 30,)):Column(
                 children: [
                   Obx(() => Padding(
                         padding: const EdgeInsets.all(8.0),

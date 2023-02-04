@@ -12,7 +12,8 @@ final Map<String, String> enUs = {
   AppStrings.connectionError: 'connection error',
   AppStrings.goBack: 'back',
   AppStrings.notFound: 'not fount',
-  AppStrings.forbidden: 'forbidden',
+  AppStrings.noCarsFound: 'No Cars Found',
+AppStrings.forbidden: 'forbidden',
   AppStrings.unauthenticated: 'the session is expired',
   AppStrings.Welcome: 'WELCOME',
   AppStrings.phone: 'PHONE',
@@ -175,6 +176,7 @@ final Map<String, String> enUs = {
   AppStrings.goAndBack: "Go&Back",
   AppStrings.tripType: "Trip Type",
   AppStrings.road: "Road",
+  AppStrings.category: "Category",
 
 
 

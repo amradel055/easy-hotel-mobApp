@@ -65,7 +65,7 @@ class CarsMainView extends GetView<CarsMainController> {
                       children: [
                         // for(GroupModel category in _categories)
                         for(CarsGroupsResponse carsCat in controller.categories)
-                          CarsMainCategoryWidget(carsGroup: carsCat,image: carsCat.img==null?AppAssets.placeHolderImg:carsCat.img!,)
+                          CarsMainCategoryWidget(carsGroup: carsCat,image:  carsCat.img==null?AppAssets.placeHolderImg:carsCat.img!,)
                       ],
                     ),
                   ),

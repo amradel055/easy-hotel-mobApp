@@ -1,5 +1,7 @@
 import 'package:easy_hotel/app/modules/cars/car_checkout/bindings/car_checkout_binding.dart';
 import 'package:easy_hotel/app/modules/cars/car_checkout/views/car_checkout_view.dart';
+import 'package:easy_hotel/app/modules/cars/car_detail/bindings/car_details_binding.dart';
+import 'package:easy_hotel/app/modules/cars/car_detail/views/car_detail_view.dart';
 import 'package:easy_hotel/app/modules/food_section/bindings/food_section_binding.dart';
 import 'package:easy_hotel/app/modules/food_section/views/food_section_view.dart';
 import 'package:easy_hotel/app/modules/forget_password/views/forget_password_view.dart';
@@ -395,6 +397,10 @@ class AppPages {
       name: _Paths.FAV_PRODUCTS,
       page: () => const FavProductsView(),
       binding: FavProductsBinding(),
+    ),GetPage(
+      name: _Paths.CAR_DETAIL,
+      page: () => const CarDetailView(),
+      binding: CarDetailsBinding(),
     ),
   ];
 }

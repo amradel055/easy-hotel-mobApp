@@ -21,6 +21,7 @@ abstract class AppStrings {
   static const unauthenticated = "UNAUTHENTICATED";
   static const forbidden = "FORBIDDEN";
   static const notFound = "NOT_FOUND";
+  static const noCarsFound = "No Cars Found";
   static const serverError = "SERVER_ERROR";
   static const required = "REQUIRED";
   static const passwordsNotTheSame = "NOT_THE_SAME";
@@ -191,6 +192,7 @@ abstract class AppStrings {
   static const goAndBack = "Go&Back";
   static const tripType = "Trip Type";
   static const road = "Road";
+  static const category = "Category";
 
 
 

@@ -1,4 +1,5 @@
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_groups_response_dto.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +30,8 @@ class CarsMainCategoryWidget extends StatelessWidget {
 
               decoration:   BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(
-                          image
+                      image: NetworkImage(
+                          ApiProvider.imageUrl+image
                       ),
                       fit: BoxFit.fitWidth,
                   ),
@@ -46,6 +47,7 @@ class CarsMainCategoryWidget extends StatelessWidget {
               carsGroup.name! ,
               size: 20,
               textColor: AppColors.black,
+               maxLines: 1,
             ),
           ],
         ),

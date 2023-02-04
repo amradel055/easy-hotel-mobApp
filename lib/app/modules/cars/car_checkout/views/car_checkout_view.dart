@@ -192,12 +192,12 @@ class CarCheckoutView
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
-                                  TextWidget(
-                                    controller.res[0].pricePerDay.toString(),
-                                    textColor: Colors.grey,
-                                    size: 16,
-                                    weight: FontWeight.w600,
-                                  ),
+                                  // TextWidget(
+                                  //   controller.res[0].pricePerDay.toString(),
+                                  //   textColor: Colors.grey,
+                                  //   size: 16,
+                                  //   weight: FontWeight.w600,
+                                  // ),
 
 
                                 ],
@@ -272,11 +272,11 @@ class CarCheckoutView
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
-                                  TextWidget(
-                                    controller.res[0].pricePerDay.toString(),                                    textColor: Colors.grey,
-                                    size: 16,
-                                    weight: FontWeight.w600,
-                                  ),
+                                  // TextWidget(
+                                  //   controller.res[0].pricePerDay.toString(),                                    textColor: Colors.grey,
+                                  //   size: 16,
+                                  //   weight: FontWeight.w600,
+                                  // ),
 
 
                                 ],

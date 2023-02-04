@@ -97,13 +97,9 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                             // showSearchBox: true,
                             items: controller.trafficLines,
                             itemAsString: (e) => e.lineName.toString(),
-                            dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownDecoratorProps: const DropDownDecoratorProps(
                               textAlign: TextAlign.center,
                               textAlignVertical: TextAlignVertical.center,
-
-
-
-
                             ),
                             onChanged: (value) => controller.changeSelectedTrafficLines(value!),
                             selectedItem: controller.selectedTrafficLine.value,

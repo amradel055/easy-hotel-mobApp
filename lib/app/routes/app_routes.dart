@@ -59,6 +59,7 @@ abstract class Routes {
   static const CHANGE_EMAIL = _Paths.CHANGE_EMAIL;
   static const CONTACT_US = _Paths.CONTACT_US;
   static const FAV_PRODUCTS = _Paths.FAV_PRODUCTS;
+  static const CAR_DETAIL = _Paths.CAR_DETAIL;
 }
 
 abstract class _Paths {
@@ -119,5 +120,6 @@ abstract class _Paths {
   static const CHANGE_EMAIL = '/change-email';
   static const CONTACT_US = '/contact-us';
   static const FAV_PRODUCTS = '/fav-products';
+  static const CAR_DETAIL = '/car-detail';
 
 }

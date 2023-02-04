@@ -12,7 +12,9 @@ final Map<String, String> arEG = {
   AppStrings.connectionError: 'حصل مشكلة بالاتصال',
   AppStrings.goBack: 'رجوع',
   AppStrings.notFound: 'لايوجد',
-  AppStrings.forbidden: 'ممنوع الوصول',
+  AppStrings.noCarsFound: 'لايوجد سيارات',
+
+AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.unauthenticated: 'الجلسة منتهية',
   AppStrings.Welcome: 'مرحبا',
   AppStrings.userName: 'اسم المستخدم',
@@ -176,5 +178,7 @@ final Map<String, String> arEG = {
   AppStrings.goAndBack: "ذهاب وعوده",
   AppStrings.tripType: "نوع الرحله",
   AppStrings.road: "المسار",
+  AppStrings.category: "الفئه",
+
 
 };
