@@ -1,6 +1,7 @@
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/housekeeping_save_request.dart';
 import 'package:easy_hotel/app/data/repository/housekeeping/housekeeping_repository.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
@@ -20,22 +21,21 @@ class HouseKeepingCheckoutController extends GetxController {
   getHousekeepingSave() async {
     isLoading(true);
     final request = HousekeepingSaveRequest(
-        serviceTypeId:res[6] ,
         branchId:res[7],
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
         customerId: UserManager().user!.id,
-        salesDetailHouseKeepingDTOList: res[0],
-        date: res[1],
-        time: res[2],
+        houseKeepingDTOList: res[8],
+        dueDate: res[1],
+        dueTime: res[2],
         remark: res[3],
-      name: "",
-      email: "",
-      phone: ""
+        name: "",
+        email: "",
+        phone: ""
     );
     HousekeepingRepository().getHousekeepingSave(request,
         onSuccess: (data) {
-          showPopupText( "تم الحفظ بنجاح");
+          showPopupText( AppStrings.savedSuccessfully);
           Get.toNamed(Routes.ALLSERVICES);
 
         },

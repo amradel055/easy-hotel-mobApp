@@ -16,15 +16,15 @@ class CarsOrderRequest {
     this.branchSerial,
     this.igmaOwnerSerial,
     this.customerId,
-    this.fromDestination,
+    this.trafficId,
     this.carId,
     this.carName,
     this.groupId,
     this.groupName,
     this.personNumber,
     this.isGoingAndRetrun,
-    this.comingDate,
-    this.comingTime,
+    this.dueDate,
+    this.dueTime,
     this.salesId,
     this.remark,
     this.phone,
@@ -48,15 +48,15 @@ class CarsOrderRequest {
   dynamic branchSerial;
   dynamic igmaOwnerSerial;
   dynamic customerId;
-  int? fromDestination;
+  int? trafficId;
   int? carId;
   String? carName;
   int? groupId;
   String? groupName;
   int? personNumber;
   int? isGoingAndRetrun;
-  DateTime? comingDate;
-  String? comingTime;
+  DateTime? dueDate;
+  DateTime? dueTime;
   int? salesId;
   String? remark;
   String ?phone;
@@ -80,15 +80,15 @@ class CarsOrderRequest {
     "branchSerial": branchSerial,
     "igmaOwnerSerial": igmaOwnerSerial,
     "customerId": customerId,
-    "fromDestination": fromDestination == null ? null : fromDestination,
+    "trafficId": trafficId == null ? null : trafficId,
     "carId": carId == null ? null : carId,
     "carName": carName == null ? null : carName,
     "groupId": groupId == null ? null : groupId,
     "groupName": groupName == null ? null : groupName,
     "personNumber": personNumber == null ? null : personNumber,
     "isGoingAndRetrun": isGoingAndRetrun == null ? null : isGoingAndRetrun,
-    "comingDate": comingDate == null ? null : comingDate?.toIso8601String(),
-    "comingTime": comingTime == null ? null : comingTime,
+    "dueDate": dueDate == null ? null : dueDate?.toIso8601String(),
+    "dueTime": dueTime == null ? null : dueTime,
     "salesId": salesId == null ? null : salesId,
     "remark": remark == null ? null : remark,
     "phone": phone == null ? null : phone,

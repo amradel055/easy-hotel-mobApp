@@ -14,11 +14,12 @@ import 'package:get/get.dart';
 
 
 class SpaReservationPackage extends GetView<SpaDetailsController> {
-  const SpaReservationPackage(this.name, this.title,this.image , this.offerItemId , {Key? key}) : super(key: key);
+  const SpaReservationPackage(this.name, this.title,this.image , this.offerItemId, this.index , {Key? key}) : super(key: key);
   final String name;
   final String title;
   final String? image ;
   final int? offerItemId ;
+  final RxInt? index ;
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
@@ -55,7 +56,7 @@ class SpaReservationPackage extends GetView<SpaDetailsController> {
                     children: [
                       GestureDetector(
                         onTap: (){
-                          controller.getOfferItems(offerItemId!);
+                          controller.getOfferItems(offerItemId!,index!);
                           controller.serviceIndex.value=0;
 
                         },

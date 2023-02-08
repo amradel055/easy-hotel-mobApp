@@ -30,6 +30,13 @@ class HouseKeepingDetailResponse {
     this.name,
     this.price,
     this.groupId,
+    this.discountType,
+    this.discountValue,
+    this.discountRate,
+    this.saleItem,
+    this.offerId,
+    this.serviceTypeId,
+    this.salePrice,
     this.selected
   });
 
@@ -54,6 +61,13 @@ class HouseKeepingDetailResponse {
   String? name;
   double ?price;
   int ?groupId;
+  int?discountType;
+  double?discountValue;
+  int?discountRate;
+  bool?saleItem;
+  int?offerId;
+  int?serviceTypeId;
+  double?salePrice;
   RxBool?selected=false.obs;
 
   static List<HouseKeepingDetailResponse> fromList(dynamic json) => List.from(json.map((e) => HouseKeepingDetailResponse.fromJson(e)));
@@ -81,12 +95,19 @@ class HouseKeepingDetailResponse {
     name: json["name"] == null ? null : json["name"],
     price: json["price"] == null ? null : json["price"].toDouble(),
     groupId: json["groupId"] == null ? null : json["groupId"],
+    discountType: json["discountType"] == null ? null : json["discountType"],
+    discountValue: json["discountValue"] == null ? null : json["discountValue"].toDouble(),
+    discountRate: json["discountRate"] == null ? null : json["discountRate"],
+    saleItem: json["saleItem"] == null ? null : json["saleItem"],
+    offerId: json["offerId"] == null ? null : json["offerId"],
+    serviceTypeId: json["serviceTypeId"] == null ? null : json["serviceTypeId"],
+    salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
     selected: false.obs,
 
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id == null ? null : id,
+    "id": null,
     "markEdit": markEdit == null ? null : markEdit,
     "msg": msg,
     "msgType": msgType,
@@ -107,7 +128,14 @@ class HouseKeepingDetailResponse {
     "name": name == null ? null : name,
     "price": price == null ? null : price,
     "groupId": groupId == null ? null : groupId,
-    "selected": selected == null ? null : selected,
+  "discountType": discountType == null ? null : discountType,
+  "discountValue": discountValue == null ? null : discountValue,
+  "discountRate": discountRate == null ? null : discountRate,
+  "saleItem": saleItem == null ? null : saleItem,
+  "offerId": offerId == null ? null : offerId,
+  "serviceTypeId": serviceTypeId == null ? null : serviceTypeId,
+  "salePrice": salePrice == null ? null : salePrice,
+    // "selected": selected == null ? null : selected,
 
   };
 }

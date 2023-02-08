@@ -25,9 +25,9 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
         .of(context)
         .size;
     return Scaffold(
-        body: Obx(() {
+        body:
 
-          return SingleChildScrollView(
+           SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
 
             child: Column(
@@ -55,9 +55,12 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                         Align(
                           alignment: Alignment.topLeft,
                           child: UnconstrainedBox(
-                            child: IconButtonWidget(
-                              icon: Icons.arrow_forward_ios,
-                              onPressed: () => Get.back(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: IconButtonWidget(
+                                icon: Icons.arrow_forward_ios,
+                                onPressed: () => Get.back(),
+                              ),
                             ),
                           ),
                         ),
@@ -93,7 +96,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextWidget('يرجي اختيار الخدمه',
+                              const TextWidget(AppStrings.services,
                                 weight: FontWeight.bold,
                                 textColor: AppColors.appBlue,
                                 size: 20,),
@@ -131,7 +134,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                 );
                               }),
                               controller.reviewsResponse == null ||controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty
-                                  ? const  TextWidget("لا يوجد مراجعات",
+                                  ? const  TextWidget(AppStrings.noReview,
                                 weight: FontWeight.bold,
                                 textColor: AppColors.appBlue,
                                 size: 20,)
@@ -183,22 +186,28 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                                   .value,
                                               controller.servicesSelectedPrices
                                                   .value,
-                                              controller.args[3]
+                                              controller.args[3],
+                                              controller.servicesSelectedAdded.value
                                             ]
                                         );
                                       },
-                                      child: Container(
-                                        height: size.height * 0.05,
-                                        width: size.width * 0.7,
-                                        decoration: BoxDecoration(
-                                          color: AppColors.appHallsRedDark,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(size.width * 0.05)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: size.height * 0.05,
+                                          width: size.width * 0.7,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.appHallsRedDark,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(size.width * 0.05)),
+                                          ),
+                                          child: Center(
+                                            child: const TextWidget(
+                                              AppStrings.reserve, textAlign: TextAlign.center,
+                                              weight: FontWeight.bold,
+                                              textColor: Colors.white,),
+                                          ),
                                         ),
-                                        child: const TextWidget(
-                                          "استمرار", textAlign: TextAlign.center,
-                                          weight: FontWeight.bold,
-                                          textColor: Colors.white,),
                                       ),
                                     ),
                                   ),
@@ -211,8 +220,8 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                   ),
                 ),
               ],),
-          );
-        })
+          )
+
     );
   }
 }

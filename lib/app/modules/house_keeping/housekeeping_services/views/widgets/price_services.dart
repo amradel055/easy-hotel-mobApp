@@ -26,7 +26,7 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: Container(
-        height: size.height * .05,
+        height: size.height * .04,
         width: size.width * .9,
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20))
@@ -79,6 +79,8 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
                     if (
                     controller.housekeepingDetail[index!.value].selected!.value ==
                         true) {
+                      controller.servicesSelectedAdded.add(controller.housekeepingDetail
+                          [index!.value]);
                       controller.servicesSelected.add(controller.housekeepingDetail
                           [index!.value].id!);
                       controller.servicesSelectedNames.add(controller.housekeepingDetail
@@ -89,6 +91,8 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
                       print(controller.servicesSelectedNames);
                       print(controller.servicesSelectedPrices);
                     } else {
+                      controller.servicesSelectedAdded.remove(controller.housekeepingDetail
+                        [index!.value]);
                       controller.servicesSelected.remove(controller.housekeepingDetail
                         [index!.value].id!);
                       controller.servicesSelectedNames.remove(controller.housekeepingDetail

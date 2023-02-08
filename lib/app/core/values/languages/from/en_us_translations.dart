@@ -13,6 +13,8 @@ final Map<String, String> enUs = {
   AppStrings.goBack: 'back',
   AppStrings.notFound: 'not fount',
   AppStrings.noCarsFound: 'No Cars Found',
+
+  AppStrings.noReview: 'No Reviews ',
 AppStrings.forbidden: 'forbidden',
   AppStrings.unauthenticated: 'the session is expired',
   AppStrings.Welcome: 'WELCOME',

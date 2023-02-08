@@ -2,6 +2,7 @@ import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/housekeeping_detail_request_dto.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/response/Reviews_response.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping_detail_response.dart';
+import 'package:easy_hotel/app/data/model/housekeeping/dto/response/housekeeping_groups_response.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:easy_hotel/app/data/repository/housekeeping/housekeeping_repository.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class HouseKeepingServicesController extends GetxController {
   final servicesSelected = <int>[].obs;
   final servicesSelectedNames = <String>[].obs;
   final servicesSelectedPrices = <String>[].obs;
+  final servicesSelectedAdded = <HouseKeepingDetailResponse>[].obs;
   final List args = Get.arguments;
   // final int branchId = Get.arguments;
   // final int index = Get.arguments;

@@ -69,6 +69,7 @@ abstract class AppStrings {
   static const todayOffers = "todayOffers";
   static const sale = "sale";
   static const min = "min";
+  static const noReview = "No Reviews";
   static const minutes = "minutes";
   static const hour = "hour";
   static const enterTime = "enterTime";

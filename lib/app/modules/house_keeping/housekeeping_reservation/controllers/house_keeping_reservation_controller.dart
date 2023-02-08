@@ -21,14 +21,14 @@ class HouseKeepingReservationController extends GetxController {
   getHousekeepingSaveNow() async {
     isLoading(true);
     final request = HousekeepingSaveRequest(
-        serviceTypeId:res[0] ,
+        // serviceTypeId:res[0] ,
         branchId:res[4],
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
         customerId: UserManager().user!.id,
-        salesDetailHouseKeepingDTOList: res[2],
-        date: DateTime.now(),
-        time: DateTime.now(),
+        houseKeepingDTOList: res[2],
+        dueTime: DateTime.now(),
+        dueDate: DateTime.now(),
         remark: remark.text
     );
     HousekeepingRepository().getHousekeepingSave(request,

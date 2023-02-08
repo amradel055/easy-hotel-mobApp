@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart';
 import 'package:get/get.dart';
 
 SpaSaveRequest salesDetailsSpaFromJson(String str) => SpaSaveRequest.fromJson(json.decode(str));
@@ -15,10 +16,13 @@ class SpaSaveRequest {
     this.companyId,
     this.salesDetailSpaItemDTOList,
     this.customerId,
-    this.spaItemDTOList,
+    // this.spaItemDTOList,
     this.phone,
     this.email,
     this.name,
+    this.dueDate,
+    this.dueTime,
+    this.salesSpaList
 
   });
 
@@ -28,10 +32,13 @@ class SpaSaveRequest {
   int?companyId;
   List<SalesDetailsSpaItem>? salesDetailSpaItemDTOList ;
   int? customerId ;
-  List<int>?spaItemDTOList;
+  // List<int>?spaItemDTOList;
+  List<SpaItemModel>?salesSpaList;
   String ?phone;
   String?email;
   String?name;
+  DateTime ?dueDate;
+  DateTime ?dueTime;
 
   factory SpaSaveRequest.fromJson(Map<String, dynamic> json) => SpaSaveRequest(
       spaId: json["spaId"] == null ? null : json["spaId"],
@@ -39,7 +46,9 @@ class SpaSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
-      spaItemDTOList: json["spaItemsDTOList"] == null ? null : List<int>.from(json["spaItemsDTOList"].map((x) => x)),
+
+      // spaItemDTOList: json["spaItemsDTOList"] == null ? null : List<int>.from(json["spaItemsDTOList"].map((x) => x)),
+      salesSpaList: json["salesSpaList"] == null ? null : List<SpaItemModel>.from(json["salesSpaList"].map((x) => x)),
       salesDetailSpaItemDTOList : json["salesDetailSpaItemDTOList"] == null ? null : List<SalesDetailsSpaItem>.from(json["salesDetailSpaItemDTOList"].map((e) => SalesDetailsSpaItem.fromJson(e)))
   );
 
@@ -49,13 +58,19 @@ class SpaSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
-    "spaItemsDTOList": spaItemDTOList == null ? [] : spaItemDTOList,
+    // "spaItemsDTOList": spaItemDTOList == null ? [] : spaItemDTOList,
     "phone": phone == null ? null : phone,
     "email": email == null ? null : email,
     "name": name == null ? null : name,
-    "salesDetailSpaItemDTOList" : salesDetailSpaItemDTOList == null ? null : List<dynamic>.from(salesDetailSpaItemDTOList!.map((x) => x.toJson()))
+    "dueDate": dueDate == null ? null : dueDate?.toIso8601String(),
+    "dueTime": dueTime == null ? null : dueTime?.toIso8601String(),
+    "salesDetailSpaItemDTOList" : salesDetailSpaItemDTOList == null ? null : List<dynamic>.from(salesDetailSpaItemDTOList!.map((x) => x.toJson())),
+    "salesSpaList" : salesSpaList == null ? null : List<dynamic>.from(salesSpaList!.map((x) => x.toJson())),
+
   };
 }
+
+
 
 class SalesDetailsSpaItem {
   SalesDetailsSpaItem({

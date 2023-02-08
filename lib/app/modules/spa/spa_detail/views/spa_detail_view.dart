@@ -177,9 +177,13 @@ class SpaDetailView extends GetView<SpaDetailsController> {
                      controller.spa!.discription ?? "",
                      controller.spa!.cityName ?? "",
                      controller.spa!.address ?? ""),
-                  SpaServices(),
-                  SpaImagesShow(),
-                  ReviewsListWidget(
+                  const SpaServices(),
+                  const SpaImagesShow(),
+                  controller.spa!.reviewDtoList!.isEmpty?const ReviewsListWidget(
+                    reviewNumber: 0,
+                    reviewsList:[] ,
+                    reviewStars: 0,
+                  ):  ReviewsListWidget(
                     reviewNumber: controller.spa!.reviewDtoList!.length,
                     reviewsList: controller.spa!.reviewDtoList! ,
                     reviewStars: controller.spa!.reviewStar!,

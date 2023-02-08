@@ -89,7 +89,7 @@ class HouseKeepingReservationView
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TextWidget(
-                          'الملاحظات..',
+                          AppStrings.notes,
                           weight: FontWeight.bold,
                           textColor: AppColors.appBlue,
                           size: 20,
@@ -169,7 +169,7 @@ class HouseKeepingReservationView
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const TextWidget(
-                                'الوقت', weight: FontWeight.bold, size: 25,),
+                                AppStrings.time, weight: FontWeight.bold, size: 25,),
                               Container(
                                   width: size.width * .7,
                                   height: size.height * .1,
@@ -222,7 +222,7 @@ class HouseKeepingReservationView
                                     onTap: () {
                                       // controller.getHousekeepingSaveNow();
                                       Get.toNamed(Routes.HOUSEKEEPING_CHECKOUT,
-                                          arguments: [controller.res[2],DateTime.now(),DateTime.now(),controller.remark.text,controller.res[5],controller.res[6],controller.res[0],controller.res[7]]
+                                          arguments: [controller.res[2],DateTime.now(),DateTime.now(),controller.remark.text,controller.res[5],controller.res[6],controller.res[0],controller.res[7],controller.res[8]]
                                       );
                                     },
                                     child: Container(

@@ -191,6 +191,11 @@ class SpaItemModel {
     this.price,
     this.salePrice,
     this.image,
+  this.discountType,
+  this.discountValue,
+  this.offerId,
+  this.onSale,
+    this.spaItemId
   });
 
   int? id;
@@ -215,10 +220,16 @@ class SpaItemModel {
   int? spaId;
   double? price;
   double? salePrice;
+  int? discountType;
+  int? offerId;
+  int? spaItemId;
+  double? discountValue;
+  bool? onSale;
 
 
-  factory SpaItemModel.fromJson(Map<String, dynamic> json) => SpaItemModel(
+  factory SpaItemModel.fromJson( dynamic json) => SpaItemModel(
       id: json["id"] == null ? null : json["id"],
+    spaItemId: json["spaItemId"] == null ? null : json["spaItemId"],
       markEdit: json["markEdit"] == null ? null : json["markEdit"],
       msg: json["msg"],
       msgType: json["msgType"],
@@ -240,16 +251,21 @@ class SpaItemModel {
       price: json["price"] == null ? null : json["price"],
       salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
       image: json["image"] == null ? null : json["image"],
+    discountType: json["discountType"] == null ? null : json["discountType"],
+    offerId: json["offerId"] == null ? null : json["offerId"],
+    discountValue: json["discountValue"] == null ? null : json["discountValue"].toDouble(),
+    onSale: json["onSale"] == null ? null : json["onSale"],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id == null ? null : id,
+    "id": null,
+    "spaItemId": spaItemId == null ? null : spaItemId,
     "markEdit": markEdit == null ? null : markEdit,
     "msg": msg,
     "msgType": msgType,
     "markDisable": markDisable,
     "createdBy": createdBy == null ? null : createdBy,
-    "createdDate": createdDate == null ? null : createdDate,
+    "createdDate": createdDate == null ? null : createdDate!.toIso8601String(),
     "index": index == null ? null : index,
     "companyId": companyId,
     "createdByName": createdByName,
@@ -262,7 +278,13 @@ class SpaItemModel {
     "userCode": userCode,
     "name": name == null ? null : name,
     "spaId": spaId == null ? null : spaId,
+    "salePrice": salePrice == null ? null : salePrice,
     "price": price == null ? null : price,
+    "image": image == null ? null : image,
+    "discountType": discountType == null ? null : discountType,
+    "offerId": offerId == null ? null : offerId,
+    "discountValue": discountValue == null ? null : discountValue,
+    "onSale": onSale == null ? null : onSale,
   };
 }
 

@@ -27,7 +27,7 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: Container(
-        height: size.height * .07,
+        height: size.height * .06,
         width: size.width * .9,
         decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Obx(() {
@@ -92,13 +92,13 @@ class SpaReservationPrice extends GetView<SpaDetailsController> {
                       controller.servicesSelectedNames.add(controller.spa!.spaItemsDtoList![index!.value].name!);
                       controller.servicesSelectedPrices.add( salePrice == null?controller.spa!.spaItemsDtoList![index!.value].price!.toString():salePrice.toString());
                       // controller.changeAddedAdditions(controller.spa!);
-                      // print(controller.selectedAdd);
+                      print(controller.selectedAdd);
                     } else {
                       controller.servicesSelected.remove(controller.spa!.spaItemsDtoList![index!.value].id!);
                       // controller.selectedAdd.remove(controller.spa!.spaItemsDtoList![index!.value]);
                       controller.servicesSelectedNames.remove(controller.spa!.spaItemsDtoList![index!.value].name!);
                       controller.servicesSelectedPrices.remove( salePrice == null?controller.spa!.spaItemsDtoList![index!.value].price!.toString():salePrice.toString());
-                      // print(controller.selectedAdd);
+                      print(controller.selectedAdd);
                       // controller.changeAddedAdditions();
 
                     }

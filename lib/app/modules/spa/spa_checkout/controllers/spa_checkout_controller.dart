@@ -33,7 +33,7 @@ class SpaCheckoutController extends GetxController {
     isLoading(true);
     final request = SpaSaveRequest(
       spaId:res[0] ,
-      spaItemDTOList: res[1].toList(),
+      // spaItemDTOList: res[1].toList(),
       salesDetailSpaItemDTOList: [],
       companyId: AppConstants.companyId,
       createdBy: AppConstants.createdBy,
@@ -41,7 +41,10 @@ class SpaCheckoutController extends GetxController {
       branchId: res[2]??232,
       phone: phoneController.text,
       email: emailController.text,
-      name: nameController.text
+      name: nameController.text,
+      dueDate:  DateTime.parse(res[7]+"T"+  res[8]+":00Z").toLocal(),
+      dueTime: DateTime.parse(res[7]+"T"+  res[8]+":00Z").toLocal(),
+      salesSpaList: res[9]
     );
     SpaRepository().getSpaSave(request,
         onSuccess: (data) {

@@ -83,22 +83,22 @@ class SpaCheckoutView
                                 ],
                               ),
                               Row(
-                                children: const [
-                                  Icon(Icons.timer),
-                                  TextWidget(
+                                children:  [
+                                  const Icon(Icons.timer),
+                                  const TextWidget(
                                     AppStrings.time,
                                     // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
                                   TextWidget(
-                                  ""
+                                  controller.res[10]
                                    ,
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ), TextWidget(
-                                    ""
+                                    controller.res[11]
                                    ,
                                     textColor: Colors.grey,
                                     size: 16,

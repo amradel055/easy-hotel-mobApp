@@ -13,6 +13,7 @@ final Map<String, String> arEG = {
   AppStrings.goBack: 'رجوع',
   AppStrings.notFound: 'لايوجد',
   AppStrings.noCarsFound: 'لايوجد سيارات',
+  AppStrings.noReview: 'لايوجد مراجعات',
 
 AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.unauthenticated: 'الجلسة منتهية',

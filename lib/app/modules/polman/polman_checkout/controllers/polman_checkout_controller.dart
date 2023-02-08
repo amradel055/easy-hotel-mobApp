@@ -26,7 +26,7 @@ class PolmanCheckoutController extends GetxController {
     isLoading(true);
     final request = PolmanSaveRequest(
         remark: res[0],
-        serviceTypeId:res[1] ,
+        // serviceTypeId:res[1] ,
         branchId: UserManager().selectedBranch!.id!,
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
