@@ -30,7 +30,7 @@ class RoomSearchCityFilterPageView
         appBar: AppBar(
             elevation: 0.0,
             toolbarHeight: size.height * .16,
-            backgroundColor: AppColors.appGreyLight,
+            // backgroundColor: AppColors.appGreyLight,
             title: SizedBox(width: size.width,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [Padding(
@@ -46,8 +46,8 @@ class RoomSearchCityFilterPageView
 
 
         ),
-        body: Container(
-          color: AppColors.appGreyLight,
+        body: SizedBox(
+          // color: AppColors.appGreyLight,
           width: size.width,
           height: size.height,
           child: Column(
@@ -58,7 +58,8 @@ class RoomSearchCityFilterPageView
                   width: size.width * .81, height: size.height * .15,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white),
+                      // color: Colors.white
+                  ),
                   child: Row(
                     children: [
                       SizedBox(width: size.width * .4,
@@ -126,49 +127,99 @@ class RoomSearchCityFilterPageView
                   padding: EdgeInsets.fromLTRB(0, size.height * .1, 0, 0),
                   child: SizedBox(
                     height: size.height * .31, width: size.width * .8,
-                    child: Directionality(textDirection: TextDirection.rtl,
-                      child: Column(
-                        children: [
-                          Row(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                                height: size.height * .07,
+
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      0, 10, 0, 0),
+                                  child: SizedBox(width: size.width * .3,
+                                      child: const TextWidget(AppStrings.children,
+                                        weight: FontWeight.bold,size: 20,)),
+                                )),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5)),
+                                  border: Border.all(
+                                      color: AppColors.appGreyDark),
+                                  // color: AppColors.appGreyDark
+                              ),
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      controller.children.value++;
+                                    },
+                                    child: const TextWidget(
+                                      '+', weight: FontWeight.bold,size: 25,),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 0, 10, 0),
+                                    child: TextWidget(
+                                        '${controller.children.value}',weight: FontWeight.bold,size: 25,),
+                                  ),
+                                  GestureDetector(onTap: () {
+                                    controller.children.value--;
+                                  },
+                                    child: const TextWidget(
+                                      '-', weight: FontWeight.bold,size: 25,),
+                                  )
+                                ],
+                              ),
+                            )
+
+                          ],
+                        ),
+                        Container(
+                          width: size.width * .8,
+                          height: size.height * .003,
+                          color: Colors.grey[400],
+                        ),
+                        SizedBox(
+                          height: size.height * .07,
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                  height: size.height * .07,
-
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        0, 10, 0, 0),
-                                    child: SizedBox(width: size.width * .3,
-                                        child: const TextWidget(AppStrings.children,
-                                          weight: FontWeight.bold,size: 20,)),
-                                  )),
+                                  width: size.width * .3,
+                                  child: const TextWidget(AppStrings.adults,
+                                    weight: FontWeight.bold,size: 20,)),
                               Container(
                                 decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(5)),
                                     border: Border.all(
                                         color: AppColors.appGreyDark),
-                                    color: AppColors.appGreyDark),
+                                    // color: AppColors.appGreyDark
+                                ),
                                 child: Row(
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        controller.children.value++;
+                                        controller.adults.value++;
                                       },
                                       child: const TextWidget(
-                                        '+', weight: FontWeight.bold,size: 20,),
+                                        '+', weight: FontWeight.bold,size: 25,),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           10, 0, 10, 0),
                                       child: TextWidget(
-                                          '${controller.children.value}',weight: FontWeight.bold,size: 20,),
+                                        '${controller.adults.value}',
+                                        weight: FontWeight.bold,size: 25,),
                                     ),
                                     GestureDetector(onTap: () {
-                                      controller.children.value--;
+                                      controller.adults.value--;
                                     },
                                       child: const TextWidget(
-                                        '-', weight: FontWeight.bold,size: 20,),
+                                        '-', weight: FontWeight.bold,size: 25,),
                                     )
                                   ],
                                 ),
@@ -176,58 +227,8 @@ class RoomSearchCityFilterPageView
 
                             ],
                           ),
-                          Container(
-                            width: size.width * .8,
-                            height: size.height * .003,
-                            color: Colors.grey[400],
-                          ),
-                          SizedBox(
-                            height: size.height * .07,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                    width: size.width * .3,
-                                    child: const TextWidget(AppStrings.adults,
-                                      weight: FontWeight.bold,size: 20,)),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5)),
-                                      border: Border.all(
-                                          color: AppColors.appGreyDark),
-                                      color: AppColors.appGreyDark),
-                                  child: Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          controller.adults.value++;
-                                        },
-                                        child: const TextWidget(
-                                          '+', weight: FontWeight.bold,size: 20,),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 0, 10, 0),
-                                        child: TextWidget(
-                                          '${controller.adults.value}',
-                                          weight: FontWeight.bold,size: 20,),
-                                      ),
-                                      GestureDetector(onTap: () {
-                                        controller.adults.value--;
-                                      },
-                                        child: const TextWidget(
-                                          '-', weight: FontWeight.bold,size: 20,),
-                                      )
-                                    ],
-                                  ),
-                                )
-
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
                 );
@@ -244,8 +245,8 @@ class RoomSearchCityFilterPageView
                     color: AppColors.appBlue,
                   ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const TextWidget(AppStrings.reserve,weight: FontWeight.bold,textColor: Colors.white,),
+                    children: const [
+                      TextWidget(AppStrings.reserve,weight: FontWeight.bold,textColor: Colors.white,),
                     ],
                   ),
 

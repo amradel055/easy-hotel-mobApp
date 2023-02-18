@@ -231,7 +231,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                           width: size.width * 0.4,
                           child: OutlinedButton(
                               onPressed: () {
-                                Get.toNamed(Routes.CAR_CHECKOUT,arguments:[controller.selectedCar,DateTime.now(),DateFormat('  hh:mm ').format(DateTime.now()),controller.selectedTravelType.value,controller.selectedPersonsNumber.value,controller.selectedTrafficLine.value,controller.remark.text] );
+                                Get.toNamed(Routes.CAR_CHECKOUT,arguments:[controller.selectedCar,DateTime.now(),DateFormat('HH:mm').format(DateTime.now()),controller.selectedTravelType.value,controller.selectedPersonsNumber.value,controller.selectedTrafficLine.value,controller.remark.text] );
 
                               },
                               style: ButtonStyle(

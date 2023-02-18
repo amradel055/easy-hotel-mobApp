@@ -31,6 +31,7 @@ class CarsOrderRequest {
     this.email,
     this.name,
     this.customerName,
+    this.datet,
   });
 
 
@@ -57,6 +58,7 @@ class CarsOrderRequest {
   int? isGoingAndRetrun;
   DateTime? dueDate;
   DateTime? dueTime;
+  DateTime? datet;
   int? salesId;
   String? remark;
   String ?phone;
@@ -88,7 +90,8 @@ class CarsOrderRequest {
     "personNumber": personNumber == null ? null : personNumber,
     "isGoingAndRetrun": isGoingAndRetrun == null ? null : isGoingAndRetrun,
     "dueDate": dueDate == null ? null : dueDate?.toIso8601String(),
-    "dueTime": dueTime == null ? null : dueTime,
+    "dueTime": dueTime == null ? null : dueTime?.toIso8601String(),
+    "datet": datet == null ? null : datet?.toIso8601String(),
     "salesId": salesId == null ? null : salesId,
     "remark": remark == null ? null : remark,
     "phone": phone == null ? null : phone,

@@ -10,11 +10,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
 class HouseKeepingCheckoutController extends GetxController {
-  var nameController = TextEditingController();
-  var userNameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  var nameController = TextEditingController(text: UserManager().user!.name ??"");
+  var userNameController = TextEditingController(text:UserManager().user!.name ??"");
+  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
+  var emailController = TextEditingController(text:UserManager().user!.email ??"");
   final registerForm = GlobalKey<FormState>();
   final isLoading = false.obs;
   final List res =Get.arguments;
@@ -29,9 +28,9 @@ class HouseKeepingCheckoutController extends GetxController {
         dueDate: res[1],
         dueTime: res[2],
         remark: res[3],
-        name: "",
-        email: "",
-        phone: ""
+        phone: phoneController.text,
+        email: emailController.text,
+        name: nameController.text,
     );
     HousekeepingRepository().getHousekeepingSave(request,
         onSuccess: (data) {

@@ -81,7 +81,7 @@ class HouseKeepingReservationView
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30.00),
                         topRight: Radius.circular(30.00)),
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -123,29 +123,32 @@ class HouseKeepingReservationView
                           child: Container(
                             width: size.width,
                             decoration: BoxDecoration(
-                              color: Colors.white70,
+                              // color: Colors.white70,
                               borderRadius: BorderRadius.circular(5),
 
                             ), child:
 
-                          Center(
-                            child: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                  onTap: () {
-                                    controller.pickToDate();
-                                  },
-                                  child: Obx(() {
-                                    return TextWidget(
-                                      controller.dateTo.value == null
-                                          ? DateFormat("yyyy-MM-dd").format(
-                                          DateTime.now())
-                                          : DateFormat("yyyy-MM-dd").format(
-                                          controller.dateTo.value!),
-                                      weight: FontWeight.bold,
-                                      size: 30,
-                                    );
-                                  })),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Center(
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                    onTap: () {
+                                      controller.pickToDate();
+                                    },
+                                    child: Obx(() {
+                                      return TextWidget(
+                                        controller.dateTo.value == null
+                                            ? DateFormat("yyyy-MM-dd").format(
+                                            DateTime.now())
+                                            : DateFormat("yyyy-MM-dd").format(
+                                            controller.dateTo.value!),
+                                        weight: FontWeight.bold,
+                                        size: 30,
+                                      );
+                                    })),
+                              ),
                             ),
                           ),
 
@@ -205,11 +208,13 @@ class HouseKeepingReservationView
                                         borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                       ),
-                                      child: const TextWidget(
-                                        AppStrings.reserve,
-                                        textAlign: TextAlign.center,
-                                        weight: FontWeight.bold,
-                                        textColor: Colors.white,
+                                      child: const Center(
+                                        child:  TextWidget(
+                                          AppStrings.reserve,
+                                          textAlign: TextAlign.center,
+                                          weight: FontWeight.bold,
+                                          textColor: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -233,11 +238,13 @@ class HouseKeepingReservationView
                                         borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                       ),
-                                      child: const TextWidget(
-                                        AppStrings.reserveNow,
-                                        textAlign: TextAlign.center,
-                                        weight: FontWeight.bold,
-                                        textColor: Colors.white,
+                                      child: const Center(
+                                        child:  TextWidget(
+                                          AppStrings.reserveNow,
+                                          textAlign: TextAlign.center,
+                                          weight: FontWeight.bold,
+                                          textColor: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),

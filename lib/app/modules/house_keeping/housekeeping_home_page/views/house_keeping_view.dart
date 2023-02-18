@@ -63,10 +63,10 @@ class HouseKeepingView extends GetView<HouseKeepingController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Center(child: TextWidget(
-                    AppStrings.searchlabel, textColor: Colors.white,
-                    size: 20.h,
-                    weight: FontWeight.bold,)),
+                  // Center(child: TextWidget(
+                  //   AppStrings.searchlabel, textColor: Colors.white,
+                  //   size: 20.h,
+                  //   weight: FontWeight.bold,)),
                   // Center(
                   //   child: SizedBox(
                   //       width: size.width * .8,

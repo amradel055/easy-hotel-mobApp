@@ -209,7 +209,7 @@ class SpaCheckoutView
                                     weight: FontWeight.w600,
                                   ),
                                   TextWidget(
-                                    " لا يوجد",
+                                    AppStrings.notFound,
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -263,7 +263,7 @@ class SpaCheckoutView
                                   weight: FontWeight.w600,
                                 ),
                                 TextWidget(
-                                  "لا يوجد",
+                                 AppStrings.notFound,
                                   textColor: Colors.grey,
                                   size: 16,
                                   weight: FontWeight.w600,
@@ -348,8 +348,8 @@ class SpaCheckoutView
                             borderRadius:
                             BorderRadius.all(Radius.circular(5)),
                           ),
-                          child: Center(
-                            child: const TextWidget(
+                          child: const Center(
+                            child: TextWidget(
                               AppStrings.confirm,
                               textAlign: TextAlign.center,
                               weight: FontWeight.bold,

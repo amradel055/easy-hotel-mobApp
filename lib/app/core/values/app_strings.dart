@@ -194,6 +194,8 @@ abstract class AppStrings {
   static const tripType = "Trip Type";
   static const road = "Road";
   static const category = "Category";
+  static const priceFrom = "From Price";
+  static const priceTo = "To Price";
 
 
 

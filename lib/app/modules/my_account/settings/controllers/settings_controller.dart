@@ -52,7 +52,8 @@ class SettingsController extends GetxController {
     {'name':AppStrings.englishName,'locale': Locale(AppStrings.englishLang,AppStrings.englishCountry)},
     {'name':AppStrings.arabicName,'locale': Locale('ar','eg')},
   ];
-  final RxString languages =UserManager().user!.languageName!.obs ;
+  // final RxString languages =UserManager().user!.languageName!.obs ;
+  final RxString languages ="english".obs ;
   getAllCurrency() {
     currencyLoading(true);
     final request = AllCurrencyRequestDto(companyId:AppConstants.companyId);

@@ -89,7 +89,8 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
             onPressed: () {
               Widget okButton = TextButton(
                 child: const Center(child: TextWidget(
-                  AppStrings.search, textColor: Colors.white,
+                  AppStrings.search,
+                  textColor: Colors.white,
                   size: 15,
                   weight: FontWeight.bold,)),
                 onPressed: () {
@@ -103,211 +104,257 @@ class HotelRoomsPageView extends GetView<HotelRoomsPageController> {
                   return StatefulBuilder(
                       builder: (context, setState) {
                         return AlertDialog(
-                          title: const Center(child: TextWidget("Filter",weight: FontWeight.bold,)),
+                          title: const Center(child: TextWidget(
+                            "Filter", weight: FontWeight.bold,)),
                           content: SizedBox(
-                            height: size.height * .5,
+                            height: size.height,
                             width: size.width,
 
-                            child: Column(
-                              children: [
-                                // for(AdditionsGroupModel add in controller.allAdditions)
-                                //   Column(
-                                //     children: [
-                                //       Text(add.name!),
-                                //       SizedBox(width: size.width*.9,
-                                //         height:size.height*.1,
-                                //
-                                //         child:
-                                //         SingleChildScrollView(
-                                //           physics: const AlwaysScrollableScrollPhysics(),
-                                //
-                                //           child:
-                                //           Wrap(children: add.addtionsDtoList!.map((hobby) {
-                                //             bool isSelected = false;
-                                //             if (controller.selectedAdd.contains(hobby)) {
-                                //               isSelected = true;
-                                //             }
-                                //             return GestureDetector(
-                                //               onTap: () {
-                                //                 if (!controller.selectedAdd.contains(hobby)) {
-                                //                   if (controller.selectedAdd.length<add.addtionsDtoList!.length) {
-                                //                     controller.selectedAdd.add(hobby);
-                                //                     setState(() {});
-                                //                     print(controller.selectedAdd);
-                                //                   }
-                                //                 } else {
-                                //                   controller.selectedAdd
-                                //                       .removeWhere((element) => element == hobby);
-                                //                   setState(() {});
-                                //                   print(controller.selectedAdd);
-                                //                 }
-                                //               },
-                                //               child: Container(
-                                //                   margin: EdgeInsets.symmetric(
-                                //                       horizontal: 5, vertical: 4),
-                                //                   child: Container(
-                                //                     padding: EdgeInsets.symmetric(
-                                //                         vertical: 5, horizontal: 12),
-                                //                     decoration: BoxDecoration(
-                                //                         color: Colors.brown[300],
-                                //                         borderRadius: BorderRadius.circular(18),
-                                //                         border: Border.all(
-                                //                             color: isSelected
-                                //                                 ? Colors.green
-                                //                                 : Colors.grey,
-                                //                             width: 2)),
-                                //                     child: Text(
-                                //                       hobby.name!,
-                                //                       style: TextStyle(
-                                //                           color:
-                                //                           isSelected ? Colors.red : Colors.white,
-                                //                           fontSize: 14),
-                                //                     ),
-                                //                   )),
-                                //             );
-                                //           },
-                                //           ).toList(),
-                                //           ),
-                                //
-                                //         ),
-                                //
-                                //
-                                //         // GridView.count(crossAxisCount: 3,
-                                //         //   crossAxisSpacing: 2,
-                                //         //   mainAxisSpacing: 1,
-                                //         //   childAspectRatio: size.aspectRatio * 9,
-                                //         //
-                                //         //   children: [
-                                //         //     for(int i = 0 ; i <= 6 ; i++)
-                                //         //       GestureDetector(
-                                //         //         onTap: (){},
-                                //         //         child: Container(height: size.height*.02,
-                                //         //             decoration: BoxDecoration(color: Colors.brown[300],
-                                //         //                 borderRadius: BorderRadius.all(Radius.circular(20))),
-                                //         //
-                                //         //
-                                //         //             child: Text('قاعة اضافية' ,style: smallTextStyleNormal(size,color: Colors.white),textAlign:TextAlign.center,)),
-                                //         //
-                                //         //
-                                //         //       )
-                                //         //
-                                //         //
-                                //         //   ],
-                                //         // ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                      0, 15, 0, 0),
-                                  child: Container(width: size.width * .82,
-                                    height: size.height * .2,
-                                    decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: Colors.white),
-                                    child: Row(
-                                      children: [
-                                        Container(width: size.width * .3,
-                                          height: size.height * .2,
-                                          child: Center(
-                                            child: GestureDetector(onTap: () {},
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .center,
-                                                children: [
-                                                  const TextWidget('من سعر'),
-                                                  TextWidget(
-                                                      _currentRangeValues.start
-                                                          .round().toString()),
-                                                  const TextWidget(
-                                                      AppStrings.LE),
-
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                        , Container(
-                                          width: size.width * .005,
-                                          height: size.height * .18,
-                                          color: Colors.black,
-
-                                        ),
-                                        SizedBox(width: size.width * .3,
-                                          height: size.height * 2,
-                                          child: Center(
-                                            child: GestureDetector(onTap: () {},
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .center,
-                                                children: [
-                                                  const TextWidget('الي سعر',),
-                                                  Text(_currentRangeValues.end
-                                                      .round().toString(),),
-                                                  const TextWidget(
-                                                      AppStrings.LE),
-
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                RangeSlider(
-                                  values: _currentRangeValues,
-                                  max: 100,
-                                  divisions: 100,
-                                  labels: RangeLabels(
-                                    _currentRangeValues.start.round()
-                                        .toString(),
-                                    _currentRangeValues.end.round().toString(),
-                                  ),
-                                  onChanged: (RangeValues values) {
-                                    setState(() {
-                                      _currentRangeValues = values;
-                                    });
-                                  },
-                                ),
-                                Obx(() => Container(
-                                  width: size.width * 0.8,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(size.width * 0.03), color: AppColors.appRedLight),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Center(
-                                      child: Column(
+                            child: SingleChildScrollView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              child: Obx(() {
+                                return Column(
+                                  children: [
+                                    for(AdditionsGroupModel add in controller
+                                        .allAdditions)
+                                      Column(
                                         children: [
-                                          RatingBar.builder(
-                                            initialRating: 1,
-                                            minRating: 1,
-                                            direction: Axis.horizontal,
-                                            allowHalfRating: false,
-                                            itemCount:5,
-                                            itemSize: size.width * 0.1,
-                                            itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                            itemBuilder: (context, _) => const Icon(
-                                              Icons.star,
-                                              color: AppColors.appHallsRedDark,
+                                          Text(add.name!),
+                                          SizedBox(width: size.width * .9,
+
+                                            child:
+                                            Wrap(children: add.addtionsDtoList!
+                                                .map((hobby) {
+                                              bool isSelected = false;
+                                              if (controller.selectedAdd
+                                                  .contains(hobby)) {
+                                                isSelected = true;
+                                              }
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  if (!controller.selectedAdd
+                                                      .contains(hobby)) {
+                                                    if (controller.selectedAdd
+                                                        .length <
+                                                        add.addtionsDtoList!
+                                                            .length) {
+                                                      controller.selectedAdd
+                                                          .add(hobby);
+                                                      setState(() {});
+                                                      print(controller
+                                                          .selectedAdd);
+                                                    }
+                                                  } else {
+                                                    controller.selectedAdd
+                                                        .removeWhere((
+                                                        element) =>
+                                                    element == hobby);
+                                                    setState(() {});
+                                                    print(
+                                                        controller.selectedAdd);
+                                                  }
+                                                },
+                                                child: Container(
+                                                    margin: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 5,
+                                                        vertical: 4),
+                                                    child: Container(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          vertical: 5,
+                                                          horizontal: 12),
+                                                      decoration: BoxDecoration(
+                                                          color: Colors
+                                                              .brown[300],
+                                                          borderRadius: BorderRadius
+                                                              .circular(18),
+                                                          border: Border.all(
+                                                              color: isSelected
+                                                                  ? Colors.green
+                                                                  : Colors.grey,
+                                                              width: 2)),
+                                                      child: Text(
+                                                        hobby.name!,
+                                                        style: TextStyle(
+                                                            color:
+                                                            isSelected ? Colors
+                                                                .red : Colors
+                                                                .white,
+                                                            fontSize: 14),
+                                                      ),
+                                                    )),
+                                              );
+                                            },
+                                            ).toList(),
                                             ),
-                                            onRatingUpdate: (value) => controller.changeSelectedStarsNumber(value.toInt()),
-                                          ),
-                                          TextWidget(
-                                            "${controller.selectedStarsNumber.value}" + " نجوم",
-                                            textColor: Colors.grey,
-                                            size: 16,
-                                            weight: FontWeight.w600,
+
+
+                                            // GridView.count(crossAxisCount: 3,
+                                            //   crossAxisSpacing: 2,
+                                            //   mainAxisSpacing: 1,
+                                            //   childAspectRatio: size.aspectRatio * 9,
+                                            //
+                                            //   children: [
+                                            //     for(int i = 0 ; i <= 6 ; i++)
+                                            //       GestureDetector(
+                                            //         onTap: (){},
+                                            //         child: Container(height: size.height*.02,
+                                            //             decoration: BoxDecoration(color: Colors.brown[300],
+                                            //                 borderRadius: BorderRadius.all(Radius.circular(20))),
+                                            //
+                                            //
+                                            //             child: Text('قاعة اضافية' ,style: smallTextStyleNormal(size,color: Colors.white),textAlign:TextAlign.center,)),
+                                            //
+                                            //
+                                            //       )
+                                            //
+                                            //
+                                            //   ],
+                                            // ),
                                           ),
                                         ],
                                       ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          0, 15, 0, 0),
+                                      child: Container(width: size.width * .82,
+                                        height: size.height * .2,
+                                        decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          // color: Colors.white
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(width: size.width * .3,
+                                              height: size.height * .2,
+                                              child: Center(
+                                                child: GestureDetector(
+                                                  onTap: () {},
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .center,
+                                                    children: [
+                                                      const TextWidget(
+                                                          AppStrings.priceFrom),
+                                                      TextWidget(
+                                                          controller
+                                                              .currentRangeValues
+                                                              .start
+                                                              .round()
+                                                              .toString()),
+                                                      const TextWidget(
+                                                          AppStrings.LE),
+
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                            , Container(
+                                              width: size.width * .005,
+                                              height: size.height * .18,
+                                              color: Colors.black,
+
+                                            ),
+                                            SizedBox(width: size.width * .3,
+                                              height: size.height * 2,
+                                              child: Center(
+                                                child: GestureDetector(
+                                                  onTap: () {},
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .center,
+                                                    children: [
+                                                      const TextWidget(
+                                                          AppStrings.priceTo),
+                                                      Text(controller
+                                                          .currentRangeValues
+                                                          .end
+                                                          .round().toString(),),
+                                                      const TextWidget(
+                                                          AppStrings.LE),
+
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                )),
+                                    RangeSlider(
+                                      values: controller.currentRangeValues,
+                                      max: 10000,
+                                      divisions: 10000,
+                                      labels: RangeLabels(
+                                        controller.currentRangeValues.start
+                                            .round()
+                                            .toString(),
+                                        controller.currentRangeValues.end
+                                            .round().toString(),
+                                      ),
+                                      onChanged: (RangeValues values) {
+                                        setState(() {
+                                          controller.currentRangeValues =
+                                              values;
+                                        });
+                                      },
+                                    ),
+                                    Obx(() =>
+                                        Container(
+                                          width: size.width * 0.8,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius
+                                                .circular(size.width * 0.03),
+                                            // color: AppColors.appRedLight
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Center(
+                                              child: Column(
+                                                children: [
+                                                  RatingBar.builder(
+                                                    initialRating: 0,
+                                                    minRating: 1,
+                                                    direction: Axis.horizontal,
+                                                    allowHalfRating: false,
+                                                    itemCount: 5,
+                                                    itemSize: size.width * 0.1,
+                                                    itemPadding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 0.0),
+                                                    itemBuilder: (context, _) =>
+                                                    const Icon(
+                                                      Icons.star,
+                                                      color: AppColors
+                                                          .appHallsRedDark,
+                                                    ),
+                                                    onRatingUpdate: (value) =>
+                                                        controller
+                                                            .changeSelectedStarsNumber(
+                                                            value.toInt()),
+                                                  ),
+                                                  TextWidget(
+                                                    "${controller
+                                                        .selectedStarsNumber
+                                                        .value}${AppStrings.stars}",
+                                                    textColor: Colors.grey,
+                                                    size: 16,
+                                                    weight: FontWeight.w600,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        )),
 
 
-                              ],
+                                  ],
+                                );
+                              }),
                             ),
                           ),
                           actions: [

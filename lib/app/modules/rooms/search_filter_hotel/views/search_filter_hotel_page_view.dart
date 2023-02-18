@@ -41,7 +41,7 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
         appBar: AppBar(
             elevation: 0.0,
             toolbarHeight: size.height * .16,
-            backgroundColor: AppColors.appGreyLight,
+            // backgroundColor: AppColors.appGreyLight,
             title: SizedBox(width: size.width,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [Padding(
@@ -58,7 +58,7 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
 
         ),
         body: Container(
-          color: AppColors.appGreyLight,
+          // color: AppColors.appGreyLight,
           width: size.width,
           height: size.height,
           child: Column(
@@ -69,7 +69,8 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                   width: size.width * .81, height: size.height * .15,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white),
+                      // color: Colors.white
+                  ),
                   child: Row(
                     children: [
                       SizedBox(width: size.width * .4,
@@ -158,7 +159,8 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                                       Radius.circular(5)),
                                   border: Border.all(
                                       color: AppColors.appGreyDark),
-                                  color: AppColors.appGreyDark),
+                                  // color: AppColors.appGreyDark
+                              ),
                               child: Row(
                                 children: [
                                   GestureDetector(
@@ -166,19 +168,19 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                                       controller.children.value++;
                                     },
                                     child: const TextWidget(
-                                      '+', weight: FontWeight.bold,size: 20,),
+                                      '+', weight: FontWeight.bold,size: 25,),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         10, 0, 10, 0),
                                     child: TextWidget(
-                                      '${controller.children.value}',weight: FontWeight.bold,size: 20,),
+                                      '${controller.children.value}',weight: FontWeight.bold,size: 25,),
                                   ),
                                   GestureDetector(onTap: () {
                                     controller.children.value--;
                                   },
                                     child: const TextWidget(
-                                      '-', weight: FontWeight.bold,size: 20,),
+                                      '-', weight: FontWeight.bold,size: 25,),
                                   )
                                 ],
                               ),
@@ -206,7 +208,8 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                                         Radius.circular(5)),
                                     border: Border.all(
                                         color: AppColors.appGreyDark),
-                                    color: AppColors.appGreyDark),
+                                    // color: AppColors.appGreyDark
+                                ),
                                 child: Row(
                                   children: [
                                     GestureDetector(
@@ -214,20 +217,20 @@ class RoomSearchFilterHotelPageView extends GetView<RoomSearchFilterHotelPageCon
                                         controller.adults.value++;
                                       },
                                       child: const TextWidget(
-                                        '+', weight: FontWeight.bold,size: 20,),
+                                        '+', weight: FontWeight.bold,size: 25,),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           10, 0, 10, 0),
                                       child: TextWidget(
                                         '${controller.adults.value}',
-                                        weight: FontWeight.bold,size: 20,),
+                                        weight: FontWeight.bold,size: 25,),
                                     ),
                                     GestureDetector(onTap: () {
                                       controller.adults.value--;
                                     },
                                       child: const TextWidget(
-                                        '-', weight: FontWeight.bold,size: 20,),
+                                        '-', weight: FontWeight.bold,size: 25,),
                                     )
                                   ],
                                 ),

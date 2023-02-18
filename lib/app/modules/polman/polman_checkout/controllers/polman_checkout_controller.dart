@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 class PolmanCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
-  var phoneController = TextEditingController(text: UserManager().user!.phone ??"");
+  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
   var emailController = TextEditingController(text:UserManager().user!.email ??"");
 
 
@@ -31,7 +31,8 @@ class PolmanCheckoutController extends GetxController {
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
         customerId: UserManager().user!.id,
-        time: res[2],
+        dueTime: res[2],
+        dueDate: res[2],
         name: nameController.text,
         email: emailController.text,
         phone: phoneController.text

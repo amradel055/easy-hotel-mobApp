@@ -7,7 +7,7 @@ environment:
 #  /Users/mac/Documents/flutter/bin
 dependencies: 
   cupertino_icons: ^1.0.2
-  get: 4.6.5
+  get: ^4.6.5
   flutter: 
     sdk: flutter
   intl: ^0.17.0

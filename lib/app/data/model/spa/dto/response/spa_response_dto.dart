@@ -186,7 +186,6 @@ class SpaItemModel {
     this.branchSerial,
     this.igmaOwnerSerial,
     this.userCode,
-    this.name,
     this.spaId,
     this.price,
     this.salePrice,
@@ -195,7 +194,11 @@ class SpaItemModel {
   this.discountValue,
   this.offerId,
   this.onSale,
-    this.spaItemId
+    this.spaItemId,
+    this.spaItemName,
+    this.name,
+    this.groupId,
+    this.groupName
   });
 
   int? id;
@@ -215,6 +218,7 @@ class SpaItemModel {
   dynamic branchSerial;
   dynamic igmaOwnerSerial;
   dynamic userCode;
+  String? spaItemName;
   String? name;
   String? image;
   int? spaId;
@@ -225,6 +229,8 @@ class SpaItemModel {
   int? spaItemId;
   double? discountValue;
   bool? onSale;
+  int? groupId;
+  String? groupName;
 
 
   factory SpaItemModel.fromJson( dynamic json) => SpaItemModel(
@@ -246,7 +252,6 @@ class SpaItemModel {
       branchSerial: json["branchSerial"],
       igmaOwnerSerial: json["igmaOwnerSerial"],
       userCode: json["userCode"],
-      name: json["name"] == null ? null : json["name"],
       spaId: json["spaId"] == null ? null : json["spaId"],
       price: json["price"] == null ? null : json["price"],
       salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
@@ -255,6 +260,10 @@ class SpaItemModel {
     offerId: json["offerId"] == null ? null : json["offerId"],
     discountValue: json["discountValue"] == null ? null : json["discountValue"].toDouble(),
     onSale: json["onSale"] == null ? null : json["onSale"],
+    spaItemName: json["spaItemName"] == null ? null : json["spaItemName"],
+    name: json["name"] == null ? null : json["name"],
+    groupId: json["groupId"] == null ? null : json["groupId"],
+    groupName: json["groupName"] == null ? null : json["groupName"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -276,7 +285,7 @@ class SpaItemModel {
     "branchSerial": branchSerial,
     "igmaOwnerSerial": igmaOwnerSerial,
     "userCode": userCode,
-    "name": name == null ? null : name,
+    "spaItemName": spaItemName == null ? null : spaItemName,
     "spaId": spaId == null ? null : spaId,
     "salePrice": salePrice == null ? null : salePrice,
     "price": price == null ? null : price,
@@ -285,6 +294,9 @@ class SpaItemModel {
     "offerId": offerId == null ? null : offerId,
     "discountValue": discountValue == null ? null : discountValue,
     "onSale": onSale == null ? null : onSale,
+    "name": name == null ? null : name,
+    "groupId": groupId == null ? null : groupId,
+    "groupName": groupName == null ? null : groupName,
   };
 }
 

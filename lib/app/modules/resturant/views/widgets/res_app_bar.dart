@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../components/icon_button_widget.dart';
 import '../../../../components/text_widget.dart';
 import '../../../../core/values/app_strings.dart';
-import '../../../../routes/app_pages.dart';
 import '../../controllers/resturant_controller.dart';
 
 class RestaurantAppBar extends GetView<RestaurantController> with PreferredSizeWidget {
@@ -17,22 +16,22 @@ class RestaurantAppBar extends GetView<RestaurantController> with PreferredSizeW
   Widget build(BuildContext context) {
     return Obx(() {
       return AppBar(
-        title: TextWidget(AppStrings.foodService),
+        title: const TextWidget(AppStrings.foodService),
         centerTitle: true,
         actions: [
           Center(
-            child: Badge(
-              badgeContent: TextWidget(controller.cartLength.toString(), height: 1 , weight: FontWeight.bold, size: 18,),
-              alignment: AlignmentDirectional.topEnd,
-              // largeSize: 20,
-              // smallSize: 25,
-              child: UnconstrainedBox(
-                child: IconButtonWidget(
-                    onPressed: () => Get.toNamed(Routes.FOOD_CART),
-                    icon: Icons.shopping_cart_outlined
-                ),
-              ),
-            ),
+            // child: Badge(
+            //   badgeContent: TextWidget(controller.cartLength.toString(), height: 1 , weight: FontWeight.bold, size: 18,),
+            //   alignment: AlignmentDirectional.topEnd,
+            //   // largeSize: 20,
+            //   // smallSize: 25,
+            //   child: UnconstrainedBox(
+            //     child: IconButtonWidget(
+            //         onPressed: () => Get.toNamed(Routes.FOOD_CART),
+            //         icon: Icons.shopping_cart_outlined
+            //     ),
+            //   ),
+            // ),
           )
         ],
       );

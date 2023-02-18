@@ -179,6 +179,8 @@ AppStrings.forbidden: 'forbidden',
   AppStrings.tripType: "Trip Type",
   AppStrings.road: "Road",
   AppStrings.category: "Category",
+  AppStrings.priceFrom: "From Price",
+  AppStrings.priceTo: "To Price",
 
 
 

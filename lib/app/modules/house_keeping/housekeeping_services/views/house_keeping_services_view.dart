@@ -79,7 +79,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30.00),
                         topRight: Radius.circular(30.00)),
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(size.width * .05, 0, 25, 0),

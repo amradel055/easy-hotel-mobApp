@@ -156,7 +156,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                 right: 0,
                 left: 0,
                 child: Container(
-                  color: Colors.brown[50],
+                  // color: Colors.brown[50],
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -192,7 +192,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
 
                                   ),
                                   child: const TextWidget(
-                                    'استمرار',
+                                    AppStrings.confirm,
                                     textColor: Colors.white,
                                     weight: FontWeight.bold,
                                     size: 15,
@@ -211,7 +211,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
 
                                   ),
                                   child: const TextWidget(
-                                    'رجوع',
+                                    AppStrings.back,
                                     textColor: Colors.white,
                                     weight: FontWeight.bold,
                                     size: 15,

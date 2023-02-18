@@ -180,6 +180,8 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.tripType: "نوع الرحله",
   AppStrings.road: "المسار",
   AppStrings.category: "الفئه",
+  AppStrings.priceFrom: "من سعر",
+  AppStrings.priceTo: "الي سعر",
 
 
 };

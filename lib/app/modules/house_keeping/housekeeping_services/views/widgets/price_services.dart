@@ -23,111 +23,114 @@ class HousekeepingServicesPriceWidget extends GetView<HouseKeepingServicesContro
     Size size = MediaQuery
         .of(context)
         .size;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Container(
-        height: size.height * .04,
-        width: size.width * .9,
-        decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20))
-        ),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+        child: Container(
+          height: size.height * .04,
+          width: size.width * .9,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
 
-        child: Obx(() {
-          return Container(
-            height: size.height * .3,
-            width: size.width,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: AppColors.appRedLight
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: size.width * .435,
-                  height: size.height * .05,
-                  decoration: BoxDecoration(
-                    borderRadius:const BorderRadius.only(
-                        bottomRight: Radius.circular(20.00),
-                        topRight: Radius.circular(20.00)),
-                    color: Colors.grey[300],
+          child: Obx(() {
+            return Container(
+              height: size.height * .3,
+              width: size.width,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: AppColors.appRedLight
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: size.width * .435,
+                    height: size.height * .05,
+                    decoration: BoxDecoration(
+                      borderRadius:const BorderRadius.only(
+                          bottomRight: Radius.circular(20.00),
+                          topRight: Radius.circular(20.00)),
+                      // color: Colors.grey[300],
 
+                    ),
+                    child: Padding(
+                      padding:const EdgeInsets.only(right: 10),
+                      child: TextWidget(name!, textAlign: TextAlign.right,
+                        weight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  child: Padding(
-                    padding:const EdgeInsets.only(right: 10),
-                    child: TextWidget(name!, textAlign: TextAlign.right,
+
+                  Container(
+                    // color: Colors.grey[300],
+                    width: size.width * .35,
+                    height: size.height * .05,
+                    child: TextWidget(
+
+                      price! , textAlign: TextAlign.center,
                       weight: FontWeight.bold,
                     ),
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {
+                      controller.housekeepingDetail[index!.value].selected!.value =
+                      !(controller.housekeepingDetail[index!.value].selected!.value);
 
-                Container(
-                  color: Colors.grey[300],
-                  width: size.width * .35,
-                  height: size.height * .05,
-                  child: TextWidget(
-
-                    price! , textAlign: TextAlign.center,
-                    weight: FontWeight.bold,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    controller.housekeepingDetail[index!.value].selected!.value =
-                    !(controller.housekeepingDetail[index!.value].selected!.value);
-
-                    if (
-                    controller.housekeepingDetail[index!.value].selected!.value ==
-                        true) {
-                      controller.servicesSelectedAdded.add(controller.housekeepingDetail
+                      if (
+                      controller.housekeepingDetail[index!.value].selected!.value ==
+                          true) {
+                        controller.servicesSelectedAdded.add(controller.housekeepingDetail
+                            [index!.value]);
+                        controller.servicesSelected.add(controller.housekeepingDetail
+                            [index!.value].id!);
+                        controller.servicesSelectedNames.add(controller.housekeepingDetail
+                            [index!.value].name!);
+                        controller.servicesSelectedPrices.add(controller.housekeepingDetail
+                            [index!.value].price!.toString());
+                        print(controller.servicesSelected);
+                        print(controller.servicesSelectedNames);
+                        print(controller.servicesSelectedPrices);
+                      } else {
+                        controller.servicesSelectedAdded.remove(controller.housekeepingDetail
                           [index!.value]);
-                      controller.servicesSelected.add(controller.housekeepingDetail
+                        controller.servicesSelected.remove(controller.housekeepingDetail
                           [index!.value].id!);
-                      controller.servicesSelectedNames.add(controller.housekeepingDetail
+                        controller.servicesSelectedNames.remove(controller.housekeepingDetail
                           [index!.value].name!);
-                      controller.servicesSelectedPrices.add(controller.housekeepingDetail
+                        controller.servicesSelectedPrices.remove(controller.housekeepingDetail
                           [index!.value].price!.toString());
-                      print(controller.servicesSelected);
-                      print(controller.servicesSelectedNames);
-                      print(controller.servicesSelectedPrices);
-                    } else {
-                      controller.servicesSelectedAdded.remove(controller.housekeepingDetail
-                        [index!.value]);
-                      controller.servicesSelected.remove(controller.housekeepingDetail
-                        [index!.value].id!);
-                      controller.servicesSelectedNames.remove(controller.housekeepingDetail
-                        [index!.value].name!);
-                      controller.servicesSelectedPrices.remove(controller.housekeepingDetail
-                        [index!.value].price!.toString());
-                      print(controller.servicesSelected);
-                      print(controller.servicesSelectedNames);
-                      print(controller.servicesSelectedPrices);
-                    }
-                  },
-                  child: Container(
-                      width: size.width * .1,
-                      height: size.height * .05,
-                      decoration: BoxDecoration(
-                        borderRadius:const  BorderRadius.only(bottomLeft: Radius
-                            .circular(20.00), topLeft: Radius.circular(20.00)),
-                        color: controller.housekeepingDetail[index!.value].selected!
-                            .value==true ? Colors.green : AppColors.appHallsRedDark,
+                        print(controller.servicesSelected);
+                        print(controller.servicesSelectedNames);
+                        print(controller.servicesSelectedPrices);
+                      }
+                    },
+                    child: Container(
+                        width: size.width * .1,
+                        height: size.height * .05,
+                        decoration: BoxDecoration(
+                          borderRadius:const  BorderRadius.only(bottomLeft: Radius
+                              .circular(20.00), topLeft: Radius.circular(20.00)),
+                          color: controller.housekeepingDetail[index!.value].selected!
+                              .value==true ? Colors.green : AppColors.appHallsRedDark,
 
-                      ),
+                        ),
 
-                      child: Icon(controller.housekeepingDetail[index!.value]
-                          .selected!.value ==true  ? Icons.check : Icons.add,
-                          color: controller.housekeepingDetail[index!.value]
-                              .selected!.value == true ? Colors.white : Colors.black,
-                          size: size.width * .08)),
-                ),
+                        child: Icon(controller.housekeepingDetail[index!.value]
+                            .selected!.value ==true  ? Icons.check : Icons.add,
+                            color: controller.housekeepingDetail[index!.value]
+                                .selected!.value == true ? Colors.white : Colors.black,
+                            size: size.width * .08)),
+                  ),
 
 
-              ],
+                ],
 
-            ),
-          );
-        }),
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

@@ -99,7 +99,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                             width: size.width,
 
                             child: SingleChildScrollView(
-                              physics: AlwaysScrollableScrollPhysics(),
+                              physics: const AlwaysScrollableScrollPhysics(),
                               child: Obx(() {
                                 return Column(
                                   children: [
@@ -143,12 +143,12 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                                   }
                                                 },
                                                 child: Container(
-                                                    margin: EdgeInsets
+                                                    margin: const EdgeInsets
                                                         .symmetric(
                                                         horizontal: 5,
                                                         vertical: 4),
                                                     child: Container(
-                                                      padding: EdgeInsets
+                                                      padding: const EdgeInsets
                                                           .symmetric(
                                                           vertical: 5,
                                                           horizontal: 12),
@@ -211,7 +211,8 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                         decoration: const BoxDecoration(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(10)),
-                                            color: Colors.white),
+                                            // color: Colors.white
+                                        ),
                                         child: Row(
                                           children: [
                                             Container(width: size.width * .3,
@@ -224,7 +225,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                                         .center,
                                                     children: [
                                                       const TextWidget(
-                                                          'من سعر'),
+                                                          AppStrings.priceFrom),
                                                       TextWidget(
                                                           controller
                                                               .currentRangeValues
@@ -255,7 +256,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                                         .center,
                                                     children: [
                                                       const TextWidget(
-                                                        'الي سعر',),
+                                                        AppStrings.priceTo),
                                                       Text(controller
                                                           .currentRangeValues
                                                           .end
@@ -296,14 +297,15 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius
                                                   .circular(size.width * 0.03),
-                                              color: AppColors.appRedLight),
+                                              // color: AppColors.appRedLight
+                                          ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(10.0),
                                             child: Center(
                                               child: Column(
                                                 children: [
                                                   RatingBar.builder(
-                                                    initialRating: 1,
+                                                    initialRating: 0,
                                                     minRating: 1,
                                                     direction: Axis.horizontal,
                                                     allowHalfRating: false,
@@ -326,7 +328,7 @@ class CityRoomsPageView extends GetView<CityRoomsPageController> {
                                                   TextWidget(
                                                     "${controller
                                                         .selectedStarsNumber
-                                                        .value}" + " نجوم",
+                                                        .value}${AppStrings.stars}",
                                                     textColor: Colors.grey,
                                                     size: 16,
                                                     weight: FontWeight.w600,

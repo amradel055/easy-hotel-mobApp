@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 class SpaCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
-  var phoneController = TextEditingController(text: UserManager().user!.phone ??"");
+  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
   var emailController = TextEditingController(text:UserManager().user!.email ??"");
   final isLoading = false.obs;
   final totalPrice = 0.0.obs ;

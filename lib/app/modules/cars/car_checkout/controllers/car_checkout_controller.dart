@@ -10,11 +10,12 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CarCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
-  var phoneController = TextEditingController(text: UserManager().user!.phone ??"");
+  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
   var emailController = TextEditingController(text:UserManager().user!.email ??"");
   var passwordController = TextEditingController();
   final registerForm = GlobalKey<FormState>();
@@ -29,7 +30,7 @@ class CarCheckoutController extends GetxController {
         groupName: res[0].groupName,
         dueDate: res[1],
         createdBy: AppConstants.createdBy,
-        // dueTime:  DateTime.parse("0000-00-00T"+res[2]+":00").toLocal(),
+        // dueTime:  DateTime.parse("0000-00-00T${res[2].toString().trim()}:00Z"),
         isGoingAndRetrun: res[3],
         personNumber: res[4],
         trafficId: res[5].id!,
@@ -40,7 +41,11 @@ class CarCheckoutController extends GetxController {
         phone: phoneController.text,
         email: emailController.text,
         name: nameController.text,
-        customerName: UserManager().user!.name
+        customerName: UserManager().user!.name,
+        dueTime: DateTime.parse(DateFormat('yyyy-MM-dd').format(
+            res[1]
+        )+"T"+ res[2]+":00Z"),
+      // datet:  DateTime.parse("0000-00-00T${res[2].toString().trim()}:00Z")
     );
     CarsRepository().saveCarsOrder(request,
         onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {

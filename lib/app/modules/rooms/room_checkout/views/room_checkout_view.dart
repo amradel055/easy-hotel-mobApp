@@ -33,18 +33,18 @@ class RoomCheckoutView
     const space = SizedBox(height: 20);
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: Column(
-          children: const [
-            TextWidget("Checkout",size: 20,),
-            TextWidget(AppStrings.roomsService,size: 15,textColor: AppColors.appGreyDark,)
-          ],
+        appBar: AppBar(
+          elevation: 0,
+          title: Column(
+            children: const [
+              TextWidget("Checkout",size: 20,),
+              TextWidget(AppStrings.roomsService,size: 15,textColor: AppColors.appGreyDark,)
+            ],
+          ),
         ),
-      ),
+
         body: Container(
-            color: AppColors.white,
+            // color: AppColors.white,
             width: size.width,
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
@@ -69,7 +69,7 @@ class RoomCheckoutView
                                 children: [
                                   const TextWidget(
                                    AppStrings.services,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -89,7 +89,7 @@ class RoomCheckoutView
                                   const Icon(Icons.timer),
                                   const TextWidget(
                                     AppStrings.time,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -189,7 +189,7 @@ class RoomCheckoutView
                                 children:  [
                                   const TextWidget(
                                     AppStrings.additions,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -199,7 +199,8 @@ class RoomCheckoutView
                                     textColor: Colors.grey,
                                     size: 10,
                                     weight: FontWeight.w600,
-                                    maxLines: 3,
+                                    maxLines: 100,
+
                                   ),
 
 
@@ -211,7 +212,7 @@ class RoomCheckoutView
                                 children:  [
                                   const TextWidget(
                                     AppStrings.children,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -232,7 +233,7 @@ class RoomCheckoutView
                                 children:  [
                                   const TextWidget(
                                     AppStrings.adults,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -254,7 +255,7 @@ class RoomCheckoutView
                                 children:  [
                                   const TextWidget(
                                     AppStrings.totalPrice,
-                                    textColor: Colors.black,
+                                    // textColor: Colors.black,
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
@@ -278,10 +279,10 @@ class RoomCheckoutView
                   ),
                   SizedBox(
                       width: size.width*.9,
-                      child: TextWidget("التفاصيل الشخصيه",size: 15,weight: FontWeight.bold,)),
+                      child: const TextWidget(AppStrings.personalInfo,size: 15,weight: FontWeight.bold,)),
 
                   Container(
-                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.00)),color: AppColors.appGreyDark),
+                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.00))),
                     margin: const EdgeInsets.fromLTRB(25,5,25,25),
                     padding: const EdgeInsets.all(15),
                     child: Form(
@@ -291,48 +292,36 @@ class RoomCheckoutView
                         children: [
 
                           TextFieldWidget(
-                            // controller:controller.userNameController,
+                            controller:controller.userNameController,
                             label: AppStrings.userName,
-                            initialValue: UserManager().user!.name!,
                             suffixIcon: Icons.pin,
                             textInputAction: TextInputAction.next,
-                            // onChange: (value) => controller.requestDto.userName = value,
-                            ltr: true,
                             validator: AppValidator.forceValue,
+
                           ),
                           space,
                           TextFieldWidget(
-                            // controller:controller.nameController,
+                            controller:controller.nameController,
                             label: AppStrings.name,
                             suffixIcon: Icons.pin,
-                            initialValue: UserManager().user!.name!,
                             textInputAction: TextInputAction.next,
-                            // onChange: (value) => controller.requestDto.name = value,
-
-                            ltr: true,
                             validator: AppValidator.forceValue,
                           ),
                           space,
                           TextFieldWidget(
-                            // controller:controller.emailController,
-                            initialValue: UserManager().user!.email??"",
+                            controller:controller.emailController,
                             label: AppStrings.email,
                             suffixIcon: Icons.email,
                             textInputAction: TextInputAction.next,
-                            // onChange: (value) => controller.requestDto.email = value,
-                            ltr: true,
                             validator: AppValidator.forceValue,
                           ),
                           space,
                           TextFieldWidget(
-                            // controller:controller.phoneController,
-                            initialValue: UserManager().user!.phone ??"",
+                            controller:controller.phoneController,
                             label: AppStrings.phone,
                             suffixIcon: Icons.phone,
                             textInputAction: TextInputAction.next,
-                            // onChange: (value) => controller.requestDto.mobile = value,
 
-                            ltr: true,
                             validator: AppValidator.forceValue,
                           ),
 
@@ -356,11 +345,13 @@ class RoomCheckoutView
                             borderRadius:
                             BorderRadius.all(Radius.circular(5)),
                           ),
-                          child: const TextWidget(
-                            AppStrings.reserve,
-                            textAlign: TextAlign.center,
-                            weight: FontWeight.bold,
-                            textColor: Colors.white,
+                          child: const Center(
+                            child:  TextWidget(
+                              AppStrings.reserve,
+                              textAlign: TextAlign.center,
+                              weight: FontWeight.bold,
+                              textColor: Colors.white,
+                            ),
                           ),
                         ),
                       ),

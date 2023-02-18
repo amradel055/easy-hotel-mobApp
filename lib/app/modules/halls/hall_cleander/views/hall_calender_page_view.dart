@@ -184,7 +184,7 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                   right: 0,
                   left: 0,
                   child: Container(
-                    color: Colors.brown[50],
+                    // color: Colors.brown[50],
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(

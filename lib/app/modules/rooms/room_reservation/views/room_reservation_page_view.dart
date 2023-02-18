@@ -24,21 +24,21 @@ class RoomReservationPageView extends GetView<RoomReservationPageController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.appBlue,
-          leading: const Icon(Icons.arrow_back, color: Colors.white,),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: SizedBox(
-                width: size.width * .6,
+          title: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              child: Center(
                 child: const TextWidget(
                   AppStrings.reserve, weight: FontWeight.bold,
                   size: 25,
                   textColor: Colors.white,
-                  textAlign: TextAlign.right,),
-
+                ),
               ),
+
             ),
-          ],
+          ),
+
+
         ),
         body:
         SingleChildScrollView(
@@ -118,7 +118,7 @@ class RoomReservationPageView extends GetView<RoomReservationPageController> {
                                                     vertical: 5, horizontal: 5),
                                                 decoration: BoxDecoration(
                                                     color: isSelected ? Colors
-                                                        .brown[50] : Colors.white,
+                                                        .brown[60] : Colors.white,
                                                     borderRadius: BorderRadius
                                                         .circular(18),
                                                     border: Border.all(

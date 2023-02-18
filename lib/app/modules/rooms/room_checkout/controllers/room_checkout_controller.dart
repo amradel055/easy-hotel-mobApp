@@ -1,6 +1,7 @@
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/request/cars_order_request.dart';
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 import 'package:easy_hotel/app/data/model/housekeeping/dto/request/housekeeping_save_request.dart';
@@ -14,11 +15,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
 class RoomCheckoutController extends GetxController {
-  var nameController = TextEditingController();
-  var userNameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  var nameController = TextEditingController(text: UserManager().user!.name ??"");
+  var userNameController = TextEditingController(text:UserManager().user!.name ??"");
+  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
+  var emailController = TextEditingController(text:UserManager().user!.email ??"");
   final registerForm = GlobalKey<FormState>();
   final isLoading = false.obs;
   final List res = Get.arguments;
@@ -28,8 +28,8 @@ class RoomCheckoutController extends GetxController {
         roomId:res[0].id!,
         leavingTime:DateTime.now(),
         arrivalTime: DateTime.now(),
-        adaptNumber: res[0].ch!,
-        childrenNumber: 3,
+        adaptNumber: res[0].adaptNumber??0,
+        childrenNumber: res[0].childrenNumber??0,
         price: res[1],
         addtionsDtoList: res[2],
         phone:UserManager().user!.phone??"",
@@ -47,7 +47,7 @@ class RoomCheckoutController extends GetxController {
     );
     RoomsRepository().getRoomSave(request,
         onSuccess: (data) {
-          showPopupText( "تم الحفظ بنجاح");
+          showPopupText(AppStrings.savedSuccessfully);
           Get.toNamed(Routes.ALLSERVICES);
         },
         onError: (e) => showPopupText( e.toString()),

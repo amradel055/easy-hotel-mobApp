@@ -16,7 +16,8 @@ class PolmanSaveRequest {
     this.createdBy,
     this.companyId,
     this.customerId,
-    this.time,
+    this.dueDate,
+    this.dueTime,
     this.remark,
     this.email,
     this.name,
@@ -28,7 +29,8 @@ class PolmanSaveRequest {
   int?createdBy;
   int?companyId;
   int? customerId ;
-  DateTime? time ;
+  DateTime? dueDate ;
+  DateTime? dueTime ;
   String? remark ;
   String ?phone;
   String?email;
@@ -40,7 +42,6 @@ class PolmanSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
-      time: json["time"] == null ? null : json["time"],
     remark: json["remark"] == null ? null : json["remark"],
   );
 
@@ -51,7 +52,8 @@ class PolmanSaveRequest {
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
     "remark": remark == null ? null : remark,
-    "time": time == null ? null : time?.toIso8601String(),
+    "dueDate": dueDate == null ? null : dueDate?.toIso8601String(),
+    "dueTime": dueTime == null ? null : dueTime?.toIso8601String(),
     "phone": phone == null ? null : phone,
     "email": email == null ? null : email,
     "name": name == null ? null : name,

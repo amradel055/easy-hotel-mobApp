@@ -89,7 +89,7 @@ class SettingsView extends GetView<SettingsController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const SettingTabWidget(Icons.attach_money, AppStrings.currency),
-                    TextWidget(UserManager().user!.currencyName!, size: 15,
+                    TextWidget(UserManager().user!.currencyName??"", size: 15,
                       weight: FontWeight.bold,),
                     SizedBox(
                       width: 110,
