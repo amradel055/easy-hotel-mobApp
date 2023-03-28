@@ -34,13 +34,14 @@ class ApiProvider {
 
   // static const String _domainUrl = "http://192.168.1.22:8050/";
   // static const String _domainUrl = "http://188.166.92.84/";
-  static const String _domainUrl = "http://192.168.1.2:8080/hotelApp/";
+  static const String _domainUrl = "http://192.168.1.3:8082/hotelApp/";
   static const String apiUrl = "$_domainUrl/";
-  static const String imageUrl = "$_domainUrl/restaurantItem/itemImage/";
+  static const String imageUrl = "${_domainUrl}restaurantItem/itemImage/";
   final InternetConnectionChecker _checker = InternetConnectionChecker();
   late Dio _dio;
 
-  _requestApi<T,F>(String url,
+  _requestApi<T,F>(
+      String url,
       String method,
       String token,
       dynamic data,

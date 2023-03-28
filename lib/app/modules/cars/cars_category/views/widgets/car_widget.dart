@@ -40,7 +40,7 @@ class CarWidget extends StatelessWidget {
                   width: size.width * 0.9,
                   fit: BoxFit.cover,
                   placeholder: const AssetImage("assets/images/placeholder.jpeg"),
-                  image:  NetworkImage( "${ApiProvider.apiUrl}/restaurantItem/itemImage/${car.image}" ) ,
+                  image:  NetworkImage( "${ApiProvider.imageUrl}${car.image}") ,
                   imageErrorBuilder: (context, error, StackTrace) {
                     return Image(
                         height: size.height * 0.25,

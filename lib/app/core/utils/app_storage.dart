@@ -2,6 +2,8 @@
 
 import 'package:get_storage/get_storage.dart';
 
+import '../../data/model/rooms/dto/response/room_response.dart';
+
 abstract class AppStorage {
   static final _getStorage = GetStorage();
 
@@ -18,7 +20,7 @@ abstract class AppStorage {
   static const LANGUAGE_KEY = "LANGUAGE_KEY";
   static const CART = "CART";
   static const SELECTED_BRANCH = "SELECTED_BRANCH";
-
+  static const FAV_ROOMS = "FAV_ROOMS";
 
   static bool get getNotificationSetting => read<bool>(NOTIFICATION_SETTINGS) ?? true;
 
@@ -37,6 +39,28 @@ abstract class AppStorage {
   static saveRatingValue(String profileId, double rate){
     final map = _getRatingValues..[profileId] = rate;
     write(RATING_LIST, map);
+  }
+
+  static addRoomToFavorite(RoomResponse room)async{
+   List<RoomResponse> favList = RoomResponse.fromList(await read(FAV_ROOMS) ?? []);
+   int index = favList.indexWhere((element) => element.id == room.id);
+   if(index != -1){
+        favList.removeAt(index);
+   }else{
+   favList.add(room);
+   }
+   write(FAV_ROOMS, List.from(favList.map((e) => e.toJson())));
+  }
+
+  static Future<bool> isFavRoom(int id)async{
+   List<RoomResponse> favList = RoomResponse.fromList(await read(FAV_ROOMS) ?? []);
+   int index = favList.indexWhere((element) => element.id == id);
+   return Future.value(index != -1) ;
+  }
+
+  static Future<List<int>> getFavoriteRooms()async{
+   List<int> favList = await(read(FAV_ROOMS) ?? []);
+   return Future.value(favList) ;
   }
 
   static double? getRatingValue(String profileId){
