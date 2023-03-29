@@ -24,7 +24,7 @@ class SpaDetailsController extends GetxController {
 
   Rx<TextEditingController> timeController = TextEditingController().obs;
   Rx<TextEditingController> dateController = TextEditingController().obs;
-  DateTime? selectedDate;
+  DateTime? selectedDate = DateTime.now();
 
   @override
   void onInit() async {

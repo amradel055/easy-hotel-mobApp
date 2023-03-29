@@ -23,11 +23,11 @@ class HallCalenderPageController extends GetxController {
   final allTotalPrice = 0.0.obs;
 
   @override
-  onInit() {
+  onInit()async {
     super.onInit();
     calcAllTotalPrice();
-    getHallPeriod();
-    getHallReservedPeriod(selectedDay.value);
+   await getHallPeriod();
+   await getHallReservedPeriod(selectedDay.value);
   }
 
   calcAllTotalPrice() {
@@ -97,23 +97,25 @@ class HallCalenderPageController extends GetxController {
         onComplete: () => isLoading(false));
   }
 
-  getHallPeriod() {
+  Future getHallPeriod() async {
     isPeriodLoading(true);
     final request = HallsPeriodsRequest(
       id: args[0].id,
     );
-    HallsRepository().getHallPeriods(request,
-        onSuccess: (data) => hallPeriods(data.data), onError: (e) => showPopupText(e.toString()), onComplete: () => isPeriodLoading(false));
+   await HallsRepository().getHallPeriods(request,
+        onSuccess: (data) => hallPeriods(data.data), 
+        onError: (e) => showPopupText(e.toString()),
+         onComplete: () => isPeriodLoading(false));
   }
 
-  getHallReservedPeriod(DateTime date) {
+  Future getHallReservedPeriod(DateTime date) async{
     isPeriodLoading(true);
     resetPeriodEnabled();
     final request = HallsPeriodsRequest(id: args[0].id, date: date);
-    HallsRepository().getHallReservedPeriods(request,
+   await HallsRepository().getHallReservedPeriods(request,
         onSuccess: (data) {
           hallReservedPeriods(data.data);
-          for (int i = 0; i < hallPeriods.length; i++) {
+          for (int i = 0; i < (hallPeriods.length ?? 0); i++) {
             for (HallsPeriodsResponse reserved in hallReservedPeriods) {
               if (hallPeriods[i].id == reserved.id) {
                 hallPeriods[i].enabled = false;

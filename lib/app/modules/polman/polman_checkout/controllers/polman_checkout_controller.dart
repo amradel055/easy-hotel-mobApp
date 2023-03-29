@@ -39,7 +39,7 @@ class PolmanCheckoutController extends GetxController {
     );
     PolmanRepository().getPolmanSave(request,
         onSuccess: (data) {
-          showPopupText( AppStrings.savedSuccessfully);
+          showPopupText(AppStrings.savedSuccessfully);
           Get.toNamed(Routes.ALLSERVICES);
         },
         onError: (e) => showPopupText( e.toString()),

@@ -104,12 +104,12 @@ class HallsRepository {
         onComplete: onComplete
     );
   }
-  getHallPeriods(
+  Future getHallPeriods(
       HallsPeriodsRequest hallsPeriodsRequest, {
         SuccessFunc<List<HallsPeriodsResponse>> onSuccess,
         Function(dynamic error)? onError,  Function()?onComplete,
-      }) {
-    ApiProvider().post<List<HallsPeriodsResponse>>(
+      }) async{
+    await ApiProvider().post<List<HallsPeriodsResponse>>(
         'halls/findHolePeriods',
         onSuccess: onSuccess,
         data: hallsPeriodsRequest.toJson(),

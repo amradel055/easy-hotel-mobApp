@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/core/extensions/string_ext.dart';
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
@@ -42,9 +43,7 @@ class CarCheckoutController extends GetxController {
         email: emailController.text,
         name: nameController.text,
         customerName: UserManager().user!.name,
-        dueTime: DateTime.parse(DateFormat('yyyy-MM-dd').format(
-            res[1]
-        )+"T"+ res[2]+":00Z"),
+        dueTime: res[2].toString().dateFromTimeString(res[1]),
       // datet:  DateTime.parse("0000-00-00T${res[2].toString().trim()}:00Z")
     );
     CarsRepository().saveCarsOrder(request,

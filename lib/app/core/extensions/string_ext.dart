@@ -32,3 +32,13 @@ extension TimeFromDate on String {
   }
 }
 
+extension DateFromTimeString on String {
+  DateTime?  dateFromTimeString(DateTime time){
+    String value = this;
+    List values = value.split(":") ;
+    int? hours = int.tryParse(values[0]);
+    int? minutes =int.tryParse(values[1]);
+    return DateTime(time.year , time.month, time.day , hours?? 00 ,minutes ?? 00 ,00);
+  }
+}
+

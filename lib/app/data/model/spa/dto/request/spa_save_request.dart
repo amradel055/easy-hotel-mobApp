@@ -22,8 +22,8 @@ class SpaSaveRequest {
     this.name,
     this.dueDate,
     this.dueTime,
-    this.salesSpaList
-
+    this.salesSpaList,
+    this.remarks,
   });
 
   int? spaId;
@@ -34,8 +34,9 @@ class SpaSaveRequest {
   int? customerId ;
   // List<int>?spaItemDTOList;
   List<SpaItemModel>?salesSpaList;
-  String ?phone;
+  String?phone;
   String?email;
+  String?remarks;
   String?name;
   DateTime ?dueDate;
   DateTime ?dueTime;
@@ -46,6 +47,7 @@ class SpaSaveRequest {
       createdBy: json["createdBy"] == null ? null : json["createdBy"],
       companyId: json["companyId"] == null ? null : json["companyId"],
       branchId: json["branchId"] == null ? null : json["branchId"],
+      remarks: json["remarks"] == null ? null : json["remarks"],
 
       // spaItemDTOList: json["spaItemsDTOList"] == null ? null : List<int>.from(json["spaItemsDTOList"].map((x) => x)),
       salesSpaList: json["salesSpaList"] == null ? null : List<SpaItemModel>.from(json["salesSpaList"].map((x) => x)),
@@ -58,6 +60,7 @@ class SpaSaveRequest {
     "createdBy": createdBy == null ? null : createdBy,
     "companyId": companyId == null ? null : companyId,
     "branchId": branchId == null ? null : branchId,
+   "remarks": remarks == null ? null : remarks,
     // "spaItemsDTOList": spaItemDTOList == null ? [] : spaItemDTOList,
     "phone": phone == null ? null : phone,
     "email": email == null ? null : email,

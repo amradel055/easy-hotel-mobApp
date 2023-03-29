@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/core/extensions/string_ext.dart';
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
@@ -15,6 +16,7 @@ class SpaCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
   var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
+  var remarkController = TextEditingController();
   var emailController = TextEditingController(text:UserManager().user!.email ??"");
   final isLoading = false.obs;
   final totalPrice = 0.0.obs ;
@@ -40,10 +42,11 @@ class SpaCheckoutController extends GetxController {
       customerId: UserManager().user!.id,
       branchId: res[2]??232,
       phone: phoneController.text,
+      remarks:remarkController.text,
       email: emailController.text,
       name: nameController.text,
-      dueDate:  DateTime.parse(res[7]+"T"+  res[8]+":00Z").toLocal(),
-      dueTime: DateTime.parse(res[7]+"T"+  res[8]+":00Z").toLocal(),
+      dueDate: res[11].toString().isNotEmpty ? res[11].toString().dateFromTimeString(res[10])  :res[10] ,
+      dueTime:res[11].toString().isNotEmpty ? res[11].toString().dateFromTimeString(res[10])  :res[10],
       salesSpaList: res[9]
     );
     SpaRepository().getSpaSave(request,

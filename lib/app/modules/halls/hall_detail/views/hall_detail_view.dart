@@ -246,6 +246,14 @@ class HallDetailView extends GetView<HallDetailsController> {
                         child: TextButton(
                           onPressed: () {
                             // Get.toNamed(Routes.MAP, arguments: LatLng(controller.hall!, longitude));
+                                  Get.toNamed(Routes.MAP, arguments: [
+                                  LatLng(controller.hall!.lat!.toDouble(),
+                                      controller.hall!.lang!.toDouble()),
+                                  controller.hall?.name?.toString() ?? "",
+                                  ApiProvider.imageUrl +
+                                      (controller.hall?.image?.toString() ??
+                                          ""),
+                                ]);
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.black),

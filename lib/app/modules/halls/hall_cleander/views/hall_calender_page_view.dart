@@ -99,7 +99,7 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                 children: [
-                                                  TextWidget(e.name!),
+                                                  TextWidget(e.name??""),
                                                  e.enabled == false ? const TextWidget(AppStrings.reserved ,size: 11, textColor: AppColors.appHallsRedDark, weight: FontWeight.bold,):const SizedBox.shrink(),
                                                 ],
                                               ),
@@ -160,7 +160,7 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      TextWidget(controller.selectedDaysList[i].name! , weight: FontWeight.bold,),
+                                      TextWidget(controller.selectedDaysList[i].name ??"" , weight: FontWeight.bold,),
                                       TextWidget(DateFormat('yyyy:MM:dd').format(controller.selectedDaysList[i].date!), weight: FontWeight.bold,),
                                       TextWidget(controller.dayTotalPrice.value.toString(), weight: FontWeight.bold,),
                                       IconButton(
