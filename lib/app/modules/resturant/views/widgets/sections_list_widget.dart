@@ -12,6 +12,7 @@ class SectionListWidget extends GetView<RestaurantController> {
 
   @override
   Widget build(BuildContext context) {
+     Size size = MediaQuery.of(context).size ;
     return Obx(() {
       if(controller.groupLoading.isTrue){
         return SizedBox(
@@ -23,8 +24,19 @@ class SectionListWidget extends GetView<RestaurantController> {
         children: [
           const TextWidget(AppStrings.sections, weight: FontWeight.bold, size: 18),
           const SizedBox(height: 10),
-          for(int i = 0; i < controller.groupList.length ; i++)
-            FoodSectionCard(group :controller.groupList.toList()[i]),
+          SizedBox(
+            height: size.height * 0.3,
+            child: GridView.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              children: [
+            for(int i = 0; i < controller.groupList.length ; i++)
+              FoodSectionCard(group :controller.groupList.toList()[i]),
+              ],
+              ),
+          )
+
         ],
       );
     });

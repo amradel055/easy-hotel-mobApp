@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class ItemMiniResponse {
   final int? id;
 
@@ -21,6 +23,8 @@ class ItemMiniResponse {
 
   final int? reviewsStars;
 
+   RxBool? isFav = RxBool(false);
+
   ItemMiniResponse(
       {this.id,
       this.name,
@@ -32,6 +36,7 @@ class ItemMiniResponse {
       this.discountRate,
       this.discountType,
       this.image,
+      required this.isFav,
       this.reviewsStars});
 
 
@@ -48,5 +53,6 @@ class ItemMiniResponse {
       discountRate: json['discountRate'],
       discountType: json['discountType'],
       image: json['image'],
+      isFav: RxBool(false) ,
       reviewsStars: json['reviewsStars']);
 }

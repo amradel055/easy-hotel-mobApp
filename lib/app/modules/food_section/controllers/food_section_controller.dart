@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/data/model/restaurant/dto/request/group_items_req
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_mini_response.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/restaurant_strorage.dart';
 import '../../../data/model/restaurant/dto/group_selected_dto.dart';
 import '../../../data/model/restaurant/dto/response/group_response.dart';
 import '../../../data/repository/restaurant/restaurant_repository.dart';
@@ -34,7 +35,13 @@ class FoodSectionController extends GetxController {
     loading(true);
     final request = GroupItemsRequest(groupId: group.value!.id!, currencySerial: 1);
     RestaurantRepository().getGroupItemsList(request ,
-      onSuccess: (data) => groupItems.assignAll(data.data),
+      onSuccess: (data)async {
+        for(int i= 0 ; i < data.data.length ; i++){
+            await RestaurantStorage.isFavItem(data.data[i].id ?? -1)
+              .then((value) => data.data[i].isFav!(value));
+        }
+        groupItems.assignAll(data.data) ;
+      } ,
       onError: (e)=> showPopupText(e),
       onComplete: ()=> loading(false)
     );

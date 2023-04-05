@@ -4,6 +4,7 @@ import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/repository/restaurant/restaurant_repository.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/res_cart_manager.dart';
+import '../../../core/utils/restaurant_strorage.dart';
 import '../../../data/model/restaurant/dto/request/group_items_request.dart';
 import '../../../data/model/restaurant/dto/request/item_request.dart';
 import '../../../data/model/restaurant/dto/response/attribute_details_model.dart';
@@ -59,14 +60,16 @@ class FoodItemController extends GetxController {
     pro.refresh();
   }
 
-  getItem(){
+  Future getItem() async{
     loading(true);
     final request = ItemRequest(id: itemId , index: 1);
-    RestaurantRepository().getItem(
+    await RestaurantRepository().getItem(
       request,
       onComplete: () =>  loading(false),
       onError: (e) => showPopupText(e),
-      onSuccess: (data) {
+      onSuccess: (data)async {
+                    await RestaurantStorage.isFavItem(data.data.id ?? -1)
+              .then((value) => data.data.fav!(value));
         pro(data.data);
         pro.value?.itemImages?.add(ImageModel(image: pro.value?.image));
         String list = jsonEncode(pro.value!.attributeList);

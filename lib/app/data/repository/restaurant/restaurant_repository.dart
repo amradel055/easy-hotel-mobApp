@@ -67,13 +67,13 @@ class RestaurantRepository {
         onComplete: onComplete);
   }
 
-  getItem(
+  Future getItem(
       ItemRequest request, {
         SuccessFunc<ItemResponse> onSuccess,
         Function(dynamic error)? onError,
         Function()? onComplete,
-      }) {
-    ApiProvider().post<ItemResponse>('restaurantItem/getResItemByIdNewMobile',
+      }) async{
+    await ApiProvider().post<ItemResponse>('restaurantItem/getResItemByIdNewMobile',
         onSuccess: onSuccess,
         data: request.toJson(),
         onError: onError,

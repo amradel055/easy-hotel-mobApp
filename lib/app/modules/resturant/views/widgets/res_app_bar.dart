@@ -14,11 +14,10 @@ class RestaurantAppBar extends GetView<RestaurantController> with PreferredSizeW
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return AppBar(
+    return AppBar(
         title: const TextWidget(AppStrings.foodService),
         centerTitle: true,
-        actions: [
+        actions: const [
           Center(
             // child: Badge(
             //   badgeContent: TextWidget(controller.cartLength.toString(), height: 1 , weight: FontWeight.bold, size: 18,),
@@ -35,7 +34,6 @@ class RestaurantAppBar extends GetView<RestaurantController> with PreferredSizeW
           )
         ],
       );
-    });
   }
 
   @override

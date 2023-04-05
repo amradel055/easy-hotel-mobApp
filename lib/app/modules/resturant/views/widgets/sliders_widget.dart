@@ -29,7 +29,7 @@ class SlidersWidget extends GetView<RestaurantController> {
             enlargeCenterPage: true,
           ),
           itemBuilder: (context, index, _) {
-            return  ImageWidget(path:ApiProvider.imageUrl + controller.sliderList.value[index].imgUrl.toString(), fit: BoxFit.fill,);
+            return  ImageWidget(path:ApiProvider.imageUrl + controller.sliderList[index].imgUrl.toString(), fit: BoxFit.fill,);
           },
         ),
       );

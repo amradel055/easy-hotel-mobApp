@@ -43,7 +43,7 @@ class ItemResponse {
     this.variationsList ,
     this.addititonsList ,
     this.quantity ,
-    this.fav ,
+    required this.fav ,
     this.itemImages ,
     this.selectedVariation,
     this.reviewsList ,
@@ -101,11 +101,13 @@ class ItemResponse {
   List<ReviewModel>? reviewsList;
   List<AttributeDetails> chooseValues = [];
   double? reviewsStars ;
-  RxBool? fav = false.obs;
+  RxBool fav = false.obs;
   Variation? selectedVariation;
   double? sumPrice ;
   bool? saved ;
   int? oldDetailId ;
+
+  static List<ItemResponse> fromList(dynamic json) => List<ItemResponse>.from(json.map((e) =>ItemResponse.fromJson(e)));
 
   factory ItemResponse.fromJson(dynamic json) {
     final product =  ItemResponse(
