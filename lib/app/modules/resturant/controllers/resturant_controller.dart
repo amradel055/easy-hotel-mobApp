@@ -1,5 +1,6 @@
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
+import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_response.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/res_cart_manager.dart';
@@ -29,6 +30,8 @@ class RestaurantController extends GetxController {
     getGroupList();
     super.onInit();
   }
+
+  
 
 
 
@@ -63,6 +66,7 @@ class RestaurantController extends GetxController {
         onSuccess: (data) => offerList.assignAll(data.data)
     );
   }
+
   getGroupList(){
     groupLoading(true);
     final request = GroupRequest(
@@ -76,6 +80,8 @@ class RestaurantController extends GetxController {
         onSuccess: (data) => groupList.assignAll(data.data)
     );
   }
+
+
 
 
 }

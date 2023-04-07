@@ -3,9 +3,11 @@ import 'package:easy_hotel/app/data/model/restaurant/dto/request/group_items_req
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_mini_response.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/res_cart_manager.dart';
 import '../../../core/utils/restaurant_strorage.dart';
 import '../../../data/model/restaurant/dto/group_selected_dto.dart';
 import '../../../data/model/restaurant/dto/response/group_response.dart';
+import '../../../data/model/restaurant/dto/response/item_response.dart';
 import '../../../data/repository/restaurant/restaurant_repository.dart';
 
 class FoodSectionController extends GetxController {
@@ -47,6 +49,13 @@ class FoodSectionController extends GetxController {
     );
   }
 
+  addTocart(ItemMiniResponse item)=> {
+      RestaurantCartManager().addToCart(ItemResponse(
+        fav: item.isFav ?? false.obs ,
+         id: item.id ,
+         name: item.name
+         ))
+  };
 
 
 

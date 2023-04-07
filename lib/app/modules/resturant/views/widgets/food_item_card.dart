@@ -10,6 +10,7 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/utils/res_cart_manager.dart';
 import '../../../../core/utils/restaurant_strorage.dart';
 import '../../../../data/provider/api_provider.dart';
 
@@ -79,7 +80,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                                         price: item.price,
                                         salePrice: item.salePrice,
                                         quantity: 1,
-                                        fav:  item.isFav ?? false.obs,
+                                        fav: item.isFav ?? false.obs,
                                       ));
                                       item.isFav!(!item.isFav!.value);
                                       item.isFav!.refresh();
@@ -135,7 +136,16 @@ class _FoodItemCardState extends State<FoodItemCard> {
                               child: IconButtonWidget(
                                 icon: Icons.add_shopping_cart,
                                 iconSize: 25,
-                                onPressed: () {},
+                                onPressed: () {
+                                  RestaurantCartManager().addToCart(
+                                      ItemResponse(
+                                          fav: widget.item.isFav ?? false.obs,
+                                          id: widget.item.id,
+                                          image: widget.item.image,
+                                          price: widget.item.price ,
+                                          // saleItem: (widget.item.salePrice?? 0 )> 0,
+                                          name: widget.item.name));
+                                },
                               ),
                             )
                           ],

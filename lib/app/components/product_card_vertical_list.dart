@@ -56,13 +56,13 @@ class _ProductCardState extends State<ProductCard> {
                           fontWeight: FontWeight.bold,
                           fontSize: widget.size.width * 0.05),
                     ),
-                    Text(widget.product!.discribtion!,
+                    Text(widget.product?.discribtion?? "",
                         style: TextStyle(
                             color: Colors.grey[600],
                             fontWeight: FontWeight.w700)),
-                    widget.product!.saleItem! == false
+                    (widget.product?.saleItem?? false) == false
                         ? Text(
-                            (widget.product!.price!).toString() + "LE",
+                            "${widget.product?.price?? "0"}LE",
                             style:
                                 TextStyle(fontSize: widget.size.width * 0.045),
                           )
@@ -70,7 +70,7 @@ class _ProductCardState extends State<ProductCard> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                (widget.product!.price!).toString() + "LE",
+                                "${widget.product?.price?? "0"}LE",
                                 style: TextStyle(
                                     fontSize: widget.size.width * 0.045,
                                     decoration: TextDecoration.lineThrough,
@@ -79,8 +79,7 @@ class _ProductCardState extends State<ProductCard> {
                               Row(
                                 children: [
                                   Text(
-                                    (widget.product!.salePrice!).toString() +
-                                        "LE",
+                                   "${widget.product?.salePrice?? "0"}LE",
                                     style: TextStyle(
                                         fontSize: widget.size.width * 0.045),
                                   ),
@@ -92,9 +91,8 @@ class _ProductCardState extends State<ProductCard> {
                                       color: Colors.red.shade400,
                                       child: Center(
                                           child: Text(
-                                        "Sale " +
-                                            (((widget.product!.price! -widget.product!.salePrice!) / widget.product!.price!) *100)
-                                                .toStringAsFixed(0) +" %",
+                                        "Sale ${(((widget.product?.price?? 0 -(widget.product?.salePrice?? 0)) / (widget.product?.price?? 0)) *100)
+                                                .toStringAsFixed(0)} %",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: widget.size.width * 0.032,
@@ -108,7 +106,7 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                     widget.quantity != null
                         ? Text(
-                            "Quantity : " + widget.quantity.toString(),
+                            "Quantity : ${widget.quantity}",
                             style:
                                 TextStyle(fontSize: widget.size.width * 0.045),
                           )
@@ -124,7 +122,6 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Get.back();
                           if(widget.fav.value){
 
                             // favController.remove(widget.product!.id!, context);
@@ -166,7 +163,7 @@ class _ProductCardState extends State<ProductCard> {
                 child:  FadeInImage(
                     fit: BoxFit.cover,
                     placeholder: const AssetImage("assets/images/placeholder.jpeg"),
-                    image: NetworkImage(ApiProvider.imageUrl + widget.product!.image! ,)),
+                    image: NetworkImage(ApiProvider.imageUrl + (widget.product?.image?? "") ,)),
               ),
             ],
           )),

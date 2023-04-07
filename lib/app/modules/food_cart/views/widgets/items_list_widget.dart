@@ -34,7 +34,7 @@ class ItemListWidget extends GetView<FoodCartController> {
                   child: ProductCard(
                       size,
                       product[i],
-                      product[i].fav!,
+                      product[i].fav,
                       product[i].quantity.toString(),
                           () {},
                       true
