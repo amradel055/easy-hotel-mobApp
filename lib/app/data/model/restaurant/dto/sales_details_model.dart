@@ -54,7 +54,7 @@ class SalesDetails {
   int? appId;
   int? resOfferId;
   int? resItemVariation;
-  // List<Additions>? additionsList = [];
+  List<Additions>? additionsList = [];
   // List<Additions>? deletedAdditionsList = [];
   List<SalesDetailsAttribute>? resSalesDetailsAttributeDTOList = [];
   List<SalesDetailsAdditions>? resSalesDetailsAdditionsDTOList = [];

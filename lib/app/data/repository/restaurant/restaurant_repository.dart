@@ -7,6 +7,7 @@ import '../../model/restaurant/dto/response/group_response.dart';
 import '../../model/restaurant/dto/response/item_mini_response.dart';
 import '../../model/restaurant/dto/response/item_response.dart';
 import '../../model/restaurant/dto/response/slider_response.dart';
+import '../../model/restaurant/dto/sales_model.dart';
 import '../../provider/api_provider.dart';
 
 class RestaurantRepository {
@@ -78,6 +79,20 @@ class RestaurantRepository {
         data: request.toJson(),
         onError: onError,
         convertor:ItemResponse.fromJson,
+        onComplete: onComplete);
+  }
+
+    Future saveOrder(
+      Sales request, {
+        SuccessFunc<void> onSuccess,
+        Function(dynamic error)? onError,
+        Function()? onComplete,
+      }) async{
+    await ApiProvider().post<void>('cart/save',
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor:(_){},
         onComplete: onComplete);
   }
 }

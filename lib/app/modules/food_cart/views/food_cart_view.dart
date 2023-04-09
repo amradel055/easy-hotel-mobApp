@@ -1,8 +1,11 @@
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
+import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/modules/food_cart/views/widgets/items_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/common.dart';
+import '../../../core/values/app_colors.dart';
 import '../controllers/food_cart_controller.dart';
 
 class FoodCartView extends GetView<FoodCartController> {
@@ -10,26 +13,28 @@ class FoodCartView extends GetView<FoodCartController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppStrings.foodCart),
-        centerTitle: true,
-        actions: [
-          Center(
-            child: UnconstrainedBox(
-              child: IconButtonWidget(
-                icon: Icons.history_rounded,
-                onPressed: () => controller.removeAll(),
-              ),
-            ),
-          )
-        ],
-      ),
-      body: DefaultTabController(
-        length: 3,
-        child: Column(
-          children: const [
-            // BoxWidget(
+    return Obx(() => Scaffold(
+          appBar: AppBar(
+            title: const Text(AppStrings.foodCart),
+            centerTitle: true,
+            actions: [
+              Center(
+                child: UnconstrainedBox(
+                  child: IconButtonWidget(
+                    icon: Icons.history_rounded,
+                    onPressed: () => controller.removeAll(),
+                  ),
+                ),
+              )
+            ],
+          ),
+          body:controller.isLoading.isTrue?  Center(child: Common.getSpin()) :
+           DefaultTabController(
+            length: 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:  [
+                // BoxWidget)(
             //   height: 50,
             //   margin: const EdgeInsets.fromLTRB(AppConstants.padding, 10, AppConstants.padding, 0),
             //   shadowColor: Colors.transparent,
@@ -52,11 +57,27 @@ class FoodCartView extends GetView<FoodCartController> {
             //       ]
             //   ),
             // ) ,
-            ItemListWidget()
+            const ItemListWidget(),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: SizedBox(
+                child: Center(
+                  child: TextButton(
+                    onPressed: () => controller.saveOrder(),
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(AppColors.restaurantThirdColor)
+                     ),
+                     child: const Padding(
+                       padding: EdgeInsets.fromLTRB(20.0 , 10 , 20 , 10),
+                       child: TextWidget(AppStrings.confirm , size: 18, weight: FontWeight.bold,),
+                     )),
+                ),
+              ),
+            )
           ],
         ),
       ),
-    );
+    ));
   }
 
 }
