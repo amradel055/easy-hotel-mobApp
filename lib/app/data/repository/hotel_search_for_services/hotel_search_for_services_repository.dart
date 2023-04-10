@@ -38,7 +38,7 @@ class HotelSearchForServicesRepository {
         onError: onError,
         convertor:(json) => HotelsearchModel.fromJson(json),
       );
-   appServices(
+   Future appServices(
        ApplicationRequest applicationRequest, {
         Function()? onComplete,
         SuccessFunc<List<ApplicationResponse>> onSuccess,

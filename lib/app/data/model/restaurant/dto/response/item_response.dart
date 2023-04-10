@@ -51,6 +51,7 @@ class ItemResponse {
     this.resSalesDetailsAdditionsDTOList,
     this.discountType,
     this.discountValue,
+    this.sumPrice,
     this.discountRate,
     // this.chooseValues ,
     this.saved,
@@ -112,7 +113,7 @@ class ItemResponse {
   factory ItemResponse.fromJson(dynamic json) {
     final product =  ItemResponse(
     id: json["id"],
-      oldHeadPackUpId: json["oldHeadPackUpId"],
+    oldHeadPackUpId: json["oldHeadPackUpId"],
     offerId: json["offerId"],
     markEdit: json["markEdit"],
     msg: json["msg"],
@@ -141,6 +142,7 @@ class ItemResponse {
     appId: json["appId"],
     saleItem: json["saleItem"],
     salePrice: json["salePrice"],
+    sumPrice : json["sumPrice"],
     salePriceNoAttribute: json["salePrice"],
     attributeList: List<Attribute>.from((json["attributeList"]??[]).map((x) => Attribute.fromJson(x))),
     variationsList: List<Variation>.from((json["variationsList"]??[]).map((x) => Variation.fromJson(x))),
@@ -199,6 +201,7 @@ class ItemResponse {
     "reviewsStars" : reviewsStars ,
     "itemImages" : List<dynamic>.from((itemImages??[]).map((x) => x.toJson())),
     "quantity" : quantity ,
+    "sumPrice" : sumPrice ,
     "selectedVariation" : selectedVariation == null ? null :  selectedVariation!.toJson()
   };
 }

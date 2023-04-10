@@ -62,7 +62,7 @@ class _ProductCardState extends State<ProductCard> {
                             fontWeight: FontWeight.w700)),
                     (widget.product?.saleItem?? false) == false
                         ? Text(
-                            "${widget.product?.price?? "0"}LE",
+                            "${(widget.product?.sumPrice?? 0 )> 0 ? widget.product?.sumPrice : widget.product?.price ?? "0"}LE",
                             style:
                                 TextStyle(fontSize: widget.size.width * 0.045),
                           )

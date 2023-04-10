@@ -20,8 +20,16 @@ class FoodItemController extends GetxController {
   Rxn<Variation> selectedVariation = Rxn();
   Rxn<ItemResponse> pro = Rxn();
   final attributeList = <Attribute>[].obs;
-  void increment() => count.value++;
-  void decrement() => count.value>1?count.value--:null;
+  void increment(){
+    count.value++;
+    pro.value?.quantity =count.value;
+    calcAddPrice();
+  } 
+  void decrement(){
+    count.value>1?count.value--:null;
+    pro.value?.quantity =count.value;
+    calcAddPrice();
+  } 
   final selectedAdditions = <Additions>[].obs ;
   final groupItems = <ItemMiniResponse>[].obs ;
 
@@ -54,8 +62,9 @@ class FoodItemController extends GetxController {
 
   calcAddPrice(){
     pro.value!.sumPrice = pro.value!.price! ;
+    pro.value!.sumPrice = pro.value!.price! * (pro.value?.quantity ?? 1) ;
     for(Additions add in selectedAdditions){
-      pro.value!.sumPrice = pro.value!.sumPrice! + (add.price ?? 0).toDouble() ;
+      pro.value!.sumPrice = pro.value!.sumPrice! + ((add.price ?? 0) * (pro.value?.quantity ?? 1)).toDouble() ;
     }
     pro.refresh();
   }

@@ -31,4 +31,9 @@ class RestaurantStorage {
     List<int> favList = await (AppStorage.read(FAV_ITEMS) ?? []);
     return Future.value(favList);
   }
+
+    static Future<List<ItemResponse>> getFavoriteItemsForFav() async {
+    List<ItemResponse> favList = ItemResponse.fromList(await AppStorage.read(FAV_ITEMS) ?? []);
+    return Future.value(favList);
+  }
 }
