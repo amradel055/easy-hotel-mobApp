@@ -4,6 +4,7 @@ import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/rooms/city_rooms/controllers/city_rooms_page_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +55,7 @@ class RoomsCardWidget extends GetView<CityRoomsPageController> {
                             borderRadius: const BorderRadius.all(Radius.circular(15)),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    image )
+                                image: NetworkImage(ApiProvider.imageUrl + image )
                             )
                         ),
 

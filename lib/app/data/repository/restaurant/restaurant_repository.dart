@@ -84,15 +84,15 @@ class RestaurantRepository {
 
     Future saveOrder(
       Sales request, {
-        SuccessFunc<void> onSuccess,
+        SuccessFunc<Sales> onSuccess,
         Function(dynamic error)? onError,
         Function()? onComplete,
       }) async{
-    await ApiProvider().post<void>('cart/save',
+    await ApiProvider().post<Sales>('cart/save',
         onSuccess: onSuccess,
         data: request.toJson(),
         onError: onError,
-        convertor:(_){},
+        convertor:(data) => Sales.fromJson(data),
         onComplete: onComplete);
   }
 }
