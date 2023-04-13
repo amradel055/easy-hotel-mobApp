@@ -296,7 +296,7 @@ class CarDetailView extends GetView<CarDetailsController> {
                               ReviewsListWidget(
                                 reviewNumber: 0,
                                 reviewsList: [] ,
-                                reviewStars: controller.selectedCar.reviewStars!,
+                                reviewStars: controller.selectedCar.reviewStars ?? 0,
                               )
 
 

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/model/housekeeping/dto/response/housekeeping_detail_response.dart';
+
 class HouseKeepingCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
@@ -24,8 +26,8 @@ class HouseKeepingCheckoutController extends GetxController {
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
         customerId: UserManager().user!.id,
-        houseKeepingDTOList: res[8],
-        dueDate: res[1],
+        houseKeepingDTOList: List<HouseKeepingDetailResponse>.from(res[0].map((e) => HouseKeepingDetailResponse(id: e))),
+        dueDate: res[2],
         dueTime: res[2],
         remark: res[3],
         phone: phoneController.text,

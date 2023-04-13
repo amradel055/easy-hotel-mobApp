@@ -160,16 +160,14 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                     size: 16,
                                     weight: FontWeight.w600,
                                   ),
-                                  controller.orderDetail!.addtionsDTOList!
-                                      .isEmpty ? const TextWidget(
+                                  controller.orderDetail?.addtionsDTOList?.isEmpty ?? false ? const TextWidget(
                                       "لا يوجد اضافات"  ,
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
                                     maxLines: 3,) : Row(
                                     children: [
-                                      for(int i = 0; i < controller.orderDetail!
-                                          .addtionsDTOList!.length; i++)
+                                      for(int i = 0; i < (controller.orderDetail?.addtionsDTOList?.length ?? 0); i++)
                                         TextWidget(
                                           controller.orderDetail!
                                               .addtionsDTOList![i].name!,
@@ -178,8 +176,7 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                           weight: FontWeight.w600,
                                           maxLines: 3,
                                         ),
-                                      for(int i = 0; i < controller.orderDetail!
-                                          .addtionsDTOList!.length; i++)
+                                      for(int i = 0; i < (controller.orderDetail?.addtionsDTOList?.length ?? 0); i++)
                                         TextWidget(
                                           controller.orderDetail!
                                               .addtionsDTOList![i].price!

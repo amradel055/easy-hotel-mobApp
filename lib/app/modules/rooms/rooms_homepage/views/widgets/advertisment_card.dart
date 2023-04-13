@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class AdCard extends StatelessWidget {
             children: [
               Positioned.fill(
                   child: ImageWidget(
-                    path: image,
+                    path:ApiProvider.imageUrl + image,
                     fit: BoxFit.fill,
                     backgroundColor: Colors.black12,
                   )),

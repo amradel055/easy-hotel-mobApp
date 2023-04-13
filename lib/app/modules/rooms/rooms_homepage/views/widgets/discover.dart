@@ -7,6 +7,8 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../data/provider/api_provider.dart';
+
 class DiscoverCard extends StatelessWidget {
   const DiscoverCard({Key? key, required this.image, required this.name, this.onTap, required this.id}) : super(key: key);
   final String image;
@@ -40,13 +42,8 @@ class DiscoverCard extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),
                   ),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(
-                      image),
-                  )
               ),
-
+             child: ImageWidget(path : ApiProvider.imageUrl + image),
             ), SizedBox(width: size.width*.4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

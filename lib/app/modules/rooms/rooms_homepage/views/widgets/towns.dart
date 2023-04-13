@@ -3,6 +3,7 @@ import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,12 +41,8 @@ class TownCard extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),
                   ),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(
-                      image),
-                  )
               ),
+              child: ImageWidget(path: ApiProvider.imageUrl + image,),
 
             ), SizedBox(width: size.width*.4,
               child: Column(

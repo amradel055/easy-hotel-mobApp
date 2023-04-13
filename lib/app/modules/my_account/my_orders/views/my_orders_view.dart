@@ -64,7 +64,8 @@ class MyOrdersView extends GetView<MyOrdersController> {
                 for(int i = 0; i < controller.orders.length; i++)
                   OrderWidget(
                       controller.orders[i].id!, controller.orders[i].appId!, controller.orders[i].branchId, controller.orders[i].itemId??0,
-                      controller.orders[i].reviewId, controller.orders[i].cost!,
+                      controller.orders[i].reviewId,
+                      controller.orders[i].cost ?? 0,
                       controller.orders[i].image ?? "",
                       controller.orders[i].name ?? "",
                       DateFormat('yyyy.MM.dd  hh:mm aaa').format(

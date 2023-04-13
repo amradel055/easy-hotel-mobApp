@@ -31,9 +31,6 @@ class RestaurantController extends GetxController {
     super.onInit();
   }
 
-  
-
-
 
   getSliders(){
     loading(true);

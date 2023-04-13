@@ -21,7 +21,7 @@ class ItemMiniResponse {
 
   final String? image;
 
-  final int? reviewsStars;
+  final num? reviewsStars;
 
    RxBool? isFav = RxBool(false);
 

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../../data/provider/api_provider.dart';
+
 class RoomCard extends StatelessWidget {
   const RoomCard({Key? key, required this.stars, required this.price, required this.percentage, required this.name, required this.id, required this.image, required this.sale}) : super(key: key);
   final int stars;
@@ -38,7 +40,7 @@ class RoomCard extends StatelessWidget {
             children: [
               Positioned.fill(
                   child: ImageWidget(
-                    path: image,
+                    path:ApiProvider.imageUrl +  image,
                     fit: BoxFit.fill,
                     backgroundColor: Colors.black12,
                   )),

@@ -13,6 +13,8 @@ class RestaurantCartManager {
   List<ItemResponse> get cartList => getCartList() ?? [];
   List<ItemResponse> _cart = [];
 
+
+
   List<ItemResponse>? getCartList() {
     _cart = AppStorage.read(AppStorage.CART) == null
         ? []
