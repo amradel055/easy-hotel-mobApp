@@ -9,9 +9,10 @@ class RestaurantCartManager {
   static final _restaurantCartManager = RestaurantCartManager._();
   RestaurantCartManager._();
   factory RestaurantCartManager() => _restaurantCartManager;
-
+  
   List<ItemResponse> get cartList => getCartList() ?? [];
   List<ItemResponse> _cart = [];
+
   List<ItemResponse>? getCartList() {
     _cart = AppStorage.read(AppStorage.CART) == null
         ? []
