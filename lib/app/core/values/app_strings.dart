@@ -196,6 +196,8 @@ abstract class AppStrings {
   static const category = "Category";
   static const priceFrom = "From Price";
   static const priceTo = "To Price";
+  static const deliveryPlace = "Delivery Place";
+
 
 
 

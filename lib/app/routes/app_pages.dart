@@ -87,6 +87,8 @@ import '../modules/cars/cars_main/bindings/cars_main_binding.dart';
 import '../modules/cars/cars_main/views/cars_main_view.dart';
 import '../modules/cars/cars_order/bindings/cars_order_binding.dart';
 import '../modules/cars/cars_order/views/cars_order_view.dart';
+import '../modules/food/food_checkout/bindings/food_checkout_binding.dart';
+import '../modules/food/food_checkout/views/food_checkout_view.dart';
 import '../modules/food_cart/bindings/food_cart_binding.dart';
 import '../modules/food_cart/views/food_cart_view.dart';
 import '../modules/food_item/bindings/food_item_binding.dart';
@@ -401,6 +403,11 @@ class AppPages {
       name: _Paths.CAR_DETAIL,
       page: () => const CarDetailView(),
       binding: CarDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.FOOD_CHECKOUT,
+      page: () => const FoodCheckoutView(),
+      binding: FoodCheckoutBinding(),
     ),
   ];
 }

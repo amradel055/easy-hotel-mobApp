@@ -182,6 +182,7 @@ AppStrings.forbidden: 'forbidden',
   AppStrings.priceFrom: "From Price",
   AppStrings.priceTo: "To Price",
 
+  AppStrings.deliveryPlace:"Delivery Place",
 
 
 };

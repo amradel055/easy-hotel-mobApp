@@ -12,16 +12,16 @@ class HomeController extends GetxController {
 
   final pageIndex = 0.obs;
   List<Widget> pages = const[
-    RoomsView(),
+    // RoomsView(),
+    HotelSearchView(),
     MyAccountView(),
-    HotelSearchView()
   ];
 
   @override
   void onInit() {
     Get.isRegistered<HotelSearchController>() ? Get.find<HotelSearchController>() : Get.put(HotelSearchController());
     Get.isRegistered<MyAccountController>() ? Get.find<MyAccountController>() : Get.put(MyAccountController());
-    Get.isRegistered<RoomsController>() ? Get.find<RoomsController>() : Get.put(RoomsController());
+    // Get.isRegistered<RoomsController>() ? Get.find<RoomsController>() : Get.put(RoomsController());
     super.onInit();
   }
 

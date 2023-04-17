@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/common.dart';
 import '../../../core/values/app_colors.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/food_cart_controller.dart';
 
 class FoodCartView extends GetView<FoodCartController> {
@@ -17,16 +18,16 @@ class FoodCartView extends GetView<FoodCartController> {
           appBar: AppBar(
             title: const Text(AppStrings.foodCart),
             centerTitle: true,
-            actions: [
-              Center(
-                child: UnconstrainedBox(
-                  child: IconButtonWidget(
-                    icon: Icons.history_rounded,
-                    onPressed: () => controller.removeAll(),
-                  ),
-                ),
-              )
-            ],
+            // actions: [
+            //   // Center(
+            //   //   child: UnconstrainedBox(
+            //   //     child: IconButtonWidget(
+            //   //       icon: Icons.history_rounded,
+            //   //       onPressed: () => controller.removeAll(),
+            //   //     ),
+            //   //   ),
+            //   // )
+            // ],
           ),
           body:controller.isLoading.isTrue?  Center(child: Common.getSpin()) :
            DefaultTabController(
@@ -63,7 +64,7 @@ class FoodCartView extends GetView<FoodCartController> {
               child: SizedBox(
                 child: Center(
                   child: TextButton(
-                    onPressed: () => controller.saveOrder(),
+                    onPressed: () => Get.toNamed(Routes.FOOD_CHECKOUT , arguments: controller.cartList),
                      style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(AppColors.restaurantThirdColor)
                      ),

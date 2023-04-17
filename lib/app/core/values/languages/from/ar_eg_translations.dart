@@ -182,6 +182,7 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.category: "الفئه",
   AppStrings.priceFrom: "من سعر",
   AppStrings.priceTo: "الي سعر",
+  AppStrings.deliveryPlace:"مكان الاستلام",
 
 
 };
