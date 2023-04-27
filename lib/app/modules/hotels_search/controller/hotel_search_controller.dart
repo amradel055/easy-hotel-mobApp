@@ -16,9 +16,11 @@ class HotelSearchController extends GetxController {
   final searchController = TextEditingController().obs;
   final homeSearchController = TextEditingController().obs;
   final hotelsList = <HotelsearchModel>[].obs;
-
+  final customerHotelsList = <HotelsearchModel>[].obs;
+  final loading = false.obs ;
   @override
   onInit(){
+    getCustomerHotel();
     getUserHotel();
     super.onInit();
 
@@ -47,7 +49,16 @@ class HotelSearchController extends GetxController {
       onError: (e) => showPopupText(e),
     );
   }
-
+  getCustomerHotel(){
+    loading(true);
+    final request = GetHotelForServicesRequest(customerId:  UserManager().user!.id!);
+    HotelSearchForServicesRepository().getHotelListForServicesByCustomerId(
+      request,
+      onSuccess: (data)=> customerHotelsList.assignAll(data.data),
+      onComplete: ()=> loading(false),
+      onError: (e) => showPopupText(e),
+    );
+  }
  Future searchHotelForServices() async{
     if(searchController.value.text.tr.isEmpty){
       hotelsList.value = [] ;

@@ -114,7 +114,7 @@ class LoginResponse {
     this.supplierType,
     this.contractorType,
     this.globalFilter,
-    this.hotelBoking,
+    this.hotelBooking,
     this.cityId,
     this.cityName,
     this.currencyName,
@@ -178,7 +178,7 @@ class LoginResponse {
   dynamic supplierType;
   dynamic contractorType;
   dynamic globalFilter;
-  int? hotelBoking;
+  int? hotelBooking;
   int? cityId;
   String ? cityName;
   String ? languageName;
@@ -243,8 +243,8 @@ class LoginResponse {
     supplierType: json["supplierType"],
     contractorType: json["contractorType"],
     globalFilter: json["globalFilter"],
-    hotelBoking: json["hotelBoking"] == null ? null : json["cityId"],
-    cityId: json["cityId"] == null ? null : json["hotelBoking"],
+    hotelBooking: json["hotelBooking"],
+    cityId: json["cityId"],
     cityName: json["cityName"] == null ? null : json["cityName"],
     currencyName: json["currencyName"] == null ? null : json["currencyName"],
     languageName: json["languageName"] == null ? null : json["languageName"],
@@ -310,7 +310,7 @@ class LoginResponse {
     "supplierType": supplierType,
     "contractorType": contractorType,
     "globalFilter": globalFilter,
-    "hotelBoking": hotelBoking == null ? null : hotelBoking,
+    "hotelBooking": hotelBooking,
     "cityId": cityId == null ? null : cityId,
     "cityName": cityName == null ? null : cityName,
     "languageName": languageName == null ? null : languageName,

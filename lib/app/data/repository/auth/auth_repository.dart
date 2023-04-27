@@ -91,13 +91,13 @@ class AuthRepository {
       );
   login(
     LoginRequestDto request, {
-    SuccessFunc<LoginResponse> onSuccess,
+    SuccessFunc<LoginResponse?> onSuccess,
     Function(dynamic error)? onError,
         Function()? onComplete,
     // Function(dynamic error)? onError,  Function()?onComplete,
   }) {
-    ApiProvider().post<LoginResponse>(
-      'auth/loginNew',
+    ApiProvider().post<LoginResponse?>(
+      'auth/login',
       onSuccess: onSuccess,
       data: request.toJson(),
       onComplete: onComplete,

@@ -59,44 +59,44 @@ class LoginView extends GetView<LoginController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextFieldWidget(
-                            controller: controller.userNameController,
-                            label: AppStrings.userName,
-                            suffixIcon: Icons.account_circle,
+                            controller: controller.phoneController,
+                            label: AppStrings.phone,
+                            suffixIcon: Icons.phone,
                             onChange: (value) =>
-                            controller.requestDto.userName = value,
+                            controller.requestDto.phone = value,
                             ltr: true,
                             validator: AppValidator.forceValue,
                             textInputAction: TextInputAction.next,
                           ),
                           space,
-                          Obx(() =>
-                              TextFieldWidget(
-                                controller: controller.passwordController,
-                                label: AppStrings.password,
-                                obscure: !controller.showPassword.value,
-                                suffixIcon: !controller.showPassword.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                onChange: (value) =>
-                                controller.requestDto.password = value,
-                                onSuffixClicked: () =>
-                                    controller.changePasswordVisibility(),
-                                ltr: true,
-                                validator: AppValidator.forceValue,
-                              )),
-                          SizedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                GestureDetector(
-                                    onTap: () =>
-                                        Get.toNamed(Routes.FORGET_PASSWORD),
-                                    child: const TextWidget(
-                                      AppStrings.forgetYourPassword,
-                                      textColor: Colors.red,)),
-                              ],
-                            ),
-                          ),
+                          // Obx(() =>
+                          //     TextFieldWidget(
+                          //       controller: controller.passwordController,
+                          //       label: AppStrings.password,
+                          //       obscure: !controller.showPassword.value,
+                          //       suffixIcon: !controller.showPassword.value
+                          //           ? Icons.visibility
+                          //           : Icons.visibility_off,
+                          //       onChange: (value) =>
+                          //       controller.requestDto.password = value,
+                          //       onSuffixClicked: () =>
+                          //           controller.changePasswordVisibility(),
+                          //       ltr: true,
+                          //       validator: AppValidator.forceValue,
+                          //     )),
+                          // SizedBox(
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.start,
+                          //     children: [
+                          //       GestureDetector(
+                          //           onTap: () =>
+                          //               Get.toNamed(Routes.FORGET_PASSWORD),
+                          //           child: const TextWidget(
+                          //             AppStrings.forgetYourPassword,
+                          //             textColor: Colors.red,)),
+                          //     ],
+                          //   ),
+                          // ),
                           space,
                           ButtonWidget(
                             text: AppStrings.login,
@@ -111,21 +111,21 @@ class LoginView extends GetView<LoginController> {
                                 vertical: 10),
                           ),
 
-                          Padding(
-                            padding: EdgeInsets.only(left: 50),
-                            child: Row(
-                                children: [
-                                  const TextWidget(AppStrings.haveAccount),
-                                  GestureDetector(
-                                      onTap: () => Get.toNamed(Routes.REGISTER),
-                                      child: const TextWidget(
-                                        AppStrings.register,
-                                        textColor: Colors.red,))
-                                ]
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 50),
+                          //   child: Row(
+                          //       children: [
+                          //         const TextWidget(AppStrings.haveAccount),
+                          //         GestureDetector(
+                          //             onTap: () => Get.toNamed(Routes.REGISTER),
+                          //             child: const TextWidget(
+                          //               AppStrings.register,
+                          //               textColor: Colors.red,))
+                          //       ]
 
 
-                            ),
-                          )
+                          //   ),
+                          // )
 
 
                         ],

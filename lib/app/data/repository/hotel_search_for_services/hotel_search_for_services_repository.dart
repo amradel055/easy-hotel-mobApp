@@ -38,6 +38,20 @@ class HotelSearchForServicesRepository {
         onError: onError,
         convertor:(json) => HotelsearchModel.fromJson(json),
       );
+
+     getHotelListForServicesByCustomerId(
+      GetHotelForServicesRequest request, {
+        Function()? onComplete,
+        SuccessFunc<List<HotelsearchModel>>? onSuccess,
+        Function(dynamic error)? onError,
+      }) =>
+      ApiProvider().post<List<HotelsearchModel>>('branch/getAllHotelByCustomerId',
+        onComplete: onComplete,
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor:HotelsearchModel.fromList,
+      );
    Future appServices(
        ApplicationRequest applicationRequest, {
         Function()? onComplete,

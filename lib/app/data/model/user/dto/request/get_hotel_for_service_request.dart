@@ -1,14 +1,14 @@
-
-
-
 class GetHotelForServicesRequest {
+  int? invOrganizationId;
+  int? customerId;
 
-  int invOrganizationId ;
+  GetHotelForServicesRequest({this.invOrganizationId, this.customerId});
 
-  GetHotelForServicesRequest({required this.invOrganizationId});
-
-
-  Map<String , dynamic> toJson() => {
-    "invOrganizationId" : invOrganizationId
-  };
+  Map<String, dynamic> toJson() => invOrganizationId != null
+      ? {
+          "invOrganizationId": invOrganizationId,
+        }
+      : {
+          "customerId": customerId,
+        };
 }

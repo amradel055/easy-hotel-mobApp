@@ -17,7 +17,7 @@ import 'package:image_picker/image_picker.dart';
 class RegisterController extends GetxController {
   var nameController = TextEditingController();
   var userNameController = TextEditingController();
-  var phoneController = TextEditingController();
+  var phoneController = TextEditingController(text: Get.arguments ?? "");
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final isLoading = false.obs;
