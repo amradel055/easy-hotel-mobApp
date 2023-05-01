@@ -17,12 +17,15 @@ class FoodCartController extends GetxController {
   @override
   onInit() {
     super.onInit();
+    RestaurantCartManager().getCartList();
     cartList.assignAll(RestaurantCartManager().cartList);
   }
 
   add(ItemResponse item) {
+    
     cartList.add(item);
     RestaurantCartManager().addToCart(item);
+    cartList.refresh();
   }
 
   remove(int index) {

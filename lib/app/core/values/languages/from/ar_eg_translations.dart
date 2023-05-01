@@ -183,6 +183,9 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.priceFrom: "من سعر",
   AppStrings.priceTo: "الي سعر",
   AppStrings.deliveryPlace:"مكان الاستلام",
+  AppStrings.minute:"دقيقة",
+  AppStrings.reqTime:"وقت التحضير",
+  AppStrings.addToCart:"تم الاضافة الي العربة",
 
 
 };

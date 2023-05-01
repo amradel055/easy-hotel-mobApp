@@ -18,16 +18,16 @@ class FoodCartView extends GetView<FoodCartController> {
           appBar: AppBar(
             title: const Text(AppStrings.foodCart),
             centerTitle: true,
-            // actions: [
-            //   // Center(
-            //   //   child: UnconstrainedBox(
-            //   //     child: IconButtonWidget(
-            //   //       icon: Icons.history_rounded,
-            //   //       onPressed: () => controller.removeAll(),
-            //   //     ),
-            //   //   ),
-            //   // )
-            // ],
+            actions: [
+              // Center(
+              //   child: UnconstrainedBox(
+              //     child: IconButtonWidget(
+              //       icon: Icons.history_rounded,
+              //       onPressed: () => controller.removeAll(),
+              //     ),
+              //   ),
+              // )
+            ],
           ),
           body:controller.isLoading.isTrue?  Center(child: Common.getSpin()) :
            DefaultTabController(

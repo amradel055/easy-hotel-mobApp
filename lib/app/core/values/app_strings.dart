@@ -197,6 +197,9 @@ abstract class AppStrings {
   static const priceFrom = "From Price";
   static const priceTo = "To Price";
   static const deliveryPlace = "Delivery Place";
+  static const minute = "Minute";
+  static const reqTime = "requiredTime";
+  static const addToCart= "add to cart successfully";
 
 
 

@@ -12,6 +12,7 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../../data/model/user/dto/request/get_hotel_for_service_request.dart';
+import '../../food_cart/controllers/food_cart_controller.dart';
 
 class AllServicesController extends GetxController {
   final appServicesList = <ApplicationResponse>[].obs;
@@ -19,6 +20,7 @@ class AllServicesController extends GetxController {
   final isLoading = true.obs;
   @override
   void onInit() {
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put(FoodCartController());
     getAppServices();
     super.onInit();
   }

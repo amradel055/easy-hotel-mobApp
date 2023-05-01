@@ -183,6 +183,8 @@ AppStrings.forbidden: 'forbidden',
   AppStrings.priceTo: "To Price",
 
   AppStrings.deliveryPlace:"Delivery Place",
-
+  AppStrings.minute:"minute",
+  AppStrings.reqTime:"Required Time",
+  AppStrings.addToCart:"added to cart successfully",
 
 };

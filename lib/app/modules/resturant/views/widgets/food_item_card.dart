@@ -6,12 +6,14 @@ import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_mini_response.dart';
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_response.dart';
+import 'package:easy_hotel/app/modules/food_cart/controllers/food_cart_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/res_cart_manager.dart';
 import '../../../../core/utils/restaurant_strorage.dart';
+import '../../../../core/utils/user_manager.dart';
 import '../../../../data/provider/api_provider.dart';
 
 class FoodItemCard extends StatefulWidget {
@@ -43,7 +45,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                     path: ApiProvider.imageUrl + widget.item.image.toString(),
                     elevation: 3,
                     width: 100,
-                    height: 100,
+                    height: 130,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -52,6 +54,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
@@ -90,6 +93,13 @@ class _FoodItemCardState extends State<FoodItemCard> {
                           ],
                         ),
                         const Spacer(),
+                        SizedBox(
+                         child: TextWidget(
+                              widget.item.discribtion ?? "",
+                              maxLines: 1,
+                              size: 16,
+                              textColor: Colors.black,
+                            )),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -120,10 +130,10 @@ class _FoodItemCardState extends State<FoodItemCard> {
                                         ),
                                       )
                                     : const SizedBox(),
-                                const Padding(
-                                  padding: EdgeInsets.all(3.0),
+                                 Padding(
+                                  padding: const EdgeInsets.all(3.0),
                                   child: TextWidget(
-                                    AppStrings.LE,
+                                    UserManager().selectedBranch?.currencyName ?? AppStrings.LE,
                                     textColor: Colors.black,
                                     weight: FontWeight.bold,
                                     size: 16,
@@ -132,19 +142,23 @@ class _FoodItemCardState extends State<FoodItemCard> {
                               ],
                             ),
                             SizedBox(
+                              width: 100,
+                              child: TextWidget(AppStrings.minute ,  children: [TextWidget(" ${widget.item.time?.toString()?? " 0 "} " )],),
+                            ),
+                            SizedBox(
                               width: 50,
                               child: IconButtonWidget(
                                 icon: Icons.add_shopping_cart,
                                 iconSize: 25,
                                 onPressed: () {
-                                  RestaurantCartManager().addToCart(
-                                      ItemResponse(
-                                          fav: widget.item.isFav ?? false.obs,
-                                          id: widget.item.id,
-                                          image: widget.item.image,
-                                          price: widget.item.price ,
-                                          // saleItem: (widget.item.salePrice?? 0 )> 0,
-                                          name: widget.item.name));
+                                  final item = ItemResponse(
+                                      fav: widget.item.isFav ?? false.obs,
+                                      id: widget.item.id,
+                                      image: widget.item.image,
+                                      price: widget.item.price,
+                                      // saleItem: (widget.item.salePrice?? 0 )> 0,
+                                      name: widget.item.name);
+                                  RestaurantCartManager().addToCart(item);
                                 },
                               ),
                             )

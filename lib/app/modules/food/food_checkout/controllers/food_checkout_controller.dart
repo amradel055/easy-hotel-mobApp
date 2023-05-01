@@ -75,6 +75,7 @@ class FoodCheckoutController extends GetxController {
     request.typeSave = 0;
     request.orderType = 0;
     request.isOpen = 0;
+    request.startDate = cartList.last.requiredDate ?? DateTime(request.createdDate!.year , request.createdDate!.month , request.createdDate!.hour ,(request.createdDate!.minute + (cartList.last.time ?? 0)).toInt());
     request.createdByName = user.user?.name;
     for (ItemResponse product in cartList) {
       SalesDetails details = fromProductToSalesDetails(product);
@@ -111,6 +112,7 @@ class FoodCheckoutController extends GetxController {
     details.remark = product.remark;
     details.createdDate = DateTime.now();
     details.createdBy = 354;
+    details.startDate = product.requiredDate ?? DateTime(details.createdDate!.year , details.createdDate!.month , details.createdDate!.hour ,(details.createdDate!.minute + (product.time ?? 0)).toInt());
     for (int i = 0; i < product.addititonsList!.length; i++) {
       if ((product.addititonsList?[i].selected ?? false) == true) {
         details.additionsList!.add(product.addititonsList![i]);

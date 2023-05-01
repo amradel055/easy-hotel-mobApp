@@ -20,6 +20,7 @@ class FoodItemController extends GetxController {
   Rxn<Variation> selectedVariation = Rxn();
   Rxn<ItemResponse> pro = Rxn();
   final attributeList = <Attribute>[].obs;
+  final timeSelected = DateTime.now().obs ;
   void increment(){
     count.value++;
     pro.value?.quantity =count.value;
@@ -43,7 +44,7 @@ class FoodItemController extends GetxController {
 
   getGroupItems(){
     loading(true);
-    final request = GroupItemsRequest(groupId:pro.value!.groupId ?? 393 , currencySerial: 1);
+    final request = GroupItemsRequest(groupId:pro.value?.groupId ?? 393 , currencySerial: 1);
     RestaurantRepository().getGroupItemsList(request ,
         onSuccess: (data) => groupItems.assignAll(data.data),
         onError: (e)=> showPopupText(e),
@@ -80,6 +81,8 @@ class FoodItemController extends GetxController {
                     await RestaurantStorage.isFavItem(data.data.id ?? -1)
               .then((value) => data.data.fav!(value));
         pro(data.data);
+        timeSelected(timeSelected.value.add(Duration(minutes: pro.value?.time ?? 0)));
+        timeSelected.refresh();
         pro.value?.itemImages?.add(ImageModel(image: pro.value?.image));
         String list = jsonEncode(pro.value!.attributeList);
         List _list = jsonDecode(list);
@@ -129,8 +132,9 @@ class FoodItemController extends GetxController {
 
 
   addToCart(){
+    pro.value?.requiredDate = timeSelected.value ;
     RestaurantCartManager().addToCart(pro.value!);
-    showPopupText(AppStrings.savedSuccessfully);
+    showPopupText(AppStrings.addToCart);
   }
 
 }

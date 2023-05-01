@@ -1,6 +1,4 @@
-import 'package:easy_hotel/app/core/utils/products_fav_manager.dart';
 import 'package:easy_hotel/app/modules/food_item/controllers/food_item_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -57,7 +57,8 @@ class ItemResponse {
     this.saved,
     this.offerId,
     this.oldDetailId,
-    this.oldHeadPackUpId
+    this.oldHeadPackUpId,
+    this.requiredDate
   }) : localId = idCount++;
 
   static int idCount = 0;
@@ -107,6 +108,7 @@ class ItemResponse {
   double? sumPrice ;
   bool? saved ;
   int? oldDetailId ;
+  DateTime? requiredDate ;
 
   static List<ItemResponse> fromList(dynamic json) => List<ItemResponse>.from(json.map((e) =>ItemResponse.fromJson(e)));
 
@@ -152,6 +154,7 @@ class ItemResponse {
     resSalesDetailsAdditionsDTOList: List<SalesDetailsAdditions>.from((json["resSalesDetailsAdditionsDTOList"]??[]).map((x) => SalesDetailsAdditions.fromJson(x))),
     quantity: json["quantity"] ?? 1 ,
     reviewsStars: json["reviewsStars"] ,
+    requiredDate: json["requiredDate"] != null ? DateTime.tryParse(json["requiredDate"]) : DateTime.now().add(Duration(minutes: json["time"] ?? 0)),
     fav : false.obs ,
     saved : false ,
     selectedVariation: json["selectedVariation"] == null ? null : Variation.fromJson(json["selectedVariation"]),
@@ -202,6 +205,7 @@ class ItemResponse {
     "itemImages" : List<dynamic>.from((itemImages??[]).map((x) => x.toJson())),
     "quantity" : quantity ,
     "sumPrice" : sumPrice ,
+    "requiredDate" : requiredDate?.toIso8601String() ,
     "selectedVariation" : selectedVariation == null ? null :  selectedVariation!.toJson()
   };
 }

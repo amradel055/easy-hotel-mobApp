@@ -1,6 +1,7 @@
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_response.dart';
+import 'package:easy_hotel/app/modules/food_cart/controllers/food_cart_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/res_cart_manager.dart';
@@ -22,9 +23,11 @@ class RestaurantController extends GetxController {
   final groupLoading = false.obs ;
   final cartLength = 0.obs ;
 
+
+  
   @override
-  void onInit() {
-    cartLength(RestaurantCartManager().cartList.length);
+  void onInit() async{
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put(FoodCartController());
     getSliders();
     getOfferList();
     getGroupList();
@@ -53,7 +56,7 @@ class RestaurantController extends GetxController {
     offerLoading(true);
     final request = OffersRequest(
         appId: 1 ,
-        branchId:UserManager().selectedBranch!.id!,
+        branchId: UserManager().selectedBranch!.id!,
         currencySerial: 1
     );
     RestaurantRepository().getOfferList(

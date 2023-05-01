@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../components/bottom_nav_bar.dart';
 import '../controllers/food_section_controller.dart';
 
 class FoodSectionView extends StatelessWidget {
@@ -20,6 +21,7 @@ class FoodSectionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const RestaurantSectionsAppBar(),
+      bottomNavigationBar:const AppBottomNavBar(index: 0 ,),
       body: Column(
         children: const [
           // RestInfoWidget(),

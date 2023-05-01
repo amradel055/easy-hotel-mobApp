@@ -17,15 +17,18 @@ class ItemImagesWidget extends GetView<FoodItemController> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Obx(() {
-      if(controller.loading.isTrue){
-        return SizedBox(height : 150 , child: Common.getSpin());
+      if (controller.loading.isTrue) {
+        return SizedBox(height: 150, child: Common.getSpin());
       }
       return Stack(
         clipBehavior: Clip.none,
         children: [
           CarouselSlider.builder(
-            itemCount: controller.pro.value != null ? controller.pro.value!.itemImages!.length : 0,
+            itemCount: controller.pro.value != null
+                ? controller.pro.value!.itemImages!.length
+                : 0,
             options: CarouselOptions(
               height: 200,
               viewportFraction: 1,
@@ -34,10 +37,48 @@ class ItemImagesWidget extends GetView<FoodItemController> {
               // enlargeCenterPage: true,
             ),
             itemBuilder: (context, index, _) {
-              return ImageWidget(path: ApiProvider.imageUrl + controller.pro.value!.itemImages![index].image.toString(),
-                  fit: BoxFit.fill,
-                  width: context.width,
-                  radius: 0);
+              return GestureDetector(
+                onTap: () {
+                  Get.dialog(Dialog(
+                    child: Container(
+                        height: size.height * 0.6,
+                        width: size.width,
+                        child: CarouselSlider.builder(
+                          itemCount: controller.pro.value != null
+                              ? (controller.pro.value?.itemImages?.length ?? 0)
+                              : 0,
+                          options: CarouselOptions(
+                            height: size.height * 0.6,
+                            
+                            viewportFraction: 1,
+                            enableInfiniteScroll: true,
+                            pageSnapping: true,
+                            // enlargeCenterPage: true,
+                          ),
+                          itemBuilder: (context, index, _) {
+                            return ImageWidget(
+                              height: size.height * 0.6,
+                              width : size.width,
+                                path: ApiProvider.imageUrl +
+                                    (controller
+                                            .pro.value?.itemImages?[index].image
+                                            .toString() ??
+                                        ""),
+                                fit: BoxFit.fill,
+                                radius: 0);
+                          },
+                        )),
+                  ));
+                },
+                child: ImageWidget(
+                    path: ApiProvider.imageUrl +
+                        (controller.pro.value?.itemImages?[index].image
+                                .toString() ??
+                            ""),
+                    fit: BoxFit.fill,
+                    width: context.width,
+                    radius: 0),
+              );
             },
           ),
           PositionedDirectional(
@@ -46,7 +87,8 @@ class ItemImagesWidget extends GetView<FoodItemController> {
             height: 40,
             width: 100,
             child: Container(
-              decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(
+                  color: Colors.red, borderRadius: BorderRadius.circular(30)),
               padding: EdgeInsets.all(5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +101,8 @@ class ItemImagesWidget extends GetView<FoodItemController> {
                     onPressed: () => controller.decrement(),
                   ),
                   Obx(() {
-                    return TextWidget("${controller.count.value}", weight: FontWeight.bold, textColor: Colors.white);
+                    return TextWidget("${controller.count.value}",
+                        weight: FontWeight.bold, textColor: Colors.white);
                   }),
                   IconButtonWidget(
                     icon: Icons.add,

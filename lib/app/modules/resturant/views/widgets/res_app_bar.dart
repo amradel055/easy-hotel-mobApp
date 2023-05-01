@@ -18,9 +18,9 @@ class RestaurantAppBar extends GetView<RestaurantController> with PreferredSizeW
     return AppBar(
         title: const TextWidget(AppStrings.foodService),
         centerTitle: true,
-        actions:const [
-         CartIconWidget()
-        ],
+        // actions:const [
+        //  CartIconWidget()
+        // ],
       );
   }
 

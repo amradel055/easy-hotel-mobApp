@@ -88,7 +88,10 @@ class HotelsearchModel {
     this.companyId,
     this.cityId,
     this.nameAr,
-    this.nameEn
+    this.nameEn,
+    this.currencyId,
+    this.currencyName,
+    this.currencySubName
   });
 
   int ?id;
@@ -106,7 +109,11 @@ class HotelsearchModel {
   int? cityId ;
   String? nameAr ;
   String? nameEn ;
+  String? currencySubName  ;
+  String? currencyName  ;
   int? companyId ;
+  int? currencyId;
+
   String toRawJson() => json.encode(toJson());
 
   static List<HotelsearchModel> fromList(dynamic json) => List.from(json.map((e)=> HotelsearchModel.fromJson(e)));
@@ -127,6 +134,10 @@ class HotelsearchModel {
     nameAr: json["nameAr"] == null ? null : json["nameAr"],
     nameEn: json["nameEn"] == null ? null : json["nameEn"],
     companyId: json["companyId"] == null ? null : json["companyId"],
+        currencySubName: json["currencySubName"] == null ? null : json["currencySubName"],
+    currencyName: json["currencyName"] == null ? null : json["currencyName"],
+    currencyId: json["currencyId"] == null ? null : json["currencyId"],
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -146,6 +157,10 @@ class HotelsearchModel {
     "nameAr": nameAr == null ? null : nameAr,
     "nameEn": nameEn == null ? null : nameEn,
     "companyId": companyId == null ? null : companyId,
+    "currencySubName": currencySubName == null ? null : currencySubName,
+    "currencyName": currencyName == null ? null : currencyName,
+    "currencyId": currencyId == null ? null : currencyId,
+
   };
 }
 class SpasearchModel {
