@@ -38,11 +38,11 @@ class FoodSectionController extends GetxController {
     final request = GroupItemsRequest(groupId: group.value!.id!, currencySerial: 1);
     RestaurantRepository().getGroupItemsList(request ,
       onSuccess: (data)async {
-        for(int i= 0 ; i < data.data.length ; i++){
-            await RestaurantStorage.isFavItem(data.data[i].id ?? -1)
-              .then((value) => data.data[i].isFav!(value));
+        for(int i= 0 ; i < (data.data?.length ?? 0) ; i++){
+            await RestaurantStorage.isFavItem(data.data![i].id ?? -1)
+              .then((value) => data.data![i].isFav!(value));
         }
-        groupItems.assignAll(data.data) ;
+        groupItems.assignAll(data.data ?? []) ;
       } ,
       onError: (e)=> showPopupText(e),
       onComplete: ()=> loading(false)

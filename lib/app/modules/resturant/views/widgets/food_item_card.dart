@@ -155,7 +155,10 @@ class _FoodItemCardState extends State<FoodItemCard> {
                                       fav: widget.item.isFav ?? false.obs,
                                       id: widget.item.id,
                                       image: widget.item.image,
+                                      quantity: 1,
+                                      discribtion: widget.item.discribtion,
                                       price: widget.item.price,
+                                      sumPrice:  widget.item.price,
                                       // saleItem: (widget.item.salePrice?? 0 )> 0,
                                       name: widget.item.name);
                                   RestaurantCartManager().addToCart(item);

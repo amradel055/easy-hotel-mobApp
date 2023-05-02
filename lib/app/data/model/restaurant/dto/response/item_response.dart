@@ -7,6 +7,7 @@ import 'package:easy_hotel/app/data/model/restaurant/dto/response/sales_details_
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/variation_model.dart';
 import 'package:get/get.dart';
 
+import '../../../../../modules/food_cart/controllers/food_cart_controller.dart';
 import '../../../spa/dto/response/spa_response_dto.dart';
 import 'attribute_details_model.dart';
 import 'attribute_model.dart';
@@ -109,6 +110,17 @@ class ItemResponse {
   bool? saved ;
   int? oldDetailId ;
   DateTime? requiredDate ;
+
+
+  calcSumPrice(){
+    sumPrice = price! ;
+    sumPrice = price! * (quantity ?? 1) ;
+    for(Additions add in addititonsList ?? []){
+      add.selected ?? false == true  ?
+      sumPrice = sumPrice! + ((add.price ?? 0) * (quantity ?? 1)).toDouble() : null;
+    }
+     Get.find<FoodCartController>().calcTotalPrice();
+  }
 
   static List<ItemResponse> fromList(dynamic json) => List<ItemResponse>.from(json.map((e) =>ItemResponse.fromJson(e)));
 

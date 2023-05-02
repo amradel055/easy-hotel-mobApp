@@ -7,6 +7,8 @@ import 'package:easy_hotel/app/data/model/spa/dto/response/spa_search_response_d
 import 'package:easy_hotel/app/data/model/spa/dto/request/spa_search_request_dto.dart';
 import 'package:easy_hotel/app/data/model/user/dto/request/get_hotel_for_service_request.dart';
 
+import '../../model/user/dto/request/hotel_places_request.dart';
+import '../../model/user/dto/response/delivery_place_response.dart';
 import '../../provider/api_provider.dart';
 
 class HotelSearchForServicesRepository {
@@ -64,5 +66,19 @@ class HotelSearchForServicesRepository {
         data: applicationRequest.toJson(),
         onError: onError,
         convertor: ApplicationResponse.fromList,
+      );
+
+     Future hotelPlaces(
+       HotelPalcesRequest applicationRequest, {
+        Function()? onComplete,
+        SuccessFunc<List<DeliveryPlaceResponse>> onSuccess,
+        Function(dynamic error)? onError,
+      }) async =>
+      await  ApiProvider().post<List<DeliveryPlaceResponse>>('deliveryPlaces/deliveryPlacesList',
+        onComplete: onComplete,
+        onSuccess: onSuccess,
+        data: applicationRequest.toJson(),
+        onError: onError,
+        convertor: DeliveryPlaceResponse.fromList,
       );
 }

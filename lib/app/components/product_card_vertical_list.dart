@@ -1,3 +1,6 @@
+import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/core/utils/user_manager.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/model/restaurant/dto/response/item_response.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/my_account/fav_products/controllers/fav_products_controller.dart';
@@ -5,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:provider/provider.dart';
+
+import '../core/values/app_colors.dart';
 
 class ProductCard extends StatefulWidget {
   Size size;
@@ -56,32 +61,32 @@ class _ProductCardState extends State<ProductCard> {
                           fontWeight: FontWeight.bold,
                           fontSize: widget.size.width * 0.05),
                     ),
-                    Text(widget.product?.discribtion?? "",
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontWeight: FontWeight.w700)),
-                    (widget.product?.saleItem?? false) == false
-                        ? Text(
-                            "${(widget.product?.sumPrice?? 0 )> 0 ? widget.product?.sumPrice : widget.product?.price ?? "0"}LE",
-                            style:
-                                TextStyle(fontSize: widget.size.width * 0.045),
+                     Text(
+                      widget.product!.discribtion ?? "",
+                      style: TextStyle(
+                          fontSize: widget.size.width * 0.04),
+                    ),
+
+                    (widget.product?.saleItem ?? false) == false
+                        ? TextWidget(
+                            "${(widget.product?.sumPrice ?? 0) > 0 ? widget.product?.sumPrice : widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
+                            size: widget.size.width * 0.045,
                           )
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "${widget.product?.price?? "0"}LE",
-                                style: TextStyle(
-                                    fontSize: widget.size.width * 0.045,
-                                    decoration: TextDecoration.lineThrough,
-                                    color: Colors.grey),
+                              TextWidget(
+                                "${widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
+                                size:widget.size.width * 0.045 ,
+                                showInline: true,
+                                textColor: Colors.grey,
                               ),
                               Row(
                                 children: [
-                                  Text(
-                                   "${widget.product?.salePrice?? "0"}LE",
-                                    style: TextStyle(
-                                        fontSize: widget.size.width * 0.045),
+                                  TextWidget(
+                                    "${widget.product?.salePrice ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
+                                    size: widget.size.width * 0.045,
+                      
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
@@ -91,8 +96,7 @@ class _ProductCardState extends State<ProductCard> {
                                       color: Colors.red.shade400,
                                       child: Center(
                                           child: Text(
-                                        "Sale ${(((widget.product?.price?? 0 -(widget.product?.salePrice?? 0)) / (widget.product?.price?? 0)) *100)
-                                                .toStringAsFixed(0)} %",
+                                        "Sale ${(((widget.product?.price ?? 0 - (widget.product?.salePrice ?? 0)) / (widget.product?.price ?? 0)) * 100).toStringAsFixed(0)} %",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: widget.size.width * 0.032,
@@ -104,13 +108,59 @@ class _ProductCardState extends State<ProductCard> {
                               )
                             ],
                           ),
-                    widget.quantity != null
-                        ? Text(
-                            "Quantity : ${widget.quantity}",
-                            style:
-                                TextStyle(fontSize: widget.size.width * 0.045),
-                          )
-                        : const SizedBox()
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                  color: AppColors.restaurantThirdColor,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: IconButton(
+                                alignment: Alignment.center,
+                                icon: const Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                  child: Icon(Icons.minimize),
+                                ),
+                                onPressed: () => widget.product!.quantity! > 1
+                                    ? setState(() {
+                                        widget.product!.quantity != null
+                                            ? widget.product!.quantity =
+                                                widget.product!.quantity! - 1
+                                            : null;
+                                        widget.product!.calcSumPrice();
+                                      })
+                                    : null,
+                              )),
+                        ),
+                        Text(
+                          "${widget.product?.quantity ?? 1}",
+                          style: TextStyle(fontSize: widget.size.width * 0.045 , fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                  color: AppColors.restaurantThirdColor,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Center(
+                                  child: IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () => setState(() {
+                                  widget.product!.quantity != null
+                                      ? widget.product!.quantity =
+                                          widget.product!.quantity! + 1
+                                      : null;
+                                  widget.product!.calcSumPrice();
+                                }),
+                              ))),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -122,19 +172,19 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          if(widget.fav.value){
-
+                          if (widget.fav.value) {
                             // favController.remove(widget.product!.id!, context);
-                          }else {
+                          } else {
                             // favController.addProduct(widget.product!, context);
                           }
                           setState(() {
                             widget.fav.value = !widget.fav.value;
                           });
-
                         },
                         icon: Icon(
-                          widget.fav.value ? Icons.favorite : Icons.favorite_border,
+                          widget.fav.value
+                              ? Icons.favorite
+                              : Icons.favorite_border,
                           size: widget.size.width * 0.07,
                         )),
                     widget.cartProduct
@@ -160,10 +210,13 @@ class _ProductCardState extends State<ProductCard> {
               SizedBox(
                 width: widget.size.width * 0.3,
                 height: widget.size.height * 0.12,
-                child:  FadeInImage(
+                child: FadeInImage(
                     fit: BoxFit.cover,
-                    placeholder: const AssetImage("assets/images/placeholder.jpeg"),
-                    image: NetworkImage(ApiProvider.imageUrl + (widget.product?.image?? "") ,)),
+                    placeholder:
+                        const AssetImage("assets/images/placeholder.jpeg"),
+                    image: NetworkImage(
+                      ApiProvider.imageUrl + (widget.product?.image ?? ""),
+                    )),
               ),
             ],
           )),

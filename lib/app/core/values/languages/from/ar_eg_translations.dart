@@ -186,6 +186,8 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.minute:"دقيقة",
   AppStrings.reqTime:"وقت التحضير",
   AppStrings.addToCart:"تم الاضافة الي العربة",
+  AppStrings.confirmCart:"اتمام عملية الشراء",
+  AppStrings.noRoomsFound:"لم يتم ايجاد غرف",
 
 
 };

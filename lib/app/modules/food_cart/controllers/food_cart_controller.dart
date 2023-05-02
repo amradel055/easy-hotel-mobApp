@@ -11,7 +11,7 @@ import '../../../routes/app_pages.dart';
 
 class FoodCartController extends GetxController {
   final cartList = <ItemResponse>[].obs;
-  // final count = 0.obs;
+  final totalPrice = 0.0.obs;
   final user = UserManager();
   final isLoading = false.obs;
   @override
@@ -19,23 +19,33 @@ class FoodCartController extends GetxController {
     super.onInit();
     RestaurantCartManager().getCartList();
     cartList.assignAll(RestaurantCartManager().cartList);
+    calcTotalPrice();
   }
 
-  add(ItemResponse item) {
-    
+  calcTotalPrice(){
+   totalPrice(0);
+   for(var pro in cartList){
+    totalPrice.value+= (pro.sumPrice ?? pro.price ?? 0.0).toDouble() ;
+   }
+   totalPrice.refresh();
+  }
+  add(ItemResponse item) { 
     cartList.add(item);
     RestaurantCartManager().addToCart(item);
     cartList.refresh();
+    calcTotalPrice();
   }
 
   remove(int index) {
     cartList.removeAt(index);
     RestaurantCartManager().removeFromCart(index);
+    calcTotalPrice();
   }
 
   removeAll() {
     cartList.clear();
     RestaurantCartManager().removeAllFromCart();
+    calcTotalPrice();
   }
   
 

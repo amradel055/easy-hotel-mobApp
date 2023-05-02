@@ -33,7 +33,7 @@ class AllServicesController extends GetxController {
     HotelSearchForServicesRepository().appServices(
       request,
       onSuccess: (data)async{
-        appServicesList.assignAll(data.data);
+        appServicesList.assignAll(data.data ?? []);
       },
       onComplete: ()=>isLoading(false),
       onError: (e) => showPopupText(e),

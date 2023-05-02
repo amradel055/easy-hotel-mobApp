@@ -20,6 +20,9 @@ import 'package:easy_hotel/app/data/model/spa/dto/response/spa_response_dto.dart
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_search_response_dto.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 
+import '../../model/rooms/dto/request/customer_room_request.dart';
+import '../../model/rooms/dto/request/room_request_by_number.dart';
+
 class RoomsRepository {
 
   getCities(
@@ -153,5 +156,22 @@ class RoomsRepository {
         onComplete: onComplete
     );
   }
+
+    getRoomByRoomNumber(
+      RoomRequestByNumber request ,{
+        SuccessFunc<RoomResponse?> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<RoomResponse?>(
+        'roomDetail/findRoomByBranchIdAndRoomNumber',
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor:RoomResponse.fromJson,
+        onComplete: onComplete
+    );
+  }
+
+
 
 }

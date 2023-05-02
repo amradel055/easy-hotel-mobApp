@@ -6,6 +6,8 @@ import 'package:easy_hotel/app/data/model/user/dto/response/refresh_token_respon
 import 'package:easy_hotel/app/data/model/user/dto/response/update_user_put_response.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 
+import '../../model/rooms/dto/request/customer_room_request.dart';
+
 class UserRepository {
 
   // updateUser(
@@ -23,6 +25,19 @@ class UserRepository {
   //       onError: onError);
   // }
 
-
+    Future getRoomNumberByCustomerId(
+      CustomerRoomRequest request, {
+        SuccessFunc<int?> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) async{
+    await ApiProvider().post<int?>(
+        'customers/findRoomNumberByCustomerId',
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor: (data) => data["data"],
+        onComplete: onComplete
+    );
+  }
 
 }

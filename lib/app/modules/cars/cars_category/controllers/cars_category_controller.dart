@@ -26,7 +26,7 @@ class CarsCategoryController extends GetxController {
     CarsRepository().getCarsOfGroup( request ,
         onComplete: ()=> loading(false),
         onError: (e) => showPopupText(e),
-        onSuccess: (data) => catCars.assignAll(data.data)
+        onSuccess: (data) => catCars.assignAll(data.data ?? [])
     );
   }
 

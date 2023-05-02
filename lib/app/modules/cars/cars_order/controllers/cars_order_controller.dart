@@ -52,9 +52,9 @@ class CarsOrderController extends GetxController {
         onComplete: () => loading(false),
         onError: (e) => showPopupText(e),
         onSuccess: (data) {
-          trafficLines.assignAll(data.data);
-          if (data.data.isNotEmpty) {
-            selectedTrafficLine(data.data[0]);
+          trafficLines.assignAll(data.data ?? []);
+          if (data.data?.isNotEmpty ?? false) {
+            selectedTrafficLine(data.data![0]);
           }
         });
   }

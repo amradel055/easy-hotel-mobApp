@@ -46,7 +46,7 @@ class FoodItemController extends GetxController {
     loading(true);
     final request = GroupItemsRequest(groupId:pro.value?.groupId ?? 393 , currencySerial: 1);
     RestaurantRepository().getGroupItemsList(request ,
-        onSuccess: (data) => groupItems.assignAll(data.data),
+        onSuccess: (data) => groupItems.assignAll(data.data ?? []),
         onError: (e)=> showPopupText(e),
         onComplete: ()=> loading(false)
     );
@@ -65,6 +65,8 @@ class FoodItemController extends GetxController {
     pro.value!.sumPrice = pro.value!.price! ;
     pro.value!.sumPrice = pro.value!.price! * (pro.value?.quantity ?? 1) ;
     for(Additions add in selectedAdditions){
+      int index = pro.value?.addititonsList?.indexWhere((element) => element.id ==add.id) ?? -1 ;
+      pro.value?.addititonsList?[index].selected = true ;
       pro.value!.sumPrice = pro.value!.sumPrice! + ((add.price ?? 0) * (pro.value?.quantity ?? 1)).toDouble() ;
     }
     pro.refresh();
@@ -78,8 +80,8 @@ class FoodItemController extends GetxController {
       onComplete: () =>  loading(false),
       onError: (e) => showPopupText(e),
       onSuccess: (data)async {
-                    await RestaurantStorage.isFavItem(data.data.id ?? -1)
-              .then((value) => data.data.fav!(value));
+                    await RestaurantStorage.isFavItem(data.data?.id ?? -1)
+              .then((value) => data.data?.fav!(value));
         pro(data.data);
         timeSelected(timeSelected.value.add(Duration(minutes: pro.value?.time ?? 0)));
         timeSelected.refresh();

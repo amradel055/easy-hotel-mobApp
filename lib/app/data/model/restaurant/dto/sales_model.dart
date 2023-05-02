@@ -50,6 +50,7 @@ class Sales {
     this.startDate,
     this.transactionId,
     this.endDateDelivery,
+    this.roomId
   }){
     calc();
   }
@@ -82,6 +83,7 @@ class Sales {
   double? totalPrice ;
   String? allDetailsName;
   int? id ;
+  int? roomId ;
   double? time ;
   bool? selected = false ;
   int? headPackUpId ;
@@ -187,6 +189,7 @@ class Sales {
     companyId: json["companyId"],
     inventoryId: json["inventoryId"],
     bankId: json["bankId"],
+    roomId: json["roomId"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -228,5 +231,6 @@ class Sales {
     "companyId": companyId,
     "inventoryId": inventoryId,
     "bankId": bankId,
+    "roomId": roomId,
   };
 }

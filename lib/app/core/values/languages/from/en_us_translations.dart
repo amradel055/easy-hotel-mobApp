@@ -186,5 +186,8 @@ AppStrings.forbidden: 'forbidden',
   AppStrings.minute:"minute",
   AppStrings.reqTime:"Required Time",
   AppStrings.addToCart:"added to cart successfully",
+  AppStrings.confirmCart:"Confirm",
+    AppStrings.noRoomsFound:"No Rooms Found",
+
 
 };

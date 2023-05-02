@@ -22,6 +22,7 @@ abstract class AppStrings {
   static const forbidden = "FORBIDDEN";
   static const notFound = "NOT_FOUND";
   static const noCarsFound = "No Cars Found";
+  static const noRoomsFound = "No Rooms Found";
   static const serverError = "SERVER_ERROR";
   static const required = "REQUIRED";
   static const passwordsNotTheSame = "NOT_THE_SAME";
@@ -200,7 +201,7 @@ abstract class AppStrings {
   static const minute = "Minute";
   static const reqTime = "requiredTime";
   static const addToCart= "add to cart successfully";
-
+  static const confirmCart= "Confirm";
 
 
 
