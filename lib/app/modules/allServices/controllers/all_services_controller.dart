@@ -20,6 +20,7 @@ class AllServicesController extends GetxController {
   final isLoading = true.obs;
   @override
   void onInit() {
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     getAppServices();
     super.onInit();
   }

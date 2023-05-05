@@ -44,10 +44,10 @@ class HotelSearchForServicesRepository {
      getHotelListForServicesByCustomerId(
       GetHotelForServicesRequest request, {
         Function()? onComplete,
-        SuccessFunc<List<HotelsearchModel>>? onSuccess,
+        SuccessFunc<List<HotelsearchModel>?>? onSuccess,
         Function(dynamic error)? onError,
       }) =>
-      ApiProvider().post<List<HotelsearchModel>>('branch/getAllHotelByCustomerId',
+      ApiProvider().post<List<HotelsearchModel>?>('branch/getAllHotelByCustomerId',
         onComplete: onComplete,
         onSuccess: onSuccess,
         data: request.toJson(),

@@ -9,8 +9,8 @@ class SplashController extends GetxController {
 
   @override
   void onReady() async{
+        Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     super.onReady();
-    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put(FoodCartController());
     await Future.delayed(const Duration(seconds: 1));
     showLogo(true);
     await Future.delayed(const Duration(seconds: 2));

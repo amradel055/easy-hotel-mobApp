@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../data/model/spa/dto/response/spa_search_response_dto.dart';
 import '../../../data/model/spa/dto/request/spa_search_request_dto.dart';
+import '../../food_cart/controllers/food_cart_controller.dart';
 
 class HotelSearchController extends GetxController {
 
@@ -20,6 +21,7 @@ class HotelSearchController extends GetxController {
   final loading = false.obs ;
   @override
   onInit(){
+        Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     getCustomerHotel();
     getUserHotel();
     super.onInit();
@@ -54,7 +56,7 @@ class HotelSearchController extends GetxController {
     final request = GetHotelForServicesRequest(customerId:  UserManager().user!.id!);
     HotelSearchForServicesRepository().getHotelListForServicesByCustomerId(
       request,
-      onSuccess: (data)=> customerHotelsList.assignAll(data.data),
+      onSuccess: (data)=> customerHotelsList.assignAll(data.data ?? []),
       onComplete: ()=> loading(false),
       onError: (e) => showPopupText(e),
     );

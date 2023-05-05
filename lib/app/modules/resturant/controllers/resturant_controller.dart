@@ -27,7 +27,7 @@ class RestaurantController extends GetxController {
   
   @override
   void onInit() async{
-    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put(FoodCartController());
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     getSliders();
     getOfferList();
     getGroupList();

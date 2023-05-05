@@ -22,6 +22,7 @@ class HomeController extends GetxController {
   void onInit() {
     Get.isRegistered<HotelSearchController>() ? Get.find<HotelSearchController>() : Get.put(HotelSearchController());
     Get.isRegistered<MyAccountController>() ? Get.find<MyAccountController>() : Get.put(MyAccountController());
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
 
     // Get.isRegistered<RoomsController>() ? Get.find<RoomsController>() : Get.put(RoomsController());
     super.onInit();

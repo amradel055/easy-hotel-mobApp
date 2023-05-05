@@ -10,6 +10,7 @@ import 'package:easy_hotel/app/data/model/spa/dto/response/spa_search_response_d
     as spa;
 
 import '../../../core/utils/permission_handler.dart';
+import '../../food_cart/controllers/food_cart_controller.dart';
 
 class LoginController extends GetxController {
   var phoneController = TextEditingController();
@@ -22,6 +23,7 @@ class LoginController extends GetxController {
   @override
   void onInit() async {
     await AppPermissionHandler().requestLocationPermission();
+    Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     super.onInit();
   }
 
@@ -31,7 +33,7 @@ class LoginController extends GetxController {
     AuthRepository().login(requestDto,
         onSuccess: (data) {
           if (data.data == null) {
-            Get.offNamed(Routes.REGISTER, arguments: requestDto.phone);
+            Get.offAndToNamed(Routes.REGISTER, arguments: requestDto.phone);
             return;
           }
 
@@ -39,9 +41,10 @@ class LoginController extends GetxController {
 
           if (data.data?.hotelBooking != null) {
             UserManager().saveSelectedBranch(spa.HotelsearchModel(id: data.data?.hotelBooking));
-            Get.toNamed(Routes.ALLSERVICES);
+            Get.offAndToNamed(Routes.ALLSERVICES);
+             return;
           } else {
-            Get.offNamed(Routes.HOME);
+            Get.offAndToNamed(Routes.HOME);
           }
         },
         onError: (error) => showPopupText(error.toString()),
