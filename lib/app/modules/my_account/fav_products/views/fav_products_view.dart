@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/components/bottom_nav_bar.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/products_fav_manager.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
@@ -23,6 +24,7 @@ class FavProductsView extends GetView<FavProductsController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavBar(index: 2),
       appBar: AppBar(
         centerTitle: true,
         title: const TextWidget(

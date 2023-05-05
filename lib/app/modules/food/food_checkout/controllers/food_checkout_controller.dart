@@ -34,7 +34,7 @@ class FoodCheckoutController extends GetxController {
   var userNameController =
       TextEditingController(text: UserManager().user!.name ?? "");
   var phoneController =
-      TextEditingController(text: UserManager().user!.mobile ?? "");
+      TextEditingController(text: UserManager().user?.mobile ?? UserManager().user?.phone   ?? "");
   var emailController =
       TextEditingController(text: UserManager().user!.email ?? "");
   var passwordController = TextEditingController();
@@ -146,7 +146,7 @@ class FoodCheckoutController extends GetxController {
         onSuccess: (_) {
           removeAll();
           showPopupText(AppStrings.savedSuccessfully);
-          Get.toNamed(Routes.ALLSERVICES);
+          Get.offAndToNamed(Routes.ALLSERVICES);
         });
   }
 

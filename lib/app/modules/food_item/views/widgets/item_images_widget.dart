@@ -6,6 +6,7 @@ import 'package:easy_hotel/app/modules/food_item/controllers/food_item_controlle
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:pinch_zoom/pinch_zoom.dart';
 
 import '../../../../components/icon_button_widget.dart';
 import '../../../../components/image_widget.dart';
@@ -49,23 +50,34 @@ class ItemImagesWidget extends GetView<FoodItemController> {
                               : 0,
                           options: CarouselOptions(
                             height: size.height * 0.6,
-                            
+
                             viewportFraction: 1,
                             enableInfiniteScroll: true,
                             pageSnapping: true,
                             // enlargeCenterPage: true,
                           ),
                           itemBuilder: (context, index, _) {
-                            return ImageWidget(
+                            return SizedBox(
                               height: size.height * 0.6,
-                              width : size.width,
-                                path: ApiProvider.imageUrl +
-                                    (controller
-                                            .pro.value?.itemImages?[index].image
-                                            .toString() ??
-                                        ""),
-                                fit: BoxFit.fill,
-                                radius: 0);
+                              width: size.width,
+                              child: PinchZoom(
+                                resetDuration:
+                                    const Duration(milliseconds: 100),
+                                maxScale: 2.5,
+                                onZoomStart: () {},
+                                onZoomEnd: () {},
+                                child: ImageWidget(
+                                    height: size.height * 0.6,
+                                    width: size.width,
+                                    path: ApiProvider.imageUrl +
+                                        (controller.pro.value
+                                                ?.itemImages?[index].image
+                                                .toString() ??
+                                            ""),
+                                    fit: BoxFit.fill,
+                                    radius: 0),
+                              ),
+                            );
                           },
                         )),
                   ));

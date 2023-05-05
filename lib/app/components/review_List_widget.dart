@@ -16,9 +16,9 @@ class ReviewsListWidget extends StatelessWidget {
     required this.reviewStars ,
     required this.reviewsList,
   }) : super(key: key);
-  final double reviewStars ;
-  final int reviewNumber ;
-  final List<ReviewModel> reviewsList ;
+  final double? reviewStars ;
+  final int? reviewNumber ;
+  final List<ReviewModel>? reviewsList ;
   @override
   Widget build(BuildContext context) {
     Size size =MediaQuery.of(context).size;
@@ -26,7 +26,7 @@ class ReviewsListWidget extends StatelessWidget {
       Column(children: [
         TextWidget(reviewStars.toString(),weight: FontWeight.w800 , size: 20,),
         RatingBar.builder(
-          initialRating: reviewStars,
+          initialRating: reviewStars ?? 0,
           minRating: 1,
           direction: Axis.horizontal,
           ignoreGestures: true,
@@ -63,8 +63,9 @@ class ReviewsListWidget extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              for(ReviewModel review in reviewsList)
-                 ReviewWidget(image: '', name: review.customerName!, comment: review.reviewText,date:DateFormat("dd-MM-yyyy").format(review.reviewDate!) , reviewStars: review.reviewStars ,)
+              for(ReviewModel review in reviewsList ?? [])
+                 ReviewWidget(image: '', name: review.customerName ?? "", comment: review.reviewText,
+                 date:review.reviewDate != null ? DateFormat("dd-MM-yyyy").format(review.reviewDate!) : "" , reviewStars: review.reviewStars ,)
             ],
           ),
         ),

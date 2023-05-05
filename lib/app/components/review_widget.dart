@@ -7,10 +7,10 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ReviewWidget extends StatelessWidget {
   const ReviewWidget({Key? key, required this.image, required this.name, required this.comment, required this.date , required this.reviewStars}) : super(key: key);
-  final String image;
-  final String name ;
+  final String? image;
+  final String? name ;
   final String? comment;
-  final String date;
+  final String? date;
   final double? reviewStars ;
 
 
@@ -32,7 +32,7 @@ class ReviewWidget extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
-                    ApiProvider.imageUrl +  image),
+                    ApiProvider.imageUrl +  (image ?? "")),
                   radius: 33.00,
                 ),
               ),
@@ -43,7 +43,7 @@ class ReviewWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextWidget(name,weight: FontWeight.bold , size: 15,),
+                      TextWidget(name ?? "",weight: FontWeight.bold , size: 15,),
                       RatingBar.builder(
                         initialRating: reviewStars ?? 0 ,
                         minRating: 1,
@@ -67,7 +67,7 @@ class ReviewWidget extends StatelessWidget {
                 ),
               ), Padding(
                 padding:  EdgeInsets.fromLTRB(0, 0, size.width*0,0),
-                child: TextWidget(date,weight: FontWeight.bold),
+                child: TextWidget(date ?? "",weight: FontWeight.bold),
               ),
 
             ],

@@ -14,6 +14,7 @@ import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/bottom_nav_bar.dart';
 import '../../../../data/model/auth/register/dto/response/all_cities_response.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -27,6 +28,7 @@ class SettingsView extends GetView<SettingsController> {
 
 
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavBar(index: 3 ),
       appBar: AppBar(
         elevation: 0,
         leading:
@@ -85,38 +87,38 @@ class SettingsView extends GetView<SettingsController> {
                 ),
                 Container(
                   height: 2, width: size.width, color: AppColors.appGreyDark,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SettingTabWidget(Icons.attach_money, AppStrings.currency),
-                    TextWidget(UserManager().user!.currencyName??"", size: 15,
-                      weight: FontWeight.bold,),
-                    SizedBox(
-                      width: 110,
-                      height: 40,
-                      child: DropdownSearch<CurrencyResponse>(
-                        // showSearchBox: true,
-                        items: controller.currency,
-                        itemAsString: (e) => e.name!,
-                        dropdownDecoratorProps: const DropDownDecoratorProps(
-                          textAlign: TextAlign.center,
-                          textAlignVertical: TextAlignVertical.center,
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     const SettingTabWidget(Icons.attach_money, AppStrings.currency),
+                //     TextWidget(UserManager().user!.currencyName??"", size: 15,
+                //       weight: FontWeight.bold,),
+                //     SizedBox(
+                //       width: 110,
+                //       height: 40,
+                //       child: DropdownSearch<CurrencyResponse>(
+                //         // showSearchBox: true,
+                //         items: controller.currency,
+                //         itemAsString: (e) => e.name!,
+                //         dropdownDecoratorProps: const DropDownDecoratorProps(
+                //           textAlign: TextAlign.center,
+                //           textAlignVertical: TextAlignVertical.center,
 
-                        ),
-                        onChanged: (value) {
-                          controller.changeSelectedCurrency(value!);
-                          controller.editCurrency();
-                        }
-                        ,
-                        selectedItem: controller.selectedCurrency.value,
-                      ),
-                    )
+                //         ),
+                //         onChanged: (value) {
+                //           controller.changeSelectedCurrency(value!);
+                //           controller.editCurrency();
+                //         }
+                //         ,
+                //         selectedItem: controller.selectedCurrency.value,
+                //       ),
+                //     )
 
 
-                  ],
-                ),
-                Container(
-                  height: 2, width: size.width, color: AppColors.appGreyDark,),
+                //   ],
+                // ),
+                // Container(
+                //   height: 2, width: size.width, color: AppColors.appGreyDark,),
                 Obx(() {
                   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -145,38 +147,38 @@ class SettingsView extends GetView<SettingsController> {
                 }),
                 Container(
                   height: 2, width: size.width, color: AppColors.appGreyDark,),
-                Obx(() {
-                  return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SettingTabWidget(Icons.home, AppStrings.city),
-                      TextWidget(UserManager().user!.cityName ?? "", size: 15,
-                        weight: FontWeight.bold,),
-                      SizedBox(
-                        width: 110,
-                        height: 40,
-                        child: DropdownSearch<CityResponse>(
-                          // showSearchBox: true,
-                          items: controller.city,
-                          itemAsString: (e) => e.name!,
-                          dropdownDecoratorProps: const DropDownDecoratorProps(
-                            textAlign: TextAlign.center,
-                            textAlignVertical: TextAlignVertical.center,
-                          ),
-                          onChanged: (value) {
-                            controller.changeSelectedCity(value!);
-                            controller.editCity();
-                          }
-                          ,
-                          selectedItem: controller.selectedCity.value,
-                        ),
-                      )
+                // Obx(() {
+                //   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       const SettingTabWidget(Icons.home, AppStrings.city),
+                //       TextWidget(UserManager().user!.cityName ?? "", size: 15,
+                //         weight: FontWeight.bold,),
+                //       SizedBox(
+                //         width: 110,
+                //         height: 40,
+                //         child: DropdownSearch<CityResponse>(
+                //           // showSearchBox: true,
+                //           items: controller.city,
+                //           itemAsString: (e) => e.name!,
+                //           dropdownDecoratorProps: const DropDownDecoratorProps(
+                //             textAlign: TextAlign.center,
+                //             textAlignVertical: TextAlignVertical.center,
+                //           ),
+                //           onChanged: (value) {
+                //             controller.changeSelectedCity(value!);
+                //             controller.editCity();
+                //           }
+                //           ,
+                //           selectedItem: controller.selectedCity.value,
+                //         ),
+                //       )
 
 
-                    ],
-                  );
-                }),
-                Container(
-                  height: 2, width: size.width, color: AppColors.appGreyDark,),
+                //     ],
+                //   );
+                // }),
+                // Container(
+                //   height: 2, width: size.width, color: AppColors.appGreyDark,),
                 // Container(height: 2,width: size.width,color: AppColors.appGreyDark,),
 
 

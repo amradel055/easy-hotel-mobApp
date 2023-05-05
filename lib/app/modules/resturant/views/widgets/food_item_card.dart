@@ -66,40 +66,44 @@ class _FoodItemCardState extends State<FoodItemCard> {
                               size: 16,
                               textColor: Colors.black,
                             )),
-                            SizedBox(
-                              width: 50,
-                              child: Obx(() => IconButtonWidget(
-                                    icon: (widget.item.isFav?.value ?? false) ==
-                                            true
-                                        ? Icons.favorite
-                                        : Icons.favorite_border_rounded,
-                                    onPressed: () async {
-                                      final item = widget.item;
-                                      await RestaurantStorage.addItemToFavorite(
-                                          ItemResponse(
-                                        id: item.id,
-                                        name: item.name,
-                                        image: item.image,
-                                        price: item.price,
-                                        salePrice: item.salePrice,
-                                        quantity: 1,
-                                        fav: item.isFav ?? false.obs,
-                                      ));
-                                      item.isFav!(!item.isFav!.value);
-                                      item.isFav!.refresh();
-                                    },
-                                  )),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8.0 , 0, 0,0),
+                              child: SizedBox(
+                                width: 50,
+                                child: Obx(() => IconButtonWidget(
+                                      icon: (widget.item.isFav?.value ?? false) ==
+                                              true
+                                          ? Icons.favorite
+                                          : Icons.favorite_border_rounded,
+                                      onPressed: () async {
+                                        final item = widget.item;
+                                        await RestaurantStorage.addItemToFavorite(
+                                            ItemResponse(
+                                          id: item.id,
+                                          name: item.name,
+                                          image: item.image,
+                                          price: item.price,
+                                          salePrice: item.salePrice,
+                                          quantity: 1,
+                                          fav: item.isFav ?? false.obs,
+                                        ));
+                                        item.isFav!(!item.isFav!.value);
+                                        item.isFav!.refresh();
+                                      },
+                                    )),
+                              ),
                             )
                           ],
                         ),
                         const Spacer(),
                         SizedBox(
-                         child: TextWidget(
-                              widget.item.discribtion ?? "",
-                              maxLines: 1,
-                              size: 16,
-                              textColor: Colors.black,
-                            )),
+                            child: TextWidget(
+                          widget.item.discribtion ?? "",
+                          maxLines: 1,
+                          size: 16,
+                          textColor: Colors.black,
+                        )),
+                        const Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -130,10 +134,13 @@ class _FoodItemCardState extends State<FoodItemCard> {
                                         ),
                                       )
                                     : const SizedBox(),
-                                 Padding(
+                                Padding(
                                   padding: const EdgeInsets.all(3.0),
                                   child: TextWidget(
-                                    UserManager().selectedBranch?.currencyName ?? AppStrings.LE,
+                                    UserManager()
+                                            .selectedBranch
+                                            ?.currencySubName ??
+                                        AppStrings.LE,
                                     textColor: Colors.black,
                                     weight: FontWeight.bold,
                                     size: 16,
@@ -141,32 +148,42 @@ class _FoodItemCardState extends State<FoodItemCard> {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              width: 100,
-                              child: TextWidget(AppStrings.minute ,  children: [TextWidget(" ${widget.item.time?.toString()?? " 0 "} " )],),
-                            ),
-                            SizedBox(
-                              width: 50,
-                              child: IconButtonWidget(
-                                icon: Icons.add_shopping_cart,
-                                iconSize: 25,
-                                onPressed: () {
-                                  final item = ItemResponse(
-                                      fav: widget.item.isFav ?? false.obs,
-                                      id: widget.item.id,
-                                      image: widget.item.image,
-                                      quantity: 1,
-                                      discribtion: widget.item.discribtion,
-                                      price: widget.item.price,
-                                      sumPrice:  widget.item.price,
-                                      // saleItem: (widget.item.salePrice?? 0 )> 0,
-                                      name: widget.item.name);
-                                  RestaurantCartManager().addToCart(item);
-                                },
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8.0 , 0, 0,0),
+                              child: SizedBox(
+                                width: 50,
+                                child: IconButtonWidget(
+                                  icon: Icons.add_shopping_cart,
+                                  iconSize: 25,
+                                  onPressed: () {
+                                    final item = ItemResponse(
+                                        fav: widget.item.isFav ?? false.obs,
+                                        id: widget.item.id,
+                                        image: widget.item.image,
+                                        quantity: 1,
+                                        discribtion: widget.item.discribtion,
+                                        price: widget.item.price,
+                                        sumPrice: widget.item.price,
+                                        // saleItem: (widget.item.salePrice?? 0 )> 0,
+                                        name: widget.item.name);
+                                    RestaurantCartManager().addToCart(item);
+                                  },
+                                ),
                               ),
                             )
                           ],
                         ),
+                        SizedBox(
+                          width: 100,
+                          child: TextWidget(
+                            AppStrings.minute,
+                            children: [
+                              TextWidget(
+                                  " ${widget.item.time?.toString() ?? " 0 "} ")
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
                       ],
                     ),
                   ),

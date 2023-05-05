@@ -1,3 +1,4 @@
+import 'package:easy_hotel/app/components/bottom_nav_bar.dart';
 import 'package:easy_hotel/app/components/button_widget.dart';
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/text_field_widget.dart';
@@ -27,6 +28,7 @@ class ContactUsView extends GetView<ContactUsController> {
         .size;
     const space = SizedBox(height: 20);
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavBar(index: 4),
       appBar: AppBar(
         elevation: 0,
         leading:
@@ -91,7 +93,7 @@ class ContactUsView extends GetView<ContactUsController> {
                     validator: AppValidator.forceValue,
                   ),space,
                   TextWidget(AppStrings.email,size: 15,weight: FontWeight.bold,),
-                  TextWidget(UserManager().user!.email!,size: 20,weight: FontWeight.bold,),
+                  TextWidget(UserManager().user?.email ?? "",size: 20,weight: FontWeight.bold,),
 
 
 

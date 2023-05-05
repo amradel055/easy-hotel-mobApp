@@ -5,6 +5,7 @@ import 'package:easy_hotel/app/data/repository/restaurant/restaurant_repository.
 import 'package:get/get.dart';
 import '../../../core/utils/res_cart_manager.dart';
 import '../../../core/utils/restaurant_strorage.dart';
+import '../../../core/utils/user_manager.dart';
 import '../../../data/model/restaurant/dto/request/group_items_request.dart';
 import '../../../data/model/restaurant/dto/request/item_request.dart';
 import '../../../data/model/restaurant/dto/response/attribute_details_model.dart';
@@ -14,6 +15,7 @@ import '../../../data/model/restaurant/dto/response/item_response.dart';
 import '../../../data/model/restaurant/dto/response/variation_model.dart';
 
 class FoodItemController extends GetxController {
+  final user = UserManager();
   final count = 1.obs;
   final itemId = Get.arguments ;
   final loading = false.obs ;

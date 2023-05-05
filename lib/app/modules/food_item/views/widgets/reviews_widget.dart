@@ -21,7 +21,7 @@ class ReviewsWidget extends GetView<FoodItemController> {
             weight: FontWeight.bold,
             children: [TextWidget(":")],
           ),
-          ReviewsListWidget(reviewNumber: controller.pro.value!.reviewsList!.length, reviewStars: controller.pro.value!.reviewsStars ?? 0, reviewsList: controller.pro.value!.reviewsList ?? [])
+          ReviewsListWidget(reviewNumber: controller.pro.value?.reviewsList?.length ?? 0, reviewStars: controller.pro.value?.reviewsStars ?? 0, reviewsList: controller.pro.value?.reviewsList ?? [])
         ],
       ): SizedBox.shrink();
     });

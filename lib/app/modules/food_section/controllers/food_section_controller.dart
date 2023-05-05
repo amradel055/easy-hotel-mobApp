@@ -53,7 +53,8 @@ class FoodSectionController extends GetxController {
       RestaurantCartManager().addToCart(ItemResponse(
         fav: item.isFav ?? false.obs ,
          id: item.id ,
-         name: item.name
+         name: item.name,
+         time: item.time
          ))
   };
 

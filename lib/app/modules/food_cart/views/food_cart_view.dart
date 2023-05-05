@@ -31,7 +31,7 @@ class FoodCartView extends GetView<FoodCartController> {
             ],
           ),
           bottomNavigationBar: const AppBottomNavBar(
-            index: 2,
+            index: 1,
           ),
           body: controller.isLoading.isTrue
               ? Center(child: Common.getSpin())

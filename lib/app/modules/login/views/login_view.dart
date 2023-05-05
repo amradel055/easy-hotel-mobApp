@@ -69,34 +69,34 @@ class LoginView extends GetView<LoginController> {
                             textInputAction: TextInputAction.next,
                           ),
                           space,
-                          // Obx(() =>
-                          //     TextFieldWidget(
-                          //       controller: controller.passwordController,
-                          //       label: AppStrings.password,
-                          //       obscure: !controller.showPassword.value,
-                          //       suffixIcon: !controller.showPassword.value
-                          //           ? Icons.visibility
-                          //           : Icons.visibility_off,
-                          //       onChange: (value) =>
-                          //       controller.requestDto.password = value,
-                          //       onSuffixClicked: () =>
-                          //           controller.changePasswordVisibility(),
-                          //       ltr: true,
-                          //       validator: AppValidator.forceValue,
-                          //     )),
-                          // SizedBox(
-                          //   child: Row(
-                          //     mainAxisAlignment: MainAxisAlignment.start,
-                          //     children: [
-                          //       GestureDetector(
-                          //           onTap: () =>
-                          //               Get.toNamed(Routes.FORGET_PASSWORD),
-                          //           child: const TextWidget(
-                          //             AppStrings.forgetYourPassword,
-                          //             textColor: Colors.red,)),
-                          //     ],
-                          //   ),
-                          // ),
+                          Obx(() =>
+                              TextFieldWidget(
+                                controller: controller.passwordController,
+                                label: AppStrings.password,
+                                obscure: !controller.showPassword.value,
+                                suffixIcon: !controller.showPassword.value
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                onChange: (value) =>
+                                controller.requestDto.password = value,
+                                onSuffixClicked: () =>
+                                    controller.changePasswordVisibility(),
+                                ltr: true,
+                                validator: AppValidator.forceValue,
+                              )),
+                          SizedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                    onTap: () =>
+                                        Get.toNamed(Routes.FORGET_PASSWORD),
+                                    child: const TextWidget(
+                                      AppStrings.forgetYourPassword,
+                                      textColor: Colors.red,)),
+                              ],
+                            ),
+                          ),
                           space,
                           ButtonWidget(
                             text: AppStrings.login,

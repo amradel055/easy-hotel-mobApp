@@ -37,7 +37,7 @@ class BottomWidget extends GetView<FoodItemController> {
                 height: 1,
                 weight: FontWeight.bold,
                 size: 20,
-                children: [TextWidget(AppStrings.LE)],
+                children: [TextWidget(controller.user.selectedBranch?.currencySubName ?? AppStrings.LE)],
               ),
               const Spacer(),
               IconButtonWidget(

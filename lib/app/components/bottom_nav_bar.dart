@@ -7,33 +7,27 @@ import '../modules/food_cart/controllers/food_cart_controller.dart';
 import '../routes/app_pages.dart';
 
 class AppBottomNavBar extends GetView<FoodCartController> {
-  const AppBottomNavBar({super.key, required this.index});
+  // ignore: use_key_in_widget_constructors
+  const AppBottomNavBar({required this.index});
   final int index;
   @override
   Widget build(BuildContext context) {
-    return  Obx(() => BottomNavigationBar(
-              items: [
-                const BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                    label: '',
-                    tooltip: AppStrings.home),
-                const BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.account_box,
-                      color: Colors.black,
-                    ),
-                    label: '',
-                    tooltip: AppStrings.allServices),
+    return Obx(() => BottomNavigationBar(
+          items: [
+            const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black,
+                ),
+                label: '',
+                tooltip: ""),
             BottomNavigationBarItem(
                 icon: SizedBox(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                     TextWidget(
+                      TextWidget(
                         controller.cartList.length.toString(),
                         weight: FontWeight.bold,
                       ),
@@ -46,14 +40,38 @@ class AppBottomNavBar extends GetView<FoodCartController> {
                   ),
                 ),
                 label: "",
-                tooltip: AppStrings.myAccount),
+                tooltip: ""),
+            const BottomNavigationBarItem(
+                icon: SizedBox(
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.black,
+                    size: 16,
+                  ),
+                ),
+                label: "",
+                tooltip: ""),
+            const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ),
+                label: "",
+                tooltip: ""),
+            const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.contact_support,
+                  color: Colors.black,
+                ),
+                label: "",
+                tooltip: ""),
             const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.menu,
                   color: Colors.black,
                 ),
-                label: "",
-                tooltip: AppStrings.foodCart),
+                label: '',
+                tooltip: ""),
           ],
           onTap: (index) => ontap(index),
           currentIndex: index,
@@ -66,16 +84,22 @@ class AppBottomNavBar extends GetView<FoodCartController> {
   ontap(int index) {
     switch (index) {
       case 0:
-        Get.toNamed(Routes.RESTURANT);
+        Get.toNamed(Routes.ALLSERVICES);
         break;
       case 1:
-        Get.toNamed(Routes.MY_ACCOUNT);
+        Get.toNamed(Routes.FOOD_CART);
         break;
       case 2:
-        Get.toNamed(Routes.FOOD_CART);
+        Get.toNamed(Routes.FAV_PRODUCTS);
         break;
       case 3:
         Get.toNamed(Routes.SETTINGS);
+        break;
+      case 4:
+        Get.toNamed(Routes.CONTACT_US);
+        break;
+      case 5:
+        Get.toNamed(Routes.MY_ACCOUNT);
         break;
     }
   }

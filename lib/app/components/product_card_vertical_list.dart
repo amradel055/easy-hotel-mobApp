@@ -61,32 +61,29 @@ class _ProductCardState extends State<ProductCard> {
                           fontWeight: FontWeight.bold,
                           fontSize: widget.size.width * 0.05),
                     ),
-                     Text(
+                    Text(
                       widget.product!.discribtion ?? "",
-                      style: TextStyle(
-                          fontSize: widget.size.width * 0.04),
+                      style: TextStyle(fontSize: widget.size.width * 0.04),
                     ),
-
                     (widget.product?.saleItem ?? false) == false
                         ? TextWidget(
-                            "${(widget.product?.sumPrice ?? 0) > 0 ? widget.product?.sumPrice : widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
+                            "${(widget.product?.sumPrice ?? 0) > 0 ? widget.product?.sumPrice : widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE}",
                             size: widget.size.width * 0.045,
                           )
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextWidget(
-                                "${widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
-                                size:widget.size.width * 0.045 ,
+                                "${widget.product?.price ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE}",
+                                size: widget.size.width * 0.045,
                                 showInline: true,
                                 textColor: Colors.grey,
                               ),
                               Row(
                                 children: [
                                   TextWidget(
-                                    "${widget.product?.salePrice ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE }",
+                                    "${widget.product?.salePrice ?? "0"} ${UserManager().selectedBranch?.currencyName ?? AppStrings.LE}",
                                     size: widget.size.width * 0.045,
-                      
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
@@ -108,6 +105,16 @@ class _ProductCardState extends State<ProductCard> {
                               )
                             ],
                           ),
+                    TextWidget(
+                      " ${widget.product?.time ?? ""} ",
+                      size: widget.size.width * 0.04,
+                      children: [
+                        TextWidget(
+                          AppStrings.minutes,
+                          size: widget.size.width * 0.04,
+                        ),
+                      ],
+                    ),
                     Row(
                       children: [
                         Padding(
@@ -137,7 +144,9 @@ class _ProductCardState extends State<ProductCard> {
                         ),
                         Text(
                           "${widget.product?.quantity ?? 1}",
-                          style: TextStyle(fontSize: widget.size.width * 0.045 , fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: widget.size.width * 0.045,
+                              fontWeight: FontWeight.bold),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -158,6 +167,41 @@ class _ProductCardState extends State<ProductCard> {
                                   widget.product!.calcSumPrice();
                                 }),
                               ))),
+                        ),
+                                                Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: IconButton(
+                                alignment: Alignment.center,
+                                icon: const Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                  child: Icon(Icons.note_add),
+                                ),
+                                onPressed: (){
+                                  Get.dialog(Dialog(
+                                    child: Container(
+                                      color: Colors.white,
+                                      height: widget.size.height * 0.2,
+                                      width: widget.size.width * 0.8,
+                                      child: TextFormField(
+                                        maxLines: 5,
+                                        decoration: const InputDecoration(
+                                          hintText: "!اضف ملاحظتك"
+                                        ),
+                                        onChanged: (val) => setState(() {
+                                          widget.product!.remark = val ;
+                                        }),
+                                      ),
+                                    ),
+
+                                  ));
+                                },
+                              )),
                         ),
                       ],
                     )

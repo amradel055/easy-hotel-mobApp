@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
+import '../../../../components/bottom_nav_bar.dart';
 import '../../../../data/model/user/dto/response/delivery_place_response.dart';
 import '../controllers/food_checkout_controller.dart';
 
@@ -29,6 +30,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
     const space = SizedBox(height: 20);
 
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavBar(index: 0,),
         appBar: AppBar(
           elevation: 0,
           // backgroundColor: Colors.white,
@@ -237,8 +239,6 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                           child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Row(
-                                                children: [
                                                   SizedBox(
                                                     width: size.width * 0.28,
                                                     child:
@@ -316,11 +316,10 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                               value: 2,
                                                             )),
                                                   ),
-                                                ],
-                                              ),
                                               SizedBox(
                                                 width: size.width * 0.4,
-                                                child: Obx(() => RadioListTile(
+                                                child: Obx(() => 
+                                                    controller.palcesList.isNotEmpty ? RadioListTile(
                                                       groupValue: controller
                                                           .deliveryPlace.value,
                                                       title: const TextWidget(
@@ -330,7 +329,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                             .value = value!;
                                                       },
                                                       value: 3,
-                                                    )),
+                                                    ) : const SizedBox.shrink()),
                                               ),
                                             ],
                                           )),
@@ -363,36 +362,39 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                             )),
                                                   )
                                                 : TextFieldWidget(
+                                                    
                                                     maxLines: 1,
-                                                    prefixWidget: index == 0
-                                                        ? Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(2.0),
-                                                            child: Container(
-                                                                height: 40,
-                                                                width: 40,
-                                                                decoration: BoxDecoration(
-                                                                    color: AppColors
-                                                                        .restaurantThirdColor,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8)),
-                                                                child:
-                                                                    IconButton(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .center,
-                                                                  icon: const Icon(
-                                                                      Icons
-                                                                          .search),
-                                                                  onPressed: () =>
-                                                                      controller
-                                                                          .getRoomId(),
-                                                                )),
-                                                          )
-                                                        : const SizedBox
-                                                            .shrink(),
+                                                    onSubmitted: (val) => index == 0 ?  controller
+                                                                          .getRoomId() : null,
+                                                    // prefixWidget: index == 0
+                                                    //     ? Padding(
+                                                    //         padding:
+                                                    //             const EdgeInsets
+                                                    //                 .all(2.0),
+                                                    //         child: Container(
+                                                    //             height: 40,
+                                                    //             width: 40,
+                                                    //             decoration: BoxDecoration(
+                                                    //                 color: AppColors
+                                                    //                     .restaurantThirdColor,
+                                                    //                 borderRadius:
+                                                    //                     BorderRadius.circular(
+                                                    //                         8)),
+                                                    //             child:
+                                                    //                 IconButton(
+                                                    //               alignment:
+                                                    //                   Alignment
+                                                    //                       .center,
+                                                    //               icon: const Icon(
+                                                    //                   Icons
+                                                    //                       .search),
+                                                    //               onPressed: () =>
+                                                    //                   controller
+                                                    //                       .getRoomId(),
+                                                    //             )),
+                                                    //       )
+                                                    //     : const SizedBox
+                                                    //         .shrink(),
                                                     hint: index == 0
                                                         ? "ادخل رقم الغرفة"
                                                         : index == 1
@@ -446,7 +448,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                             children: [
                                               TextWidget(
                                                 controller.user.selectedBranch
-                                                        ?.currencyName ??
+                                                        ?.currencySubName ??
                                                     AppStrings.LE,
                                                 // textColor: AppColors.black,
                                                 size: 16,
@@ -510,6 +512,9 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                 label: AppStrings.phone,
                                 suffixIcon: Icons.phone,
                                 textInputAction: TextInputAction.next,
+                                justNumbers: true ,
+                                textInputType: TextInputType.phone,
+                              
                                 validator: AppValidator.forceValue,
                               ),
                             ],

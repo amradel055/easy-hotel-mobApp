@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
+import '../../../components/bottom_nav_bar.dart';
 import '../controllers/all_services_controller.dart';
 
 class AllServicesView extends GetView<AllServicesController> {
@@ -25,6 +26,7 @@ class AllServicesView extends GetView<AllServicesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavBar(index: 0,),
         appBar: AppBar(
           leading:
           GestureDetector(

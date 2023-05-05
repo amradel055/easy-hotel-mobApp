@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/bottom_nav_bar.dart';
+
 class MyAccountView extends GetView<MyAccountView> {
   const MyAccountView({Key? key}) : super(key: key);
 
@@ -20,6 +22,7 @@ class MyAccountView extends GetView<MyAccountView> {
     var  space= Container(height: 2,width: size.width,color: AppColors.appGreyDark,);
 
     return Scaffold(
+            bottomNavigationBar: const AppBottomNavBar(index: 5),
       appBar: AppBar(
         elevation: 0,
 
