@@ -138,7 +138,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                         child: TextWidget(
                                           intl.DateFormat("hh : mm").format(
                                               controller.cartList.last
-                                                      .requiredDate ??
+                                                      ?.requiredDate ??
                                                   DateTime.now().add(Duration(
                                                       minutes: controller
                                                               .cartList
@@ -240,7 +240,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                                   SizedBox(
-                                                    width: size.width * 0.28,
+                                                    width: size.width * 0.8,
                                                     child:
                                                         Obx(() => RadioListTile(
                                                               groupValue: controller
@@ -269,7 +269,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                             )),
                                                   ),
                                                   SizedBox(
-                                                    width: size.width * 0.28,
+                                                    width: size.width * 0.8,
                                                     child:
                                                         Obx(() => RadioListTile(
                                                               groupValue: controller
@@ -291,7 +291,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                             )),
                                                   ),
                                                   SizedBox(
-                                                    width: size.width * 0.28,
+                                                    width: size.width * 0.8,
                                                     child:
                                                         Obx(() => RadioListTile(
                                                               groupValue: controller
@@ -317,7 +317,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                             )),
                                                   ),
                                               SizedBox(
-                                                width: size.width * 0.4,
+                                                width: size.width * 0.8,
                                                 child: Obx(() => 
                                                     controller.palcesList.isNotEmpty ? RadioListTile(
                                                       groupValue: controller
@@ -404,6 +404,7 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                                                 : "",
                                                     controller: controller
                                                         .deliveryPlaceController,
+                                                 textInputType: index == 0 || index == 1 ? TextInputType.number : TextInputType.text ,
                                                   );
                                           }))
                                     ],
@@ -422,10 +423,10 @@ class FoodCheckoutView extends GetView<FoodCheckoutController> {
                                         ],
                                       ),
                                       SizedBox(
-                                          height: size.height * .12,
+                                          height: size.height * .15,
                                           width: size.width * .9,
                                           child: TextFieldWidget(
-                                            maxLines: 4,
+                                            maxLines: 3,
                                             controller: controller.remark,
                                           ))
                                     ],

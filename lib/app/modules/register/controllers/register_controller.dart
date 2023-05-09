@@ -20,6 +20,7 @@ class RegisterController extends GetxController {
   var phoneController = TextEditingController(text: Get.arguments ?? "");
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  var passwordConfirmController = TextEditingController();
   final isLoading = false.obs;
   final currencyLoading = false.obs;
   final languageLoading = false.obs;

@@ -113,8 +113,8 @@ class ItemResponse {
 
 
   calcSumPrice(){
-    sumPrice = price! ;
-    sumPrice = price! * (quantity ?? 1) ;
+    sumPrice = salePrice ?? price! ;
+    sumPrice = (salePrice ?? price!) * (quantity ?? 1) ;
     for(Additions add in addititonsList ?? []){
       add.selected ?? false == true  ?
       sumPrice = sumPrice! + ((add.price ?? 0) * (quantity ?? 1)).toDouble() : null;

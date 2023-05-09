@@ -25,11 +25,12 @@ class SectionListWidget extends GetView<RestaurantController> {
           const TextWidget(AppStrings.sections, weight: FontWeight.bold, size: 18),
           const SizedBox(height: 10),
           SizedBox(
-            height: size.height * 0.3,
+            height: size.height * 0.55,
             child: GridView.count(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
+              // physics: const NeverScrollableScrollPhysics(),
               children: [
             for(int i = 0; i < controller.groupList.length ; i++)
               FoodSectionCard(group :controller.groupList.toList()[i]),

@@ -69,7 +69,7 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                     child: SizedBox(
                       height: 250.h,
                       child: ImageWidget(
-                        path: controller.orderDetail!.image ?? "",
+                        path: ApiProvider.imageUrl + (controller.orderDetail?.image ?? ""),
                         fit: BoxFit.fill,
                         width: size.width,
                         radius: 0,
@@ -111,26 +111,18 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                 size: 16,
                                 weight: FontWeight.w600,
                               ),
-                              TextWidget(
-                                DateFormat("yyyy-MM-dd").format(
-                                    controller.orderDetail!.date ??
-                                        DateTime.now())
-                                ,
-                                textColor: Colors.grey,
-                                size: 16,
-                                weight: FontWeight.w600,
-                              ), TextWidget(
-                                DateFormat('  hh:mm aaa').format(
-                                    controller.orderDetail!.date ??
-                                        DateTime.now()
-                                )
-                                ,
-                                textColor: Colors.grey,
-                                size: 16,
-                                weight: FontWeight.w600,
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8.0 , 0 , 8 , 0),
+                                child: TextWidget(
+                                  DateFormat("yyyy-MM-dd").format(
+                                      controller.orderDetail!.date ??
+                                          DateTime.now())
+                                  ,
+                                  textColor: Colors.grey,
+                                  size: 16,
+                                  weight: FontWeight.w600,
+                                ),
                               ),
-
-
                             ],
                           )
 
@@ -148,11 +140,9 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                         child: Center(
                           child: Column(
                             children: [
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment
                                     .spaceBetween,
-
                                 children: [
                                   const TextWidget(
                                     AppStrings.additions,
@@ -192,10 +182,9 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
 
                                 ],
                               ),
-                              Row(
+                             Row(
                                 mainAxisAlignment: MainAxisAlignment
                                     .spaceBetween,
-
                                 children: [
                                   const TextWidget(
                                     "التقييم",
@@ -301,7 +290,7 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                     weight: FontWeight.w600,
                                   ),
                                   TextWidget(
-                                    controller.orderDetail!.cost.toString(),
+                                    controller.orderDetail?.cost?.toString() ?? "",
                                     textColor: Colors.grey,
                                     size: 16,
                                     weight: FontWeight.w600,
@@ -310,7 +299,7 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
 
                                 ],
                               ),
-                              controller.orderDetail!.rate == null ?
+                              controller.orderDetail?.delivered == null ?
                               Padding(
                                 padding: const EdgeInsets.only(top: 5.0),
                                 child: Center(
@@ -346,7 +335,6 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                                       physics: const AlwaysScrollableScrollPhysics(),
                                                       child: Column(
                                                         children: [
-
                                                           TextWidget(
                                                             "انشاء تقييم",
                                                             size: 20,
@@ -476,173 +464,173 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                     ),
                                   ),
                                 ),
-                              )
-                                  :
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5.0),
-                                child: Center(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Widget okButton = TextButton(
-                                        child: const Center(child: TextWidget(
-                                          AppStrings.confirm,
-                                          textColor: Colors.white,
-                                          size: 15,
-                                          weight: FontWeight.bold,)),
-                                        onPressed: () {
-                                          controller.saveReview();
-                                        },
-                                      );
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return StatefulBuilder(
-                                              builder: (context, setState) {
-                                                return AlertDialog(
-                                                  title: const Center(
-                                                      child: TextWidget(
-                                                        "تعديل التقييم",
-                                                        weight: FontWeight
-                                                            .bold,)),
-                                                  content: SizedBox(
-                                                    height: size.height * .4,
-                                                    width: size.width,
-
-                                                    child: SingleChildScrollView(
-                                                      physics: const AlwaysScrollableScrollPhysics(),
-                                                      child: Column(
-                                                        children: [
-
-                                                          TextWidget(
-                                                            "تعديل التقييم",
-                                                            size: 20,
-                                                            weight: FontWeight
-                                                                .bold,),
-                                                          Obx(() =>
-                                                              Container(
-                                                                width: size
-                                                                    .width * 0.8,
-                                                                decoration: BoxDecoration(
-                                                                    borderRadius: BorderRadius
-                                                                        .circular(
-                                                                        size
-                                                                            .width *
-                                                                            0.03),
-                                                                    color: AppColors
-                                                                        .appGreyLight),
-                                                                child: Padding(
-                                                                  padding: const EdgeInsets
-                                                                      .all(2.0),
-                                                                  child: Center(
-                                                                    child: Column(
-                                                                      children: [
-                                                                        RatingBar
-                                                                            .builder(
-                                                                          initialRating: 1,
-                                                                          minRating: 1,
-                                                                          direction: Axis
-                                                                              .horizontal,
-                                                                          allowHalfRating: false,
-                                                                          itemCount: 5,
-                                                                          itemSize: size
-                                                                              .width *
-                                                                              0.1,
-                                                                          itemPadding: const EdgeInsets
-                                                                              .symmetric(
-                                                                              horizontal: 0.0),
-                                                                          itemBuilder: (
-                                                                              context,
-                                                                              _) =>
-                                                                          const Icon(
-                                                                            Icons
-                                                                                .stars,
-                                                                            color: AppColors
-                                                                                .colorLogo,
-                                                                          ),
-                                                                          onRatingUpdate: (
-                                                                              value) =>
-                                                                              controller
-                                                                                  .changeSelectedPersonNumber(
-                                                                                  value
-                                                                                      .toInt()),
-                                                                        ),
-                                                                        TextWidget(
-                                                                          "${controller
-                                                                              .selectedPersonsNumber
-                                                                              .value}" +
-                                                                              " نجوم",
-                                                                          textColor: Colors
-                                                                              .grey,
-                                                                          size: 16,
-                                                                          weight: FontWeight
-                                                                              .w600,
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )),
-                                                          TextWidget(
-                                                            "تعديل التعليق",
-                                                            size: 20,
-                                                            weight: FontWeight
-                                                                .bold,),
-
-                                                          Padding(
-                                                            padding: const EdgeInsets
-                                                                .all(5.0),
-                                                            child: SizedBox(
-                                                              height: 100,
-                                                              child: TextFieldWidget(
-                                                                maxLines: 5,
-                                                                controller: controller
-                                                                    .comment,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  actions: [
-                                                    Center(
-                                                      child: Container(
-                                                          height: size.height *
-                                                              .06,
-                                                          width: size.width *
-                                                              .4,
-                                                          decoration: const BoxDecoration(
-                                                            borderRadius: BorderRadius
-                                                                .all(
-                                                                Radius.circular(
-                                                                    6.00)),
-                                                            color: AppColors
-                                                                .appHallsRedDark,
-                                                          ),
-                                                          child: okButton),
-                                                    ),
-                                                  ],
-                                                );
-                                              });
-                                        },
-                                      );
-                                    },
-                                    child: Container(
-                                      height: size.height * 0.04,
-                                      width: size.width * 0.4,
-                                      decoration: const BoxDecoration(
-                                        color: AppColors.appHallsRedDark,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5)),
-                                      ),
-                                      child: const TextWidget("تعديل تقييم",
-                                        textAlign: TextAlign.center,
-                                        weight: FontWeight.bold,
-                                        textColor: AppColors.white,),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              ) : const SizedBox.shrink()
+                              //     :
+                              // Padding(
+                              //   padding: const EdgeInsets.only(top: 5.0),
+                              //   child: Center(
+                              //     child: GestureDetector(
+                              //       onTap: () {
+                              //         Widget okButton = TextButton(
+                              //           child: const Center(child: TextWidget(
+                              //             AppStrings.confirm,
+                              //             textColor: Colors.white,
+                              //             size: 15,
+                              //             weight: FontWeight.bold,)),
+                              //           onPressed: () {
+                              //             controller.saveReview();
+                              //           },
+                              //         );
+                              //         showDialog(
+                              //           context: context,
+                              //           builder: (BuildContext context) {
+                              //             return StatefulBuilder(
+                              //                 builder: (context, setState) {
+                              //                   return AlertDialog(
+                              //                     title: const Center(
+                              //                         child: TextWidget(
+                              //                           "تعديل التقييم",
+                              //                           weight: FontWeight
+                              //                               .bold,)),
+                              //                     content: SizedBox(
+                              //                       height: size.height * .4,
+                              //                       width: size.width,
+                              //
+                              //                       child: SingleChildScrollView(
+                              //                         physics: const AlwaysScrollableScrollPhysics(),
+                              //                         child: Column(
+                              //                           children: [
+                              //
+                              //                             TextWidget(
+                              //                               "تعديل التقييم",
+                              //                               size: 20,
+                              //                               weight: FontWeight
+                              //                                   .bold,),
+                              //                             Obx(() =>
+                              //                                 Container(
+                              //                                   width: size
+                              //                                       .width * 0.8,
+                              //                                   decoration: BoxDecoration(
+                              //                                       borderRadius: BorderRadius
+                              //                                           .circular(
+                              //                                           size
+                              //                                               .width *
+                              //                                               0.03),
+                              //                                       color: AppColors
+                              //                                           .appGreyLight),
+                              //                                   child: Padding(
+                              //                                     padding: const EdgeInsets
+                              //                                         .all(2.0),
+                              //                                     child: Center(
+                              //                                       child: Column(
+                              //                                         children: [
+                              //                                           RatingBar
+                              //                                               .builder(
+                              //                                             initialRating: 1,
+                              //                                             minRating: 1,
+                              //                                             direction: Axis
+                              //                                                 .horizontal,
+                              //                                             allowHalfRating: false,
+                              //                                             itemCount: 5,
+                              //                                             itemSize: size
+                              //                                                 .width *
+                              //                                                 0.1,
+                              //                                             itemPadding: const EdgeInsets
+                              //                                                 .symmetric(
+                              //                                                 horizontal: 0.0),
+                              //                                             itemBuilder: (
+                              //                                                 context,
+                              //                                                 _) =>
+                              //                                             const Icon(
+                              //                                               Icons
+                              //                                                   .stars,
+                              //                                               color: AppColors
+                              //                                                   .colorLogo,
+                              //                                             ),
+                              //                                             onRatingUpdate: (
+                              //                                                 value) =>
+                              //                                                 controller
+                              //                                                     .changeSelectedPersonNumber(
+                              //                                                     value
+                              //                                                         .toInt()),
+                              //                                           ),
+                              //                                           TextWidget(
+                              //                                             "${controller
+                              //                                                 .selectedPersonsNumber
+                              //                                                 .value}" +
+                              //                                                 " نجوم",
+                              //                                             textColor: Colors
+                              //                                                 .grey,
+                              //                                             size: 16,
+                              //                                             weight: FontWeight
+                              //                                                 .w600,
+                              //                                           ),
+                              //                                         ],
+                              //                                       ),
+                              //                                     ),
+                              //                                   ),
+                              //                                 )),
+                              //                             TextWidget(
+                              //                               "تعديل التعليق",
+                              //                               size: 20,
+                              //                               weight: FontWeight
+                              //                                   .bold,),
+                              //
+                              //                             Padding(
+                              //                               padding: const EdgeInsets
+                              //                                   .all(5.0),
+                              //                               child: SizedBox(
+                              //                                 height: 100,
+                              //                                 child: TextFieldWidget(
+                              //                                   maxLines: 5,
+                              //                                   controller: controller
+                              //                                       .comment,
+                              //                                 ),
+                              //                               ),
+                              //                             ),
+                              //                           ],
+                              //                         ),
+                              //                       ),
+                              //                     ),
+                              //                     actions: [
+                              //                       Center(
+                              //                         child: Container(
+                              //                             height: size.height *
+                              //                                 .06,
+                              //                             width: size.width *
+                              //                                 .4,
+                              //                             decoration: const BoxDecoration(
+                              //                               borderRadius: BorderRadius
+                              //                                   .all(
+                              //                                   Radius.circular(
+                              //                                       6.00)),
+                              //                               color: AppColors
+                              //                                   .appHallsRedDark,
+                              //                             ),
+                              //                             child: okButton),
+                              //                       ),
+                              //                     ],
+                              //                   );
+                              //                 });
+                              //           },
+                              //         );
+                              //       },
+                              //       child: Container(
+                              //         height: size.height * 0.04,
+                              //         width: size.width * 0.4,
+                              //         decoration: const BoxDecoration(
+                              //           color: AppColors.appHallsRedDark,
+                              //           borderRadius: BorderRadius.all(
+                              //               Radius.circular(5)),
+                              //         ),
+                              //         child: const TextWidget("تعديل تقييم",
+                              //           textAlign: TextAlign.center,
+                              //           weight: FontWeight.bold,
+                              //           textColor: AppColors.white,),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
 
 
                             ],

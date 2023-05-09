@@ -72,7 +72,7 @@ class HotelSearchView extends GetView<HotelSearchController> {
               }),
               20.hieght,
               Obx(() =>  SizedBox(
-                    height: size.height * 0.7,
+                    height: size.height * 0.6,
                     width: size.width,
                     child: controller.loading.value ==true ?  Center(child: Common.getSpin(),): ListView.builder(
                       itemBuilder: (BuildContext context, index) =>

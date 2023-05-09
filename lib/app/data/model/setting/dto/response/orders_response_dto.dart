@@ -25,7 +25,8 @@ class OrdersResponse {
     this.reviewText,
     this.reviewDate,
     this.addtionsDTOList,
-
+    this.delivered,
+    this.statue
   });
 
   int? id;
@@ -33,8 +34,10 @@ class OrdersResponse {
   int? branchId;
   int? reviewId;
   int? itemId;
+  int? delivered;
   String? name;
   String? reviewText;
+  String? statue;
   dynamic image;
   num? cost;
   DateTime? date;
@@ -52,6 +55,8 @@ class OrdersResponse {
     itemId: json["itemId"],
     appId: json["appId"],
     name: json["name"],
+    delivered: json["delivered"],
+    statue: json["statue"],
     reviewText: json["reviewText"],
     image: json["image"],
     cost: json["cost"],
@@ -77,6 +82,8 @@ class OrdersResponse {
     "date": date!.toIso8601String(),
     "reviewDate": reviewDate!.toIso8601String(),
     "rate": rate,
+    "delivered": delivered,
+    "statue": statue,
     "addtionsDTOList" : addtionsDTOList == null ? null : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
 
   };

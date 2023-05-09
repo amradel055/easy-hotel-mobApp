@@ -66,6 +66,7 @@ class LoginView extends GetView<LoginController> {
                             controller.requestDto.phone = value,
                             ltr: true,
                             validator: AppValidator.forceValue,
+                            textInputType: TextInputType.phone,
                             textInputAction: TextInputAction.next,
                           ),
                           space,
@@ -85,14 +86,21 @@ class LoginView extends GetView<LoginController> {
                                 validator: AppValidator.forceValue,
                               )),
                           SizedBox(
+                            width: size.width * 0.8,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
                                     onTap: () =>
                                         Get.toNamed(Routes.FORGET_PASSWORD),
                                     child: const TextWidget(
                                       AppStrings.forgetYourPassword,
+                                      textColor: Colors.red,)),
+                                GestureDetector(
+                                    onTap: () =>
+                                        Get.toNamed(Routes.REGISTER),
+                                    child: const TextWidget(
+                                      AppStrings.register,
                                       textColor: Colors.red,)),
                               ],
                             ),

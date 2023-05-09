@@ -50,7 +50,7 @@ class OrderWidget extends GetView<OrderWidget> {
                   children: [
 
                    ImageWidget(
-                            path: image!,
+                            path: ApiProvider.imageUrl + (image ?? ""),
                             height:  size.height * 0.2,
                             width: size.width * 0.25,
                             fit: BoxFit.cover,

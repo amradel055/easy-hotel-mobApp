@@ -22,15 +22,17 @@ class ContactUsController extends GetxController {
 
 
   final registerForm = GlobalKey<FormState>();
-  sendEmail(String recEmail,String subject,String body)async{
-    final Email email = Email(
-      subject: subject,
-      body: body,
-      recipients: [recEmail],
-      isHTML: false,
-    );
-    await FlutterEmailSender.send(email);
-  }
+  // sendEmail(String recEmail,String subject,String body)async{
+  //   final Email email = Email(
+  //     subject: subject,
+  //     body: body,
+  //     recipients: [recEmail],
+  //     isHTML: false,
+  //   );
+  //   await FlutterEmailSender.send(email);
+  // }
+
+  
 
   // launchWhatsApp() async {
   //   final link = WhatsAppUnilink(

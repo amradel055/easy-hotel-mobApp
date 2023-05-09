@@ -64,8 +64,8 @@ class FoodItemController extends GetxController {
   }
 
   calcAddPrice(){
-    pro.value!.sumPrice = pro.value!.price! ;
-    pro.value!.sumPrice = pro.value!.price! * (pro.value?.quantity ?? 1) ;
+    pro.value!.sumPrice = pro.value?.salePrice ?? pro.value!.price! ;
+    pro.value!.sumPrice = (pro.value?.salePrice ?? pro.value!.price!) * (pro.value?.quantity ?? 1) ;
     for(Additions add in selectedAdditions){
       int index = pro.value?.addititonsList?.indexWhere((element) => element.id ==add.id) ?? -1 ;
       pro.value?.addititonsList?[index].selected = true ;

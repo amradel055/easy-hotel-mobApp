@@ -16,27 +16,22 @@ class GroupListWidget extends GetView<FoodSectionController> {
     Size size = MediaQuery.of(context).size ;
     return SizedBox(
       width: size.width * 0.95,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 15, right: 10, bottom: 15),
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            for(GroupResponse group in controller.groupsList)
-              GestureDetector(
-                onTap: () => controller.onGroupSelected(group),
-                child: Container(
-                  decoration: BoxDecoration (
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(AppConstants.radius)
-                  ),
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-                  child: TextWidget(group.name!, weight: FontWeight.bold,),
+      child: Row(
+        children: [
+          for(GroupResponse group in controller.groupsList)
+            GestureDetector(
+              onTap: () => controller.onGroupSelected(group),
+              child: Container(
+                decoration: BoxDecoration (
+                    color: Colors.yellow,
+                    borderRadius: BorderRadius.circular(AppConstants.radius)
                 ),
-              ) ,
-          ],
-        ),
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+                child: TextWidget(group.name!, weight: FontWeight.bold,),
+              ),
+            ) ,
+        ],
       ),
     );
   }

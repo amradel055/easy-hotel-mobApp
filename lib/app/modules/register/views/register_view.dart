@@ -112,21 +112,22 @@ class RegisterView extends GetView<RegisterController> {
                         validator: AppValidator.forceValue,
                       ),
                       space,
-                      TextFieldWidget(
-                        controller:controller.emailController,
-                        label: AppStrings.email,
-                        suffixIcon: Icons.email,
-                        textInputAction: TextInputAction.next,
-                        onChange: (value) => controller.requestDto.email = value,
-                        validator: AppValidator.forceValue,
-                      ),
-                      space,
+                      // TextFieldWidget(
+                      //   controller:controller.emailController,
+                      //   label: AppStrings.email,
+                      //   suffixIcon: Icons.email,
+                      //   textInputAction: TextInputAction.next,
+                      //   onChange: (value) => controller.requestDto.email = value,
+                      //   validator: AppValidator.forceValue,
+                      // ),
+                      // space,
                       TextFieldWidget(
                         controller:controller.phoneController,
                         label: AppStrings.phone,
                         suffixIcon: Icons.phone,
                         textInputAction: TextInputAction.next,
-                        onChange: (value) => controller.requestDto.mobile = value,
+                        textInputType: TextInputType.phone,
+                        onChange: (value) => controller.requestDto.phone = value,
 
                         validator: AppValidator.forceValue,
                       ),
@@ -140,86 +141,94 @@ class RegisterView extends GetView<RegisterController> {
                         obscure: true,
                       ),
                       space,
-                      const TextWidget(AppStrings.language,weight: FontWeight.bold,),
-                      Obx(() => Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: DropdownSearch<LanguageResponse>(
-                          // showSearchBox: true,
-                          items: controller.language,
-                          itemAsString: (e) => e.name!,
-                          dropdownDecoratorProps: const DropDownDecoratorProps(
-                            textAlign: TextAlign.center,
-                            textAlignVertical: TextAlignVertical.center,
-                          ),
-                          onChanged: (value) => controller.changeSelectedLanguage(value!),
-                          selectedItem: controller.selectedLanguage.value,
-                        ),
-                      )),
-                      space,
-                      const TextWidget(AppStrings.currency,weight: FontWeight.bold,),
-                      Obx(() => Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: DropdownSearch<CurrencyResponse>(
-                          // showSearchBox: true,
-                          items: controller.currency,
-                          itemAsString: (e) => e.name!,
-                          dropdownDecoratorProps: const DropDownDecoratorProps(
-                            textAlign: TextAlign.center,
-                            textAlignVertical: TextAlignVertical.center,
-
-                          ),
-                          onChanged: (value) => controller.changeSelectedCurrency(value!),
-                          selectedItem: controller.selectedCurrency.value,
-                        ),
-                      )),
-
-                      space,
-                      const TextWidget(AppStrings.city,weight: FontWeight.bold,),
-                      Obx(() => Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: DropdownSearch<CityResponse>(
-                          // showSearchBox: true,
-                          items: controller.city,
-                          itemAsString: (e) => e.name!,
-                          dropdownDecoratorProps: const DropDownDecoratorProps(
-                            textAlign: TextAlign.center,
-                            textAlignVertical: TextAlignVertical.center,
-                          ),
-                          onChanged: (value) => controller.changeSelectedCity(value!),
-                          selectedItem: controller.selectedCity.value,
-                        ),
-                      )),
-
-
-                      ElevatedButton(
-                        onPressed: () {
-                          myAlert();
-                        },
-                        child: const TextWidget('Upload Photo'),
+                      TextFieldWidget(
+                        controller:controller.passwordConfirmController,
+                        label: AppStrings.passwordConfirm,
+                        suffixIcon: Icons.password,
+                        validator:(val) => AppValidator.checkIfTheSame(value: val , checkWith: controller.passwordController.text),
+                        obscure: true,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      // space,
+                      // const TextWidget(AppStrings.language,weight: FontWeight.bold,),
+                      // Obx(() => Directionality(
+                      //   textDirection: TextDirection.rtl,
+                      //   child: DropdownSearch<LanguageResponse>(
+                      //     // showSearchBox: true,
+                      //     items: controller.language,
+                      //     itemAsString: (e) => e.name!,
+                      //     dropdownDecoratorProps: const DropDownDecoratorProps(
+                      //       textAlign: TextAlign.center,
+                      //       textAlignVertical: TextAlignVertical.center,
+                      //     ),
+                      //     onChanged: (value) => controller.changeSelectedLanguage(value!),
+                      //     selectedItem: controller.selectedLanguage.value,
+                      //   ),
+                      // )),
+                      // space,
+                      // const TextWidget(AppStrings.currency,weight: FontWeight.bold,),
+                      // Obx(() => Directionality(
+                      //   textDirection: TextDirection.rtl,
+                      //   child: DropdownSearch<CurrencyResponse>(
+                      //     // showSearchBox: true,
+                      //     items: controller.currency,
+                      //     itemAsString: (e) => e.name!,
+                      //     dropdownDecoratorProps: const DropDownDecoratorProps(
+                      //       textAlign: TextAlign.center,
+                      //       textAlignVertical: TextAlignVertical.center,
+                      //
+                      //     ),
+                      //     onChanged: (value) => controller.changeSelectedCurrency(value!),
+                      //     selectedItem: controller.selectedCurrency.value,
+                      //   ),
+                      // )),
+
+                      // space,
+                      // const TextWidget(AppStrings.city,weight: FontWeight.bold,),
+                      // Obx(() => Directionality(
+                      //   textDirection: TextDirection.rtl,
+                      //   child: DropdownSearch<CityResponse>(
+                      //     // showSearchBox: true,
+                      //     items: controller.city,
+                      //     itemAsString: (e) => e.name!,
+                      //     dropdownDecoratorProps: const DropDownDecoratorProps(
+                      //       textAlign: TextAlign.center,
+                      //       textAlignVertical: TextAlignVertical.center,
+                      //     ),
+                      //     onChanged: (value) => controller.changeSelectedCity(value!),
+                      //     selectedItem: controller.selectedCity.value,
+                      //   ),
+                      // )),
+
+                      //
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     myAlert();
+                      //   },
+                      //   child: const TextWidget('Upload Photo'),
+                      // ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
                       //if image not null show the image
                       //if image null show text
-                      controller.image != null
-                          ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.file(
-                            //to show image, you type like this.
-                            File(controller.image!.path),
-                            fit: BoxFit.cover,
-                            width: MediaQuery.of(context).size.width,
-                            height: 500,
-                          ),
-                        ),
-                      )
-                          : const TextWidget(
-                        "No Image",
-                        size: 20,
-                      ),
+                      // controller.image != null
+                      //     ? Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                      //   child: ClipRRect(
+                      //     borderRadius: BorderRadius.circular(8),
+                      //     child: Image.file(
+                      //       //to show image, you type like this.
+                      //       File(controller.image!.path),
+                      //       fit: BoxFit.cover,
+                      //       width: MediaQuery.of(context).size.width,
+                      //       height: 500,
+                      //     ),
+                      //   ),
+                      // )
+                      //     : const TextWidget(
+                      //   "No Image",
+                      //   size: 20,
+                      // ),
                       space,
 
                       ButtonWidget(

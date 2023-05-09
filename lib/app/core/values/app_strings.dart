@@ -32,6 +32,7 @@ abstract class AppStrings {
   static const Welcome = "WELCOME";
   static const phone = "Phone";
   static const password = "PASSWORD";
+  static const passwordConfirm = "PASSWORD CONFIRM";
   static const userName = "userName";
   static const name = "Name";
   static const email = "EMAIL";
@@ -117,6 +118,7 @@ abstract class AppStrings {
   static const searchHotelForService = "Search Hotel Or City...";
   static const enterHotel = "Enter";
   static const shouldSelectService = "يجب اختيار خدمة";
+  static const shouldSelectDelveryPlace = "يجب اختيار مكان الاستلام";
   static const locationNotAvailable = "Location Information Not Available For this Service";
   static const capacity = "Capacity";
   static const person = "Person";

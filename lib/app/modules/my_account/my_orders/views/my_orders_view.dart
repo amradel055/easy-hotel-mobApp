@@ -18,33 +18,31 @@ class MyOrdersView extends GetView<MyOrdersController> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading:
-        GestureDetector(
+        leading: GestureDetector(
             onTap: () {
               Get.back();
             },
             child: const Icon(Icons.arrow_back_ios)),
-        title:
-        const TextWidget(
-          AppStrings.ordesr, weight: FontWeight.bold, size: 20,),
+        title: const TextWidget(
+          AppStrings.ordesr,
+          weight: FontWeight.bold,
+          size: 20,
+        ),
         actions: [
           UnconstrainedBox(
             child: IconButtonWidget(
-              icon:  Icons.notifications,
+              icon: Icons.notifications,
               onPressed: () {
                 // FavProductsManager().addProduct(controller.room!, context);
               },
             ),
           ),
           const SizedBox(width: 10),
-         ],
-
+        ],
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
@@ -60,28 +58,25 @@ class MyOrdersView extends GetView<MyOrdersController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-                for(int i = 0; i < controller.orders.length; i++)
+                for (int i = 0; i < controller.orders.length; i++)
                   OrderWidget(
-                      controller.orders[i].id!, controller.orders[i].appId!, controller.orders[i].branchId, controller.orders[i].itemId??0,
+                      controller.orders[i].id!,
+                      controller.orders[i].appId!,
+                      controller.orders[i].branchId,
+                      controller.orders[i].itemId ?? 0,
                       controller.orders[i].reviewId,
-                      controller.orders[i].cost ?? 0,
+                      controller.orders[i].cost ??  0,
                       controller.orders[i].image ?? "",
                       controller.orders[i].name ?? "",
-                      DateFormat('yyyy.MM.dd  hh:mm aaa').format(
-                          controller.orders[i].date??DateTime.now()
-                      ) ??"",
-                    controller.orders[i].rate??0
-
-                  )
-
-
+                      DateFormat('yyyy.MM.dd').format(
+                              controller.orders[i].date ?? DateTime.now()) ??
+                          "",
+                      controller.orders[i].rate ?? 0)
               ],
             ),
           ),
         );
-      })
-      ,
+      }),
     );
   }
 }

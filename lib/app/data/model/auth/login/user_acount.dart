@@ -33,7 +33,6 @@ class UserAccount {
     this.address,
     this.telephone,
     this.fax,
-    this.mobile,
     this.password,
     this.personResponsible,
     this.phone,
@@ -92,7 +91,6 @@ class UserAccount {
   String? address;
   dynamic telephone;
   dynamic fax;
-  dynamic mobile;
   dynamic password;
   dynamic personResponsible;
   String? phone;
@@ -151,7 +149,6 @@ class UserAccount {
     address: json["address"] == null ? null : json["address"],
     telephone: json["telephone"],
     fax: json["fax"],
-    mobile: json["mobile"],
     password: json["password"],
     personResponsible: json["personResponsible"],
     phone: json["phone"] == null ? null : json["phone"],
@@ -213,7 +210,6 @@ class UserAccount {
     "address": address == null ? null : address,
     "telephone": telephone,
     "fax": fax,
-    "mobile": mobile,
     "password": password,
     "personResponsible": personResponsible,
     "phone": phone == null ? null : phone,

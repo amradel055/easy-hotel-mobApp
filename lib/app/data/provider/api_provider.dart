@@ -32,8 +32,8 @@ class ApiProvider {
     );
   }
 
-  // static const String _domainUrl = "http://192.168.1.3:8050/";
-  static const String _domainUrl = "http://192.168.1.6:8082/hotelApp/";
+  static const String _domainUrl = "http://192.168.1.5:8070/hotelApp/";
+  // static const String _domainUrl = "http://192.168.1.6:8082/hotelApp/";
 
   // static const String _domainUrl = "http://easyhotelsys.com/";
   static const String apiUrl = "$_domainUrl/";

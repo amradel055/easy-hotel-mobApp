@@ -23,6 +23,7 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.phone: 'الهاتف',
   AppStrings.email: 'البريد الالكتروني',
   AppStrings.password: 'كلمه المرور',
+  AppStrings.passwordConfirm: 'تأكيد كلمه المرور',
   AppStrings.register: 'انشاء حساب',
   AppStrings.haveAccount: 'هل لديك حساب..',
   AppStrings.forgetYourPassword : "هل نسيت كلمة السر ؟",
@@ -188,6 +189,7 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.addToCart:"تم الاضافة الي العربة",
   AppStrings.confirmCart:"اتمام عملية الشراء",
   AppStrings.noRoomsFound:"لم يتم ايجاد غرف",
+  AppStrings.shouldSelectDelveryPlace:"يجب اختيار مكان الاستلام",
 
 
 };

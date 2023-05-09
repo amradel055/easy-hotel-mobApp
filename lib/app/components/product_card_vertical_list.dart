@@ -118,7 +118,7 @@ class _ProductCardState extends State<ProductCard> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(2.0),
                           child: Container(
                               height: 45,
                               width: 45,

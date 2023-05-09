@@ -104,6 +104,10 @@ class FoodCheckoutController extends GetxController {
   }
 
   Future saveOrder() async {
+    if(deliveryPlaceController.text.isEmpty){
+      showPopupText(AppStrings.shouldSelectDelveryPlace.tr);
+      return;
+    }
     if (cartList.isEmpty) {
       return;
     }

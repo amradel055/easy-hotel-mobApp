@@ -32,6 +32,7 @@ class RestaurantCartManager {
         AppStorage.CART, List<dynamic>.from(_cart.map((e) => e.toJson())));
       Get.find<FoodCartController>().cartList.assignAll(_cart);
       Get.find<FoodCartController>().cartList.refresh();
+      Get.find<FoodCartController>().calcTotalPrice();
   }
 
   addToCart(ItemResponse item) {
