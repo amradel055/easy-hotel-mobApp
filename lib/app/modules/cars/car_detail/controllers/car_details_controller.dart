@@ -13,7 +13,7 @@ class CarDetailsController extends GetxController {
   final isLoading = false.obs;
   final servicesSelected = <int>[].obs;
   final Rxn selectedImage = Rxn() ;
-
+  // final Rxn<CarPriceResponse> carPrice = Rxn();
   @override
   void onInit() {
     super.onInit();

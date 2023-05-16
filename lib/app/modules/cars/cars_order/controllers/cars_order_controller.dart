@@ -14,9 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../data/model/cars/dto/request/cars_price_request.dart';
+import '../../../../data/model/cars/dto/response/cars_price_response.dart';
+
 class CarsOrderController extends GetxController {
   final CarsResponse selectedCar = Get.arguments;
-
+  Rxn<CarsPriceResponse> carPrice = Rxn();
   Rx<TextEditingController> timeController = TextEditingController().obs;
   Rx<TextEditingController> dateController = TextEditingController().obs;
   final selectedTravelType = 0.obs;
@@ -44,7 +47,17 @@ class CarsOrderController extends GetxController {
     getTrafficLines();
     super.onInit();
   }
-
+  
+  getCarPrice(){
+     loading(true);
+    final request = CarsPriceRequest(branchId: selectedCar.branchId! , carId: selectedCar.id! , trafficLineId: selectedTrafficLine.value!.id! ,type:  selectedTravelType.value);
+    CarsRepository().getCarPrice(request,
+        onComplete: () => loading(false),
+        onError: (e) => showPopupText(e),
+        onSuccess: (data) {
+           carPrice(data.data);
+          });
+  }
   getTrafficLines() {
     loading(true);
     final request = CarsTrafficLinesRequest(branchId: selectedCar.branchId!);
@@ -55,7 +68,9 @@ class CarsOrderController extends GetxController {
           trafficLines.assignAll(data.data ?? []);
           if (data.data?.isNotEmpty ?? false) {
             selectedTrafficLine(data.data![0]);
+            getCarPrice();
           }
+
         });
   }
 
@@ -64,6 +79,7 @@ class CarsOrderController extends GetxController {
 
   changeSelectedTrafficLines(CarsTrafficLinesResponse selected) {
     selectedTrafficLine(selected);
+     getCarPrice();
   }
 
   changeSelectedPersonNumber(int selected) {
@@ -72,6 +88,7 @@ class CarsOrderController extends GetxController {
 
   changeSelectedType(int selected) {
     selectedTravelType(selected);
+     getCarPrice();
   }
 
   changeTime(TimeOfDay value) {

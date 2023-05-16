@@ -89,7 +89,7 @@ class CarWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextWidget(3.toString(),textColor: Colors.black, size: 20,),
+                        TextWidget(car.reviewStars?.toString() ?? "",textColor: Colors.black, size: 20,),
                         Icon(Icons.star_rounded,color: Colors.amber, size: 20,)
                       ],
                     )),

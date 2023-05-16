@@ -133,7 +133,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                               size: 15,
                             ),
                             TextWidget(
-                              (controller.selectedCar.reviewStars??0).toString() + AppStrings.LE,
+                              (controller.carPrice.value?.salePrice??controller.carPrice.value?.price ?? 0).toString() + AppStrings.LE,
                               textColor: Colors.blue,
                               maxLines: 1,
                               weight: FontWeight.bold,
