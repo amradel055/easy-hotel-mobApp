@@ -5,7 +5,9 @@ import 'package:easy_hotel/app/data/model/cars/dto/request/cars_groups_request_d
 import 'package:easy_hotel/app/data/model/cars/dto/request/cars_order_request.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/request/cars_request_dto.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_groups_response_dto.dart';
+import '../../model/cars/dto/request/cars_price_request.dart';
 import '../../model/cars/dto/request/cars_traffic_line_request_dto.dart';
+import '../../model/cars/dto/response/cars_price_response.dart';
 import '../../model/cars/dto/response/cars_response_dto.dart';
 import '../../model/cars/dto/response/cars_traffic_lines_response.dart';
 import '../../provider/api_provider.dart';
@@ -52,6 +54,21 @@ class CarsRepository {
         data: carsTrafficLinesRequest.toJson(),
         onError: onError,
         convertor: CarsTrafficLinesResponse.fromList,
+      );
+
+
+      getCarPrice(
+      CarsPriceRequest request, {
+        Function()? onComplete,
+        SuccessFunc<CarsPriceResponse?> onSuccess,
+        Function(dynamic error)? onError,
+      }) =>
+      ApiProvider().post<CarsPriceResponse?>('Cars/getPriceForTrafficLine',
+        onComplete: onComplete,
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor:CarsPriceResponse.fromJson,
       );
 
   saveCarsOrder(

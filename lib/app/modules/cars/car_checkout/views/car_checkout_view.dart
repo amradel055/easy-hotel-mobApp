@@ -368,7 +368,7 @@ class CarCheckoutView
                             label: AppStrings.phone,
                             suffixIcon: Icons.phone,
                             textInputAction: TextInputAction.next,
-
+                            textInputType: TextInputType.phone,                  
                             validator: AppValidator.forceValue,
                           ),
 

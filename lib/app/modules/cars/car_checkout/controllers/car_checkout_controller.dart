@@ -16,13 +16,14 @@ import 'package:intl/intl.dart';
 class CarCheckoutController extends GetxController {
   var nameController = TextEditingController(text: UserManager().user!.name ??"");
   var userNameController = TextEditingController(text:UserManager().user!.name ??"");
-  var phoneController = TextEditingController(text: UserManager().user!.mobile ??"");
+  var phoneController = TextEditingController(text: UserManager().user?.mobile ?? UserManager().user?.phone   ?? "");
   var emailController = TextEditingController(text:UserManager().user!.email ??"");
   var passwordController = TextEditingController();
   final registerForm = GlobalKey<FormState>();
   final loading = false.obs;
   final List res =Get.arguments;
   saveOrder() {
+    if(!(registerForm.currentState?.validate() ?? true)){showPopupText(AppStrings.required);return;} 
     loading(true);
     final request = CarsOrderRequest(
         carId: res[0].id!,
