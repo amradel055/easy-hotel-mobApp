@@ -21,7 +21,7 @@ class HallCalenderPageController extends GetxController {
   final hallReservedPeriods = <HallsPeriodsResponse>[].obs;
   final dayTotalPrice = 0.0.obs;
   final allTotalPrice = 0.0.obs;
-
+  final user = UserManager();
   @override
   onInit()async {
     super.onInit();
@@ -101,6 +101,7 @@ class HallCalenderPageController extends GetxController {
     isPeriodLoading(true);
     final request = HallsPeriodsRequest(
       id: args[0].id,
+      branchId: user.selectedBranch!.id!
     );
    await HallsRepository().getHallPeriods(request,
         onSuccess: (data) => hallPeriods(data.data), 
@@ -111,7 +112,10 @@ class HallCalenderPageController extends GetxController {
   Future getHallReservedPeriod(DateTime date) async{
     isPeriodLoading(true);
     resetPeriodEnabled();
-    final request = HallsPeriodsRequest(id: args[0].id, date: date);
+    final request = HallsPeriodsRequest(
+        id: args[0].id,
+        branchId: user.selectedBranch!.id!,
+        date: date);
    await HallsRepository().getHallReservedPeriods(request,
         onSuccess: (data) {
           hallReservedPeriods(data.data);
