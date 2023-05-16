@@ -29,7 +29,7 @@ class HomeController extends GetxController {
     Get.isRegistered<MyAccountController>() ? Get.find<MyAccountController>() : Get.put(MyAccountController());
     Get.isRegistered<FoodCartController>() ? Get.find<FoodCartController>() : Get.put<FoodCartController>(FoodCartController());
     final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
-
+ 
       firebaseMessaging.subscribeToTopic("customers_${user.user!.id!}");
        WidgetsBinding.instance.addPostFrameCallback((_) async {
       RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
