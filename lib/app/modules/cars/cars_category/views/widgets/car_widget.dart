@@ -14,7 +14,7 @@ class CarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return GestureDetector(
+    return  GestureDetector(
       onTap: (){
         Get.toNamed(Routes.carsOrder , arguments: car);
       },

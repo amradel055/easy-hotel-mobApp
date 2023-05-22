@@ -14,6 +14,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/utils/show_popup_text.dart';
+
 class CarsOrderView extends GetView<CarsOrderController> {
   const CarsOrderView({Key? key}) : super(key: key);
 
@@ -215,6 +217,7 @@ class CarsOrderView extends GetView<CarsOrderController> {
                           child: OutlinedButton(
                               onPressed: () {
                                 // controller.saveOrder();
+                                if(controller.selectedDate== null){showPopupText("يجب اختيار تاريخ"); return;}
                                 Get.toNamed(Routes.CAR_CHECKOUT,arguments:[controller.selectedCar,controller.selectedDate,controller.timeController.value.text,controller.selectedTravelType.value,controller.selectedPersonsNumber.value,controller.selectedTrafficLine.value,controller.remark.text,] );
                               },
                               style: ButtonStyle(

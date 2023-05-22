@@ -24,7 +24,7 @@ class CarsCategoryView extends GetView<CarsCategoryController> {
           if (controller.loading.value == true) {
             return Common.getSpin();
           }
-          return SizedBox(
+          return  Obx(() =>SizedBox(
             height: size.height * 0.75,
             width: size.width,
             child: SingleChildScrollView(
@@ -81,7 +81,7 @@ class CarsCategoryView extends GetView<CarsCategoryController> {
                 ],
               ),
             ),
-          );
+          ));
         }));
   }
 }

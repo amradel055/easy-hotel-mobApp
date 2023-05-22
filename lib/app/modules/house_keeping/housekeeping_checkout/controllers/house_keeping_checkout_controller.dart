@@ -39,6 +39,7 @@ class HouseKeepingCheckoutController extends GetxController {
           showPopupText( AppStrings.savedSuccessfully);
           Get.toNamed(Routes.ALLSERVICES);
 
+
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)
