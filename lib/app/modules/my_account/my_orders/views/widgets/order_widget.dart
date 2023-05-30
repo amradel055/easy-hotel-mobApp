@@ -4,12 +4,13 @@ import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
+import 'package:easy_hotel/app/modules/my_account/my_orders/controllers/my_orders_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
-class OrderWidget extends GetView<OrderWidget> {
+class OrderWidget extends GetView<MyOrdersController> {
   const OrderWidget(  this.id,this.appId,this.branchId,this.itemId,this.reviewId,this.price, this.image, this.title, this.subtitle, this.rate,   {Key? key}) : super(key: key);
   final int ?id;
   final int ?appId;
@@ -21,6 +22,7 @@ class OrderWidget extends GetView<OrderWidget> {
   final String? title ;
   final String? subtitle ;
   final double ? rate ;
+
 
 
   @override
@@ -69,7 +71,34 @@ class OrderWidget extends GetView<OrderWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children:   [
-                            TextWidget(title!,textColor: Colors.black,size: 20,weight: FontWeight.bold),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextWidget(title!,textColor: Colors.black,size: 20,weight: FontWeight.bold),
+                                GestureDetector(
+                            onTap: (){
+                              controller.cancle(id , appId);
+                            },
+                                  child: Container(alignment: Alignment.center,
+
+                                    height: size.height*.04,
+                                    width: size.width*.22,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all( Radius.circular(20.00)),color: AppColors.appHallsRedDark,
+                                    ),
+                                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                                          child: Center(child: TextWidget(AppStrings.cancelorder,weight: FontWeight.bold,textColor: Colors.white,)),
+                                        ),
+                                      ],
+                                    ),
+
+                                  ),
+                                ),
+                              ],
+                            ),
                             TextWidget(subtitle!, textColor: Colors.grey,size: 12,weight: FontWeight.bold,),
                             TextWidget("${price.toString()}"+AppStrings.LE,textColor: Colors.grey,size: 10,weight: FontWeight.bold,),
                             Expanded(

@@ -457,7 +457,7 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5)),
                                       ),
-                                      child: const TextWidget("انشا تقييم",
+                                      child: const TextWidget(" التقييم",
                                         textAlign: TextAlign.center,
                                         weight: FontWeight.bold,
                                         textColor: AppColors.white,),

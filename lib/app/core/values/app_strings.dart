@@ -77,6 +77,7 @@ abstract class AppStrings {
   static const enterTime = "enterTime";
   static const ok = "ok";
   static const cancel = "cancel";
+  static const cancelorder = "cancel order";
   static const sections = "sections";
   static const LE = "LE";
   static const open = "Open";

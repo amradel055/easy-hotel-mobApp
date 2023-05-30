@@ -190,6 +190,7 @@ AppStrings.forbidden: 'ممنوع الوصول',
   AppStrings.confirmCart:"اتمام عملية الشراء",
   AppStrings.noRoomsFound:"لم يتم ايجاد غرف",
   AppStrings.shouldSelectDelveryPlace:"يجب اختيار مكان الاستلام",
+  AppStrings.cancelorder:"الغاء الطلب",
 
 
 };
