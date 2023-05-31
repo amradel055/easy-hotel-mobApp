@@ -183,4 +183,10 @@ final Map<String, String> enUs = {
   AppStrings.confirmCart: "Confirm",
   AppStrings.noRoomsFound: "No Rooms Found",
   AppStrings.cancelorder: "cancel order",
+  AppStrings.saveReview: "Save Review",
+  AppStrings.editReview: "Edit Review",
+  AppStrings.orderStatue: "Order Statue",
+  AppStrings.underProccess: "Under Proccess",
+  AppStrings.notDeliverd: "Not Deliverd yet",
+  AppStrings.deliverd: "Deliverd",
 };

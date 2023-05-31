@@ -25,7 +25,7 @@ import '../../../../data/model/user/dto/response/delivery_place_response.dart';
 import '../../../../data/repository/hotel_search_for_services/hotel_search_for_services_repository.dart';
 import '../../../../data/repository/restaurant/restaurant_repository.dart';
 import '../../../../data/repository/user/user_repository.dart';
-import '../../../food_cart/controllers/food_cart_controller.dart';
+import '../../food_cart/controllers/food_cart_controller.dart';
 
 class FoodCheckoutController extends GetxController {
   final user = UserManager();
@@ -150,6 +150,7 @@ class FoodCheckoutController extends GetxController {
         onSuccess: (_) {
           removeAll();
           showPopupText(AppStrings.savedSuccessfully);
+          UserManager().sendNewOrderNotification(AppConstants.food);
           Get.offAndToNamed(Routes.ALLSERVICES);
         });
   }

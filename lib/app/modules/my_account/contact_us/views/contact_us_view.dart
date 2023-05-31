@@ -101,7 +101,7 @@ class ContactUsView extends GetView<ContactUsController> {
                   space,
                   ButtonWidget(
                     text: AppStrings.send,
-                    onPressed:((controller.subjectController.text!="") && (controller.messageController.text!=""))? () {}:null,
+                    onPressed:controller.sendMessage(),
                     expanded: true,
                     fontColor: Colors.white,
                     fontSize: size.height * .026,
