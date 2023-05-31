@@ -37,7 +37,7 @@ class HouseKeepingCheckoutController extends GetxController {
     HousekeepingRepository().getHousekeepingSave(request,
         onSuccess: (data) {
           showPopupText( AppStrings.savedSuccessfully);
-          UserManager().sendNewOrderNotification(AppConstants.cars);
+          UserManager().sendNewOrderNotification(AppConstants.houseKeeping);
           Get.offAndToNamed(Routes.ALLSERVICES);
 
 
