@@ -45,7 +45,7 @@ class OrdersResponse {
   dynamic image;
   num? cost;
   num? starNum;
-  num? cancle;
+  int? cancle;
 
   DateTime? date;
   DateTime? reviewDate;
@@ -78,15 +78,11 @@ class OrdersResponse {
       statue: statue,
       reviewText: json["reviewText"],
       image: json["image"],
-      starNum: json["starNum"],
-      cost: json["cost"],
+      starNum: json["starNum"] == null ? 0.0 : json["starNum"],
+      cost: json["cost"] == null ? 0.0 : json["cost"],
       date: json["date"] == null ? null : DateTime.parse(json["date"]),
-      reviewDate: json["reviewDate"] == null
-          ? null
-          : DateTime.parse(json["reviewDate"]),
-      addtionsDTOList: json["addtionsDTOList"] == null
-          ? null
-          : List<AddtionsModel>.from(json["addtionsDTOList"].map((x) => x)),
+      reviewDate: json["reviewDate"] == null ? null : DateTime.parse(json["reviewDate"]),
+      addtionsDTOList: json["addtionsDTOList"] == null ? null : List<AddtionsModel>.from(json["addtionsDTOList"].map((x) => x)),
       rate: json["rate"] == null ? null : json["rate"].toDouble(),
       reviewId: json["reviewId"] == null ? null : json["reviewId"],
       cancle: json["cancle"],
@@ -109,8 +105,6 @@ class OrdersResponse {
         "rate": rate,
         "delivered": delivered,
         "statue": statue,
-        "addtionsDTOList": addtionsDTOList == null
-            ? null
-            : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
+        "addtionsDTOList": addtionsDTOList == null ? null : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
       };
 }

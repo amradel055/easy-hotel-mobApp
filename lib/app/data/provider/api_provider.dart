@@ -28,20 +28,26 @@ class ApiProvider {
       ),
     );
     _dio.interceptors.add(
-      LogInterceptor(responseBody: true, requestBody: true, responseHeader: true, requestHeader: true, request: true, error: true),
+      LogInterceptor(
+          responseBody: true,
+          requestBody: true,
+          responseHeader: true,
+          requestHeader: true,
+          request: true,
+          error: true),
     );
   }
 
-  static const String _domainUrl = "http://192.168.1.6:8082/hotelApp/";
   // static const String _domainUrl = "http://192.168.1.6:8082/hotelApp/";
+  // static const String _domainUrl = "http://192.168.1.5:8070/hotelApp/";
 
-  // static const String _domainUrl = "http://easyhotelsys.com/";
+  static const String _domainUrl = "http://easyhotelsys.com";
   static const String apiUrl = "$_domainUrl/";
   static const String imageUrl = "${_domainUrl}restaurantItem/itemImage/";
   final InternetConnectionChecker _checker = InternetConnectionChecker();
   late Dio _dio;
 
-  _requestApi<T,F>(
+  _requestApi<T, F>(
       String url,
       String method,
       String token,
@@ -53,18 +59,25 @@ class ApiProvider {
       SuccessFunc<T> onSuccess,
       Function(dynamic error)? onError,
       Function(int progress)? onSendProgress,
-      bool ignoreToken) async {
+      bool ignoreToken,
+      {bool? isFcmNotification}) async {
     (headers ?? {}).forEach((key, value) => _dio.options.headers[key] = value);
-    _dio.options.headers["Authorization"] = token.isEmpty ? "" : "Bearer $token";
+    if (!(isFcmNotification ?? true)) {
+      _dio.options.headers["Authorization"] =
+          token.isEmpty ? "" : "Bearer $token";
+    }
     try {
-      if(!(await _checker.hasConnection)){
-        throw NetworkException(ErrorCode.noInternetConnection, AppStrings.noInternetConnection);
+      if (!(await _checker.hasConnection)) {
+        throw NetworkException(
+            ErrorCode.noInternetConnection, AppStrings.noInternetConnection);
       }
       late Response response;
       if (method == 'get') {
         response = await _dio.get(url, queryParameters: queryParameters);
       } else if (method == 'post') {
-        response = await _dio.post(url, data: data, queryParameters: queryParameters, onSendProgress: (send, total) {
+        response = await _dio.post(url,
+            data: data,
+            queryParameters: queryParameters, onSendProgress: (send, total) {
           if (onSendProgress != null) {
             final pr = (send / total) * 100;
             onSendProgress(pr.toInt());
@@ -78,7 +91,9 @@ class ApiProvider {
         }
       }
     } on DioError catch (e, s) {
-      if (onError != null) onError(NetworkException(ErrorCode.connection, AppStrings.connectionError, null));
+      if (onError != null)
+        onError(NetworkException(
+            ErrorCode.connection, AppStrings.connectionError, null));
       reportCrash(e, s);
     } on NetworkException catch (e, s) {
       if (onError != null) onError(e);
@@ -93,33 +108,24 @@ class ApiProvider {
     }
   }
 
-  Future post<T>(String url, {
-    String token = '',
-    dynamic data,
-    Map<String, dynamic>? header,
-    Map<String, dynamic>? queryParameters,
-    required ResponseConvertor<T> convertor,
-    Function()? onComplete,
-    SuccessFunc<T> onSuccess,
-    Function(dynamic error)? onError,
-    Function(int progress)? onSendProgress,
-    bool ignoreToken = false,
-  }) =>
-      _requestApi(
-          url,
-          'post',
-          token,
-          data,
-          header,
-          queryParameters,
-          convertor,
-          onComplete,
-          onSuccess,
-          onError,
-          onSendProgress,
-          ignoreToken);
+  Future post<T>(String url,
+          {String token = '',
+          dynamic data,
+          Map<String, dynamic>? header,
+          Map<String, dynamic>? queryParameters,
+          required ResponseConvertor<T> convertor,
+          Function()? onComplete,
+          SuccessFunc<T> onSuccess,
+          Function(dynamic error)? onError,
+          Function(int progress)? onSendProgress,
+          bool ignoreToken = false,
+          bool? isFcmNotification}) =>
+      _requestApi(url, 'post', token, data, header, queryParameters, convertor,
+          onComplete, onSuccess, onError, onSendProgress, ignoreToken,
+          isFcmNotification: isFcmNotification);
 
-  Future get<T>(String url, {
+  Future get<T>(
+    String url, {
     String token = '',
     Map<String, dynamic>? header,
     Map<String, dynamic>? queryParameters,
@@ -130,21 +136,8 @@ class ApiProvider {
     Function(int progress)? onSendProgress,
     bool ignoreToken = false,
   }) =>
-      _requestApi(
-          url,
-          'get',
-          token,
-          null,
-          header,
-          queryParameters,
-          convertor,
-          onComplete,
-          onSuccess,
-          onError,
-          onSendProgress,
-          ignoreToken);
-
-
+      _requestApi(url, 'get', token, null, header, queryParameters, convertor,
+          onComplete, onSuccess, onError, onSendProgress, ignoreToken);
 }
 
 class NetworkException implements Exception {
@@ -184,13 +177,18 @@ bool handleRemoteError(Response response) {
     errorMessage = data["msg"];
   }
   if (statusCode == 401) {
-    throw NetworkException(ErrorCode.unauthenticated, errorMessage ?? AppStrings.unauthenticated,statusCode);
+    throw NetworkException(ErrorCode.unauthenticated,
+        errorMessage ?? AppStrings.unauthenticated, statusCode);
   } else if (statusCode == 403) {
-    throw NetworkException(ErrorCode.forbidden, errorMessage ?? AppStrings.forbidden,statusCode);
+    throw NetworkException(
+        ErrorCode.forbidden, errorMessage ?? AppStrings.forbidden, statusCode);
   } else if (statusCode == 404) {
-    throw NetworkException(ErrorCode.notFound, errorMessage ?? AppStrings.notFound,statusCode);
+    throw NetworkException(
+        ErrorCode.notFound, errorMessage ?? AppStrings.notFound, statusCode);
   } else if (statusCode == 400) {
-    throw NetworkException(ErrorCode.badRequest, errorMessage ?? AppStrings.serverError,statusCode);
+    throw NetworkException(ErrorCode.badRequest,
+        errorMessage ?? AppStrings.serverError, statusCode);
   }
-  throw NetworkException(ErrorCode.serverError, errorMessage ?? AppStrings.serverError,statusCode);
+  throw NetworkException(ErrorCode.serverError,
+      errorMessage ?? AppStrings.serverError, statusCode);
 }

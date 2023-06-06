@@ -67,10 +67,12 @@ final String apiKey = "AAAAlEq9lFs:APA91bGrzO5fQDFJ6a16rMvXUlJFcMTjcNbpnZNeWeLfi
       }) =>
       ApiProvider().post<void>('https://fcm.googleapis.com/fcm/send',
         onComplete: onComplete,
+        isFcmNotification: true,
         onSuccess: onSuccess,
         data: request.toJson(),
         header: {
-        "Authorization": "key=$apiKey"
+          'Content-Type': 'application/json',
+          "Authorization": "key=$apiKey"
         },
         onError: onError,
         convertor: (_) {  },
