@@ -47,7 +47,7 @@ class CarDetailView extends GetView<CarDetailsController> {
                     child: SizedBox(
                       height: 250.h,
                       child: ImageWidget(
-                        path: ApiProvider.imageUrl + controller.selectedImage.value.toString(),
+                        path: ApiProvider.imageUrl +  controller.selectedCar.image??"",
                         fit: BoxFit.cover,
                       ),
                     ),

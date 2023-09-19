@@ -41,7 +41,9 @@ class PolmanCheckoutController extends GetxController {
         onSuccess: (data) {
           showPopupText(AppStrings.savedSuccessfully);
           UserManager().sendNewOrderNotification(AppConstants.polman);
-          Get.toNamed(Routes.ALLSERVICES);
+
+          Get.close(2);
+
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)

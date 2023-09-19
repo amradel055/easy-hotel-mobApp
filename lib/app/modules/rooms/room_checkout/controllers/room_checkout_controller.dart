@@ -32,9 +32,9 @@ class RoomCheckoutController extends GetxController {
         childrenNumber: res[0].childrenNumber??0,
         price: res[1],
         addtionsDtoList: res[2],
-        phone:UserManager().user!.phone??"",
-        email:UserManager().user!.email!,
-        name: UserManager().user!.name!,
+        name: nameController.text,
+        email: emailController.text,
+        phone: phoneController.text,
         purposeType: ""
     );
 
@@ -48,7 +48,8 @@ class RoomCheckoutController extends GetxController {
     RoomsRepository().getRoomSave(request,
         onSuccess: (data) {
           showPopupText(AppStrings.savedSuccessfully);
-          Get.toNamed(Routes.ALLSERVICES);
+          Get.close(5);
+
         },
         onError: (e) => showPopupText( e.toString()),
         onComplete: () => isLoading(false)

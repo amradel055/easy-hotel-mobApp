@@ -196,6 +196,7 @@ abstract class AppStrings {
   static const arrivalDate = "Arrival Date";
   static const go = "Go";
   static const back = "Back";
+  static const skip = "Skip..";
   static const goAndBack = "Go&Back";
   static const tripType = "Trip Type";
   static const road = "Road";
@@ -216,6 +217,7 @@ abstract class AppStrings {
 
   static const newOrder = "طلب جديد";
   static const newOrderbody = "طلب جديد";
+  static const maintenance = "Maintenance";
 
 
 

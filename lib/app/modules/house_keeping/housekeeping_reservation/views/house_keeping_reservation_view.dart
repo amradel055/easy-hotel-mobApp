@@ -1,15 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
-import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
-import 'package:easy_hotel/app/core/values/app_constants.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/views/widgets/timer.dart';
-import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/price_services.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -196,7 +192,9 @@ class HouseKeepingReservationView
                                   child: GestureDetector(
                                     onTap: () {
                                       Get.toNamed(Routes.HOUSEKEEPING_CHECKOUT,
-                                          arguments: [controller.res[2],controller.dateTo.value,controller.dateTime.value,controller.remark.text,controller.res[5],controller.res[6],controller.res[0],controller.res[7]]
+                                          arguments: [controller.res[2],controller.dateTo.value,
+                                            controller.dateTime.value,controller.remark.text,controller.res[5],
+                                            controller.res[6],controller.res[0],controller.res[7],controller.res[9]]
                                       );
                                       // controller.getHousekeepingSave();
                                     },

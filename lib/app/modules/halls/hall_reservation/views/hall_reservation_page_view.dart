@@ -64,7 +64,7 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (AdditionsGroupModel group in controller.hall.additionsGroupDTOList!)
+                    for (AdditionsGroupModel group in controller.args[0].additionsGroupDTOList!)
                       Container(
                         width: size.width * .9,
                         // height: size.height * .3,
@@ -147,6 +147,54 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                           ),
                         ),
                       ),
+                    SizedBox(
+                      width: size.width * 0.6,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(4 , 0 , 4,0),
+                              child: GestureDetector(
+                                onTap: (){
+                                  showDataAlert(context);
+
+                                },
+                                child: TextWidget(
+                                  AppStrings.terms.tr,
+                                  weight: FontWeight.bold,
+                                  size: 15,
+                                  textColor: Colors.blue,
+                                ),
+                              ),
+                            ),
+                            //                      Padding(
+                            //                        padding: const EdgeInsets.fromLTRB(4 , 0 , 4,0),
+                            //                        child:Center(
+                            //                        child: TextButton(
+                            //                        onPressed: () {
+                            //  },
+                            //  child: Text(
+                            // AppStrings.terms,
+                            //  ),
+                            //  ),
+                            //                      ),
+                            //
+                            //                      )
+                          ]
+                      ),
+                    ),
+    Obx(() {return
+    CheckboxListTile(
+                      title: TextWidget("الموافقه علي الشروط والاحكام"),
+                      value: controller.checkValue.value,
+                      onChanged: (newValue) {
+
+                        controller.checkValue.value = newValue!;
+
+                      },
+                      controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+                    );})
+
                   ],
                 ),
               ),
@@ -175,16 +223,20 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
                             ],
                           ),
                         ),
-                        SizedBox(
+    Obx(() {return
+      SizedBox(
                           width: size.width * .9,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              SizedBox(
+                              controller.checkValue.value?    SizedBox(
                                 width: size.width * .4,
                                 child: TextButton(
+
+
                                   onPressed: () {
-                                    Get.toNamed(Routes.HALL_CALENDER, arguments: [controller.hall, controller.selectedAdd.value , controller.totalPrice.value , controller.remark.text]);
+                                     controller.getHallSave();
+                                    // Get.toNamed(Routes., arguments: [controller.args[0], controller.selectedAdd.value , controller.totalPrice.value , controller.remark.text]);
                                   },
                                   style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark),
@@ -192,35 +244,37 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
 
                                   ),
                                   child: const TextWidget(
-                                    AppStrings.confirm,
+                                    AppStrings.reserve,
                                     textColor: Colors.white,
                                     weight: FontWeight.bold,
                                     size: 15,
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: size.width * .4,
-                                child: TextButton(
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                                      shape: MaterialStateProperty.all(const StadiumBorder())
+                              ):SizedBox(),
+                              Center(
+                                child: SizedBox(
+                                  width: size.width * .4,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.black),
+                                        shape: MaterialStateProperty.all(const StadiumBorder())
 
-                                  ),
-                                  child: const TextWidget(
-                                    AppStrings.back,
-                                    textColor: Colors.white,
-                                    weight: FontWeight.bold,
-                                    size: 15,
+                                    ),
+                                    child: const TextWidget(
+                                      AppStrings.back,
+                                      textColor: Colors.white,
+                                      weight: FontWeight.bold,
+                                      size: 15,
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
+                        );})
                       ],
                     ),
                   ),
@@ -228,4 +282,70 @@ class HallReservationPageView extends GetView<HallReservationPageController> {
           ],
         ));
   }
+  showDataAlert(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  20.0,
+                ),
+              ),
+            ),
+            contentPadding: EdgeInsets.only(
+              top: 10.0,
+            ),
+            title: Text(
+              AppStrings.terms,
+              style: TextStyle(fontSize: 24.0),
+            ),
+            content: Container(
+              height: 400,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+
+
+                    // Container(
+                    //   width: double.infinity,
+                    //   height: 60,
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: ElevatedButton(
+                    //     onPressed: () {
+                    //       Navigator.of(context).pop();
+                    //     },
+                    //     style: ElevatedButton.styleFrom(
+                    //       primary: Colors.black,
+                    //       // fixedSize: Size(250, 50),
+                    //     ),
+                    //     child: Text(
+                    //       "Submit",
+                    //     ),
+                    //   ),
+                    // ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(controller.args[0]!.terms!.title!),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        controller.args[0]!.terms!.text??"",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
 }

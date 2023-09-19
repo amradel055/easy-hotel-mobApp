@@ -8,6 +8,7 @@ import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/data/provider/api_provider.dart';
+import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/addition_widget.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/widgets/price_services.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,12 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
         .size;
     return Scaffold(
         body:
-
-           SingleChildScrollView(
+        Obx(() {  if (controller.isLoading.value) {
+          return Center(
+            child: Common.getSpin(),
+          );
+        }
+        return SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
 
             child: Column(
@@ -107,7 +112,7 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                   );
                                 }
                                 return SizedBox(
-                                  height: size.height * 0.3,
+                                  height: size.height * 0.4,
                                   child: Column(
                                     children: [
                                       for(int i = 0; i <
@@ -128,13 +133,18 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                           controller.housekeepingDetail[i]
                                               .id!,
                                           controller.housekeepingDetail[i]
-                                              .branchId,)
+                                              .branchId,controller.housekeepingDetail[i]
+                                            .quantity),
+
+
                                     ],
                                   ),
                                 );
                               }),
-                              controller.reviewsResponse == null ||controller.reviewsResponse!.reviewHouseKeepingDtoList!.isEmpty
-                                  ? const  TextWidget(AppStrings.noReview,
+                              controller.reviewsResponse == null ||
+                                  controller.reviewsResponse!
+                                      .reviewHouseKeepingDtoList!.isEmpty
+                                  ? const TextWidget(AppStrings.noReview,
                                 weight: FontWeight.bold,
                                 textColor: AppColors.appBlue,
                                 size: 20,)
@@ -179,7 +189,8 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                             arguments: [
                                               controller.args[0],
                                               controller.args[1],
-                                              controller.servicesSelected.value,
+                                              controller.servicesSelectedAdded
+                                                  .value,
                                               controller.args[2],
                                               controller.args[3],
                                               controller.servicesSelectedNames
@@ -187,7 +198,9 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                               controller.servicesSelectedPrices
                                                   .value,
                                               controller.args[3],
-                                              controller.servicesSelectedAdded.value
+                                              controller.servicesSelectedAdded
+                                                  .value,
+                                              controller.selectedAdd.value
                                             ]
                                         );
                                       },
@@ -199,11 +212,13 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                                           decoration: BoxDecoration(
                                             color: AppColors.appHallsRedDark,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(size.width * 0.05)),
+                                                Radius.circular(
+                                                    size.width * 0.05)),
                                           ),
                                           child: Center(
                                             child: const TextWidget(
-                                              AppStrings.reserve, textAlign: TextAlign.center,
+                                              AppStrings.reserve,
+                                              textAlign: TextAlign.center,
                                               weight: FontWeight.bold,
                                               textColor: Colors.white,),
                                           ),
@@ -220,8 +235,8 @@ class HouseKeepingServicesView extends GetView<HouseKeepingServicesController> {
                   ),
                 ),
               ],),
-          )
-
+          );
+        })
     );
   }
 }

@@ -54,7 +54,8 @@ class CarCheckoutController extends GetxController {
         onError: (e) => showPopupText(e), onComplete: () => loading(false), onSuccess: (data) {
           showPopupText(AppStrings.savedSuccessfully);
           UserManager().sendNewOrderNotification(AppConstants.cars);
-          Get.toNamed(Routes.ALLSERVICES);
+          Get.close(4);
+
         } );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
+import 'package:easy_hotel/app/modules/hotel_detail/controllers/hotel_details_controller.dart';
 import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +16,17 @@ class SplashController extends GetxController {
     showLogo(true);
     await Future.delayed(const Duration(seconds: 2));
     if(UserManager().isLoggedIn){
-      // if(UserManager().selectedBranch != null){
-      //   Get.offNamed(Routes.ALLSERVICES);
-      // }else{
-      Get.offAndToNamed(Routes.HOME);
-      // }
+      if(UserManager().selectedBranch != null){
+        // rooms app and login controller edit
+        Get.offNamed(Routes.ALLSERVICES);
+        // hotel app
+        // Get.offNamed(Routes.HOTEL_DETAIL);
+      }else{
+        // hotelapp
+      // Get.offAndToNamed(Routes.HOME);
+      //   rooms app
+      Get.offAndToNamed(Routes.ROOMS);
+      }
     } else {
       Get.offAndToNamed(Routes.LOGIN);
     }

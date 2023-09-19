@@ -18,9 +18,9 @@ class ServiceCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if(appId==1){
-          Get.toNamed(Routes.RESTURANT);
+          Get.toNamed(Routes.FOOD_SECTION);
         }else if(appId==2){
-          Get.toNamed(Routes.RESTURANT);
+          Get.toNamed(Routes.FOOD_SECTION);
         }else if(appId==3){
           Get.toNamed(Routes.CARS,arguments: [imageIn,appId]);
         }else if(appId==4){
@@ -33,6 +33,8 @@ class ServiceCard extends StatelessWidget {
           Get.toNamed(Routes.ROOMS);
         }else if(appId==8){
           Get.toNamed(Routes.POLMAN,arguments: [imageIn,appId]);
+        }else if(appId==9){
+          Get.toNamed(Routes.MAINTENANCE_SERVICES,arguments: [imageIn,appId]);
         }
       } ,
       child: Container(

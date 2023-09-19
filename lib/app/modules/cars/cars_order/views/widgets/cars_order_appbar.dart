@@ -1,4 +1,5 @@
-import 'package:dropdown_search/dropdown_search.dart';
+// import 'package:dropdown_search/dropdown_search.dart';
+// import 'package:dropdown_search/dropdown_search.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/data/model/cars/dto/response/cars_traffic_lines_response.dart';
 import 'package:easy_hotel/app/modules/cars/cars_order/controllers/cars_order_controller.dart';
@@ -92,18 +93,44 @@ class CarsOrderAppbar extends GetView<CarsOrderController> implements PreferredS
                     ),
                     Obx(() => Directionality(
                       textDirection: TextDirection.rtl,
-                      child: DropdownSearch<CarsTrafficLinesResponse>(
+                     child: DropdownButtonHideUnderline(
 
-                            // showSearchBox: true,
-                            items: controller.trafficLines,
-                            itemAsString: (e) => e.lineName.toString(),
-                            dropdownDecoratorProps: const DropDownDecoratorProps(
-                              textAlign: TextAlign.center,
-                              textAlignVertical: TextAlignVertical.center,
+                        child: DropdownButton<CarsTrafficLinesResponse>(
+                          items: controller.trafficLines
+                              .map((e) => DropdownMenuItem<CarsTrafficLinesResponse>(
+                            alignment: Alignment.center,
+                            value: e,
+                            // enabled: e.enabled!,
+                            child: Container(
+                              color:  Colors.transparent,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  TextWidget(e.lineName??""),
+                                  // e.enabled == false ? const TextWidget(AppStrings.reserved ,size: 11, textColor: AppColors.appHallsRedDark, weight: FontWeight.bold,):const SizedBox.shrink(),
+                                ],
+                              ),
                             ),
-                            onChanged: (value) => controller.changeSelectedTrafficLines(value!),
-                            selectedItem: controller.selectedTrafficLine.value,
-                          ),
+                          ))
+                              .toList(),
+                          onChanged: (val) =>  controller.changeSelectedTrafficLines(val!),
+                          value: controller.selectedTrafficLine.value,
+                          alignment: Alignment.center,
+                          iconSize: 25,
+                        ),
+                      ),
+                      // child:DropdownButton <CarsTrafficLinesResponse>(
+                      //
+                      //       // showSearchBox: true,
+                      //       items: controller.trafficLines,
+                      //       itemAsString: (e) => e.lineName.toString(),
+                      //       dropdownDecoratorProps: const DropDownDecoratorProps(
+                      //         textAlign: TextAlign.center,
+                      //         textAlignVertical: TextAlignVertical.center,
+                      //       ),
+                      //       onChanged: (value) => controller.changeSelectedTrafficLines(value!),
+                      //       selectedItem: controller.selectedTrafficLine.value,
+                      //     ),
                     )),
                     Obx(() => SizedBox(
                           width: size.width,

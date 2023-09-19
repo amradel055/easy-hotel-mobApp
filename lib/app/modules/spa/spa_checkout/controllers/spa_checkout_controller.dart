@@ -57,7 +57,7 @@ class SpaCheckoutController extends GetxController {
         onSuccess: (data) {
           showPopupText(AppStrings.savedSuccessfully);
           UserManager().sendNewOrderNotification(AppConstants.spa);
-          Get.toNamed(Routes.ALLSERVICES);
+          Get.close(5);
           // res[1]([]);
         },
         onError: (e) => showPopupText(e.toString()),

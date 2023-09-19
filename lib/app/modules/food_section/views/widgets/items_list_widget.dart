@@ -12,7 +12,7 @@ class ItemsListWidget extends GetView<FoodSectionController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if(controller.loading.isTrue){
+      if(controller.groupLoading.isTrue){
         return Common.getSpin();
       }
       return Expanded(

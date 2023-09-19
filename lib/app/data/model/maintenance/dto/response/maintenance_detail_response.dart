@@ -1,15 +1,11 @@
-// To parse this JSON data, do
-//
-//     final houseKeepingModel = houseKeepingModelFromJson(jsonString);
 
 import 'dart:convert';
 
-import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 import 'package:get/get.dart';
 
 
-class HouseKeepingDetailResponse {
-  HouseKeepingDetailResponse({
+class MaintenanceDetailResponse {
+  MaintenanceDetailResponse({
     this.id,
     this.markEdit,
     this.msg,
@@ -38,11 +34,7 @@ class HouseKeepingDetailResponse {
     this.offerId,
     this.serviceTypeId,
     this.salePrice,
-    this.selected,
-    this.additionsGroupDTOList,
-    this.addtionsDTOList,
-    this.quantity
-
+    this.selected
   });
 
   int? id;
@@ -72,21 +64,16 @@ class HouseKeepingDetailResponse {
   bool?saleItem;
   int?offerId;
   int?serviceTypeId;
-  RxInt?quantity=1.obs;
   double?salePrice;
-  List<AdditionsGroupModel>? additionsGroupDTOList;
-  RxList<AddtionsModel>? addtionsDTOList=<AddtionsModel>[].obs;
-
   RxBool?selected=false.obs;
 
-  static List<HouseKeepingDetailResponse> fromList(dynamic json) => List.from(json.map((e) => HouseKeepingDetailResponse.fromJson(e)));
+  static List<MaintenanceDetailResponse> fromList(dynamic json) => List.from(json.map((e) => MaintenanceDetailResponse.fromJson(e)));
 
 
-  factory HouseKeepingDetailResponse.fromJson( dynamic json) => HouseKeepingDetailResponse(
+  factory MaintenanceDetailResponse.fromJson( dynamic json) => MaintenanceDetailResponse(
     id: json["id"] == null ? null : json["id"],
     markEdit: json["markEdit"] == null ? null : json["markEdit"],
     msg: json["msg"],
-    quantity: 1.obs,
     msgType: json["msgType"],
     markDisable: json["markDisable"],
     createdBy: json["createdBy"] == null ? null : json["createdBy"],
@@ -114,13 +101,6 @@ class HouseKeepingDetailResponse {
     salePrice: json["salePrice"] == null ? null : json["salePrice"].toDouble(),
     selected: false.obs,
 
-    additionsGroupDTOList: List<AdditionsGroupModel>.from(
-        (json["additionsGroupDTOList"] ?? [])
-            .map((x) => AdditionsGroupModel.fromJson(x))),
-    addtionsDTOList:<AddtionsModel>[].obs,
-
-
-
   );
 
   Map<String, dynamic> toJson() => {
@@ -128,7 +108,6 @@ class HouseKeepingDetailResponse {
     "markEdit": markEdit == null ? null : markEdit,
     "msg": msg,
     "msgType": msgType,
-    "quantity": quantity!.value,
     "markDisable": markDisable,
     "createdBy": createdBy == null ? null : createdBy,
     "createdDate": createdDate == null ? null : createdDate,
@@ -143,20 +122,17 @@ class HouseKeepingDetailResponse {
     "branchSerial": branchSerial,
     "igmaOwnerSerial": igmaOwnerSerial,
     "userCode": userCode,
-    "name": name ,
-    "price": price ,
-    "groupId": groupId ,
+    "name": name == null ? null : name,
+    "price": price == null ? null : price,
+    "groupId": groupId == null ? null : groupId,
   "discountType": discountType == null ? null : discountType,
   "discountValue": discountValue == null ? null : discountValue,
   "discountRate": discountRate == null ? null : discountRate,
   "saleItem": saleItem == null ? null : saleItem,
   "offerId": offerId == null ? null : offerId,
-  "serviceTypeId": serviceTypeId ,
-  "salePrice": salePrice ,
-    "additionsGroupDTOList": List<AdditionsGroupModel>.from(
-        additionsGroupDTOList!.map((x) => x)),
-
-    "addtionsDTOList": addtionsDTOList == null ? null : List<AddtionsModel>.from(addtionsDTOList!.map((x) => x)),
+  "serviceTypeId": serviceTypeId == null ? null : serviceTypeId,
+  "salePrice": salePrice == null ? null : salePrice,
+    // "selected": selected == null ? null : selected,
 
   };
 }

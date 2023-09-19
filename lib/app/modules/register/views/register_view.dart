@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:easy_hotel/app/components/button_widget.dart';
 import 'package:easy_hotel/app/components/dropdown_widget.dart';
 import 'package:easy_hotel/app/components/image_widget.dart';

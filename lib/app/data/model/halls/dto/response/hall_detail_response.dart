@@ -46,6 +46,7 @@ class HallsDetailResponse {
       this.cityId,
       this.salePrice,
       this.reviewStar,
+      this.terms,
       this.reviewHoleDTOList,
       this.featureHoleDTOListSelected,
       this.lang,
@@ -58,6 +59,7 @@ class HallsDetailResponse {
   dynamic markDisable;
   int? createdBy;
   String? createdDate;
+  TermModel? terms;
   int? index;
   dynamic companyId;
   dynamic createdByName;
@@ -99,6 +101,7 @@ class HallsDetailResponse {
       msg: json["msg"],
       msgType: json["msgType"],
       markDisable: json["markDisable"],
+
       createdBy: json["createdBy"],
       createdDate: json["createdDate"],
       index: json["index"],
@@ -125,6 +128,8 @@ class HallsDetailResponse {
       offerId: json["offerId"],
       lang: json["lang"],
       lat: json["lat"],
+      terms: json["terms"] == null ? null : TermModel.fromJson(json["terms"]),
+
       occasionsDtoList: json["occasionsDTOList"],
       image: json["image"],
       itemImages: ItemImageResponse.fromList(json['itemImages'] ?? []),
@@ -144,7 +149,9 @@ class HallsDetailResponse {
         "msg": msg,
         "msgType": msgType,
         "markDisable": markDisable,
-        "createdBy": createdBy,
+    "terms": terms?.toJson(),
+
+    "createdBy": createdBy,
         "createdDate": createdDate,
         "index": index,
         "companyId": companyId,
@@ -178,4 +185,25 @@ class HallsDetailResponse {
         "lat": lat,
         "lang": lang,
       };
+}
+class TermModel {
+  TermModel(
+      {this.title,
+        this.text,
+        });
+
+  String? title;
+  String? text;
+
+
+  factory TermModel.fromJson(dynamic json) => TermModel(
+    title: json["title"],
+    text: json["text"],
+    );
+
+  Map<String, dynamic> toJson() => {
+    "title": title,
+    "text": text,
+
+  };
 }

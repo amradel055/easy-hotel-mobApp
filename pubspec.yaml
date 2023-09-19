@@ -3,7 +3,7 @@ version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
 environment: 
-  sdk: '>=2.19.0-374.0.dev <3.0.0'
+  sdk: '>=2.19.0-146.2.beta <3.0.0'
 #  /Users/mac/Documents/flutter/bin
 dependencies: 
   cupertino_icons: ^1.0.2
@@ -42,7 +42,8 @@ dependencies:
   barcode_widget: ^2.0.2
   badges: ^2.0.2
   flutter_time_picker_spinner: ^2.0.0
-  dropdown_search:
+#  dropdown_search:
+#  dropdown_search: ^5.0.6
   flutter_expandable_fab : ^1.6.1
   permission_handler: ^10.2.0
   flutter_polyline_points: ^1.0.0
@@ -50,7 +51,9 @@ dependencies:
   flutter_email_sender: ^5.2.0
   whatsapp: ^2.0.0
   whatsapp_unilink: ^2.0.2
-
+  pdf:
+  printing:
+  syncfusion_flutter_pdf: ^21.2.4
 
 
 

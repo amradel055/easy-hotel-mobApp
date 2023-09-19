@@ -1,9 +1,13 @@
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:easy_hotel/app/core/utils/show_popup_text.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/data/model/setting/dto/request/orders_request.dart';
 import 'package:easy_hotel/app/data/model/setting/dto/response/orders_response_dto.dart';
 import 'package:easy_hotel/app/data/repository/setting/setting_repository.dart';
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../../../data/model/setting/dto/request/cancle_request.dart';
 
@@ -38,7 +42,6 @@ class MyOrdersController extends GetxController {
         onError: (e) => showPopupText(e.toString()),
         onComplete: () => isLoading(false));
   }
-
 // cancle(int id ,int ?deliverId) async {
 //   isLoading(true);
 //   final request = DeliverRequestDto(
@@ -54,4 +57,5 @@ class MyOrdersController extends GetxController {
 //       onComplete: () => isLoading(false)
 //   );
 // }
+
 }

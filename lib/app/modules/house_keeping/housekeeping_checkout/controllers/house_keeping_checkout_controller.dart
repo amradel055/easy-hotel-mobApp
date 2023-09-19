@@ -26,24 +26,34 @@ class HouseKeepingCheckoutController extends GetxController {
         createdBy:AppConstants.createdBy,
         companyId: AppConstants.companyId,
         customerId: UserManager().user!.id,
-        houseKeepingDTOList: List<HouseKeepingDetailResponse>.from(res[0].map((e) => HouseKeepingDetailResponse(id: e))),
+    // houseKeepingDTOList: List<HouseKeepingDetailResponse>.from(res[0].map((e) => HouseKeepingDetailResponse(serviceTypeId: e,id: e))),
+    houseKeepingDTOList: res[0],
         dueDate: res[2],
         dueTime: res[2],
         remark: res[3],
         phone: phoneController.text,
         email: emailController.text,
         name: nameController.text,
+
     );
     HousekeepingRepository().getHousekeepingSave(request,
         onSuccess: (data) {
           showPopupText( AppStrings.savedSuccessfully);
           UserManager().sendNewOrderNotification(AppConstants.houseKeeping);
-          Get.offAndToNamed(Routes.ALLSERVICES);
+          Get.close(4);
+
+
 
 
         },
         onError: (e) => showPopupText( e.toString()),
-        onComplete: () => isLoading(false)
+        onComplete: () { isLoading(false);
+        res.clear();
+      // for(int i=0 ;i >=  res[0].length;i++ ){
+      //   res[0][i].selected=false;
+      //   print(res[0]);
+      // }
+      }
     );
   }
 

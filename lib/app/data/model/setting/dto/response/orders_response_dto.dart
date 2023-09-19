@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/data/model/halls/dto/response/hall_detail_response.dart';
 import 'package:easy_hotel/app/data/model/halls/dto/response/halls_response.dart';
 
 OrdersResponse? ordersResponseFromJson(String str) =>
@@ -30,6 +31,8 @@ class OrdersResponse {
       this.addtionsDTOList,
       this.delivered,
       this.statue,
+      this.serial,
+      this.termsHotelDTO,
       this.starNum,
       this.cancle});
 
@@ -42,6 +45,8 @@ class OrdersResponse {
   String? name;
   String? reviewText;
   String? statue;
+  num? serial;
+  TermModel? termsHotelDTO;
   dynamic image;
   num? cost;
   num? starNum;
@@ -74,15 +79,21 @@ class OrdersResponse {
       itemId: json["itemId"],
       appId: json["appId"],
       name: json["name"],
+      serial: json["serial"],
       delivered: delivered,
       statue: statue,
+      termsHotelDTO: json["termsHotelDTO"] == null ? null : TermModel.fromJson(json["termsHotelDTO"]),
+
       reviewText: json["reviewText"],
       image: json["image"],
       starNum: json["starNum"] == null ? 0.0 : json["starNum"],
       cost: json["cost"] == null ? 0.0 : json["cost"],
       date: json["date"] == null ? null : DateTime.parse(json["date"]),
       reviewDate: json["reviewDate"] == null ? null : DateTime.parse(json["reviewDate"]),
-      addtionsDTOList: json["addtionsDTOList"] == null ? null : List<AddtionsModel>.from(json["addtionsDTOList"].map((x) => x)),
+      addtionsDTOList: List<AddtionsModel>.from(
+          (json["addtionsDTOList"] ?? [])
+              .map((x) => AddtionsModel.fromJson(x))),
+      // addtionsDTOList: json["addtionsDTOList"] == null ? null : List<AddtionsModel>.from(json["addtionsDTOList"].map((x) => x)),
       rate: json["rate"] == null ? null : json["rate"].toDouble(),
       reviewId: json["reviewId"] == null ? null : json["reviewId"],
       cancle: json["cancle"],
@@ -100,11 +111,16 @@ class OrdersResponse {
         "image": image,
         "cost": cost,
         "starNum": starNum,
-        "date": date!.toIso8601String(),
+        "serial": serial,
+    "termsHotelDTO": termsHotelDTO?.toJson(),
+
+    "date": date!.toIso8601String(),
         "reviewDate": reviewDate!.toIso8601String(),
         "rate": rate,
         "delivered": delivered,
         "statue": statue,
-        "addtionsDTOList": addtionsDTOList == null ? null : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
+    "addtionsDTOList": List<AddtionsModel>.from(
+        addtionsDTOList!.map((x) => x)),
+        // "addtionsDTOList": addtionsDTOList == null ? null : List<dynamic>.from(addtionsDTOList!.map((x) => x.toJson())),
       };
 }

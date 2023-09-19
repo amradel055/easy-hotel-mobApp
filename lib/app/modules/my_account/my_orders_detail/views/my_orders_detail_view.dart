@@ -2,6 +2,7 @@ import 'package:easy_hotel/app/components/icon_button_widget.dart';
 import 'package:easy_hotel/app/components/image_widget.dart';
 import 'package:easy_hotel/app/components/text_field_widget.dart';
 import 'package:easy_hotel/app/components/text_widget.dart';
+import 'package:easy_hotel/app/const/printing_methods_helper.dart';
 import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/utils/user_manager.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
@@ -127,7 +128,26 @@ class MyOrdersDetailView extends GetView<MyOrdersDetailController> {
                                 ),
                               ),
                             ],
-                          )
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.print),
+                              GestureDetector(
+                                onTap: (){
+                                  PrintingHelper().printInvoice(context,controller.orderDetail!);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(8.0 , 0 , 8 , 0),
+                                  child: TextWidget(
+                                   "طباعه",
+                                    textColor: Colors.grey,
+                                    size: 16,
+                                    weight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
 
                         ],
                       ),

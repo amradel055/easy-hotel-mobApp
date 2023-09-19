@@ -25,19 +25,19 @@ class HallCalenderPageController extends GetxController {
   @override
   onInit()async {
     super.onInit();
-    calcAllTotalPrice();
+    // calcAllTotalPrice();
    await getHallPeriod();
    await getHallReservedPeriod(selectedDay.value);
   }
 
-  calcAllTotalPrice() {
-    if(selectedDaysList.toList().isEmpty){
-      dayTotalPrice.value = args[2] ;
-      allTotalPrice.value = args[2] ;
-      return ;
-    }
-    allTotalPrice.value = (dayTotalPrice.value * selectedDaysList.length );
-  }
+  // calcAllTotalPrice() {
+  //   if(selectedDaysList.toList().isEmpty){
+  //     dayTotalPrice.value = args[2] ;
+  //     allTotalPrice.value = args[2] ;
+  //     return ;
+  //   }
+  //   allTotalPrice.value = (dayTotalPrice.value * selectedDaysList.length );
+  // }
 
   reset() {
     selectedDay(DateTime.now());
@@ -53,13 +53,13 @@ class HallCalenderPageController extends GetxController {
     }
     final day = HallsPeriodsResponse(id: selectedPeriod.value!.id, date: selectedDay.value , name:selectedPeriod.value!.name );
     selectedDaysList.add(day);
-    calcAllTotalPrice();
+    // calcAllTotalPrice();
     reset();
   }
 
   deleteDay(int index){
     selectedDaysList.removeAt(index);
-    calcAllTotalPrice();
+    // calcAllTotalPrice();
   }
 
   setSelectedPeriod(HallsPeriodsResponse val) {

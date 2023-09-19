@@ -16,6 +16,7 @@ final Map<String, String> arEG = {
   AppStrings.noReview: 'لايوجد مراجعات',
 
 AppStrings.forbidden: 'ممنوع الوصول',
+AppStrings.skip: 'تخطي..',
   AppStrings.unauthenticated: 'الجلسة منتهية',
   AppStrings.Welcome: 'مرحبا',
   AppStrings.userName: 'اسم المستخدم',
@@ -197,5 +198,6 @@ AppStrings.forbidden: 'ممنوع الوصول',
     AppStrings.underProccess: "تحت التجهيز",
   AppStrings.notDeliverd: "في الطريق",
   AppStrings.deliverd: "تم توصيل الطلب",
+  AppStrings.maintenance: "الصيانه",
 
 };

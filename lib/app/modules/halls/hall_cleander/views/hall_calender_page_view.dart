@@ -4,6 +4,7 @@ import 'package:easy_hotel/app/core/utils/common.dart';
 import 'package:easy_hotel/app/core/values/app_assets.dart';
 import 'package:easy_hotel/app/core/values/app_colors.dart';
 import 'package:easy_hotel/app/core/values/app_strings.dart';
+import 'package:easy_hotel/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -189,32 +190,34 @@ class HallCalenderPageView extends GetView<HallCalenderPageController> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          SizedBox(
-                            width: size.width * .9,
-                            height: 30,
-                            child: Row(
-                              children: [
-                               const TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
-                                Obx((){
-                                  return Padding(
-                                    padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 0),
-                                    child: TextWidget(controller.allTotalPrice.value.toString(), size: 18, weight: FontWeight.bold,),
-                                  ) ;
-                                })
-                              ],
-                            ),
-                          ),
+                          // SizedBox(
+                          //   width: size.width * .9,
+                          //   height: 30,
+                          //   child: Row(
+                          //     children: [
+                          //      const TextWidget(AppStrings.totalPrice, size: 18, weight: FontWeight.bold,),
+                          //       Obx((){
+                          //         return Padding(
+                          //           padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                          //           child: TextWidget(controller.allTotalPrice.value.toString(), size: 18, weight: FontWeight.bold,),
+                          //         ) ;
+                          //       })
+                          //     ],
+                          //   ),
+                          // ),
                           SizedBox(
                             width: size.width * .4,
                             height: size.height * 0.06,
                             child: TextButton(
                               onPressed: () {
-                                controller.getHallSave();
+                                Get.toNamed(Routes.HALL_RESERVATION, arguments: [controller.args[0],controller.selectedDaysList.toList()]);
+
+                                // controller.getHallSave();
                               },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(AppColors.appHallsRedDark), shape: MaterialStateProperty.all(const StadiumBorder())),
                               child: const TextWidget(
-                                AppStrings.reserve,
+                                AppStrings.additions,
                                 textColor: Colors.white,
                                 weight: FontWeight.bold,
                                 size: 15,

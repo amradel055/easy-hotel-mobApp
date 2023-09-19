@@ -21,6 +21,7 @@ abstract class AppConstants {
   static const polman = "polman" ;
   static const customer = "customer" ;
   static const houseKeeping = "houseKeeping" ;
+  static const maintenance = "maintenance" ;
 
 
 

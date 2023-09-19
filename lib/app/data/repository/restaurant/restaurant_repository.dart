@@ -88,7 +88,7 @@ class RestaurantRepository {
         Function(dynamic error)? onError,
         Function()? onComplete,
       }) async{
-    await ApiProvider().post<Sales>('cart/save',
+    await ApiProvider().post<Sales>('cart/saveMobile',
         onSuccess: onSuccess,
         data: request.toJson(),
         onError: onError,

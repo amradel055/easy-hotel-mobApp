@@ -24,6 +24,8 @@ import 'package:easy_hotel/app/modules/halls/search_filter_city/bindings/search_
 import 'package:easy_hotel/app/modules/halls/search_filter_city/views/search_filter_page_view.dart';
 import 'package:easy_hotel/app/modules/halls/search_filter_hotel/bindings/search_filter_hotel_page_binding.dart';
 import 'package:easy_hotel/app/modules/halls/search_filter_hotel/views/search_filter_hotel_page_view.dart';
+import 'package:easy_hotel/app/modules/hotel_detail/bindings/hotel_details_binding.dart';
+import 'package:easy_hotel/app/modules/hotel_detail/views/hotel_detail_view.dart';
 import 'package:easy_hotel/app/modules/hotels_search/views/hotel_search_home_view.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_checkout/bindings/house_keeping_checkout_binding.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_checkout/views/house_keeping_checkout_view.dart';
@@ -33,6 +35,14 @@ import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/bi
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_reservation/views/house_keeping_reservation_view.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/bindings/house_keeping_services_binding.dart';
 import 'package:easy_hotel/app/modules/house_keeping/housekeeping_services/views/house_keeping_services_view.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_checkout/bindings/maintenance_checkout_binding.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_checkout/views/maintenance_checkout_view.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_home_page/bindings/maintenance_binding.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_home_page/views/maintenance_view.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_reservation/bindings/maintenance_reservation_binding.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_reservation/views/maintenance_reservation_view.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_services/bindings/maintenance_services_binding.dart';
+import 'package:easy_hotel/app/modules/maintenance/maintenance_services/views/maintenance_services_view.dart';
 import 'package:easy_hotel/app/modules/my_account/acoount_homepage/bindings/my_account_binding.dart';
 import 'package:easy_hotel/app/modules/my_account/acoount_homepage/views/my_account_view.dart';
 import 'package:easy_hotel/app/modules/my_account/change_email/bindings/change_email_binding.dart';
@@ -187,6 +197,10 @@ class AppPages {
       name: _Paths.HOUSE_KEEPING,
       page: () => const HouseKeepingView(),
       binding: HouseKeepingBinding(),
+    ), GetPage(
+      name: _Paths.MAINTENANCE,
+      page: () => const MaintenanceView(),
+      binding: MaintenanceBinding(),
     ),
     GetPage(
       name: _Paths.ROOMS,
@@ -222,6 +236,15 @@ class AppPages {
       name: _Paths.HOUSEKEEPING_SERVICES,
       page: () => const HouseKeepingServicesView(),
       binding: HouseKeepingServicesBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAINTENANCE_RESERVATION,
+      page: () => const MaintenanceReservationView(),
+      binding: MaintenanceReservationBinding(),
+    ),    GetPage(
+      name: _Paths.MAINTENANCE_SERVICES,
+      page: () => const MaintenanceServicesView(),
+      binding: MaintenanceServicesBinding(),
     ),
     GetPage(
       name: _Paths.HOUSEKEEPING_RESERVATION,
@@ -354,6 +377,10 @@ class AppPages {
       name: _Paths.HOUSEKEEPING_CHECKOUT,
       page: () => const HouseKeepingCheckoutView(),
       binding: HouseKeepingCheckoutBinding(),
+    ),GetPage(
+      name: _Paths.MAINTENANCE_CHECKOUT,
+      page: () => const MaintenanceCheckoutView(),
+      binding: MaintenanceCheckoutBinding(),
     ), GetPage(
       name: _Paths.SPA_CHECKOUT,
       page: () => const SpaCheckoutView(),
@@ -403,11 +430,16 @@ class AppPages {
       name: _Paths.CAR_DETAIL,
       page: () => const CarDetailView(),
       binding: CarDetailsBinding(),
+    ),GetPage(
+      name: _Paths.HOTEL_DETAIL,
+      page: () => const HotelDetailView(),
+      binding: HotelDetailsBinding(),
     ),
     GetPage(
       name: _Paths.FOOD_CHECKOUT,
       page: () => const FoodCheckoutView(),
       binding: FoodCheckoutBinding(),
     ),
+
   ];
 }

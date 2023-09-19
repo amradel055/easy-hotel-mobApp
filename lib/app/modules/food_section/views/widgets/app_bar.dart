@@ -1,3 +1,5 @@
+import 'package:easy_hotel/app/core/utils/app_storage.dart';
+import 'package:easy_hotel/app/core/values/app_strings.dart';
 import 'package:easy_hotel/app/modules/food_section/controllers/food_section_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +13,7 @@ class RestaurantSectionsAppBar extends GetView<FoodSectionController> with Prefe
   Widget build(BuildContext context) {
     return Obx(() {
       return AppBar(
-        title: TextWidget(controller.group.value!.name!),
+        title: TextWidget(controller.group.value==null?AppStrings.category:controller.group.value!.name!),
         centerTitle: true,
       );
     });

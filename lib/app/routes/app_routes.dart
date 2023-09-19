@@ -15,6 +15,7 @@ abstract class Routes {
   static const carsCategory = _Paths.carsCategory;
   static const carsOrder = _Paths.carsOrder;
   static const HOUSE_KEEPING = _Paths.HOUSE_KEEPING;
+  static const MAINTENANCE = _Paths.MAINTENANCE;
   static const ROOMS = _Paths.ROOMS;
   static const POLMAN = _Paths.POLMAN;
   static const SPASEARCHPAGE = _Paths.SPA_SEARCH_PAGE;
@@ -22,7 +23,9 @@ abstract class Routes {
   static const SPAHOTEL = _Paths.SPA_HOTEL;
   static const SPADETAILS = _Paths.SPA_DETAILS;
   static const HOUSEKEEPING_SERVICES = _Paths.HOUSEKEEPING_SERVICES;
+  static const MAINTENANCE_SERVICES = _Paths.MAINTENANCE_SERVICES;
   static const HOUSEKEEPING_RESERVATION = _Paths.HOUSEKEEPING_RESERVATION;
+  static const MAINTENANCE_RESERVATION = _Paths.MAINTENANCE_RESERVATION;
   static const HALLS_SEARCH = _Paths.HALLS_SEARCH;
   static const CITY_HALLS = _Paths.CITY_HALLS;
   static const HALL_DETAILS = _Paths.HALL_DETAILS;
@@ -48,6 +51,7 @@ abstract class Routes {
   static const MAP = _Paths.MAP;
   static const SETTINGS = _Paths.SETTINGS;
   static const HOUSEKEEPING_CHECKOUT = _Paths.HOUSEKEEPING_CHECKOUT;
+  static const MAINTENANCE_CHECKOUT = _Paths.MAINTENANCE_CHECKOUT;
   static const SPA_CHECKOUT = _Paths.SPA_CHECKOUT;
   static const POLMAN_CHECKOUT = _Paths.POLMAN_CHECKOUT;
   static const CAR_CHECKOUT = _Paths.CAR_CHECKOUT;
@@ -60,6 +64,7 @@ abstract class Routes {
   static const CONTACT_US = _Paths.CONTACT_US;
   static const FAV_PRODUCTS = _Paths.FAV_PRODUCTS;
   static const CAR_DETAIL = _Paths.CAR_DETAIL;
+  static const HOTEL_DETAIL = _Paths.HOTEL_DETAIL;
     static const FOOD_CHECKOUT = _Paths.FOOD_CHECKOUT;
 }
 
@@ -78,6 +83,7 @@ abstract class _Paths {
   static const carsCategory = '/carsCategory';
   static const carsOrder = '/carsOrder';
   static const HOUSE_KEEPING = '/house-keeping';
+  static const MAINTENANCE = '/maintenance';
   static const ROOMS = '/rooms';
   static const POLMAN = '/polman';
   static const SPA_SEARCH_PAGE = '/spa-search-page';
@@ -85,7 +91,9 @@ abstract class _Paths {
   static const SPA_HOTEL = '/spa-hotel';
   static const SPA_DETAILS = '/spa-details';
   static const HOUSEKEEPING_SERVICES = '/housekeeping-services';
+  static const MAINTENANCE_SERVICES = '/maintenance-services';
   static const HOUSEKEEPING_RESERVATION = '/housekeeping-reservation';
+  static const MAINTENANCE_RESERVATION = '/maintenance-reservation';
   static const FOOD_SECTION = '/food-section';
   static const FOOD_ITEM = '/food-item';
   static const HALLS_SEARCH = '/halls-search';
@@ -110,6 +118,7 @@ abstract class _Paths {
   static const MAP = '/map';
   static const SETTINGS = '/settings';
   static const HOUSEKEEPING_CHECKOUT = '/housekeeping-checkout';
+  static const MAINTENANCE_CHECKOUT = '/maintenance-checkout';
   static const SPA_CHECKOUT = '/spa-checkout';
   static const POLMAN_CHECKOUT = '/polman-checkout';
   static const CAR_CHECKOUT = '/car-checkout';
@@ -122,6 +131,7 @@ abstract class _Paths {
   static const CONTACT_US = '/contact-us';
   static const FAV_PRODUCTS = '/fav-products';
   static const CAR_DETAIL = '/car-detail';
+  static const HOTEL_DETAIL = '/hotel-detail';
     static const FOOD_CHECKOUT = '/FOOD_CHECKOUT';
 
 }

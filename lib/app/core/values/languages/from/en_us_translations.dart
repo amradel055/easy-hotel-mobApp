@@ -11,6 +11,7 @@ final Map<String, String> enUs = {
   AppStrings.invalidEmail: 'invalid email',
   AppStrings.connectionError: 'connection error',
   AppStrings.goBack: 'back',
+  AppStrings.skip: 'Skip..',
   AppStrings.notFound: 'not fount',
   AppStrings.noCarsFound: 'No Cars Found',
   AppStrings.noReview: 'No Reviews ',
@@ -189,4 +190,5 @@ final Map<String, String> enUs = {
   AppStrings.underProccess: "Under Proccess",
   AppStrings.notDeliverd: "Not Deliverd yet",
   AppStrings.deliverd: "Deliverd",
+  AppStrings.maintenance: "Maintenance",
 };

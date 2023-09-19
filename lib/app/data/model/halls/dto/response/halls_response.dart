@@ -188,6 +188,7 @@ class AdditionsGroupModel {
     this.name,
     this.addtionsDtoList,
     this.appId,
+    this.price,
   });
 
   int ?id;
@@ -211,6 +212,7 @@ class AdditionsGroupModel {
   String? name;
   RxList<AddtionsModel>? addtionsDtoList;
   int ?appId;
+  num ?price;
 
   static List<AdditionsGroupModel> fromList(dynamic json) => List.from(json.map((e) => AdditionsGroupModel.fromJson(e)));
 
@@ -237,6 +239,7 @@ class AdditionsGroupModel {
     branchSerial: json["branchSerial"],
     igmaOwnerSerial: json["igmaOwnerSerial"],
     userCode: json["userCode"],
+    price: json["price"],
     name: json["name"] == null ? null : json["name"],
     addtionsDtoList: json["addtionsDTOList"] == null ? null : RxList<AddtionsModel>.from(json["addtionsDTOList"].map((x) => AddtionsModel.fromJson(x))),
     appId: json["appId"] == null ? null : json["appId"],
@@ -261,6 +264,7 @@ class AdditionsGroupModel {
     "branchSerial": branchSerial,
     "igmaOwnerSerial": igmaOwnerSerial,
     "userCode": userCode,
+    "price": price,
     "name": name == null ? null : name,
     "addtionsDtoList": addtionsDtoList == null ? null : List<AddtionsModel>.from(addtionsDtoList!.map((x) => x)),
     "appId": appId == null ? null : appId,
@@ -330,7 +334,7 @@ class AddtionsModel {
   dynamic hallId;
   num ?discount;
   dynamic discountType;
-  int ?salePrice;
+  num ?salePrice;
   dynamic additionsGroupId;
   String? additionsGroupName;
   dynamic mainAdditionId;

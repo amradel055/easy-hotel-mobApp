@@ -3,13 +3,15 @@
 
 import 'package:easy_hotel/app/data/model/app_services/dto/request/application_request.dart';
 import 'package:easy_hotel/app/data/model/app_services/dto/response/application_response_dto.dart';
+import 'package:easy_hotel/app/data/model/hotel_detail/request/hotel_detail_request_dto.dart';
+import 'package:easy_hotel/app/data/model/hotel_detail/response/hotel_detail_response.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/response/spa_search_response_dto.dart';
 import 'package:easy_hotel/app/data/model/spa/dto/request/spa_search_request_dto.dart';
 import 'package:easy_hotel/app/data/model/user/dto/request/get_hotel_for_service_request.dart';
+import 'package:easy_hotel/app/data/provider/api_provider.dart';
 
 import '../../model/user/dto/request/hotel_places_request.dart';
 import '../../model/user/dto/response/delivery_place_response.dart';
-import '../../provider/api_provider.dart';
 
 class HotelSearchForServicesRepository {
 
@@ -81,4 +83,32 @@ class HotelSearchForServicesRepository {
         onError: onError,
         convertor: DeliveryPlaceResponse.fromList,
       );
+  // getHotelDetailById(
+  //     HotelDetailRequest request, {
+  //       Function()? onComplete,
+  //       SuccessFunc<HotelDetail?>? onSuccess,
+  //       Function(dynamic error)? onError,
+  //     }) =>
+  //     ApiProvider().post<HotelDetail>('branch/findHotelIdById',
+  //       onComplete: onComplete,
+  //       onSuccess: onSuccess,
+  //       data: request.toJson(),
+  //       onError: onError,
+  //       convertor: HotelDetail.fromJson,
+  //     );
+  getHotelDetailById(
+      HotelDetailRequest request, {
+        SuccessFunc<HotelDetail> onSuccess,
+        Function(dynamic error)? onError,  Function()?onComplete,
+      }) {
+    ApiProvider().post<HotelDetail>(
+        'branch/findHotelIdById',
+        onSuccess: onSuccess,
+        data: request.toJson(),
+        onError: onError,
+        convertor: HotelDetail.fromJson,
+        onComplete: onComplete
+    );
+  }
+
 }

@@ -2,10 +2,10 @@
 
 class GroupItemsRequest {
 
-  final int groupId ;
-  final int currencySerial;
+  final int ?groupId ;
+  final int ?currencySerial;
 
-  GroupItemsRequest({required this.groupId, required this.currencySerial});
+  GroupItemsRequest({ this.groupId,  this.currencySerial});
 
   Map<String , dynamic> toJson() => {
     "groupId" : groupId ,
