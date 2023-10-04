@@ -18,14 +18,14 @@ class SplashController extends GetxController {
     if(UserManager().isLoggedIn){
       if(UserManager().selectedBranch != null){
         // rooms app and login controller edit
-        Get.offNamed(Routes.ALLSERVICES);
+        // Get.offNamed(Routes.ALLSERVICES);
         // hotel app
-        // Get.offNamed(Routes.HOTEL_DETAIL);
+        Get.offNamed(Routes.HOTEL_DETAIL);
       }else{
         // hotelapp
-      // Get.offAndToNamed(Routes.HOME);
-      //   rooms app
-      Get.offAndToNamed(Routes.ROOMS);
+      Get.offAndToNamed(Routes.HOME);
+        // rooms app
+      // Get.offAndToNamed(Routes.ROOMS);
       }
     } else {
       Get.offAndToNamed(Routes.LOGIN);

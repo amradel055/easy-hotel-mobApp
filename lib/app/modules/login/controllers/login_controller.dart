@@ -39,15 +39,15 @@ class LoginController extends GetxController {
 
           UserManager().login(data.data!);
 //rooms app
-          Get.offAndToNamed(Routes.ROOMS);
+//           Get.offAndToNamed(Routes.ROOMS);
 //hotel app
-          // if (data.data?.hotelBooking != null) {
-          //   UserManager().saveSelectedBranch(spa.HotelsearchModel(id: data.data?.hotelBooking));
-          //   Get.offAndToNamed(Routes.ALLSERVICES);
-          //    return;
-          // } else {
-          //   Get.offAndToNamed(Routes.HOME);
-          // }
+          if (data.data?.hotelBooking != null) {
+            UserManager().saveSelectedBranch(spa.HotelsearchModel(id: data.data?.hotelBooking));
+            Get.offAndToNamed(Routes.ALLSERVICES);
+             return;
+          } else {
+            Get.offAndToNamed(Routes.HOME);
+          }
         },
         onError: (error) => showPopupText(error.toString()),
         onComplete: () => isLoading(false));
